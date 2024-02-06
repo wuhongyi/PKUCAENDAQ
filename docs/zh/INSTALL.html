@@ -98,6 +98,8 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">程序安装</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#id2">软件安装步骤</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#linux">LINUX 系统中每个模块使用注册</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">固件更新</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="FIRMWARE.html">固件</a></li>
@@ -196,6 +198,47 @@
 <li><p>将本程序包解压缩到个人目录中($HOME)</p></li>
 <li><p>编译安装 driver 文件夹内驱动</p></li>
 </ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> driver
+tar -zxvf CAENDGTZ-USB-Drv-1.2.tgz
+<span class="nb">cd</span> CAENDGTZ-USB-Drv-1.2/
+sudo ./install.sh
+
+<span class="nb">cd</span> ..
+tar -zxvf caen_felib-v1.3.0.tar.gz
+<span class="nb">cd</span> caen_felib-v1.3.0/
+./configure --disable-assert
+make
+sudo make install
+sudo ldconfig
+
+<span class="nb">cd</span> ..
+tar -zxvf caen_dig2-v1.5.10.tar.gz
+<span class="nb">cd</span> caen_dig2-v1.5.10/
+./configure --disable-assert
+make
+sudo make install
+sudo ldconfig
+</pre></div>
+</div>
+</section>
+<section id="linux">
+<h2>LINUX 系统中每个模块使用注册<a class="headerlink" href="#linux" title="永久链接至标题">¶</a></h2>
+<p>由于某些 Linux 发行版无法自动检索数字化仪 USB 名称，因此第一次使用该模块时，需要先进行注册操作。模块注册需要逐个模块进行。即在进行注册操作时，仅能有一个模块通过 USB 连接到 LINUX 系统。</p>
+<p>将 USB3.0 线缆 type-C 端连接到模块，另一端连接到电脑。然后在浏览器中输入 CAENDGTZ-USB-{PIDNUMBER}，这里 {PIDNUMBER} 替换为使用的模块的 PID 码，例如：CAENDGTZ-USB-25480 。看是否能访问，如果不能访问，说明还未对该模块进行驱动注册。</p>
+<p>在 USB 驱动安装包内，例如 CAENDGTZ-USB-Drv-1.2 里面，有驱动注册脚本文件 regPID.sh，通过以下命令运行。执行之后会看到注册成功的提示。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo ./regPID.sh
+</pre></div>
+</div>
+<p>之后，再通过网页访问  CAENDGTZ-USB-{PIDNUMBER}，即可看到以下登陆页面，默认用户名、密码均为 admin。</p>
+<img alt="_images/usblogin.png" src="_images/usblogin.png" />
+<p>登陆之后界面如下所示，左侧菜单栏中，可以进行网络设置。如果想通过网线进行数据获取，则通过该页面进行 IP 设置。根据实验室网络情况，选择 DHCP 自动分配 IP 或者 Manual 手动配置 IP。进行 IP 设置之后，在浏览器中输入模块的 IP，则也可以访问该设置页面。</p>
+<img alt="_images/caendgtz-usb-home.png" src="_images/caendgtz-usb-home.png" />
+</section>
+<section id="id3">
+<h2>固件更新<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>通过 USB （CAENDGTZ-USB-{PIDNUMBER}）或者 IP 方式访问模块配置页面，在左侧菜单栏有个 Fireware，点击进入该页面，如下：</p>
+<img alt="_images/firmwareupdate.png" src="_images/firmwareupdate.png" />
+<p>检查该页面的 Scope/PHA/PSD/ZLE 固件版本与获取程序包中， firmware 文件夹内的是否一致，如果不一致，通过 “Upload new firmware” 上传新固件。 网页中每个固件右端均有一个蓝色下三角按钮，通过点击该按钮，可以进行当前使用的固件进行切换，设置开机默认加载的固件等。另外，及时删除老版本的固件。</p>
 </section>
 </section>
 
