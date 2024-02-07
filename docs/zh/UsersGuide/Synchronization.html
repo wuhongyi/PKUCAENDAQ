@@ -8,7 +8,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>图形交互界面 &mdash; GDDAQ beta 文档</title>
+  <title>时间同步和采集 &mdash; GDDAQ beta 文档</title>
   
 
   
@@ -44,8 +44,8 @@
     
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="PHA 固件" href="PHA.html" />
-    <link rel="prev" title="时间同步和采集" href="Synchronization.html" /> 
+    <link rel="next" title="图形交互界面" href="GUI.html" />
+    <link rel="prev" title="用户指南" href="README.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -102,13 +102,15 @@
 <p class="caption" role="heading"><span class="caption-text">用户指南</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="README.html">用户指南</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Synchronization.html">时间同步和采集</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">图形交互界面</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id2">配置文件</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id3">登陆界面</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id4">主控制界面</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">时间同步和采集</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">时钟源设置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">同步采集</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sync-clkin">SYNC-CLKIN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sin-gpio">SIN-GPIO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sin-trgout">SIN-TRGOUT</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="GUI.html">图形交互界面</a></li>
 <li class="toctree-l1"><a class="reference internal" href="PHA.html">PHA 固件</a></li>
 <li class="toctree-l1"><a class="reference internal" href="PSD.html">PSD 固件</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ZLE.html">ZLE 固件</a></li>
@@ -165,13 +167,13 @@
     
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>图形交互界面</li>
+      <li>时间同步和采集</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="../_sources/UsersGuide/GUI.rst.txt" rel="nofollow"> 查看页面源码</a>
+            <a href="../_sources/UsersGuide/Synchronization.rst.txt" rel="nofollow"> 查看页面源码</a>
           
         
       </li>
@@ -185,29 +187,38 @@
            <div itemprop="articleBody">
             
   <section id="id1">
-<h1>图形交互界面<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<h1>时间同步和采集<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<p>在多模块的采集系统中，一个最基本的要求是所有模块同步采集。其要求所有模块共用一个时钟源，然后同时开始和结束数据采集。</p>
 <section id="id2">
-<h2>配置文件<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
-<p>json 格式文件，主要包含模块的 PID 或者 IP 等信息。</p>
-<p>获取参数文件。</p>
-<p>进入 GUI 目录，执行以下命令即可弹出主控制界面</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./gddaq
-</pre></div>
-</div>
+<h2>时钟源设置<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>CAEN 的时钟可通过前面板的 A319 线缆串列，也可通过机箱背板来共享时钟（开发中）。</p>
+<p>下图为典型的时钟同步配置图，通过 A319 ，前一个的 CLK OUT 连接到后一个的 CLK IN。</p>
+<img alt="../_images/sync_a319.png" src="../_images/sync_a319.png" />
+<hr class="docutils" />
+<p>链接时钟同步线缆之后，还需要依次对每个模块设置时钟源：</p>
+<p>对于主模块，需要设置 ClockSource 为 Internal，设置 EnClockOutFP 为 True, 如下图所示：</p>
+<img alt="../_images/master_clock.png" src="../_images/master_clock.png" />
+<p>对于所有的从模块，需要 ClockSource 为 FPClkIn，设置 EnClockOutFP 为 True, 如下图所示：</p>
+<img alt="../_images/slave_clock.png" src="../_images/slave_clock.png" />
+<p>以上设置为将主模块的内部时钟通过前面板输出，从模块依次接收前一个模块通过前面板传输来的时钟信号。</p>
 </section>
+<hr class="docutils" />
 <section id="id3">
-<h2>登陆界面<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
-<p>为了实现不同登陆账号不同操作权限。</p>
-<p>降低实验值班人员的操作权限，目前暂未实现。。。</p>
+<h2>同步采集<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>对于一个同步的系统，通常主模块设置为用来控制获取的开始、结束，其它从模块也需要进行相应的一些设置。通过前面板来控制获取的开始和结束，常用有以下三种方式：SYNC-CLKIN、SIN-GPIO、SIN-TRGOUT。其中 SYNC-CLKIN 是最广泛被使用的，因其包含在前面板的时钟同步线内，而另外两种则需要占用前面板上的 SIN/GPIO/TRGOUT LEMO 端口，常用于与其它获取系统的同步采集。</p>
 </section>
-<section id="id4">
-<h2>主控制界面<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
-<img alt="../_images/gddaqmain.png" src="../_images/gddaqmain.png" />
-<p>主界面左上角 File 下拉选择 “connect to device”，在弹出界面中，点击文件选择框，选择提前配置好的参数文件。然后点击 “connect”，之后再点击 “boot”，走完进度条之后，该弹出界面自动关闭。所有配置文件中的模块均完成初始化。</p>
-<p>完成系统初始化之后，主控制界面上方的 Basic、Logic、Online、Debug 四个按钮将会浮起，积极即可弹出相应的子界面，再点击即可隐藏。</p>
-<img alt="../_images/screenfulldaq.png" src="../_images/screenfulldaq.png" />
-<p>在弹出的 Basic、Logic、Debug 子界面，当系统为多个模块时通过点击左侧的 “Mod 0”、“Mod 1”、“Mod 2” 等切换标签进行采集模块的切换，切换时会自动读取右边页面中的信息。每个子界面上方有多个标签页，点击该标签即可切换到相应参数配置页面。</p>
-<p>由于本程序能够自适应不同的固件，在同一个参数设置标签页，不同的固件中会显示不同的可设置参数。</p>
+<section id="sync-clkin">
+<h2>SYNC-CLKIN<a class="headerlink" href="#sync-clkin" title="永久链接至标题">¶</a></h2>
+<p>主模块需要将 StartSource 设置为 SWcmd，将 SyncOutMode 设置为 Run。所有从模块将 StartSource 设置为 EncodedClkIn， 将 SyncOutMode 设置为 SyncIn。</p>
+</section>
+<section id="sin-gpio">
+<h2>SIN-GPIO<a class="headerlink" href="#sin-gpio" title="永久链接至标题">¶</a></h2>
+<p>主模块需要将 StartSource 设置为 SWcmd，将 GPIOMode 设置为 Run。 所有从模块将 StartSource 设置为 SINlevel，将 GPIOMode 设置为 SIN。</p>
+</section>
+<section id="sin-trgout">
+<h2>SIN-TRGOUT<a class="headerlink" href="#sin-trgout" title="永久链接至标题">¶</a></h2>
+<p>将主模块的 TRGOUT 连接到第一个从模块的 SIN，依次类推。</p>
+<p>主模块需要将 StartSource 设置为 SWcmd，将 TrgOutMode 设置为 Run。所有从模块将 StartSource 设置为 SINlevel，将 TrgOutMode 设置为 Run。</p>
 </section>
 </section>
 
@@ -217,8 +228,8 @@
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="PHA.html" class="btn btn-neutral float-right" title="PHA 固件" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="Synchronization.html" class="btn btn-neutral float-left" title="时间同步和采集" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="GUI.html" class="btn btn-neutral float-right" title="图形交互界面" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="README.html" class="btn btn-neutral float-left" title="用户指南" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
     </div>
 
   <hr/>

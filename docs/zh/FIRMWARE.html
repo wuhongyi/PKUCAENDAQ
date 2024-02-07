@@ -97,11 +97,16 @@
 <p class="caption" role="heading"><span class="caption-text">程序安装</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="INSTALL.html">程序安装</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">固件</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">固件</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">最新固件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">固件更新</a></li>
+</ul>
+</li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">用户指南</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="UsersGuide/README.html">用户指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UsersGuide/Synchronization.html">时间同步和采集</a></li>
 <li class="toctree-l1"><a class="reference internal" href="UsersGuide/GUI.html">图形交互界面</a></li>
 <li class="toctree-l1"><a class="reference internal" href="UsersGuide/PHA.html">PHA 固件</a></li>
 <li class="toctree-l1"><a class="reference internal" href="UsersGuide/PSD.html">PSD 固件</a></li>
@@ -180,6 +185,44 @@
             
   <section id="id1">
 <h1>固件<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<section id="id2">
+<h2>最新固件<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><dl class="simple">
+<dt>2745</dt><dd><ul>
+<li><p>V2745-scope-1G-2023091900.cup</p></li>
+<li><p>V2745-dpp-pha-1G-2023112703.cup</p></li>
+<li><p>V2745-dpp-psd-1G-2023091901.cup</p></li>
+<li><p>V2745-dpp-zle-1G-2023091902.cup</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>2740</dt><dd><ul>
+<li><p>V2740-scope-1G-2023091900.cup</p></li>
+<li><p>V2740-dpp-pha-1G-2023091800.cup</p></li>
+<li><p>V2740-dpp-psd-1G-2023091901.cup</p></li>
+<li><p>V2740-dpp-zle-1G-2023091902.cup</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>2730</dt><dd><ul>
+<li><p>V2730-scope-1G-2023111400.cup</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="id3">
+<h2>固件更新<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>通过 USB （CAENDGTZ-USB-{PIDNUMBER}）或者 IP 方式访问模块配置页面，在左侧菜单栏有个 Fireware，点击进入该页面，如下：</p>
+<img alt="_images/firmwareupdate.png" src="_images/firmwareupdate.png" />
+<p>检查该页面的 Scope/PHA/PSD/ZLE 固件版本与获取程序包中， firmware 文件夹内的是否一致，如果不一致，通过 “Upload new firmware” 上传新固件。 网页中每个固件右端均有一个蓝色下三角按钮，通过点击该按钮，可以进行当前使用的固件进行切换，设置开机默认加载的固件等。另外，及时删除老版本的固件。</p>
+</section>
 </section>
 
 

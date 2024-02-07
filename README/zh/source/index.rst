@@ -36,6 +36,7 @@ Welcome to GDDAQ's guides.
    :caption: 用户指南
 	     
    UsersGuide/README.rst
+   UsersGuide/Synchronization.rst
    UsersGuide/GUI.rst
    UsersGuide/PHA.rst
    UsersGuide/PSD.rst

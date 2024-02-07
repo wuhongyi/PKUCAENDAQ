@@ -4,9 +4,9 @@
 .. Author: Hongyi Wu(吴鸿毅)
 .. Email: wuhongyi@qq.com 
 .. Created: 六 2月  3 20:52:33 2024 (+0800)
-.. Last-Updated: 二 2月  6 21:56:34 2024 (+0800)
+.. Last-Updated: 二 2月  6 22:55:04 2024 (+0800)
 ..           By: Hongyi Wu(吴鸿毅)
-..     Update #: 4
+..     Update #: 5
 .. URL: http://wuhongyi.cn 
 
 =================================   
@@ -78,15 +78,7 @@ LINUX 系统中每个模块使用注册
 .. image:: /_static/img/caendgtz-usb-home.png
 
 
----------------------------------
-固件更新
----------------------------------
 
-通过 USB （CAENDGTZ-USB-{PIDNUMBER}）或者 IP 方式访问模块配置页面，在左侧菜单栏有个 Fireware，点击进入该页面，如下： 
-
-.. image:: /_static/img/firmwareupdate.png
-
-检查该页面的 Scope/PHA/PSD/ZLE 固件版本与获取程序包中， firmware 文件夹内的是否一致，如果不一致，通过 “Upload new firmware” 上传新固件。 网页中每个固件右端均有一个蓝色下三角按钮，通过点击该按钮，可以进行当前使用的固件进行切换，设置开机默认加载的固件等。另外，及时删除老版本的固件。
 
 	   
 
