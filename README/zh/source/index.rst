@@ -38,10 +38,11 @@ Welcome to GDDAQ's guides.
    UsersGuide/README.rst
    UsersGuide/Synchronization.rst
    UsersGuide/GUI.rst
+   UsersGuide/SCOPE.rst
    UsersGuide/PHA.rst
    UsersGuide/PSD.rst
    UsersGuide/ZLE.rst
-   UsersGuide/SCOPE.rst
+
 
 #################################
 

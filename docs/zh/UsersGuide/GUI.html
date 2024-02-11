@@ -44,7 +44,7 @@
     
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="PHA 固件" href="PHA.html" />
+    <link rel="next" title="SCOPE 固件" href="SCOPE.html" />
     <link rel="prev" title="时间同步和采集" href="Synchronization.html" /> 
 </head>
 
@@ -109,10 +109,10 @@
 <li class="toctree-l2"><a class="reference internal" href="#id4">主控制界面</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="SCOPE.html">SCOPE 固件</a></li>
 <li class="toctree-l1"><a class="reference internal" href="PHA.html">PHA 固件</a></li>
 <li class="toctree-l1"><a class="reference internal" href="PSD.html">PSD 固件</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ZLE.html">ZLE 固件</a></li>
-<li class="toctree-l1"><a class="reference internal" href="SCOPE.html">SCOPE 固件</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">应用案例</span></p>
 <ul>
@@ -189,6 +189,18 @@
 <section id="id2">
 <h2>配置文件<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
 <p>json 格式文件，主要包含模块的 PID 或者 IP 等信息。</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="nt">&quot;modules&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+<span class="nt">&quot;connecttype&quot;</span><span class="p">:</span> <span class="s2">&quot;eth&quot;</span><span class="p">,</span>
+<span class="nt">&quot;pid&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">25480</span><span class="p">,</span> <span class="mi">25945</span><span class="p">,</span> <span class="mi">24946</span><span class="p">],</span>
+<span class="nt">&quot;ip&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;162.105.54.162&quot;</span><span class="p">,</span> <span class="s2">&quot;162.105.54.187&quot;</span><span class="p">,</span> <span class="s2">&quot;162.105.54.90&quot;</span><span class="p">],</span>
+
+<span class="nt">&quot;par&quot;</span><span class="p">:</span> <span class="s2">&quot;setting.json&quot;</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>其中，参数 modules 为系统使用数据采集卡数量，参数 connecttype 为采集卡与获取电脑的连接方式，可填写 “usb” 或者 “eth”。使用 usb 读取，单个模块上限为 280 MB/s，使用网络读取，目前使用的 1G 网络，单个模块的上限为 110 MB/s。如果采用 USB 方式读取， 则参数 pid 生效，依次为系统每个模块的 PID。如果采用网络读取，则参数 ip 生效，依次为系统每个模块 IPV4 的 IP。</p>
 <p>获取参数文件。</p>
 <p>进入 GUI 目录，执行以下命令即可弹出主控制界面</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./gddaq
@@ -203,11 +215,25 @@
 <section id="id4">
 <h2>主控制界面<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
 <img alt="../_images/gddaqmain.png" src="../_images/gddaqmain.png" />
-<p>主界面左上角 File 下拉选择 “connect to device”，在弹出界面中，点击文件选择框，选择提前配置好的参数文件。然后点击 “connect”，之后再点击 “boot”，走完进度条之后，该弹出界面自动关闭。所有配置文件中的模块均完成初始化。</p>
+<p>主界面左上角 File 下拉选择 “connect to device”，弹出如下界面中，点击文件选择框，选择提前配置好的参数文件。</p>
+<img alt="../_images/connecttocrate.png" src="../_images/connecttocrate.png" />
+<p>当配置文件加载后，会在对话框中间显示配置主要配置信息，PID 或者 IP 信息。然后点击 “connect”，之后再点击 “boot”，走完进度条之后，该弹出界面自动关闭。所有配置文件中的模块均完成初始化。</p>
+<p>主界面左上角 File 下拉选择 “Output Configure”，弹出如下界面。本界面用于设置输出数据的文件夹，文件名称以及运行编号。按 OK 按钮关闭界面。以上信息只能在本界面进行修改，获取主界面显示该信息。</p>
+<img alt="../_images/outputsettings.png" src="../_images/outputsettings.png" />
+<hr class="docutils" />
 <p>完成系统初始化之后，主控制界面上方的 Basic、Logic、Online、Debug 四个按钮将会浮起，积极即可弹出相应的子界面，再点击即可隐藏。</p>
-<img alt="../_images/screenfulldaq.png" src="../_images/screenfulldaq.png" />
+<a class="reference internal image-reference" href="../_images/screenfulldaq.png"><img alt="../_images/screenfulldaq.png" src="../_images/screenfulldaq.png" style="width: 1851.0px; height: 511.0px;" /></a>
 <p>在弹出的 Basic、Logic、Debug 子界面，当系统为多个模块时通过点击左侧的 “Mod 0”、“Mod 1”、“Mod 2” 等切换标签进行采集模块的切换，切换时会自动读取右边页面中的信息。每个子界面上方有多个标签页，点击该标签即可切换到相应参数配置页面。</p>
 <p>由于本程序能够自适应不同的固件，在同一个参数设置标签页，不同的固件中会显示不同的可设置参数。</p>
+<p><strong>基础参数设置</strong></p>
+<img alt="../_images/demobasicsetting.png" src="../_images/demobasicsetting.png" />
+<p><strong>逻辑参数设置</strong></p>
+<img alt="../_images/demologicsettings.png" src="../_images/demologicsettings.png" />
+<p><strong>实时计数率监视</strong></p>
+<img alt="../_images/demoonline.png" src="../_images/demoonline.png" />
+<p><strong>波形监视与调试</strong></p>
+<img alt="../_images/demodebugscope.png" src="../_images/demodebugscope.png" />
+<img alt="../_images/demodebugpha.png" src="../_images/demodebugpha.png" />
 </section>
 </section>
 
@@ -217,7 +243,7 @@
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="PHA.html" class="btn btn-neutral float-right" title="PHA 固件" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="SCOPE.html" class="btn btn-neutral float-right" title="SCOPE 固件" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
         <a href="Synchronization.html" class="btn btn-neutral float-left" title="时间同步和采集" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
     </div>
 

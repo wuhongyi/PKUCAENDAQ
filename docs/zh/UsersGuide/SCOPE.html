@@ -44,8 +44,8 @@
     
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="应用案例" href="../Example/README.html" />
-    <link rel="prev" title="ZLE 固件" href="ZLE.html" /> 
+    <link rel="next" title="PHA 固件" href="PHA.html" />
+    <link rel="prev" title="图形交互界面" href="GUI.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -104,10 +104,57 @@
 <li class="toctree-l1"><a class="reference internal" href="README.html">用户指南</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Synchronization.html">时间同步和采集</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GUI.html">图形交互界面</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">SCOPE 固件</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">基本参数配置</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">输入信号</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#inputdelay">参数 InputDelay</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#chenable">参数 ChEnable</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#wavesource">参数 WaveSource</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dcoffset">参数 DCOffset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#vgagain">参数 VGAGain</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">触发</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#triggerthr">参数 TriggerThr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#selftriggerwidth">参数 SelfTriggerWidth</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#triggerthrmode">参数 TriggerThrMode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#selftriggeredge">参数 SelfTriggerEdge</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">数据记录</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#endatareduction">参数 EnDataReduction</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">scope</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#samplesoverthreshold">参数 SamplesOverThreshold</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#overthresholdvetowidth">参数 OverThresholdVetoWidth</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#chsupperthr">参数 ChSupperThr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#chsuppersamplesoverthreshold">参数 ChSupperSamplesOverThreshold</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#enchsupper">参数 EnChSupper</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pretrigger">参数 PreTrigger</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#recordlength">参数 RecordLength</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#decimationfactor">参数 DecimationFactor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#triggerdelay">参数 TriggerDelay</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">诊断</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#testpulseperiod">参数 TestPulsePeriod</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#testpulsewidth">参数 TestPulseWidth</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#testpulselowlevel">参数 TestPulseLowLevel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#testpulsehighlevel">参数 TestPulseHighLevel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dacoutmode">参数 DACoutMode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dacoutstaticlevel">参数 DACoutStaticLevel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dacoutchselect">参数 DACoutChSelect</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">逻辑参数配置</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="PHA.html">PHA 固件</a></li>
 <li class="toctree-l1"><a class="reference internal" href="PSD.html">PSD 固件</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ZLE.html">ZLE 固件</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">SCOPE 固件</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">应用案例</span></p>
 <ul>
@@ -181,6 +228,402 @@
             
   <section id="scope">
 <h1>SCOPE 固件<a class="headerlink" href="#scope" title="永久链接至标题">¶</a></h1>
+<section id="id1">
+<h2>基本参数配置<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<section id="id2">
+<h3>输入信号<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h3>
+<img alt="../_images/scope_basic_input.png" src="../_images/scope_basic_input.png" />
+<section id="inputdelay">
+<h4>参数 InputDelay<a class="headerlink" href="#inputdelay" title="永久链接至标题">¶</a></h4>
+<p>设置输入延迟，单位为采样点。</p>
+<p>该值设置每 4 个通道共用一个相同配置。</p>
+</section>
+<section id="chenable">
+<h4>参数 ChEnable<a class="headerlink" href="#chenable" title="永久链接至标题">¶</a></h4>
+<p>独立设定每个通道是否开启使用。如果通道不启用，它不提供任何数据，同时它的自触发也关闭。</p>
+</section>
+<section id="wavesource">
+<h4>参数 WaveSource<a class="headerlink" href="#wavesource" title="永久链接至标题">¶</a></h4>
+<p>在正常模式下，采集的波形来源于模拟输入的 A/D 转换产生的 ADC 采样序列。出于测试目的，可以用内部数据生成器替换 ADC 数据。</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>ADC_DATA</dt><dd><ul>
+<li><p>Data from the ADC (normal operating mode)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>ADC_TEST_TOGGLE</dt><dd><ul>
+<li><p>Toggle between 0x5555 and 0xAAAA (test mode)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>ADC_TEST_RAMP</dt><dd><ul>
+<li><p>16-bit ramp pattern (test mode)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>ADC_TEST_SIN</dt><dd><ul>
+<li><p>8-point sine wave test pattern</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>ADC_TEST_PRBS</dt><dd><ul>
+<li><p>16-bit PRBS generated by a 23-bit PRBS pattern generator (test mode)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Ramp</dt><dd><ul>
+<li><p>Data from a ramp generator. It is actually a 16-bit field, where the 6 most significant bits identify the channel and the 10 less significant bits are the samples of a ramp from 0x000 up to 0x3FF (i.e. 0 to 1023). It is so a 10-bit ramp with offset given by “channel*1024”. For channel 0, it is a counter from 0 to 1023; for channel 1, it is a counter from 1024 to 2047, and so on</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>IPE</dt><dd><ul>
+<li><p>Not implemented</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>SquareWave</dt><dd><ul>
+<li><p>Internally generated programmable square wave</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="dcoffset">
+<h4>参数 DCOffset<a class="headerlink" href="#dcoffset" title="永久链接至标题">¶</a></h4>
+<p>对于每个通道，将恒定的 DC 偏移（由 16 位 DAC 控制）添加到模拟输入，以在 ADC 的动态范围内调整信号基线的位置（即模拟输入的“零伏”）。</p>
+<p>由于部件的公差，有必要校准偏移 DAC。校准是通过工厂测试完成的，通常不需要重新校准。然而，可以执行新的校准。校准参数存储在板的闪存中，并在通电时加载。每次写入或读取 DCoffset 参数时，内部逻辑会自动应用这些参数。</p>
+<p>DCoffset 参数为数字，单位为满刻度的百分比。当 DCoffset为 0 时，输入信号的基线处于 ADC 0。当 DCoffset 为 100 时，输入信号的基线处于 ADC $2^{NBIT}-1$。</p>
+</section>
+<section id="vgagain">
+<h4>参数 VGAGain<a class="headerlink" href="#vgagain" title="永久链接至标题">¶</a></h4>
+<p>2745 特有。</p>
+<p>以 0.5 dB 为步长设置可变增益放大器（VGA）的增益。参数设置每 16 个通道为一组， 64 通道分为 4 组。最小可设置为 0，最大为 40。</p>
+</section>
+</section>
+<section id="id3">
+<h3>触发<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
+<img alt="../_images/scope_basic_trigger.png" src="../_images/scope_basic_trigger.png" />
+<section id="triggerthr">
+<h4>参数 TriggerThr<a class="headerlink" href="#triggerthr" title="永久链接至标题">¶</a></h4>
+<p>数字化模块的每个通道都有一个数字前沿甄别器，该甄别器具有可编程阈值，能够对输入脉冲进行自触发，并产生一个自触发信号（或过阈值信号），馈送道内部触发逻辑或输出端口。</p>
+<p>此参数设置触发阈值。典型地，该值是相对于信号的基线的，并且阈值是 17 位带符号的整数；在这种情况下，当 DCoffset 参数改变时，阈值自动跟随基线。有时，设置阈值的绝对值是更好的策略，该阈值相对于 ADC 道址的范围；在这种情况下，阈值是无符号的整数。</p>
+</section>
+<section id="selftriggerwidth">
+<h4>参数 SelfTriggerWidth<a class="headerlink" href="#selftriggerwidth" title="永久链接至标题">¶</a></h4>
+<p>产生自触发信号的数字前沿甄别器的输出可以在“线性”模式下使用，这意味着它会持续信号保持在阈值以上（或以下）的时间，从而充当“过阈值”信号，或者可以通过可编程门产生器，使其成为固定宽度的脉冲。门产生器是不可再触发的单稳态，当超过阈值时变高，在编程时间后变低。该参数定义了过阈值的固定宽度脉冲。</p>
+</section>
+<section id="triggerthrmode">
+<h4>参数 TriggerThrMode<a class="headerlink" href="#triggerthrmode" title="永久链接至标题">¶</a></h4>
+<p>定义触发阈值是相对于基线还是绝对阈值。</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Relative</dt><dd><ul>
+<li><p>The threshold is relative to the baseline and automatically follows it when the DCOffset parameter is changed.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Absolute</dt><dd><ul>
+<li><p>The threshold is absolute, referred to the ADC input range. It does not follow the DCOffset setting.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="selftriggeredge">
+<h4>参数 SelfTriggerEdge<a class="headerlink" href="#selftriggeredge" title="永久链接至标题">¶</a></h4>
+<p>定义自触发必须在阈值上升或下降时产生。同样地，当信号高于或低于阈值时，过阈值信号将为 TRUE。</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>RISE</dt><dd><ul>
+<li><p>The trigger occurs on the rising crossing of the threshold and the OverThr is true when the signal is above the threshold</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>FALL</dt><dd><ul>
+<li><p>The trigger occurs on the falling crossing of the threshold and the OverThr is true when the signal is below the threshold</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+</section>
+<section id="id4">
+<h3>数据记录<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
+<img alt="../_images/scope_basic_record.png" src="../_images/scope_basic_record.png" />
+<section id="endatareduction">
+<h4>参数 EnDataReduction<a class="headerlink" href="#endatareduction" title="永久链接至标题">¶</a></h4>
+<p>参数 xxx</p>
+</section>
+</section>
+<section id="id5">
+<h3>scope<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
+<img alt="../_images/scope_basic_scope.png" src="../_images/scope_basic_scope.png" />
+<section id="samplesoverthreshold">
+<h4>参数 SamplesOverThreshold<a class="headerlink" href="#samplesoverthreshold" title="永久链接至标题">¶</a></h4>
+<p>超过阈值的样点数。</p>
+</section>
+<section id="overthresholdvetowidth">
+<h4>参数 OverThresholdVetoWidth<a class="headerlink" href="#overthresholdvetowidth" title="永久链接至标题">¶</a></h4>
+<p>Veto width to discard triggers when crossing the threshold in the opposite direction to the trigger one</p>
+</section>
+<section id="chsupperthr">
+<h4>参数 ChSupperThr<a class="headerlink" href="#chsupperthr" title="永久链接至标题">¶</a></h4>
+<p>通道零抑制阈值。与 TriggerThr 共享的配置参数 TriggerThrMode 和 SelfTriggerEdge。</p>
+<p>单位为整数， ADC 道址。</p>
+</section>
+<section id="chsuppersamplesoverthreshold">
+<h4>参数 ChSupperSamplesOverThreshold<a class="headerlink" href="#chsuppersamplesoverthreshold" title="永久链接至标题">¶</a></h4>
+<p>通道零抑制超过阈值的采样点数。</p>
+</section>
+<section id="enchsupper">
+<h4>参数 EnChSupper<a class="headerlink" href="#enchsupper" title="永久链接至标题">¶</a></h4>
+<p>启用通道零抑制。</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>True</dt><dd><ul>
+<li><p>Channel zero-suppression is enabled</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>False</dt><dd><ul>
+<li><p>Channel zero-suppression is disabled</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="pretrigger">
+<h4>参数 PreTrigger<a class="headerlink" href="#pretrigger" title="永久链接至标题">¶</a></h4>
+<p>触发在波形中的位置之前的时间（即预触发窗口的大小）。波形的实际大小将自动四舍五入到最接近的允许值。通过读回参数可以得到确切的数值。</p>
+<p>单位为时间，ns</p>
+</section>
+<section id="recordlength">
+<h4>参数 RecordLength<a class="headerlink" href="#recordlength" title="永久链接至标题">¶</a></h4>
+<p>波形大小（即采集窗口的大小）。波形的实际大小将自动四舍五入到最接近的允许值。通过读回参数可以得到确切的数值。记录时间长度取决于降频设置。</p>
+<p>单位为时间，ns</p>
+</section>
+<section id="decimationfactor">
+<h4>参数 DecimationFactor<a class="headerlink" href="#decimationfactor" title="永久链接至标题">¶</a></h4>
+<p>设置应用于模块标称采样频率的抽取因子。如果启用，则参数 RecordLength、PreTrigger 和 TriggerDelay 按照标称采样计算采样点数，实际两个采样点的间隔为抽取因子设置的时间间隔。</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>1</dt><dd><ul>
+<li><p>Decimation disabled (default)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>2</dt><dd><ul>
+<li><p>Sampling Frequency / 2</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>4</dt><dd><ul>
+<li><p>Sampling Frequency / 4</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>8</dt><dd><ul>
+<li><p>Sampling Frequency / 8</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>16</dt><dd><ul>
+<li><p>Sampling Frequency / 16</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>32</dt><dd><ul>
+<li><p>Sampling Frequency / 32</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>64</dt><dd><ul>
+<li><p>Sampling Frequency / 64</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>128</dt><dd><ul>
+<li><p>Sampling Frequency / 128</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>256</dt><dd><ul>
+<li><p>Sampling Frequency / 256</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>512</dt><dd><ul>
+<li><p>Sampling Frequency / 512</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>1024</dt><dd><ul>
+<li><p>Sampling Frequency / 1024</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="triggerdelay">
+<h4>参数 TriggerDelay<a class="headerlink" href="#triggerdelay" title="永久链接至标题">¶</a></h4>
+<p>表示添加到采集触发器延迟的时间。此参数可用于获取在触发位置之后开始的窗口。</p>
+<p>单位为时间，ns</p>
+</section>
+</section>
+<section id="id6">
+<h3>诊断<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
+<img alt="../_images/scope_basic_debug.png" src="../_images/scope_basic_debug.png" />
+<section id="testpulseperiod">
+<h4>参数 TestPulsePeriod<a class="headerlink" href="#testpulseperiod" title="永久链接至标题">¶</a></h4>
+<p>测试脉冲是一种可编程方波，可用作内部周期性触发器（主要用于测试目的）或在 TRGOUT 和 GPIO 输出上生成逻辑测试脉冲（TTL 或 NIM）。此参数设置测试脉冲的周期。</p>
+<p>单位为时间，ns</p>
+</section>
+<section id="testpulsewidth">
+<h4>参数 TestPulseWidth<a class="headerlink" href="#testpulsewidth" title="永久链接至标题">¶</a></h4>
+<p>测试脉冲的宽度（信号保持高电平的时间）。</p>
+<p>单位为时间，ns</p>
+</section>
+<section id="testpulselowlevel">
+<h4>参数 TestPulseLowLevel<a class="headerlink" href="#testpulselowlevel" title="永久链接至标题">¶</a></h4>
+<p>以 ADC 道址表示的测试脉冲低电平</p>
+</section>
+<section id="testpulsehighlevel">
+<h4>参数 TestPulseHighLevel<a class="headerlink" href="#testpulsehighlevel" title="永久链接至标题">¶</a></h4>
+<p>以 ADC 道址表示的测试脉冲高电平</p>
+</section>
+<section id="dacoutmode">
+<h4>参数 DACoutMode<a class="headerlink" href="#dacoutmode" title="永久链接至标题">¶</a></h4>
+<p>选择要在前面板 DAC LEMO口输出发送的信号类型。</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Static</dt><dd><ul>
+<li><p>DAC output stays at a fixed level, given by the DACoutStaticLevel parameter</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Ramp</dt><dd><ul>
+<li><p>The DAC output is driven by a 14-bit counter</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Sin5MHz</dt><dd><ul>
+<li><p>The DAC output is a sine wave at 5 MHz with fixed amplitude</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Square</dt><dd><ul>
+<li><p>Square wave with period and with set by TestPulsePeriod and TestPulseWidth and amplitude between TestPulseLoweLevel and TestPulseHighLevel.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>IPE</dt><dd><ul>
+<li><p>Not implemented</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>ChInput</dt><dd><ul>
+<li><p>The DAC reproduces the input signal received by one input channel, selected by the DACoutChSelect parameter</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>MemOccupancy</dt><dd><ul>
+<li><p>Level of the memory occupancy (not yet implemented)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>ChSum</dt><dd><ul>
+<li><p>The DAC reproduces the “analog” sum of all the digitizer inputs (not yet implemented)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>OverThrSum</dt><dd><ul>
+<li><p>The DAC output is proportional to the number of channels that are currently above the threshold</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="dacoutstaticlevel">
+<h4>参数 DACoutStaticLevel<a class="headerlink" href="#dacoutstaticlevel" title="永久链接至标题">¶</a></h4>
+<p>当 DACoutMode = Static 时，此参数设置 DAC 输出的 14 位电平。</p>
+</section>
+<section id="dacoutchselect">
+<h4>参数 DACoutChSelect<a class="headerlink" href="#dacoutchselect" title="永久链接至标题">¶</a></h4>
+<p>当 DACoutMode = ChInput 时，DAC 输出由该参数选择的通道的输入信号。</p>
+</section>
+</section>
+</section>
+<section id="id7">
+<h2>逻辑参数配置<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
+<img alt="../_images/scope_logic_run.png" src="../_images/scope_logic_run.png" />
+<img alt="../_images/scope_logic_frontpanel.png" src="../_images/scope_logic_frontpanel.png" />
+<img alt="../_images/scope_logic_veto.png" src="../_images/scope_logic_veto.png" />
+<img alt="../_images/scope_logic_itl.png" src="../_images/scope_logic_itl.png" />
+<img alt="../_images/scope_logic_mask.png" src="../_images/scope_logic_mask.png" />
+</section>
 </section>
 
 
@@ -189,8 +632,8 @@
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="../Example/README.html" class="btn btn-neutral float-right" title="应用案例" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="ZLE.html" class="btn btn-neutral float-left" title="ZLE 固件" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="PHA.html" class="btn btn-neutral float-right" title="PHA 固件" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="GUI.html" class="btn btn-neutral float-left" title="图形交互界面" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
     </div>
 
   <hr/>
