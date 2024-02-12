@@ -118,9 +118,25 @@
 <li class="toctree-l4"><a class="reference internal" href="#vgagain">参数 VGAGain</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">触发</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">数据记录</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id5">ZLE 参数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">触发</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#triggerthr">参数 TriggerThr</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">数据记录</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#endatareduction">参数 EnDataReduction</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">ZLE 参数</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#pretrigger">参数 PreTrigger</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#supperthr">参数 SupperThr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lookback">参数 LookBack</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lookforward">参数 LookForward</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#enzlesuppr">参数 EnZLESuppr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#valuesource">参数 ValueSource</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#valueregister">参数 ValueRegister</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#recordlength">参数 RecordLength</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#id6">诊断</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#testpulseperiod">参数 TestPulsePeriod</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#testpulsewidth">参数 TestPulseWidth</a></li>
@@ -133,13 +149,25 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id7">逻辑参数配置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">逻辑参数配置</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id8">运行</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">模块前面板</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">反符合</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#itl">ITL 逻辑</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">延迟展宽</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">应用案例</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../Example/README.html">应用案例</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">采购建议与实验调试</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ProcurementProposal.html">采购推荐</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ExperimentalDebugging.html">实验调试</a></li>
 </ul>
 
             
@@ -320,14 +348,88 @@
 <section id="id3">
 <h3>触发<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
 <img alt="../_images/zle_basic_trigger.png" src="../_images/zle_basic_trigger.png" />
+<section id="triggerthr">
+<h4>参数 TriggerThr<a class="headerlink" href="#triggerthr" title="永久链接至标题">¶</a></h4>
+<p>XXXXXXX</p>
+</section>
 </section>
 <section id="id4">
 <h3>数据记录<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
 <img alt="../_images/zle_basic_record.png" src="../_images/zle_basic_record.png" />
+<section id="endatareduction">
+<h4>参数 EnDataReduction<a class="headerlink" href="#endatareduction" title="永久链接至标题">¶</a></h4>
+<p>XXXXXXX</p>
+</section>
 </section>
 <section id="id5">
 <h3>ZLE 参数<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
 <img alt="../_images/zle_basic_zle.png" src="../_images/zle_basic_zle.png" />
+<section id="pretrigger">
+<h4>参数 PreTrigger<a class="headerlink" href="#pretrigger" title="永久链接至标题">¶</a></h4>
+<p>波形中触发位置之前的样本数（即预触发窗口的大小）。</p>
+</section>
+<section id="supperthr">
+<h4>参数 SupperThr<a class="headerlink" href="#supperthr" title="永久链接至标题">¶</a></h4>
+<p>ZLE 算法进一步检查是否超过了 ZLE 抑制阈值（SupprThreshold），并保存过阈值样本（在负极性的情况下低于阈值），这些样本被称为“好”样本。此外，还可以在过/低于阈值之前和之后采集可编程数量的样本（分别为 LookBack 和 LookForward）。丢弃“跳过”的样本；在最终数据中仅记录舍弃的样本数。此参数允许设置 ZLE 数据抑制阈值。</p>
+<p>下图显示了 ZLE 算法的参数。信号记录在 ZLE 过阈值之前开始 LookBack 采样（图片中的LBW），并在相反方向的下阈值之后 LookForward 停止采样。所记录的区域定义了算法的 ROI（感兴趣区域）。在 ROI 之外，算法记录跳过的样本数。</p>
+<img alt="../_images/zlechsuppthre.png" src="../_images/zlechsuppthre.png" />
+</section>
+<section id="lookback">
+<h4>参数 LookBack<a class="headerlink" href="#lookback" title="永久链接至标题">¶</a></h4>
+<p>This parameter allows to set the ZLE look-back samples.</p>
+</section>
+<section id="lookforward">
+<h4>参数 LookForward<a class="headerlink" href="#lookforward" title="永久链接至标题">¶</a></h4>
+<p>This parameter allows to set the ZLE look-forward samples.</p>
+</section>
+<section id="enzlesuppr">
+<h4>参数 EnZLESuppr<a class="headerlink" href="#enzlesuppr" title="永久链接至标题">¶</a></h4>
+<p>设置是否启用 ZLE 数据压缩。</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>True</dt><dd><ul>
+<li><p>ZLE Data reduction is enabled.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>False</dt><dd><ul>
+<li><p>ZLE Data reduction is disabled.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="valuesource">
+<h4>参数 ValueSource<a class="headerlink" href="#valuesource" title="永久链接至标题">¶</a></h4>
+<p>Selection of the default sample value in the payload (baseline or register).</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Baseline</dt><dd><ul>
+<li><p>Default sample value is Baseline.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Register</dt><dd><ul>
+<li><p>Default sample value is the value.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="valueregister">
+<h4>参数 ValueRegister<a class="headerlink" href="#valueregister" title="永久链接至标题">¶</a></h4>
+<p>ZLE 默认采样值寄存器。</p>
+</section>
+<section id="recordlength">
+<h4>参数 RecordLength<a class="headerlink" href="#recordlength" title="永久链接至标题">¶</a></h4>
+<p>波形大小（即采集窗口的大小）。波形的实际大小将自动四舍五入到最接近的允许值。</p>
+</section>
 </section>
 <section id="id6">
 <h3>诊断<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
@@ -431,11 +533,26 @@
 </section>
 <section id="id7">
 <h2>逻辑参数配置<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
+<section id="id8">
+<h3>运行<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h3>
 <img alt="../_images/zle_logic_run.png" src="../_images/zle_logic_run.png" />
+</section>
+<section id="id9">
+<h3>模块前面板<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h3>
 <img alt="../_images/zle_logic_frontpanel.png" src="../_images/zle_logic_frontpanel.png" />
+</section>
+<section id="id10">
+<h3>反符合<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h3>
 <img alt="../_images/zle_logic_veto.png" src="../_images/zle_logic_veto.png" />
+</section>
+<section id="itl">
+<h3>ITL 逻辑<a class="headerlink" href="#itl" title="永久链接至标题">¶</a></h3>
 <img alt="../_images/zle_logic_itl.png" src="../_images/zle_logic_itl.png" />
+</section>
+<section id="id11">
+<h3>延迟展宽<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h3>
 <img alt="../_images/zle_logic_mask.png" src="../_images/zle_logic_mask.png" />
+</section>
 </section>
 </section>
 

@@ -53,7 +53,14 @@ Welcome to GDDAQ's guides.
    Example/README.rst
 
 
+#################################
 
+.. toctree::
+   :maxdepth: 2
+   :caption: 采购建议与实验调试
+      
+   ProcurementProposal.rst
+   ExperimentalDebugging.rst
    
 
 .. Indices and tables
