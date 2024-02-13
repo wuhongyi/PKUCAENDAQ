@@ -4,9 +4,9 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 五 12月 17 20:14:52 2021 (+0800)
-;; Last-Updated: 三 2月  7 22:06:35 2024 (+0800)
+;; Last-Updated: 二 2月 13 16:44:49 2024 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 6
+;;     Update #: 7
 ;; URL: http://wuhongyi.cn -->
 
 # A general-purpose digital data acquisition system(GDDAQ)
@@ -25,6 +25,24 @@
 程序下载请访问:  [PKUCAENDAQ](https://github.com/wuhongyi/PKUCAENDAQ)
 
 网页版说明书请访问:  [简体中文/English](http://wuhongyi.cn/PKUCAENDAQ/)
+
+
+**对本获取程序有任何的意见及建议(功能添加及改进)，欢迎给吴鸿毅(wuhongyi@qq.com / wuhongyi@pku.edu.cn)发邮件。**
+
+## 关于
+
+**本说明书仅适用于 CAEN 的第二代数字化采集卡 2745/2740/2730 系列采集卡。通用逻辑的实现需要 2495 可编程逻辑模块。**
+
+
+技术指导:
+- [Zhihuan Li 李智焕](https://github.com/zhihuanli)
+
+
+软件主要开发者:
+- 2021 - now
+	- Hongyi Wu 吴鸿毅(wuhongyi@qq.com / wuhongyi@pku.edu.cn) 
+
+
 
 
 <!--
