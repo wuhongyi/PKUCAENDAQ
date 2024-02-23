@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 日 2月 18 01:23:28 2024 (+0800)
-// Last-Updated: 日 2月 18 14:38:37 2024 (+0800)
+// Last-Updated: 五 2月 23 16:48:38 2024 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 6
+//     Update #: 7
 // URL: http://wuhongyi.cn 
 
 #include "r2root.hh"
@@ -67,6 +67,9 @@ r2root::r2root(int run)
   t->Branch("finets", &finets, "finets/s");
   t->Branch("flagslow", &flagslow, "flagslow/s");
   t->Branch("flagshigh", &flagshigh, "flagshigh/s");
+
+  t->Branch("energy", &energy, "energy/s");
+  t->Branch("energyshort", &energyshort, "energyshort/s");
   
   t->Branch("samples", &samples, "samples/s");
   t->Branch("analog0", &analog0, "analog0[samples]/I");
@@ -246,6 +249,8 @@ void r2root::Process()
 		finets = itkey->second.finets;
 		flagslow = itkey->second.flagslow;
 		flagshigh = itkey->second.flagshigh;
+		energy = itkey->second.energy;
+		energyshort = itkey->second.energyshort;
 		analogtypes[0] = itkey->second.analogtype[0];
 		analogtypes[1] = itkey->second.analogtype[1];
 		digitaltypes[0] = itkey->second.digitaltype[0];
@@ -330,6 +335,8 @@ void r2root::Process()
 		    finets = itkey->second.finets;
 		    flagslow = itkey->second.flagslow;
 		    flagshigh = itkey->second.flagshigh;
+		    energy = itkey->second.energy;
+		    energyshort = itkey->second.energyshort;
 		    analogtypes[0] = itkey->second.analogtype[0];
 		    analogtypes[1] = itkey->second.analogtype[1];
 		    digitaltypes[0] = itkey->second.digitaltype[0];

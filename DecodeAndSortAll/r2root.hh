@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 日 2月 18 01:22:59 2024 (+0800)
-// Last-Updated: 日 2月 18 13:41:47 2024 (+0800)
+// Last-Updated: 五 2月 23 16:48:23 2024 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 4
+//     Update #: 5
 // URL: http://wuhongyi.cn 
 
 #ifndef _R2ROOT_H_
@@ -114,7 +114,9 @@ private:
   UShort_t flagslow;
   UShort_t flagshigh;
   
-
+  UShort_t energy;//
+  UShort_t energyshort;//
+  
   UShort_t samples;
   int analog0[10000];
   int analog1[10000];
