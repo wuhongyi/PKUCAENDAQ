@@ -42,7 +42,7 @@ Welcome to GDDAQ's guides.
    UsersGuide/PHA.rst
    UsersGuide/PSD.rst
    UsersGuide/ZLE.rst
-
+   UsersGuide/OPEN.rst
 
 #################################
 
