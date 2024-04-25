@@ -4,9 +4,9 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 五 12月 17 20:14:52 2021 (+0800)
-;; Last-Updated: 三 4月 24 22:50:23 2024 (+0800)
+;; Last-Updated: 四 4月 25 21:56:12 2024 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 13
+;;     Update #: 14
 ;; URL: http://wuhongyi.cn -->
 
 # A general-purpose digital data acquisition system(GDDAQ)
@@ -15,7 +15,7 @@
 
 本程序支持 CAEN 第二代数字化采集卡，包括 2745/2740/2730。支持不同模块 PHA/PSD/ZLE/DAW/SCOPE/OPEN 固件混合使用。通用外部逻辑的实现需要 V2495/DT5495 模块。 
 
-**目前为测试版本, 版本有效期截止 2024 年 8 月 1 日前。建议大家及时下载最新版本。**
+**目前为测试版本, 版本有效期截止 2024 年 8 月 25 日前。建议大家及时下载最新版本。**
 
 ## 版本
 
