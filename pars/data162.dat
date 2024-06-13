@@ -1,0 +1,9 @@
+{
+"modules": 1,
+"connecttype": "usb",
+"pid": [25480],
+"ip": ["162.105.54.162"],
+
+"par": "setting.json"
+
+}

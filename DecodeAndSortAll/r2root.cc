@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 日 2月 18 01:23:28 2024 (+0800)
-// Last-Updated: 五 2月 23 16:48:38 2024 (+0800)
+// Last-Updated: 三 6月  5 21:44:47 2024 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 7
+//     Update #: 8
 // URL: http://wuhongyi.cn 
 
 #include "r2root.hh"
@@ -126,9 +126,13 @@ void r2root::Process()
 		{
 		  timestamp = 8*rawdec[i].getts();
 		}
+	      else if(rawdec[i].getsamplerate() == 500)
+		{
+		  timestamp = 2*rawdec[i].getts();
+		}
 	      else
 		{// TODO
-		  timestamp = 8*rawdec[i].getts();
+		  timestamp = rawdec[i].getts();
 		}
 
 	      if(timestamp < deltat)

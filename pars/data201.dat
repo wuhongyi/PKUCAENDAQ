@@ -1,0 +1,9 @@
+{
+"modules": 1,
+"connecttype": "eth",
+"pid": [51413],
+"ip": ["162.105.54.201"],
+
+"par": "setting.json"
+
+}
