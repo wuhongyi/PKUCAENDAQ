@@ -4,9 +4,9 @@
 .. Author: Hongyi Wu(吴鸿毅)
 .. Email: wuhongyi@qq.com 
 .. Created: 六 2月  3 20:52:33 2024 (+0800)
-.. Last-Updated: 日 2月 11 16:10:28 2024 (+0800)
+.. Last-Updated: 四 6月 13 23:47:31 2024 (+0800)
 ..           By: Hongyi Wu(吴鸿毅)
-..     Update #: 6
+..     Update #: 7
 .. URL: http://wuhongyi.cn 
 
 =================================   
@@ -17,7 +17,7 @@
 
 * Ubuntu 20.04
 * Qt 5  
-
+* ROOT 6(推荐 6.26.16)
   
 本程序测试过的系统目前只包含 Ubuntu20.04
 
@@ -54,8 +54,18 @@
   sudo ldconfig
 
 
+* 编译 GUI 软件
+
+.. code-block:: bash
   
+  cd GUI
+  chmod +x makefile.sh.x
+  ./makefile.sh.x
+  # 等待编译结束，编译通过之后，文件夹内将生成可执行文件 gddaq
   
+
+
+		
 ---------------------------------
 LINUX 系统中每个模块使用注册
 ---------------------------------

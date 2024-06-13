@@ -4,9 +4,9 @@
 .. Author: Hongyi Wu(吴鸿毅)
 .. Email: wuhongyi@qq.com 
 .. Created: 六 2月  3 20:48:10 2024 (+0800)
-.. Last-Updated: 一 4月 15 22:40:46 2024 (+0800)
+.. Last-Updated: 四 6月 13 23:48:51 2024 (+0800)
 ..           By: Hongyi Wu(吴鸿毅)
-..     Update #: 5
+..     Update #: 6
 .. URL: http://wuhongyi.cn 
 
 =================================   
@@ -20,7 +20,7 @@
 ---------------------------------
 
 
-- **GUI Qt: 目前为测试版，欢迎大家下载使用**  
+- **GUI Qt: 目前处于版本快速迭代阶段，欢迎大家下载使用**  
 
 程序下载请访问:  `PKUCAENDAQ <https://github.com/wuhongyi/PKUCAENDAQ>`_ 
 
