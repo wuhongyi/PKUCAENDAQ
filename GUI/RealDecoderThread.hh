@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 日 3月 12 21:04:39 2023 (+0800)
-// Last-Updated: 一 6月 10 15:05:36 2024 (+0800)
+// Last-Updated: 五 6月 14 13:04:27 2024 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 13
+//     Update #: 14
 // URL: http://wuhongyi.cn 
 
 #ifndef _REALDECODERTHREAD_H_
@@ -54,7 +54,8 @@ private:
   
   unsigned int tmpbuff[6];
   int tmpid;
-
+  unsigned int tmpwave[16384];
+  
   uint64_t timestamp;
   unsigned short samples;
   unsigned short ch;

@@ -4,42 +4,53 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 五 12月 17 20:14:52 2021 (+0800)
-;; Last-Updated: 四 6月 13 23:42:45 2024 (+0800)
+;; Last-Updated: 五 6月 14 19:35:22 2024 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 16
+;;     Update #: 20
 ;; URL: http://wuhongyi.cn -->
 
 # A general-purpose digital data acquisition system(GDDAQ-CAEN)
 
 ![Yi logo](Yilogo100.png)
 
-本程序支持 CAEN 第二代数字化采集卡，包括 2745/2740/2730。支持不同模块 PHA/PSD/ZLE/DAW/SCOPE/OPEN 固件混合使用。通用外部逻辑的实现需要 V2495/DT5495 模块。 
-
-**目前版本快速迭代中, 版本有效期截止 2024 年 9 月 13 日前。建议大家及时下载最新版本。**
-
-## 版本
+English | [简体中文](https://github.com/wuhongyi/PKUCAENDAQ/blob/main/README_zh.md)
 
 
+This program supports CAEN digital 2.0 data acquisition modules, including 2745/2740/2730. Support mixed use of PHA/PSD/ZLE/DAW/SCOPE/OPEN firmware for different modules. The implementation of general external logic requires the V2495/DT5495 module.
 
-程序下载请访问:  [PKUCAENDAQ](https://github.com/wuhongyi/PKUCAENDAQ)
-
-网页版说明书请访问:  [简体中文/English](http://wuhongyi.cn/PKUCAENDAQ/)
-
-
-**对本获取程序有任何的意见及建议(功能添加及改进)，欢迎给吴鸿毅(wuhongyi@qq.com / wuhongyi@pku.edu.cn)发邮件。**
-
-## 关于
-
-**本说明书仅适用于 CAEN 的第二代数字化采集卡 2745/2740/2730 系列采集卡。通用逻辑的实现需要 2495 可编程逻辑模块。**
+**The current version is undergoing rapid iteration and is valid until September 14, 2024. I suggest everyone download the latest version in a timely manner.**
 
 
-技术指导:
+
+## Version
+
+- **GUI Qt: version 2024.06.14**
+- **DecodeAndSortAll: version 2024.06.14**
+
+
+Download the latest version code: [PKUCAENDAQ](https://github.com/wuhongyi/PKUCAENDAQ)
+
+Manual:  [简体中文/English](http://wuhongyi.cn/PKUCAENDAQ/)
+
+
+If you have any comments or suggestions for this project(function addition or improvement), please contact Hongyi Wu(wuhongyi@qq.com / wuhongyi@pku.edu.cn). 
+
+
+
+## About
+
+
+
+Technical adviser:
 - [Zhihuan Li 李智焕](https://github.com/zhihuanli)
 
 
-软件主要开发者:
+Software Developer:
 - 2021 - now
 	- Hongyi Wu 吴鸿毅(wuhongyi@qq.com / wuhongyi@pku.edu.cn) 
+
+
+
 
 
 

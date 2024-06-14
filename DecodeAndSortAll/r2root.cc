@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 日 2月 18 01:23:28 2024 (+0800)
-// Last-Updated: 三 6月  5 21:44:47 2024 (+0800)
+// Last-Updated: 五 6月 14 17:32:43 2024 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 8
+//     Update #: 10
 // URL: http://wuhongyi.cn 
 
 #include "r2root.hh"
@@ -122,17 +122,24 @@ void r2root::Process()
 	{
 	  while(havedata[i])
 	    {
-	      if(rawdec[i].getsamplerate() == 125)
+	      if(rawdec[i].getfirmware() == 5)
 		{
 		  timestamp = 8*rawdec[i].getts();
 		}
-	      else if(rawdec[i].getsamplerate() == 500)
-		{
-		  timestamp = 2*rawdec[i].getts();
-		}
 	      else
-		{// TODO
-		  timestamp = rawdec[i].getts();
+		{
+		  if(rawdec[i].getsamplerate() == 125)
+		    {
+		      timestamp = 8*rawdec[i].getts();
+		    }
+		  else if(rawdec[i].getsamplerate() == 500)
+		    {
+		      timestamp = 2*rawdec[i].getts();
+		    }
+		  else
+		    {// TODO
+		      timestamp = rawdec[i].getts();
+		    }
 		}
 
 	      if(timestamp < deltat)
@@ -145,7 +152,7 @@ void r2root::Process()
 		  mapvalue.sr = rawdec[mark].getsamplerate();
 		  mapvalue.ch = rawdec[mark].getch();
 		  mapvalue.mod = rawdec[mark].getmod();
-		  mapvalue.ts = rawdec[mark].getts();
+		  mapvalue.ts = timestamp;//rawdec[mark].getts();
 		  
 		  switch(mapvalue.fw)
 		    {
@@ -211,14 +218,15 @@ void r2root::Process()
 		  havedata[mark] = rawdec[mark].getnextevt();
 
 
-		  if(mapvalue.sr == 125)
-		    {
-		      mapvalue.tsflag = mapvalue.ts*8;
-		    }
-		  else
-		    {// TODO
-		      mapvalue.tsflag = mapvalue.ts*8;
-		    }
+		  mapvalue.tsflag = mapvalue.ts;
+		  //if(mapvalue.sr == 125)
+		  //  {
+		  //    mapvalue.tsflag = mapvalue.ts*8;
+		  //  }
+		  //else
+		  //  {// TODO
+		  //    mapvalue.tsflag = mapvalue.ts*8;
+		  //  }
 
 
 		  flagkey = ((((mapvalue.tsflag)<<6)+mapvalue.mod)<<6)+mapvalue.ch;
