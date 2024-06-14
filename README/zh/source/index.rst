@@ -56,6 +56,17 @@ Welcome to GDDAQ's guides.
 #################################
 
 .. toctree::
+   :maxdepth: 3
+   :caption: 数据分析
+	     
+   Data/README.rst
+   Data/DecodeAndSort.rst
+   Data/EventBuilder.rst
+   
+
+#################################
+
+.. toctree::
    :maxdepth: 2
    :caption: 采购建议与实验调试
       
