@@ -4,9 +4,9 @@
 .. Author: Hongyi Wu(吴鸿毅)
 .. Email: wuhongyi@qq.com 
 .. Created: 六 2月  3 20:52:33 2024 (+0800)
-.. Last-Updated: 五 6月 14 14:31:51 2024 (+0800)
+.. Last-Updated: 六 6月 15 15:42:53 2024 (+0800)
 ..           By: Hongyi Wu(吴鸿毅)
-..     Update #: 8
+..     Update #: 10
 .. URL: http://wuhongyi.cn 
 
 =================================   
@@ -17,11 +17,21 @@
 
 * Ubuntu 20.04
 * Qt 5  
-* ROOT 6(推荐 6.26.16)
+* ROOT 6
+
+
+
+
   
-本程序测试过的系统目前只包含 Ubuntu20.04
+**本程序测试过的系统目前只包含 Ubuntu20.04**
 
+.. code-block:: bash
 
+  # Ubuntu20.04 依赖安装
+  sudo apt -y install libssl-dev openssl qt5-default qtcreator libqt5webkit5-dev libqt5webengine5 qtwebengine5-dev libqt5webenginecore5 libqt5webenginewidgets5 libqt5webengine-data libqt5webchannel5-dev libqt5websockets5-dev libqt5websockets5 libqt5webview5-dev libqt5webview5 libqt5charts5-dev
+  # ROOT 6 推荐 6.26.16
+
+  
 ---------------------------------
 软件安装步骤
 ---------------------------------

@@ -4,9 +4,9 @@
 .. Author: Hongyi Wu(吴鸿毅)
 .. Email: wuhongyi@qq.com 
 .. Created: 六 2月  3 20:59:00 2024 (+0800)
-.. Last-Updated: 日 2月 11 16:16:44 2024 (+0800)
+.. Last-Updated: 六 6月 15 15:34:29 2024 (+0800)
 ..           By: Hongyi Wu(吴鸿毅)
-..     Update #: 5
+..     Update #: 6
 .. URL: http://wuhongyi.cn 
 
 =================================
@@ -19,17 +19,18 @@
 
 
 - 2745
-    - V2745-scope-1G-2023091900.cup
+    - V2745-scope-1G-2024051505.cup
     - V2745-dpp-pha-1G-2023112703.cup
     - V2745-dpp-psd-1G-2023091901.cup  
     - V2745-dpp-zle-1G-2023091902.cup
 - 2740
-    - V2740-scope-1G-2023091900.cup
+    - V2740-scope-1G-2024051505.cup
     - V2740-dpp-pha-1G-2023112703.cup  
     - V2740-dpp-psd-1G-2023091901.cup
     - V2740-dpp-zle-1G-2023091902.cup
 - 2730
-    - V2730-scope-1G-2023111400.cup
+    - V2730-scope-1G-2024060704.cup
+    - V2730-dpp-psd-1G-2024041200.cup
   
 
 ---------------------------------
