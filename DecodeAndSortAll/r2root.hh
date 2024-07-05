@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 日 2月 18 01:22:59 2024 (+0800)
-// Last-Updated: 五 2月 23 16:48:23 2024 (+0800)
+// Last-Updated: 四 7月  4 23:55:37 2024 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 5
+//     Update #: 7
 // URL: http://wuhongyi.cn 
 
 #ifndef _R2ROOT_H_
@@ -62,7 +62,7 @@ struct eventdata
   uint8_t digitaltype[4];//
   
   unsigned int triggerid;
-  UShort_t nsamples;
+  int nsamples;
   UShort_t *waveform;
 };
 
@@ -131,8 +131,8 @@ private:
   UShort_t digitaltypes[4];
   
   unsigned int triggerid;
-  UShort_t nsamples;
-  UShort_t waveform[10000];
+  int nsamples;
+  UShort_t waveform[10485760];
 };
 
 #endif /* _R2ROOT_H_ */

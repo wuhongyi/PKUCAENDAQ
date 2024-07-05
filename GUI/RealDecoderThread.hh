@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 日 3月 12 21:04:39 2023 (+0800)
-// Last-Updated: 五 6月 14 13:04:27 2024 (+0800)
+// Last-Updated: 四 7月  4 21:17:10 2024 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 14
+//     Update #: 16
 // URL: http://wuhongyi.cn 
 
 #ifndef _REALDECODERTHREAD_H_
@@ -47,7 +47,7 @@ private:
   MainWindow *mMainWindow = nullptr;
   DeviceHandle *mDevice = nullptr;
 
-  unsigned int buff[BUFFLENGTH];
+  unsigned int buff[BUFFLENGTHSCOPE];//TODO length
   int buffid;
   int runno[MAXMODULENUM], runno_d[MAXMODULENUM];
 
@@ -57,6 +57,7 @@ private:
   unsigned int tmpwave[16384];
   
   uint64_t timestamp;
+  unsigned short finets;
   unsigned short samples;
   unsigned short ch;
   unsigned short mod;
@@ -70,3 +71,10 @@ private:
 #endif /* _REALDECODERTHREAD_H_ */
 // 
 // RealDecoderThread.hh ends here
+
+
+
+
+
+
+

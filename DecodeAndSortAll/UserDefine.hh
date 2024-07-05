@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 日 2月 18 01:13:12 2024 (+0800)
-// Last-Updated: 一 6月 10 09:49:34 2024 (+0800)
+// Last-Updated: 五 7月  5 13:12:32 2024 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 8
+//     Update #: 15
 // URL: http://wuhongyi.cn 
 
 #ifndef _USERDEFINE_H_
@@ -29,9 +29,9 @@
 
 #define RAWFILEPATH "/home/wuhongyi/"   //Path to the original binary
 #define RAWFILENAME "data"                   //The file name of the original file
-#define MODNUMBER 2   //Number of modules used in this crate
-const unsigned short SamplingRate[MODNUMBER] = {500, 125};//Specify the sampling rate of each modules separately; 125/500/1000 sampling rates; 0 to skip the module
-const unsigned short Firmware[MODNUMBER] = {2, 0};//DPP_PHA=0 DPP_ZLE=1 DPP_PSD=2 DPP_DAW=3 OPEN=4 Scope=5
+#define MODNUMBER 3   //Number of modules used in this crate
+const unsigned short SamplingRate[MODNUMBER] = {0, 125, 500};//Specify the sampling rate of each modules separately; 125/500/1000 sampling rates; 0 to skip the module
+const unsigned short Firmware[MODNUMBER] = {0, 5, 2};//DPP_PHA=0 DPP_ZLE=1 DPP_PSD=2 DPP_DAW=3 OPEN=4 Scope=5
 
 
 

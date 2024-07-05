@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 三 6月 22 09:30:18 2022 (+0800)
-// Last-Updated: 一 6月 10 15:00:26 2024 (+0800)
+// Last-Updated: 四 7月  4 21:09:37 2024 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 44
+//     Update #: 46
 // URL: http://wuhongyi.cn 
 
 #ifndef _READOUTTHREAD_H_
@@ -85,11 +85,11 @@ private:
   QVector<QTextStream *> outFile;
   int runno;
 
-  unsigned int buff[MAXMODULENUM][BUFFLENGTH];
+  unsigned int buff[MAXMODULENUM][BUFFLENGTHSCOPE];//TODO length
   int buffid[MAXMODULENUM];
   unsigned long filesize[MAXMODULENUM];
 
-  unsigned int buffevent[BUFFLENGTH];
+  unsigned int buffevent[BUFFLENGTHSCOPE];//TODO length
   int buffeventid;
   
   QString folderfile;

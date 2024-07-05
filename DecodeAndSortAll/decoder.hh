@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 六 2月 17 23:04:10 2024 (+0800)
-// Last-Updated: 日 6月  9 01:16:46 2024 (+0800)
+// Last-Updated: 四 7月  4 23:54:05 2024 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 10
+//     Update #: 13
 // URL: http://wuhongyi.cn 
 
 #ifndef _DECODER_H_
@@ -72,7 +72,7 @@ public:
   inline void getdigitaltype(uint8_t *da) {memcpy(da, digital_probes_type, sizeof(uint8_t)*4);}
 
   inline uint32_t gettriggerid() {return trigger_id;}
-  inline unsigned short getnsamples() {return nsamples;}
+  inline int getnsamples() {return nsamples;}
   inline void getwaveform(uint16_t *da) {memcpy(da, waveform, sizeof(uint16_t)*nsamples);}
 
   
@@ -85,7 +85,7 @@ private:
   void decodescope();
   
   int fd; // File descripter
-  unsigned int buff[32768]; // buffer to read 4 buytes from file(32bit)
+  unsigned int buff[6000000]; // buffer to read 4 buytes from file(32bit)
   size_t n;
 
   
@@ -118,8 +118,8 @@ private:
 
 
   uint32_t trigger_id;//SCOPE
-  unsigned short nsamples;//ZLE SCOPE
-  uint16_t waveform[10000];//ZLE SCOPE
+  int nsamples;//ZLE SCOPE
+  uint16_t waveform[10485760];//ZLE SCOPE
   
 };
 

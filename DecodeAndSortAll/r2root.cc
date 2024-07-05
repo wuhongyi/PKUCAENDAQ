@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 日 2月 18 01:23:28 2024 (+0800)
-// Last-Updated: 五 6月 14 17:32:43 2024 (+0800)
+// Last-Updated: 五 7月  5 13:19:51 2024 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 10
+//     Update #: 15
 // URL: http://wuhongyi.cn 
 
 #include "r2root.hh"
@@ -84,7 +84,7 @@ r2root::r2root(int run)
   
   t->Branch("triggerid", &triggerid, "triggerid/i");
 
-  t->Branch("nsamples", &nsamples, "nsamples/s");
+  t->Branch("nsamples", &nsamples, "nsamples/I");
   t->Branch("waveform", &waveform, "waveform[nsamples]/s");
 
 
@@ -253,6 +253,9 @@ void r2root::Process()
 	  ch = itkey->second.ch;
 	  mod = itkey->second.mod;
 
+	  nsamples = 0;
+	  samples = 0;
+	  
 	  switch(fw)
 	    {
 	    case 0://pha
@@ -339,6 +342,9 @@ void r2root::Process()
 	      ch = itkey->second.ch;
 	      mod = itkey->second.mod;
 
+	      nsamples = 0;
+	      samples = 0;
+	      
 	      switch(fw)
 		{
 		case 0://pha

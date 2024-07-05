@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 六 2月 17 23:04:21 2024 (+0800)
-// Last-Updated: 日 2月 18 15:02:17 2024 (+0800)
+// Last-Updated: 五 7月  5 00:26:23 2024 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 37
+//     Update #: 43
 // URL: http://wuhongyi.cn 
 
 #include "decoder.hh"
@@ -199,20 +199,21 @@ void decoder::decodescope()
   // std::cout << "TEST HEHR" << std::endl;
   ch = buff[0] & 0xFF;
   mod = (buff[0] & 0xFF00) >> 8;
-  nsamples = (buff[0] & 0xFFFF0000) >> 16;
+  nsamples = ((buff[0] & 0xFFFF0000) >> 16) + (buff[2] & 0xFF0000);
 
   timestamp = ((uint64_t)(buff[2] & 0xFFFF) << 32)+buff[1];
   trigger_id = buff[3];
-
+  //std::cout << mod << "  " << ch << "  " << nsamples << "  " << timestamp << "  " << trigger_id << std::endl;
   if(nsamples > 0)
     {
       n = read(fd, &buff, nsamples/2*4);
-      for (unsigned short i = 0; i < nsamples/2; ++i)
+      for (int i = 0; i < nsamples/2; ++i)
 	{
 	  waveform[2*i] = buff[i] & 0xFFFF;
 	  waveform[2*i+1] = (buff[i] & 0xFFFF0000) >> 16;
 	}
     }
+  // std::cout << "read" << std::endl;
 }
 
 
