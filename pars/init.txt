@@ -1,0 +1,29 @@
+##Sync
+#0 /par/StartSource SWcmd
+#1 /par/StartSource EncodedClkIn
+#2 /par/StartSource EncodedClkIn
+
+#0 /par/SyncOutMode Run
+#1 /par/SyncOutMode SyncIn
+#2 /par/SyncOutMode SyncIn
+
+
+##ALL CH
+
+#2 /ch/0..31/par/ChGain   10
+#2 /ch/0..31/par/DCOffset  20
+
+# 2 /ch/0..31/par/WaveTriggerSource Disabled
+# 2 /ch/0..31/par/WaveTriggerSource ChSelfTrigger
+
+#2 /ch/0..31/par/TriggerThr   80
+
+#2 /ch/0..31/par/ChPreTriggerT  160
+#2 /ch/0..31/par/ChRecordLengthT  400
+
+#2 /ch/0..31/par/TriggerFilterSelection CFD
+#2 /ch/0..31/par/TimeFilterRetriggerGuardT 104
+
+#2 /ch/0..31/par/GateShortLengthT  50
+#2 /ch/0..31/par/GateOffsetT   100
+#2 /ch/0..31/par/EnergyGain  x64

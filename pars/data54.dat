@@ -4,6 +4,8 @@
 "pid": [51550],
 "ip": ["162.105.54.54"],
 
-"par": "setting.json"
+"par": "setting.json",
+
+"userpars": "../pars/init.txt"
 
 }
