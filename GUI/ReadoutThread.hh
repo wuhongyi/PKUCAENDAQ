@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 三 6月 22 09:30:18 2022 (+0800)
-// Last-Updated: 四 7月  4 21:09:37 2024 (+0800)
+// Last-Updated: 二 7月  9 11:01:45 2024 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 46
+//     Update #: 47
 // URL: http://wuhongyi.cn 
 
 #ifndef _READOUTTHREAD_H_
@@ -76,7 +76,7 @@ private:
   DeviceHandle *mDevice = nullptr;
   
   bool mDoRead = false;
-  bool mSaving = false;
+  bool mSaving = false;// save to file
   bool mRequestStop = false;
 
   bool mRunning = false;

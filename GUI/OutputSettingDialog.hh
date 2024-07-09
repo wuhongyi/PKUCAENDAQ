@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 六 9月 10 14:34:32 2022 (+0800)
-// Last-Updated: 日 9月 11 09:47:36 2022 (+0800)
+// Last-Updated: 二 7月  9 10:49:23 2024 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 16
+//     Update #: 17
 // URL: http://wuhongyi.cn 
 
 #ifndef _OUTPUTSETTINGDIALOG_H_
@@ -52,10 +52,12 @@ private:
   QLabel *labelfilefolder;
   QLabel *labelfileprefix;
   QLabel *labelrunnumber;
+  QLabel *labelsavedata;
   QLabel *labelexample;
   QLineEdit *leFolder;
   QLineEdit *lePrefix;
   QLineEdit *leRun;
+  QCheckBox *leSaved;
   QPushButton *pbBrowse;
 
   // QHBoxLayout *hboxLayout;
