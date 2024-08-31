@@ -4,9 +4,9 @@
 .. Author: Hongyi Wu(吴鸿毅)
 .. Email: wuhongyi@qq.com 
 .. Created: 六 2月  3 20:52:33 2024 (+0800)
-.. Last-Updated: 六 6月 15 15:42:53 2024 (+0800)
+.. Last-Updated: 六 8月 31 21:31:48 2024 (+0800)
 ..           By: Hongyi Wu(吴鸿毅)
-..     Update #: 10
+..     Update #: 12
 .. URL: http://wuhongyi.cn 
 
 =================================   
@@ -23,7 +23,7 @@
 
 
   
-**本程序测试过的系统目前只包含 Ubuntu20.04**
+**本程序测试过的系统目前只包含 Ubuntu20.04。目前只支持 Ubuntu20.04 系统下编译。我们将适配更多系统。如果你使用其它系统，可联系我们进行适配。**
 
 .. code-block:: bash
 
@@ -56,8 +56,8 @@
   sudo ldconfig
 
   cd ..
-  tar -zxvf caen_dig2-v1.6.0.tar.gz   
-  cd caen_dig2-v1.6.0/
+  tar -zxvf caen_dig2-v1.6.1.tar.gz   
+  cd caen_dig2-v1.6.1/
   ./configure --disable-assert
   make
   sudo make install

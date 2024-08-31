@@ -118,7 +118,7 @@
 <li><p>Qt 5</p></li>
 <li><p>ROOT 6</p></li>
 </ul>
-<p><strong>本程序测试过的系统目前只包含 Ubuntu20.04</strong></p>
+<p><strong>本程序测试过的系统目前只包含 Ubuntu20.04。目前只支持 Ubuntu20.04 系统下编译。我们将适配更多系统。如果你使用其它系统，可联系我们进行适配。</strong></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ubuntu20.04 依赖安装</span>
 sudo<span class="w"> </span>apt<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>libssl-dev<span class="w"> </span>openssl<span class="w"> </span>qt5-default<span class="w"> </span>qtcreator<span class="w"> </span>libqt5webkit5-dev<span class="w"> </span>libqt5webengine5<span class="w"> </span>qtwebengine5-dev<span class="w"> </span>libqt5webenginecore5<span class="w"> </span>libqt5webenginewidgets5<span class="w"> </span>libqt5webengine-data<span class="w"> </span>libqt5webchannel5-dev<span class="w"> </span>libqt5websockets5-dev<span class="w"> </span>libqt5websockets5<span class="w"> </span>libqt5webview5-dev<span class="w"> </span>libqt5webview5<span class="w"> </span>libqt5charts5-dev
 <span class="c1"># ROOT 6 推荐 6.26.16</span>
@@ -145,8 +145,8 @@ sudo<span class="w"> </span>make<span class="w"> </span>install
 sudo<span class="w"> </span>ldconfig
 
 <span class="nb">cd</span><span class="w"> </span>..
-tar<span class="w"> </span>-zxvf<span class="w"> </span>caen_dig2-v1.6.0.tar.gz
-<span class="nb">cd</span><span class="w"> </span>caen_dig2-v1.6.0/
+tar<span class="w"> </span>-zxvf<span class="w"> </span>caen_dig2-v1.6.1.tar.gz
+<span class="nb">cd</span><span class="w"> </span>caen_dig2-v1.6.1/
 ./configure<span class="w"> </span>--disable-assert
 make
 sudo<span class="w"> </span>make<span class="w"> </span>install
