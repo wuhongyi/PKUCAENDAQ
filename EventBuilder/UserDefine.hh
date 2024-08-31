@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 四 6月 20 21:16:15 2024 (+0800)
-// Last-Updated: 五 6月 21 00:33:35 2024 (+0800)
+// Last-Updated: 二 8月 27 11:30:44 2024 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 3
+//     Update #: 5
 // URL: http://wuhongyi.cn 
 
 #ifndef _USERDEFINE_H_
@@ -29,7 +29,7 @@
 
 
 
-#define EVENTTIMEWINDOWSWIDTH  100   //ns
+#define EVENTTIMEWINDOWSWIDTH  300000   //ns
 
 
 #endif /* _USERDEFINE_H_ */

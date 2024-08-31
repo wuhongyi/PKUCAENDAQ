@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 三 6月 22 09:30:18 2022 (+0800)
-// Last-Updated: 二 7月  9 11:01:45 2024 (+0800)
+// Last-Updated: 六 8月 17 19:31:54 2024 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 47
+//     Update #: 49
 // URL: http://wuhongyi.cn 
 
 #ifndef _READOUTTHREAD_H_
@@ -32,8 +32,14 @@
 #include <cstring>
 #include <string>
 #ifdef RECODESHA256
+#include <openssl/opensslv.h>
 #include <openssl/sha.h>
 #endif
+
+//#if OPENSSL_VERSION_NUMBER < 0x30000000L
+//#else
+//#endif
+
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 class MainWindow;

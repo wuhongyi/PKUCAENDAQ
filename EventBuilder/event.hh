@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 四 6月 20 21:26:25 2024 (+0800)
-// Last-Updated: 四 6月 20 22:43:43 2024 (+0800)
+// Last-Updated: 二 7月 23 18:34:47 2024 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 1
+//     Update #: 2
 // URL: http://wuhongyi.cn 
 
 #ifndef _EVENT_H_
@@ -140,7 +140,7 @@ private:
   UShort_t digitaltypes[4];
   
   unsigned int triggerid;
-  UShort_t nsamples;
+  int nsamples;
   UShort_t waveform[100000];
   
 };
