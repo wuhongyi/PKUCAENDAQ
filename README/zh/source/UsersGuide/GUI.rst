@@ -4,9 +4,9 @@
 .. Author: Hongyi Wu(吴鸿毅)
 .. Email: wuhongyi@qq.com 
 .. Created: 六 2月  3 21:00:35 2024 (+0800)
-.. Last-Updated: 五 6月 14 00:23:28 2024 (+0800)
+.. Last-Updated: 日 9月  8 20:38:04 2024 (+0800)
 ..           By: Hongyi Wu(吴鸿毅)
-..     Update #: 18
+..     Update #: 21
 .. URL: http://wuhongyi.cn 
 
 =================================
@@ -30,7 +30,9 @@ json 格式文件，主要包含模块的 PID 或者 IP 等信息。
    "pid": [25480, 25945, 24946],
    "ip": ["162.105.54.162", "162.105.54.187", "162.105.54.90"],
     
-   "par": "setting.json"
+   "par": "setting.json",
+
+   "userpars": "../pars/init.txt"
     
    }
 
@@ -45,10 +47,14 @@ json 格式文件，主要包含模块的 PID 或者 IP 等信息。
 进入 GUI 目录，执行以下命令即可弹出主控制界面
 
 .. code:: bash
-
+   
   ./gddaq
+  # 如果出现以下错误，设置以下环境变量
+  # ./gddaq: error while loading shared libraries: libCAEN_FELib.so.0: cannot open shared object file: No such file or directory
+  # export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 
 
+  
 ---------------------------------
 登陆界面
 ---------------------------------
