@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 日 3月 12 21:04:39 2023 (+0800)
-// Last-Updated: 四 7月  4 21:17:10 2024 (+0800)
+// Last-Updated: 日 9月  8 10:33:39 2024 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 16
+//     Update #: 21
 // URL: http://wuhongyi.cn 
 
 #ifndef _REALDECODERTHREAD_H_
@@ -54,11 +54,11 @@ private:
   
   unsigned int tmpbuff[6];
   int tmpid;
-  unsigned int tmpwave[16384];
+  unsigned int tmpwave[BUFFLENGTHSCOPE];//TODO length
   
   uint64_t timestamp;
   unsigned short finets;
-  unsigned short samples;
+  unsigned int samples;
   unsigned short ch;
   unsigned short mod;
   uint16_t energy;//PHA PSD
@@ -71,6 +71,7 @@ private:
 #endif /* _REALDECODERTHREAD_H_ */
 // 
 // RealDecoderThread.hh ends here
+
 
 
 

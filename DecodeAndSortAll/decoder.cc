@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 六 2月 17 23:04:21 2024 (+0800)
-// Last-Updated: 五 7月  5 00:26:23 2024 (+0800)
+// Last-Updated: 日 9月  8 12:00:31 2024 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 43
+//     Update #: 44
 // URL: http://wuhongyi.cn 
 
 #include "decoder.hh"
@@ -199,7 +199,7 @@ void decoder::decodescope()
   // std::cout << "TEST HEHR" << std::endl;
   ch = buff[0] & 0xFF;
   mod = (buff[0] & 0xFF00) >> 8;
-  nsamples = ((buff[0] & 0xFFFF0000) >> 16) + (buff[2] & 0xFF0000);
+  nsamples = ((buff[0] & 0xFFFF0000) >> 16) + (buff[2] & 0xFFFF0000);
 
   timestamp = ((uint64_t)(buff[2] & 0xFFFF) << 32)+buff[1];
   trigger_id = buff[3];

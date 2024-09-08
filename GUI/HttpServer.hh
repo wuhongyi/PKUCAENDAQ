@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 六 5月 25 14:13:31 2024 (+0800)
-// Last-Updated: 二 7月  2 21:09:43 2024 (+0800)
+// Last-Updated: 日 9月  8 12:18:47 2024 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 19
+//     Update #: 20
 // URL: http://wuhongyi.cn 
 
 #ifndef _HTTPSERVER_H_
@@ -36,6 +36,7 @@ public:
   void DrawWave0(unsigned short mod, unsigned short ch, unsigned short len, unsigned int *wave);
   void DrawWave1(unsigned short mod, unsigned short ch, unsigned short len, unsigned int *wave);
 
+  void DrawWave(unsigned short mod, unsigned short ch, unsigned int len, unsigned int *wave);
 
   void ClearADC(unsigned short mod);
   void ClearRATE(unsigned short mod);

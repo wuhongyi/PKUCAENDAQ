@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 三 6月 22 09:30:18 2022 (+0800)
-// Last-Updated: 六 8月 17 19:31:54 2024 (+0800)
+// Last-Updated: 六 9月  7 15:37:40 2024 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 49
+//     Update #: 50
 // URL: http://wuhongyi.cn 
 
 #ifndef _READOUTTHREAD_H_
@@ -33,7 +33,12 @@
 #include <string>
 #ifdef RECODESHA256
 #include <openssl/opensslv.h>
+#if OPENSSL_VERSION_NUMBER < 0x30000000L
 #include <openssl/sha.h>
+#else
+#include <openssl/sha.h>
+#include <openssl/evp.h>
+#endif
 #endif
 
 //#if OPENSSL_VERSION_NUMBER < 0x30000000L
@@ -107,6 +112,7 @@ private:
 
   
 #ifdef DECODERONLINE
+  
   int    shmfd_dec;  // shared memory id
   unsigned char *shmptr_dec;// pointer to shm
 
@@ -116,8 +122,13 @@ private:
 #endif
 
 #ifdef RECODESHA256
+#if OPENSSL_VERSION_NUMBER < 0x30000000L
   SHA256_CTX sha256_ctx[MAXMODULENUM];
   unsigned char SHA256result[MAXMODULENUM][32];
+#else
+  EVP_MD_CTX *sha256_ctx[MAXMODULENUM];
+  unsigned char SHA256result[MAXMODULENUM][32];
+#endif
 #endif
 
   QElapsedTimer timerrun;
