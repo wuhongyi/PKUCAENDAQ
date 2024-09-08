@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 六 2月 17 23:04:10 2024 (+0800)
-// Last-Updated: 日 9月  8 12:01:23 2024 (+0800)
+// Last-Updated: 日 9月  8 18:47:03 2024 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 14
+//     Update #: 15
 // URL: http://wuhongyi.cn 
 
 #ifndef _DECODER_H_
@@ -22,6 +22,7 @@
 #include <iostream>
 #include <unistd.h>
 #include <cstring>
+#include <cstdint>
 #include <string>
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
