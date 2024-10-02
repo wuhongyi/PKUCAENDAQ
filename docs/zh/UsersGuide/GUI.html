@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>图形交互界面 &mdash; GDDAQ beta 文档</title>
+  <title>图形交互界面 &mdash; GDDAQ V20241002 文档</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=eafc0fe6" />
@@ -16,7 +16,7 @@
   
         <script src="../_static/jquery.js?v=5d32c60e"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=055b2939"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=ed66ccbe"></script>
         <script src="../_static/doctools.js?v=888ff710"></script>
         <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
         <script src="../_static/translations.js?v=beaddf03"></script>
@@ -57,7 +57,7 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">用户指南</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="README.html">用户指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README.html">图形化指南</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Synchronization.html">时间同步和采集</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">图形交互界面</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#id2">配置文件</a></li>
@@ -71,10 +71,13 @@
 <li class="toctree-l1"><a class="reference internal" href="PSD.html">PSD 固件</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ZLE.html">ZLE 固件</a></li>
 <li class="toctree-l1"><a class="reference internal" href="OPEN.html">开放 FPGA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UserDPP.html">UserDPP 固件</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">应用案例</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../Example/README.html">应用案例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Example/HPGe.html">HPGe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Example/Si.html">Si</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">数据分析</span></p>
 <ul>
@@ -124,7 +127,9 @@
 <span class="nt">&quot;pid&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">25480</span><span class="p">,</span><span class="w"> </span><span class="mi">25945</span><span class="p">,</span><span class="w"> </span><span class="mi">24946</span><span class="p">],</span>
 <span class="nt">&quot;ip&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;162.105.54.162&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;162.105.54.187&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;162.105.54.90&quot;</span><span class="p">],</span>
 
-<span class="nt">&quot;par&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;setting.json&quot;</span>
+<span class="nt">&quot;par&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;setting.json&quot;</span><span class="p">,</span>
+
+<span class="nt">&quot;userpars&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;../pars/init.txt&quot;</span>
 
 <span class="p">}</span>
 </pre></div>
@@ -133,6 +138,9 @@
 <p>获取参数文件。</p>
 <p>进入 GUI 目录，执行以下命令即可弹出主控制界面</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./gddaq
+<span class="c1"># 如果出现以下错误，设置以下环境变量</span>
+<span class="c1"># ./gddaq: error while loading shared libraries: libCAEN_FELib.so.0: cannot open shared object file: No such file or directory</span>
+<span class="c1"># export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH</span>
 </pre></div>
 </div>
 </section>
@@ -152,7 +160,7 @@
 <p>主界面左上角 File 下拉选择 “Output Configure”，弹出如下界面。本界面用于设置输出数据的文件夹，文件名称以及运行编号。按 OK 按钮关闭界面。以上信息只能在本界面进行修改，获取主界面显示该信息。</p>
 <img alt="../_images/outputsettings.png" src="../_images/outputsettings.png" />
 <hr class="docutils" />
-<p>完成系统初始化之后，主控制界面上方的 Basic、Logic、Online、Debug 四个按钮将会浮起，积极即可弹出相应的子界面，再点击即可隐藏。</p>
+<p>完成系统初始化之后，主控制界面上方的 Basic、Logic、Online、Debug 四个按钮将会浮起，点击即可弹出相应的子界面，再点击即可隐藏。</p>
 <a class="reference internal image-reference" href="../_images/screenfulldaq.png"><img alt="../_images/screenfulldaq.png" src="../_images/screenfulldaq.png" style="width: 1851.0px; height: 511.0px;" /></a>
 <p>在弹出的 Basic、Logic、Debug 子界面，当系统为多个模块时通过点击左侧的 “Mod 0”、“Mod 1”、“Mod 2” 等切换标签进行采集模块的切换，切换时会自动读取右边页面中的信息。每个子界面上方有多个标签页，点击该标签即可切换到相应参数配置页面。</p>
 <p>由于本程序能够自适应不同的固件，在同一个参数设置标签页，不同的固件中会显示不同的可设置参数。</p>

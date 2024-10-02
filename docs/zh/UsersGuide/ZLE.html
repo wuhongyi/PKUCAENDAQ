@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ZLE 固件 &mdash; GDDAQ beta 文档</title>
+  <title>ZLE 固件 &mdash; GDDAQ V20241002 文档</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=eafc0fe6" />
@@ -16,7 +16,7 @@
   
         <script src="../_static/jquery.js?v=5d32c60e"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=055b2939"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=ed66ccbe"></script>
         <script src="../_static/doctools.js?v=888ff710"></script>
         <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
         <script src="../_static/translations.js?v=beaddf03"></script>
@@ -57,7 +57,7 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">用户指南</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="README.html">用户指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README.html">图形化指南</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Synchronization.html">时间同步和采集</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GUI.html">图形交互界面</a></li>
 <li class="toctree-l1"><a class="reference internal" href="SCOPE.html">SCOPE 固件</a></li>
@@ -66,6 +66,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">ZLE 固件</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#id1">基本参数配置</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id2">输入信号</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#chgain">参数 ChGain</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#inputdelay">参数 InputDelay</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#chenable">参数 ChEnable</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#wavesource">参数 WaveSource</a></li>
@@ -78,11 +79,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#triggerthr">参数 TriggerThr</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">数据记录</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#endatareduction">参数 EnDataReduction</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#id5">ZLE 参数</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id4">ZLE 参数</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#pretrigger">参数 PreTrigger</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#supperthr">参数 SupperThr</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#lookback">参数 LookBack</a></li>
@@ -93,7 +90,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#recordlength">参数 RecordLength</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id6">诊断</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id5">诊断</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#testpulseperiod">参数 TestPulsePeriod</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#testpulsewidth">参数 TestPulseWidth</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#testpulselowlevel">参数 TestPulseLowLevel</a></li>
@@ -105,21 +102,65 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id7">逻辑参数配置</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id8">运行</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id9">模块前面板</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id10">反符合</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#itl">ITL 逻辑</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id11">延迟展宽</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">逻辑参数配置</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id7">运行</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#startsource">参数 StartSource</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#acqtriggersource">参数 AcqTriggerSource</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#enautodisarmacq">参数 EnAutoDisarmAcq</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rundelay">参数 RunDelay</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#busyinsource">参数 BusyInSource</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tstampresetsource">参数 TstampResetSource</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pausetimestamp">参数 PauseTimeStamp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#triggeridmode">参数 TriggerIDMode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entriggeroverlap">参数 EnTriggerOverlap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#enmultiwindowrun">参数 EnMultiWindowRun</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#clocksource">参数 ClockSource</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#enclockoutfp">参数 EnClockOutFP</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">模块前面板</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#trgoutmode">参数 TrgOutMode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gpiomode">参数 GPIOMode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#syncoutmode">参数 SyncOutMode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#iolevel">参数 IOlevel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lvdsdirection">参数 LVDSDirection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lvdsmode">参数 LVDSMode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lvdstrgmask">参数 LVDSTrgMask</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lvdsioreg">参数 LVDSIOReg</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">反符合</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#vetosource">参数 VetoSource</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#vetowidth">参数 VetoWidth</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#vetopolarity">参数 VetoPolarity</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#itl">ITL 逻辑</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#itla-bmask">参数 ITLA/BMask</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#itla-bpairlogic">参数 ITLA/BPairLogic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#itla-bmainlogic">参数 ITLA/BMainLogic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#itla-bmajoritylev">参数 ITLA/BMajorityLev</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#itla-bgatewidth">参数 ITLA/BGateWidth</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#itla-bpolarity">参数 ITLA/BPolarity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#itla-benretrigger">参数 ITLA/BEnRetrigger</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">延迟展宽</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#itlconnect">参数 ITLConnect</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="OPEN.html">开放 FPGA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UserDPP.html">UserDPP 固件</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">应用案例</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../Example/README.html">应用案例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Example/HPGe.html">HPGe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Example/Si.html">Si</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">数据分析</span></p>
 <ul>
@@ -164,6 +205,12 @@
 <section id="id2">
 <h3>输入信号<a class="headerlink" href="#id2" title="此标题的永久链接"></a></h3>
 <img alt="../_images/zle_basic_input.png" src="../_images/zle_basic_input.png" />
+<section id="chgain">
+<h4>参数 ChGain<a class="headerlink" href="#chgain" title="此标题的永久链接"></a></h4>
+<p>仅限 x2730.</p>
+<p>设置可变增益放大器（VGA）的增益。</p>
+<p>Unit of Measure: dB</p>
+</section>
 <section id="inputdelay">
 <h4>参数 InputDelay<a class="headerlink" href="#inputdelay" title="此标题的永久链接"></a></h4>
 <p>设置输入延迟，单位为采样点。</p>
@@ -272,19 +319,11 @@
 <img alt="../_images/zle_basic_trigger.png" src="../_images/zle_basic_trigger.png" />
 <section id="triggerthr">
 <h4>参数 TriggerThr<a class="headerlink" href="#triggerthr" title="此标题的永久链接"></a></h4>
-<p>XXXXXXX</p>
+<p>Each channel of the digitizer has a digital leading-edge discriminator with programmable threshold able to self-trigger on the input pulses and generate a self-trigger signal (or an overthreshold signal) feeding the internal trigger logics or digitizer outputs. This parameter sets the trigger threshold. Typically, the value is relative to the baseline of the signal and the threshold is a 17-bit signed NUMBER number; in this case, the threshold automatically follows the baseline when the DCoffset parameter changes. Sometimes, it is preferable to set an absolute value for the threshold, referred to the ADC range. In this case, the threshold is unsigned NUMBER number.</p>
 </section>
 </section>
 <section id="id4">
-<h3>数据记录<a class="headerlink" href="#id4" title="此标题的永久链接"></a></h3>
-<img alt="../_images/zle_basic_record.png" src="../_images/zle_basic_record.png" />
-<section id="endatareduction">
-<h4>参数 EnDataReduction<a class="headerlink" href="#endatareduction" title="此标题的永久链接"></a></h4>
-<p>XXXXXXX</p>
-</section>
-</section>
-<section id="id5">
-<h3>ZLE 参数<a class="headerlink" href="#id5" title="此标题的永久链接"></a></h3>
+<h3>ZLE 参数<a class="headerlink" href="#id4" title="此标题的永久链接"></a></h3>
 <img alt="../_images/zle_basic_zle.png" src="../_images/zle_basic_zle.png" />
 <section id="pretrigger">
 <h4>参数 PreTrigger<a class="headerlink" href="#pretrigger" title="此标题的永久链接"></a></h4>
@@ -353,8 +392,8 @@
 <p>波形大小（即采集窗口的大小）。波形的实际大小将自动四舍五入到最接近的允许值。</p>
 </section>
 </section>
-<section id="id6">
-<h3>诊断<a class="headerlink" href="#id6" title="此标题的永久链接"></a></h3>
+<section id="id5">
+<h3>诊断<a class="headerlink" href="#id5" title="此标题的永久链接"></a></h3>
 <img alt="../_images/zle_basic_debug.png" src="../_images/zle_basic_debug.png" />
 <section id="testpulseperiod">
 <h4>参数 TestPulsePeriod<a class="headerlink" href="#testpulseperiod" title="此标题的永久链接"></a></h4>
@@ -453,27 +492,1042 @@
 </section>
 </section>
 </section>
+<section id="id6">
+<h2>逻辑参数配置<a class="headerlink" href="#id6" title="此标题的永久链接"></a></h2>
 <section id="id7">
-<h2>逻辑参数配置<a class="headerlink" href="#id7" title="此标题的永久链接"></a></h2>
-<section id="id8">
-<h3>运行<a class="headerlink" href="#id8" title="此标题的永久链接"></a></h3>
+<h3>运行<a class="headerlink" href="#id7" title="此标题的永久链接"></a></h3>
 <img alt="../_images/zle_logic_run.png" src="../_images/zle_logic_run.png" />
+<section id="startsource">
+<h4>参数 StartSource<a class="headerlink" href="#startsource" title="此标题的永久链接"></a></h4>
+<p>Defines the source for the start of run. Multiple options are allowed, separated by “|”.</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>EncodedClkIn</dt><dd><ul>
+<li><p>Start from CLK-IN/SYNC connector on the front panel. This is a 4-pin connector (LVDS signals) used to propagate the reference clock (typ. 62.5 MHz) and a Sync signal. The rising edge of the Sync starts the acquisition, that lasts until the Sync returns low (falling edge).</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>SINlevel</dt><dd><ul>
+<li><p>Start from SIN (1=run, 0=stop)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>SINedge</dt><dd><ul>
+<li><p>Start from SIN (rising edge = run; stop from SW)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>SWcmd</dt><dd><ul>
+<li><p>Start from SW</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>LVDS</dt><dd><ul>
+<li><p>Start from LVDS</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>FirstTrigger</dt><dd><ul>
+<li><p>Start on 1st trigger (stop from SW)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>P0</dt><dd><ul>
+<li><p>Start from P0 (backplane)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="acqtriggersource">
+<h4>参数 AcqTriggerSource<a class="headerlink" href="#acqtriggersource" title="此标题的永久链接"></a></h4>
+<p>Defines the source for the Acquisition Trigger, which is the signal that opens the acquisition window and saves the waveforms in the memory buffers. Multiple options are allowed, separated by “|”.</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>TrgIn</dt><dd><ul>
+<li><p>Front Panel TRGIN</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>P0</dt><dd><ul>
+<li><p>Trigger from P0 (backplane)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>SwTrg</dt><dd><ul>
+<li><p>Software trigger</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>LVDS</dt><dd><ul>
+<li><p>LVDS trgin</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>ITLA</dt><dd><ul>
+<li><p>Internal Trigger Logic A: combination of channel self-triggers</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>ITLB</dt><dd><ul>
+<li><p>Internal Trigger Logic B: combination of channel self-triggers</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>ITLA_AND_ITLB</dt><dd><ul>
+<li><p>Second level Trigger logic making the AND of ITL A and B</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>ITLA_OR_ITLB</dt><dd><ul>
+<li><p>Second level Trigger logic making the OR of ITL A and B</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>EncodedClkIn</dt><dd><ul>
+<li><p>Not implemented (encoded CLK-IN trigger)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>GPIO</dt><dd><ul>
+<li><p>Front Panel GPIO</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>TestPulse</dt><dd><ul>
+<li><p>Internal Test Pulse</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>UserTrg</dt><dd><ul>
+<li><p>User custom trigger source</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="enautodisarmacq">
+<h4>参数 EnAutoDisarmAcq<a class="headerlink" href="#enautodisarmacq" title="此标题的永久链接"></a></h4>
+<p>When enabled, the Auto Disarm option disarms the acquisition at the stop of run. When the start of run is controlled by an external signal, this option prevents the digitizer to restart without the intervention of the software.</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>True</dt><dd><ul>
+<li><p>The acquisition is automatically disarmed after the stop. It is therefore necessary to rearm the digitizer (with the relevant command sent by the software) before starting a new run.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>False</dt><dd><ul>
+<li><p>The acquisition is not disarmed after the stop. Multiple transition of the start signal will produce multiple runs.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="rundelay">
+<h4>参数 RunDelay<a class="headerlink" href="#rundelay" title="此标题的永久链接"></a></h4>
+<p>When the start of run is controlled by a RUN signal that is propagated in daisy chain between the boards (for instance through the ClkIn- ClkOut or SIN-GPIO sync chain), it is necessary to compensate for the propagation delay and let the boards start exactly at the same time. The RunDelay parameter allows the start of the acquisition to be delayed by a given number of clock cycles with respect to the rising edge of the RUN signal. Assuming that the propagation delay is 2 cycles, the RunDelay setting will be 0 for the last board in the chain, 2 for the previous one, and so on up 2x(NB-1) for the first one.</p>
+<p>Unit of Measure: ns</p>
+</section>
+<section id="busyinsource">
+<h4>参数 BusyInSource<a class="headerlink" href="#busyinsource" title="此标题的永久链接"></a></h4>
+<p>In a multi-board system, it might be necessary to prevent one board to accept a new trigger while another board is full and thus unable to accept the same trigger. For this reason, each board can generate a Busy signal to notify that it is unable to get a new trigger. If the busy/veto mechanism has some latency, it is advisable to generate the busy slightly before the digitizer become full. For this purpose, it is possible to assert the busy output when the acquisition memory reaches a certain level of occupancy (internally managed). The OR of the busy signals is typically used to stop the global trigger. It is possible to get the individual busy signals from each board and make an external OR logic or connect the boards with cables to propagate the Busy along the chain. Each board makes an OR between its internal busy and the busy input signal coming from the previous board, thus having a global Busy at the end of the line. This parameter defines the source of the Busy Input (schematized in the figure below)</p>
+<img alt="../_images/busyinsource.png" src="../_images/busyinsource.png" />
+<ul class="simple">
+<li><dl class="simple">
+<dt>Disabled</dt><dd><ul>
+<li><p>The Busy is given by the Internal Busy only (Memory full or almost full)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>SIN</dt><dd><ul>
+<li><p>Busy input from SIN on front panel</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>GPIO</dt><dd><ul>
+<li><p>Busy input coming from GPIO on front panel, used as a simple input. It is also possible to use GPIO as a wired OR (bidirectional). In this mode, the Busy line goes high as soon as one board drives it high. All the boards can read the Busy line and use it as a veto for the trigger</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>LVDS</dt><dd><ul>
+<li><p>LVDS trgin</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="tstampresetsource">
+<h4>参数 TstampResetSource<a class="headerlink" href="#tstampresetsource" title="此标题的永久链接"></a></h4>
+<p>Defines the source of the timestamp reset. Multiple options are allowed, separated by “|”. The timestamp of the board (internal counter running at 125 MHz) is typically reset at the start of each run, which corresponds to the “zero” of the timestamps. In Multi-board systems, the synchronization of the clock and RUN signals allows event data coming from different boards to be merged and correlated by the time stamp. However, it is possible to configure different ways to control the reset of the time stamp in the cases where it is necessary to synchronize it with an external global time stamping system.</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Start</dt><dd><ul>
+<li><p>Time stamp reset at the start of run</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>SIN</dt><dd><ul>
+<li><p>SIN input</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>GPIO</dt><dd><ul>
+<li><p>GPIO used as input</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>EncodedClkIn</dt><dd><ul>
+<li><p>Not implemented (encoded in CLK-IN/SYNC)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="pausetimestamp">
+<h4>参数 PauseTimeStamp<a class="headerlink" href="#pausetimestamp" title="此标题的永久链接"></a></h4>
+<p>Allows the time stamp to either stop or run during the pauses of the acquisition</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Hold</dt><dd><ul>
+<li><p>The timestamp stops while pausing the acquisition</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Run</dt><dd><ul>
+<li><p>The timestamp runs while pausing the acquisition</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="triggeridmode">
+<h4>参数 TriggerIDMode<a class="headerlink" href="#triggeridmode" title="此标题的永久链接"></a></h4>
+<p>The event data packet contains a 24-bit identifier called TriggerID. This can be the total trigger counter, the saved event counter or a pattern coming from the LVDS I/Os.</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>TriggerCnt</dt><dd><ul>
+<li><p>The Event triggerID is associated to the total trigger counter. This is a 24-bit counter that is reset at the start of run and increased with every received trigger, including those ones that are not accepted. In this mode, events coming from multiple boards can be correlated by the triggerID that is supposed to by synchronized. There might be gaps due to lost triggers.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>EventCnt</dt><dd><ul>
+<li><p>The Event triggerID is a sequential number of the saved event. In this case, there are no gaps in the sequence, but it is not guaranteed that the trigger ID of multiple boards are aligned, thus it is not possible to use it for data correlation.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>LVDSpattern</dt><dd><ul>
+<li><p>The triggerID is taken from the 16 LVDS inputs at the time of the trigger arrival. The user can provide an external trigger pattern to correlate the event data between boards or even with other readout electronics</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="entriggeroverlap">
+<h4>参数 EnTriggerOverlap<a class="headerlink" href="#entriggeroverlap" title="此标题的永久链接"></a></h4>
+<p>Allows a trigger occurring within the acquisition window of a previous trigger to be either accepted or rejected. When accepted, the previous window is prematurely closed and the new window immediately opened, without any dead time between the two.</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>True</dt><dd><ul>
+<li><p>Triggers with overlapped acquisition windows are accepted.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>False</dt><dd><ul>
+<li><p>Triggers with overlapped acquisition windows are not accepted. The rejected triggers are counted by the total trigger counter, so that the trigger-ID in the event header allows for tracing the rejected triggers.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="enmultiwindowrun">
+<h4>参数 EnMultiWindowRun<a class="headerlink" href="#enmultiwindowrun" title="此标题的永久链接"></a></h4>
+<p>When the acquisition start and stop are controlled by an external “RUN” signal (e.g. feeding SIN), it is possible to configure the digitizer to work in two different modes:</p>
+<blockquote>
+<div><p>The RUN signal acts as a start (rising edge) and stop (falling edge). Therefore, multiple transitions of the RUN signal cause multiple runs (provided that the Auto Disarm option is disabled). At every start of run, the timestamp is reset, and all the statistics and counters are cleared. Typically, the software produces different output files.</p>
+<p>The RUN signal acts as “enable” of the acquisition: once the digitizer has been armed, the first rising edge of RUN starts the acquisition. When RUN goes down, the acquisition is “paused” rather than stopped. This means that all data and statistics are frozen, and the timestamp can be either stopped or left running, depending on the PauseTimeStamp parameter. The RUN signal can toggle multiple times within the same acquisition. The stop of the acquisition will be done by a software command. It is necessary to disarm and rearm the acquisition before starting a new run with the rising edge of the RUN signal.</p>
+</div></blockquote>
+<ul class="simple">
+<li><dl class="simple">
+<dt>True</dt><dd><ul>
+<li><p>MultiWindow run is enabled. The RUN signal acts as start (first rising edge) and pause (subsequent falling edges) for the acquisition. The stop of the acquisition is always given by a software command</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>False</dt><dd><ul>
+<li><p>The RUN signal acts as start and stop for the acquisition</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="clocksource">
+<h4>参数 ClockSource<a class="headerlink" href="#clocksource" title="此标题的永久链接"></a></h4>
+<p>This is the source of the system clock. Multiple options are not allowed</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Internal</dt><dd><ul>
+<li><p>Local oscillator, 62.5 MHz</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>FPClkIn</dt><dd><ul>
+<li><p>Front Panel Clock input</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="enclockoutfp">
+<h4>参数 EnClockOutFP<a class="headerlink" href="#enclockoutfp" title="此标题的永久链接"></a></h4>
+<p>Enables clock output on Front Panel for the daisy chain propagation of the clock between multiple boards.</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>True</dt><dd><ul>
+<li><p>Enabled</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>False</dt><dd><ul>
+<li><p>Disabled</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+</section>
+<section id="id8">
+<h3>模块前面板<a class="headerlink" href="#id8" title="此标题的永久链接"></a></h3>
+<img alt="../_images/zle_logic_frontpanel.png" src="../_images/zle_logic_frontpanel.png" />
+<section id="trgoutmode">
+<h4>参数 TrgOutMode<a class="headerlink" href="#trgoutmode" title="此标题的永久链接"></a></h4>
+<p>Selects the signal that is routed to the TRGOUT output. Multiple options are not allowed.</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Disabled</dt><dd><ul>
+<li><p>TRGOUT output disabled</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>TrgIn</dt><dd><ul>
+<li><p>Propagation of Front Panel TRGIN (TRGOUT is a replica, with some delay, of the TRGIN signal)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>P0</dt><dd><ul>
+<li><p>Propagation of P0 trigger</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>SwTrg</dt><dd><ul>
+<li><p>Software trigger</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>LVDS</dt><dd><ul>
+<li><p>LVDS trgin</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>ITLA</dt><dd><ul>
+<li><p>Internal Trigger Logic A: combination of channel self-triggers</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>ITLB</dt><dd><ul>
+<li><p>Internal Trigger Logic B: combination of channel self-triggers</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>ITLA_AND_ITLB</dt><dd><ul>
+<li><p>Second level Trigger logic making the AND of ITL A and B</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>ITLA_OR_ITLB</dt><dd><ul>
+<li><p>Second level Trigger logic making the OR of ITL A and B</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>EncodedClkIn</dt><dd><ul>
+<li><p>Not implemented (propagation of the Encoded CLK-IN trigger)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Run</dt><dd><ul>
+<li><p>Propagation of the RUN signal (acquisition start/stop), before applying the delay given by the RunDelay parameter</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>RefClk</dt><dd><ul>
+<li><p>Monitor of the 62.5 MHz clock (used for phase alignment)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>TestPulse</dt><dd><ul>
+<li><p>Internal Test Pulse</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Busy</dt><dd><ul>
+<li><p>Busy of the board</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>UserTrgout</dt><dd><ul>
+<li><p>Trgout coming from the User Logic (open FPGA)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Fixed0</dt><dd><ul>
+<li><p>0 level signal</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Fixed1</dt><dd><ul>
+<li><p>1 level signal</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>SyncIn</dt><dd><ul>
+<li><p>SyncIn signal</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>SIN</dt><dd><ul>
+<li><p>SIN connector signal</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>GPIO</dt><dd><ul>
+<li><p>GPIO connector signal</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>LBinClk</dt><dd><ul>
+<li><p>Internal Logic B clock signal</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>AcceptTrg</dt><dd><ul>
+<li><p>Accepted triggers signal</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>TrgClk</dt><dd><ul>
+<li><p>Tigger clock signal</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="gpiomode">
+<h4>参数 GPIOMode<a class="headerlink" href="#gpiomode" title="此标题的永久链接"></a></h4>
+<p>Selects the signal that is routed to the GPIO, when this is used as output. Multiple options are not allowed. The GPIO on the front panel is a bidirectional signal that can used in three different ways:</p>
+<blockquote>
+<div><p>As independent board output (each board drives its own GPIO)</p>
+<p>As a shared input for the boards: the signal is driven high (= 1) or low (= 0) by an external source and connected in “short circuit” among multiple boards using “T” connectors at the inputs. The GPIO is not internally terminated, thus it is necessary to put a 50 Ohm terminator at the end of the line (last “T”of the chain)</p>
+<p>As a shared bidirectional line, making a “wired OR”. One or more boards can simultaneously drive the signal high (= 1). If no board drives the GPIO, it remains low (= 0). All boards can read back the signal. It is necessary to put a 50 Ohm terminator at both ends of the line (first and last “T” of the chain). This mode can be used to generate, for instance, the global Busy and Veto logic for multiple boards.</p>
+</div></blockquote>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Disabled</dt><dd><ul>
+<li><p>GPIO disabled</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>TrgIn</dt><dd><ul>
+<li><p>Propagation of Front Panel TRGIN (GPIO is a replica, with some delay, of the TRGIN signal)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>P0</dt><dd><ul>
+<li><p>Propagation of P0 trigger</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>SIN</dt><dd><ul>
+<li><p>Propagation of SIN</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>LVDS</dt><dd><ul>
+<li><p>LVDS trgin</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>ITLA</dt><dd><ul>
+<li><p>Internal Trigger Logic A: combination of channel self-triggers</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>ITLB</dt><dd><ul>
+<li><p>Internal Trigger Logic B: combination of channel self-triggers</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>ITLA_AND_ITLB</dt><dd><ul>
+<li><p>Second level Trigger logic making the AND of ITL A and B</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>ITLA_OR_ITLB</dt><dd><ul>
+<li><p>Second level Trigger logic making the OR of ITL A and B</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>EncodedClkIn</dt><dd><ul>
+<li><p>Not implemented (propagation of the Encoded CLK-IN trigger)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>SwTrg</dt><dd><ul>
+<li><p>Software trigger</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Run</dt><dd><ul>
+<li><p>Propagation of RUN</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>RefClk</dt><dd><ul>
+<li><p>Monitor of the 62.5 MHz clock (used for phase alignment)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>TestPulse</dt><dd><ul>
+<li><p>Internal Test Pulse</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Busy</dt><dd><ul>
+<li><p>Busy of the board</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>UserGPO</dt><dd><ul>
+<li><p>GPO coming from the User Logic (open FPGA)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Fixed0</dt><dd><ul>
+<li><p>0 level signal</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Fixed1</dt><dd><ul>
+<li><p>1 level signal</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="syncoutmode">
+<h4>参数 SyncOutMode<a class="headerlink" href="#syncoutmode" title="此标题的永久链接"></a></h4>
+<p>In a multi-board system, it can be useful to propagate a synchronous signal together with the clock (to synchronize the start of the run, for example) on CLK OUT front panel connector. This parameter defines which signal must be sent out. Multiple options are not allowed.</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Disabled</dt><dd><ul>
+<li><p>SyncoutMode is disabled</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>SyncIn</dt><dd><ul>
+<li><p>SyncIn signal (if provided with clkIn on CLK IN connector)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>TestPulse</dt><dd><ul>
+<li><p>Internal Test Pulse</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>IntClk</dt><dd><ul>
+<li><p>Internal 62.5 MHz clock (for test purposes)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Run</dt><dd><ul>
+<li><p>Propagation of RUN signal</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>User</dt><dd><ul>
+<li><p>User customSyncoutMode</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="iolevel">
+<h4>参数 IOlevel<a class="headerlink" href="#iolevel" title="此标题的永久链接"></a></h4>
+<p>Sets the electrical logic level of the LEMO I/Os (TRGIN, SIN, TRGOUT, GPIO).</p>
+<p>Note that TRGIN and SIN are internally terminated to 50 Ohm, while GPIO and TRGOUT require the termination to 50 Ohms at the receiver</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>NIM</dt><dd><ul>
+<li><p>NIM logic (0 = 0V, 1 = -0.8V, that is -16mA)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>TTL</dt><dd><ul>
+<li><p>Low Voltage TLL logic (0 = 0V, 1 = 3.3V)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="lvdsdirection">
+<h4>参数 LVDSDirection<a class="headerlink" href="#lvdsdirection" title="此标题的永久链接"></a></h4>
+<p>Assigns the direction to a quartet of LVDS I/Os.</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Input</dt><dd><ul>
+<li><p>The LVDS lines of the relevant quartet are used as input. The relevant LED on the front panel is OFF.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Output</dt><dd><ul>
+<li><p>The LVDS lines of the relevant quartet are used as output. The relevant LED on the front panel lights-up.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="lvdsmode">
+<h4>参数 LVDSMode<a class="headerlink" href="#lvdsmode" title="此标题的永久链接"></a></h4>
+<p>The digitizer is equipped with 16 LVDS I/Os that can be programmed to be inputs or outputs by groups of 4 (quartets), depending on the LVDSDirection parameter. Once the direction has been selected, it is possible to select the functionality of the LVDS lines, individually for each quartet.</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>SelfTriggers</dt><dd><ul>
+<li><p>This option is available only when the LVDS are set as outputs. Each LVDS line can be assigned to a combination of the 64 self-triggers, implemented as a masked OR, where the mask is set by the LVDSTrgMask parameter(16 independent masks, one per LVDS line)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Sync</dt><dd><ul>
+<li><p>Whatever is the direction of the quartet, the 4 lines are rigidly assigned to specific acquisition signals: 0 = Run 1 = Trigger 2 = Busy 3= Veto It is possible to implement a daisy chain distribution of these signals using one quartet as input and another one as output</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>IORegister</dt><dd><ul>
+<li><p>The LVDS lines of the quartet are statically controlled by the LVDSIOReg parameter. Use the SetValue function to set the relevant LVDS lines when programmed as output. Use GetValue to read the status of the LVDS lines when programmed as inputs.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>User</dt><dd><ul>
+<li><p>User custom.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="lvdstrgmask">
+<h4>参数 LVDSTrgMask<a class="headerlink" href="#lvdstrgmask" title="此标题的永久链接"></a></h4>
+<p>Each LVDS line can be assigned to a combination of the 64 self-triggers, implemented as a masked OR, where the mask is set by this parameter. There are 16 independent masks, one per LVDS line. Note that the trigger mask assignment does not imply the LVDS direction and mode settings. It is therefore necessary to set the Direction = Output and Mode = SelfTriggers to use the Self-Trigger propagation to the LVDS I/Os.</p>
+</section>
+<section id="lvdsioreg">
+<h4>参数 LVDSIOReg<a class="headerlink" href="#lvdsioreg" title="此标题的永久链接"></a></h4>
+<p>Set the status of the LVDS I/O for the quartets when they are programmed to be output and Mode = IORegister. This parameter reads out the status of the quartets in the case the LVDS I/O are programmed as inputs (possibly externally driven).</p>
+</section>
 </section>
 <section id="id9">
-<h3>模块前面板<a class="headerlink" href="#id9" title="此标题的永久链接"></a></h3>
-<img alt="../_images/zle_logic_frontpanel.png" src="../_images/zle_logic_frontpanel.png" />
-</section>
-<section id="id10">
-<h3>反符合<a class="headerlink" href="#id10" title="此标题的永久链接"></a></h3>
+<h3>反符合<a class="headerlink" href="#id9" title="此标题的永久链接"></a></h3>
 <img alt="../_images/zle_logic_veto.png" src="../_images/zle_logic_veto.png" />
+<section id="vetosource">
+<h4>参数 VetoSource<a class="headerlink" href="#vetosource" title="此标题的永久链接"></a></h4>
+<p>Defines the source for the Veto, which is the signal that inhibits the acquisition trigger. Multiple options are allowed, separated by “|”. The VETO signal can be either active high or low, depending on the VetoPolarity parameter. When active low, it acts as a GATE for the trigger. It is possible to stretch the duration of the VETO by means of the parameter VetoWidth.</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Disabled</dt><dd><ul>
+<li><p>VETO is always OFF</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>SIN</dt><dd><ul>
+<li><p>SIN on the front panel</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>GPIO</dt><dd><ul>
+<li><p>GPIO on the front panel (used as input)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>LVDS</dt><dd><ul>
+<li><p>LVDS trgin</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>P0</dt><dd><ul>
+<li><p>P0 (signal from the backplane)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>EncodedClkIn</dt><dd><ul>
+<li><p>Not implemented (encoded CLK-IN veto)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="vetowidth">
+<h4>参数 VetoWidth<a class="headerlink" href="#vetowidth" title="此标题的永久链接"></a></h4>
+<p>Whatever is the source of the VETO signal, it is possible to stretch the duration of the veto up to a given time by means of a re-triggerable monostable. When 0, the monostable is disabled and the veto lasts as long as the selected source is active.</p>
+<p>Unit of Measure: ns</p>
+</section>
+<section id="vetopolarity">
+<h4>参数 VetoPolarity<a class="headerlink" href="#vetopolarity" title="此标题的永久链接"></a></h4>
+<p>Defines the polarity of the Veto</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>ActiveHigh</dt><dd><ul>
+<li><p>Veto is active high. The signal acts as an “Inhibit” for the trigger</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>ActiveLow</dt><dd><ul>
+<li><p>Veto is active low. The signal acts as a “Gate” the trigger</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
 </section>
 <section id="itl">
 <h3>ITL 逻辑<a class="headerlink" href="#itl" title="此标题的永久链接"></a></h3>
 <img alt="../_images/zle_logic_itl.png" src="../_images/zle_logic_itl.png" />
+<img alt="../_images/logic_diagram.png" src="../_images/logic_diagram.png" />
+<section id="itla-bmask">
+<h4>参数 ITLA/BMask<a class="headerlink" href="#itla-bmask" title="此标题的永久链接"></a></h4>
+<p>Enable Mask at the input of the ITLA/B.</p>
 </section>
-<section id="id11">
-<h3>延迟展宽<a class="headerlink" href="#id11" title="此标题的永久链接"></a></h3>
+<section id="itla-bpairlogic">
+<h4>参数 ITLA/BPairLogic<a class="headerlink" href="#itla-bpairlogic" title="此标题的永久链接"></a></h4>
+<p>Pairs of channels can be combined with an OR or AND before feeding in the Main trigger Logic. This is typically used in the readout of tubes or scintillator bars, where the two ends are read in coincidence, for instance in position sensitive detectors (the coincidence window will be set by the SelfTriggerWidth parameter). When the AND/OR logic is applied, the two outputs of the Pair Logic blocks are identical.</p>
+<p>Note that they are counted twice in the following Majority logic. If the Pair Logic is disabled (“NONE” option), the block is transparent, and the two outputs are just a replica of the inputs.</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>OR</dt><dd><ul>
+<li><p>Both Pair Logic Outputs = OR of two consecutive self-triggers</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>AND</dt><dd><ul>
+<li><p>Both Pair Logic Outputs = AND of two consecutive self-triggers</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>NONE</dt><dd><ul>
+<li><p>Outputs = Inputs</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="itla-bmainlogic">
+<h4>参数 ITLA/BMainLogic<a class="headerlink" href="#itla-bmainlogic" title="此标题的永久链接"></a></h4>
+<p>Each channel of the digitizer feature a digital bipolar triangular filter discriminator with programmable rise time and threshold able to self-trigger on the input pulses and generate a self-trigger signal. In DPP Mode, the channels acquire independently, so the channel self-trigger is used locally to acquire a waveform. The trigger threshold is then referred to the bipolar triangular filter, and the threshold crossing arms the event selection. The trigger fires at the zero crossing of the time filter signal. The user can see the derivative trace on the signal inspector. It is also possible to combine all the self-triggers of the board, according to a specific trigger logic. There are two independent logic blocks, ITLA and ITLB. Their output can be used separately to feed, for instance, AcqTrigger and TrgOut, or combined in a second level trigger logic to implement more complex trigger schemes. Therefore, the ITLs can either generate the local acquisition trigger, common to all the channels, for the acquisition of the waveform, or propagate the signal outside, through the TRGOUT, thus making it possible to combine triggers of multiple boards in an external trigger logic, that eventually feeds back the TRGIN of the digitizers. Each ITL is made of an input enable mask (64 bits, one per channel), an optional pairing logic that combines the self triggers of two consecutive channels (e.g. paired coincidence) and the main trigger logic that combines the 64 selftriggers with an OR, AND or Majority logic. The output can be linear (no stretching) or reshaped by a programmable gate generator, either re-triggerable or not and finally programmed for polarity (direct or inverted).</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>OR</dt><dd><ul>
+<li><p>ITLOUT = masked OR of channel self-triggers</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>AND</dt><dd><ul>
+<li><p>ITLOUT = masked AND of channel self-triggers</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Majority</dt><dd><ul>
+<li><p>ITLOUT = masked Majority of channel self-triggers</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="itla-bmajoritylev">
+<h4>参数 ITLA/BMajorityLev<a class="headerlink" href="#itla-bmajoritylev" title="此标题的永久链接"></a></h4>
+<p>Defines the majority level of the Main Logic of the ITL A/B block. The majority output is calculated at every clock cycle, and it becomes TRUE when Nch &gt;= MajLev, where Nch is the number of self-triggers active in that clock cycle and MajLev is the programmed majority level.</p>
+<p>Note that when the Pair Logic is used to combine the self triggers two by two (AND/OR), each pair produces two identical signals that will be counted twice in the majority level.</p>
+</section>
+<section id="itla-bgatewidth">
+<h4>参数 ITLA/BGateWidth<a class="headerlink" href="#itla-bgatewidth" title="此标题的永久链接"></a></h4>
+<p>Width of the gate generator at the output of the ITLA/B block.</p>
+<p>Unit of Measure: ns</p>
+</section>
+<section id="itla-bpolarity">
+<h4>参数 ITLA/BPolarity<a class="headerlink" href="#itla-bpolarity" title="此标题的永久链接"></a></h4>
+<p>Polarity of the gate generator output.</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Direct</dt><dd><ul>
+<li><p>Direct polarity</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Inverted</dt><dd><ul>
+<li><p>Inverted polarity</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="itla-benretrigger">
+<h4>参数 ITLA/BEnRetrigger<a class="headerlink" href="#itla-benretrigger" title="此标题的永久链接"></a></h4>
+<p>Set the ITLA/B to be retriggerable.</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>True</dt><dd><ul>
+<li><p>The ITLA/B is retriggerable</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>False</dt><dd><ul>
+<li><p>The ITLA/B is not retriggerable</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+</section>
+<section id="id10">
+<h3>延迟展宽<a class="headerlink" href="#id10" title="此标题的永久链接"></a></h3>
 <img alt="../_images/zle_logic_mask.png" src="../_images/zle_logic_mask.png" />
+<section id="itlconnect">
+<h4>参数 ITLConnect<a class="headerlink" href="#itlconnect" title="此标题的永久链接"></a></h4>
+<p>Alternative to ITLAMask, ITLBMask. Determines if the channel partecipate in ITLA or ITLB</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Disabled</dt><dd><ul>
+<li><p>The channel is disabled</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>ITLA</dt><dd><ul>
+<li><p>The channel participates in ITLA logic block</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>ITLB</dt><dd><ul>
+<li><p>The channel participates in ITLB logic block</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
 </section>
 </section>
 </section>

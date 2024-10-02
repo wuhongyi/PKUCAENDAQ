@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GDDAQ &mdash; GDDAQ beta 文档</title>
+  <title>GDDAQ &mdash; GDDAQ V20241002 文档</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
@@ -16,7 +16,7 @@
   
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=055b2939"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=ed66ccbe"></script>
         <script src="_static/doctools.js?v=888ff710"></script>
         <script src="_static/sphinx_highlight.js?v=4825356b"></script>
         <script src="_static/translations.js?v=beaddf03"></script>
@@ -56,7 +56,7 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">用户指南</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="UsersGuide/README.html">用户指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UsersGuide/README.html">图形化指南</a></li>
 <li class="toctree-l1"><a class="reference internal" href="UsersGuide/Synchronization.html">时间同步和采集</a></li>
 <li class="toctree-l1"><a class="reference internal" href="UsersGuide/GUI.html">图形交互界面</a></li>
 <li class="toctree-l1"><a class="reference internal" href="UsersGuide/SCOPE.html">SCOPE 固件</a></li>
@@ -64,10 +64,13 @@
 <li class="toctree-l1"><a class="reference internal" href="UsersGuide/PSD.html">PSD 固件</a></li>
 <li class="toctree-l1"><a class="reference internal" href="UsersGuide/ZLE.html">ZLE 固件</a></li>
 <li class="toctree-l1"><a class="reference internal" href="UsersGuide/OPEN.html">开放 FPGA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UsersGuide/UserDPP.html">UserDPP 固件</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">应用案例</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="Example/README.html">应用案例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Example/HPGe.html">HPGe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Example/Si.html">Si</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">数据分析</span></p>
 <ul>
@@ -116,7 +119,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="README.html">简介</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="README.html#id2">版本</a></li>
-<li class="toctree-l2"><a class="reference internal" href="README.html#id3">关于</a></li>
+<li class="toctree-l2"><a class="reference internal" href="README.html#id4">关于</a></li>
 </ul>
 </li>
 </ul>
@@ -141,7 +144,7 @@
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">用户指南</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="UsersGuide/README.html">用户指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UsersGuide/README.html">图形化指南</a></li>
 <li class="toctree-l1"><a class="reference internal" href="UsersGuide/Synchronization.html">时间同步和采集</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="UsersGuide/Synchronization.html#id2">时钟源设置</a></li>
 <li class="toctree-l2"><a class="reference internal" href="UsersGuide/Synchronization.html#id3">同步采集</a></li>
@@ -161,17 +164,16 @@
 <li class="toctree-l2"><a class="reference internal" href="UsersGuide/SCOPE.html#id1">基本参数配置</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="UsersGuide/SCOPE.html#id2">输入信号</a></li>
 <li class="toctree-l3"><a class="reference internal" href="UsersGuide/SCOPE.html#id3">触发</a></li>
-<li class="toctree-l3"><a class="reference internal" href="UsersGuide/SCOPE.html#id4">数据记录</a></li>
-<li class="toctree-l3"><a class="reference internal" href="UsersGuide/SCOPE.html#id5">scope</a></li>
-<li class="toctree-l3"><a class="reference internal" href="UsersGuide/SCOPE.html#id6">诊断</a></li>
+<li class="toctree-l3"><a class="reference internal" href="UsersGuide/SCOPE.html#id4">scope</a></li>
+<li class="toctree-l3"><a class="reference internal" href="UsersGuide/SCOPE.html#id5">诊断</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="UsersGuide/SCOPE.html#id7">逻辑参数配置</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="UsersGuide/SCOPE.html#id8">运行</a></li>
-<li class="toctree-l3"><a class="reference internal" href="UsersGuide/SCOPE.html#id9">模块前面板</a></li>
-<li class="toctree-l3"><a class="reference internal" href="UsersGuide/SCOPE.html#id10">反符合</a></li>
+<li class="toctree-l2"><a class="reference internal" href="UsersGuide/SCOPE.html#id6">逻辑参数配置</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="UsersGuide/SCOPE.html#id7">运行</a></li>
+<li class="toctree-l3"><a class="reference internal" href="UsersGuide/SCOPE.html#id8">模块前面板</a></li>
+<li class="toctree-l3"><a class="reference internal" href="UsersGuide/SCOPE.html#id9">反符合</a></li>
 <li class="toctree-l3"><a class="reference internal" href="UsersGuide/SCOPE.html#itl">ITL 逻辑</a></li>
-<li class="toctree-l3"><a class="reference internal" href="UsersGuide/SCOPE.html#id11">延迟展宽</a></li>
+<li class="toctree-l3"><a class="reference internal" href="UsersGuide/SCOPE.html#id10">延迟展宽</a></li>
 </ul>
 </li>
 </ul>
@@ -221,22 +223,26 @@
 <li class="toctree-l2"><a class="reference internal" href="UsersGuide/ZLE.html#id1">基本参数配置</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="UsersGuide/ZLE.html#id2">输入信号</a></li>
 <li class="toctree-l3"><a class="reference internal" href="UsersGuide/ZLE.html#id3">触发</a></li>
-<li class="toctree-l3"><a class="reference internal" href="UsersGuide/ZLE.html#id4">数据记录</a></li>
-<li class="toctree-l3"><a class="reference internal" href="UsersGuide/ZLE.html#id5">ZLE 参数</a></li>
-<li class="toctree-l3"><a class="reference internal" href="UsersGuide/ZLE.html#id6">诊断</a></li>
+<li class="toctree-l3"><a class="reference internal" href="UsersGuide/ZLE.html#id4">ZLE 参数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="UsersGuide/ZLE.html#id5">诊断</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="UsersGuide/ZLE.html#id7">逻辑参数配置</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="UsersGuide/ZLE.html#id8">运行</a></li>
-<li class="toctree-l3"><a class="reference internal" href="UsersGuide/ZLE.html#id9">模块前面板</a></li>
-<li class="toctree-l3"><a class="reference internal" href="UsersGuide/ZLE.html#id10">反符合</a></li>
+<li class="toctree-l2"><a class="reference internal" href="UsersGuide/ZLE.html#id6">逻辑参数配置</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="UsersGuide/ZLE.html#id7">运行</a></li>
+<li class="toctree-l3"><a class="reference internal" href="UsersGuide/ZLE.html#id8">模块前面板</a></li>
+<li class="toctree-l3"><a class="reference internal" href="UsersGuide/ZLE.html#id9">反符合</a></li>
 <li class="toctree-l3"><a class="reference internal" href="UsersGuide/ZLE.html#itl">ITL 逻辑</a></li>
-<li class="toctree-l3"><a class="reference internal" href="UsersGuide/ZLE.html#id11">延迟展宽</a></li>
+<li class="toctree-l3"><a class="reference internal" href="UsersGuide/ZLE.html#id10">延迟展宽</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="UsersGuide/OPEN.html">开放 FPGA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UsersGuide/UserDPP.html">UserDPP 固件</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="UsersGuide/UserDPP.html#id1">基本参数配置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="UsersGuide/UserDPP.html#id2">逻辑参数配置</a></li>
+</ul>
+</li>
 </ul>
 </div>
 <hr class="docutils" />
@@ -244,6 +250,8 @@
 <p class="caption" role="heading"><span class="caption-text">应用案例</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="Example/README.html">应用案例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Example/HPGe.html">HPGe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Example/Si.html">Si</a></li>
 </ul>
 </div>
 <hr class="docutils" />

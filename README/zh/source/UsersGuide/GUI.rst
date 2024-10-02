@@ -4,9 +4,9 @@
 .. Author: Hongyi Wu(吴鸿毅)
 .. Email: wuhongyi@qq.com 
 .. Created: 六 2月  3 21:00:35 2024 (+0800)
-.. Last-Updated: 日 9月  8 20:38:04 2024 (+0800)
+.. Last-Updated: 一 9月  9 21:18:46 2024 (+0800)
 ..           By: Hongyi Wu(吴鸿毅)
-..     Update #: 21
+..     Update #: 22
 .. URL: http://wuhongyi.cn 
 
 =================================
@@ -90,7 +90,7 @@ json 格式文件，主要包含模块的 PID 或者 IP 等信息。
 
 ----
 
-完成系统初始化之后，主控制界面上方的 Basic、Logic、Online、Debug 四个按钮将会浮起，积极即可弹出相应的子界面，再点击即可隐藏。
+完成系统初始化之后，主控制界面上方的 Basic、Logic、Online、Debug 四个按钮将会浮起，点击即可弹出相应的子界面，再点击即可隐藏。
 
 
 .. image:: /_static/img/screenfulldaq.png

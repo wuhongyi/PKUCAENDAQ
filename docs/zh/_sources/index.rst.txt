@@ -43,6 +43,7 @@ Welcome to GDDAQ's guides.
    UsersGuide/PSD.rst
    UsersGuide/ZLE.rst
    UsersGuide/OPEN.rst
+   UsersGuide/UserDPP.rst
 
 #################################
 
@@ -51,7 +52,8 @@ Welcome to GDDAQ's guides.
    :caption: 应用案例
 	     
    Example/README.rst
-
+   Example/HPGe.rst
+   Example/Si.rst
 
 #################################
 

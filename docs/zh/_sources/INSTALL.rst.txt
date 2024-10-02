@@ -4,27 +4,38 @@
 .. Author: Hongyi Wu(吴鸿毅)
 .. Email: wuhongyi@qq.com 
 .. Created: 六 2月  3 20:52:33 2024 (+0800)
-.. Last-Updated: 日 9月  8 15:22:47 2024 (+0800)
+.. Last-Updated: 日 9月  8 21:05:52 2024 (+0800)
 ..           By: Hongyi Wu(吴鸿毅)
-..     Update #: 17
+..     Update #: 29
 .. URL: http://wuhongyi.cn 
 
 =================================   
 程序安装
 =================================   
 
-本程序安装要求依赖 OpenSSL，Qt，ROOT 等第三方库。以下版本经过测试。
+本程序安装要求依赖 boost、OpenSSL、Qt5、ROOT6 等第三方库。以下版本经过测试。
 
 * OS
     - Ubuntu 20.04/22.04/24.04
+    - Fedora 40
+    - Rocky 9  
+* boost >= 1.67
+    - 1.71.0
+    - 1.74.0
+    - 1.75.0  
+    - 1.83.0
 * OpenSSL
     - 1.1.1
     - 3.0.2
-    - 3.0.13  
+    - 3.0.7
+    - 3.0.13
+    - 3.2.2  
 * Qt 5
     - 5.12.8
     - 5.15.3
-    - 5.15.13  
+    - 5.15.9  
+    - 5.15.13
+    - 5.15.17  
 * ROOT 6
     - 6.24.08 some bug
     - 6.26.16 
@@ -32,16 +43,20 @@
     - 6.32.04 some bug
 
   
-**本程序测试过的系统目前只包含 Ubuntu20.04/22.04/24.04。 目前只支持 Ubuntu20.04/22.04/24.04 系统下编译。我们将适配更多系统。如果你使用其它系统，可联系我们进行适配。**
+**本程序测试过的系统包含 Ubuntu20.04/22.04/24.04、Fedora40、Rocky9。 支持各种 LINUX 操作系统编译。如果您的操作系统编译不通过请联系吴鸿毅。**
 
 .. code-block:: bash
 
   # Ubuntu20.04 依赖安装
-  sudo apt -y install libboost-dev libboost-all-dev libssl-dev openssl qt5-default qtcreator libqt5webkit5-dev libqt5webengine5 qtwebengine5-dev libqt5webenginecore5 libqt5webenginewidgets5 libqt5webengine-data libqt5webchannel5-dev libqt5websockets5-dev libqt5websockets5 libqt5webview5-dev libqt5webview5 libqt5charts5-dev
+  sudo apt -y install libboost-dev libboost-all-dev libssl-dev openssl qt5-default qtcreator libqt5charts5-dev
   # Ubuntu22.04 依赖安装
-  sudo apt -y install libboost-dev libboost-all-dev libssl-dev openssl 
+  sudo apt -y install libboost-dev libboost-all-dev libssl-dev openssl libqt5charts5-dev
   # Ubuntu24.04 依赖安装
-  sudo apt -y install libboost-dev libboost-all-dev libssl-dev openssl 
+  sudo apt -y install libboost-dev libboost-all-dev libssl-dev openssl libqt5charts5-dev
+  # Fedora 40  依赖安装
+  sudo dnf -y install redhat-lsb-core boost boost-devel openssl openssl-devel qt5-qtcharts qt5-qtcharts-devel qt5-qtbase qt5-qtbase-devel
+  # Rocky 9  依赖安装
+  sudo dnf -y install boost boost-devel openssl openssl-devel qt5-qtcharts qt5-qtcharts-devel qt5-qtbase qt5-qtbase-devel
   # ROOT 6 推荐 6.26.16
 
   
@@ -85,7 +100,7 @@
   chmod +x makefile.sh.x
   ./makefile.sh.x
   # 等待编译结束，编译通过之后，文件夹内将生成可执行文件 gddaq
-  
+  # 检查是否生成可执行文件 gddaq, 如有则编译成功。如果没有，请联系吴鸿毅。
 
 
 		

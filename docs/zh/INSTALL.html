@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>程序安装 &mdash; GDDAQ beta 文档</title>
+  <title>程序安装 &mdash; GDDAQ V20241002 文档</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
@@ -16,7 +16,7 @@
   
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=055b2939"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=ed66ccbe"></script>
         <script src="_static/doctools.js?v=888ff710"></script>
         <script src="_static/sphinx_highlight.js?v=4825356b"></script>
         <script src="_static/translations.js?v=beaddf03"></script>
@@ -61,7 +61,7 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">用户指南</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="UsersGuide/README.html">用户指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UsersGuide/README.html">图形化指南</a></li>
 <li class="toctree-l1"><a class="reference internal" href="UsersGuide/Synchronization.html">时间同步和采集</a></li>
 <li class="toctree-l1"><a class="reference internal" href="UsersGuide/GUI.html">图形交互界面</a></li>
 <li class="toctree-l1"><a class="reference internal" href="UsersGuide/SCOPE.html">SCOPE 固件</a></li>
@@ -69,10 +69,13 @@
 <li class="toctree-l1"><a class="reference internal" href="UsersGuide/PSD.html">PSD 固件</a></li>
 <li class="toctree-l1"><a class="reference internal" href="UsersGuide/ZLE.html">ZLE 固件</a></li>
 <li class="toctree-l1"><a class="reference internal" href="UsersGuide/OPEN.html">开放 FPGA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UsersGuide/UserDPP.html">UserDPP 固件</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">应用案例</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="Example/README.html">应用案例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Example/HPGe.html">HPGe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Example/Si.html">Si</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">数据分析</span></p>
 <ul>
@@ -112,11 +115,23 @@
              
   <section id="id1">
 <h1>程序安装<a class="headerlink" href="#id1" title="此标题的永久链接"></a></h1>
-<p>本程序安装要求依赖 OpenSSL，Qt，ROOT 等第三方库。以下版本经过测试。</p>
+<p>本程序安装要求依赖 boost、OpenSSL、Qt5、ROOT6 等第三方库。以下版本经过测试。</p>
 <ul class="simple">
 <li><dl class="simple">
 <dt>OS</dt><dd><ul>
 <li><p>Ubuntu 20.04/22.04/24.04</p></li>
+<li><p>Fedora 40</p></li>
+<li><p>Rocky 9</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>boost &gt;= 1.67</dt><dd><ul>
+<li><p>1.71.0</p></li>
+<li><p>1.74.0</p></li>
+<li><p>1.75.0</p></li>
+<li><p>1.83.0</p></li>
 </ul>
 </dd>
 </dl>
@@ -125,7 +140,9 @@
 <dt>OpenSSL</dt><dd><ul>
 <li><p>1.1.1</p></li>
 <li><p>3.0.2</p></li>
+<li><p>3.0.7</p></li>
 <li><p>3.0.13</p></li>
+<li><p>3.2.2</p></li>
 </ul>
 </dd>
 </dl>
@@ -134,7 +151,9 @@
 <dt>Qt 5</dt><dd><ul>
 <li><p>5.12.8</p></li>
 <li><p>5.15.3</p></li>
+<li><p>5.15.9</p></li>
 <li><p>5.15.13</p></li>
+<li><p>5.15.17</p></li>
 </ul>
 </dd>
 </dl>
@@ -150,13 +169,17 @@
 </dl>
 </li>
 </ul>
-<p><strong>本程序测试过的系统目前只包含 Ubuntu20.04/22.04/24.04。 目前只支持 Ubuntu20.04/22.04/24.04 系统下编译。我们将适配更多系统。如果你使用其它系统，可联系我们进行适配。</strong></p>
+<p><strong>本程序测试过的系统包含 Ubuntu20.04/22.04/24.04、Fedora40、Rocky9。 支持各种 LINUX 操作系统编译。如果您的操作系统编译不通过请联系吴鸿毅。</strong></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ubuntu20.04 依赖安装</span>
-sudo<span class="w"> </span>apt<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>libboost-dev<span class="w"> </span>libboost-all-dev<span class="w"> </span>libssl-dev<span class="w"> </span>openssl<span class="w"> </span>qt5-default<span class="w"> </span>qtcreator<span class="w"> </span>libqt5webkit5-dev<span class="w"> </span>libqt5webengine5<span class="w"> </span>qtwebengine5-dev<span class="w"> </span>libqt5webenginecore5<span class="w"> </span>libqt5webenginewidgets5<span class="w"> </span>libqt5webengine-data<span class="w"> </span>libqt5webchannel5-dev<span class="w"> </span>libqt5websockets5-dev<span class="w"> </span>libqt5websockets5<span class="w"> </span>libqt5webview5-dev<span class="w"> </span>libqt5webview5<span class="w"> </span>libqt5charts5-dev
+sudo<span class="w"> </span>apt<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>libboost-dev<span class="w"> </span>libboost-all-dev<span class="w"> </span>libssl-dev<span class="w"> </span>openssl<span class="w"> </span>qt5-default<span class="w"> </span>qtcreator<span class="w"> </span>libqt5charts5-dev
 <span class="c1"># Ubuntu22.04 依赖安装</span>
-sudo<span class="w"> </span>apt<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>libboost-dev<span class="w"> </span>libboost-all-dev<span class="w"> </span>libssl-dev<span class="w"> </span>openssl
+sudo<span class="w"> </span>apt<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>libboost-dev<span class="w"> </span>libboost-all-dev<span class="w"> </span>libssl-dev<span class="w"> </span>openssl<span class="w"> </span>libqt5charts5-dev
 <span class="c1"># Ubuntu24.04 依赖安装</span>
-sudo<span class="w"> </span>apt<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>libboost-dev<span class="w"> </span>libboost-all-dev<span class="w"> </span>libssl-dev<span class="w"> </span>openssl
+sudo<span class="w"> </span>apt<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>libboost-dev<span class="w"> </span>libboost-all-dev<span class="w"> </span>libssl-dev<span class="w"> </span>openssl<span class="w"> </span>libqt5charts5-dev
+<span class="c1"># Fedora 40  依赖安装</span>
+sudo<span class="w"> </span>dnf<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>redhat-lsb-core<span class="w"> </span>boost<span class="w"> </span>boost-devel<span class="w"> </span>openssl<span class="w"> </span>openssl-devel<span class="w"> </span>qt5-qtcharts<span class="w"> </span>qt5-qtcharts-devel<span class="w"> </span>qt5-qtbase<span class="w"> </span>qt5-qtbase-devel
+<span class="c1"># Rocky 9  依赖安装</span>
+sudo<span class="w"> </span>dnf<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>boost<span class="w"> </span>boost-devel<span class="w"> </span>openssl<span class="w"> </span>openssl-devel<span class="w"> </span>qt5-qtcharts<span class="w"> </span>qt5-qtcharts-devel<span class="w"> </span>qt5-qtbase<span class="w"> </span>qt5-qtbase-devel
 <span class="c1"># ROOT 6 推荐 6.26.16</span>
 </pre></div>
 </div>
@@ -196,6 +219,7 @@ sudo<span class="w"> </span>ldconfig
 chmod<span class="w"> </span>+x<span class="w"> </span>makefile.sh.x
 ./makefile.sh.x
 <span class="c1"># 等待编译结束，编译通过之后，文件夹内将生成可执行文件 gddaq</span>
+<span class="c1"># 检查是否生成可执行文件 gddaq, 如有则编译成功。如果没有，请联系吴鸿毅。</span>
 </pre></div>
 </div>
 </section>

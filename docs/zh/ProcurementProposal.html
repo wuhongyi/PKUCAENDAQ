@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>采购推荐 &mdash; GDDAQ beta 文档</title>
+  <title>采购推荐 &mdash; GDDAQ V20241002 文档</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
@@ -16,7 +16,7 @@
   
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=055b2939"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=ed66ccbe"></script>
         <script src="_static/doctools.js?v=888ff710"></script>
         <script src="_static/sphinx_highlight.js?v=4825356b"></script>
         <script src="_static/translations.js?v=beaddf03"></script>
@@ -57,7 +57,7 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">用户指南</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="UsersGuide/README.html">用户指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UsersGuide/README.html">图形化指南</a></li>
 <li class="toctree-l1"><a class="reference internal" href="UsersGuide/Synchronization.html">时间同步和采集</a></li>
 <li class="toctree-l1"><a class="reference internal" href="UsersGuide/GUI.html">图形交互界面</a></li>
 <li class="toctree-l1"><a class="reference internal" href="UsersGuide/SCOPE.html">SCOPE 固件</a></li>
@@ -65,10 +65,13 @@
 <li class="toctree-l1"><a class="reference internal" href="UsersGuide/PSD.html">PSD 固件</a></li>
 <li class="toctree-l1"><a class="reference internal" href="UsersGuide/ZLE.html">ZLE 固件</a></li>
 <li class="toctree-l1"><a class="reference internal" href="UsersGuide/OPEN.html">开放 FPGA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UsersGuide/UserDPP.html">UserDPP 固件</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">应用案例</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="Example/README.html">应用案例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Example/HPGe.html">HPGe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Example/Si.html">Si</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">数据分析</span></p>
 <ul>
@@ -114,15 +117,15 @@
 <p><strong>PKUCAENDAQ 长期进行版本更新，请大家时常关注是否有新版本发布。如有任何疑问，请与吴鸿毅联系（wuhongyi&#64;qq.com / wuhongyi&#64;pku.edu.cn）</strong></p>
 <p>CAEN 公司正在推出的数字化 2.0 系列采集卡，涵盖 125M/250M/500M 以及 1G 采样频率。</p>
 <img alt="_images/caendigitizer2.png" src="_images/caendigitizer2.png" />
-<p>本程序支持数字化 2.0 系列中所有所有型号(不支持上一代 x724/x725/x730 等产品)以及所有类型固件混合运行。目前已经上市的产品包括 2740/2745 系列，每个模块 64 通道， 125M 采样率，垂直精度 16位；2730 系列，每个模块 32 通道， 500 M 采样率，垂直精度 14位。</p>
+<p>本程序支持数字化 2.0 系列中所有所有型号(不支持上一代 x724/x725/x730 等产品)以及所有固件类型混合运行。目前已经上市的产品包括 2740/2745 系列，每个模块 64 通道， 125M 采样率，垂直精度 16位；2730 系列，每个模块 32 通道， 500 M 采样率，垂直精度 14位。</p>
 <p>即将上市的产品有 2751 系列，每个模块 32 通道， 1G 采样率，垂直精度 14 位。DT2760， 8通道，125 M 采样率，16位；DT2770，4通道，500M 采样率， 14 位。</p>
 <p>从大规模实验的使用角度来考虑，我们推荐大家尽可能采购 VME 版本而不是桌面版本。VME 版本搭配单槽机箱（μ-crate）同样便携使用，且能够保留它搭建大阵列使用的能力。</p>
 <img alt="_images/module2740_2745.png" src="_images/module2740_2745.png" />
 <img alt="_images/module2730.png" src="_images/module2730.png" />
 <section id="id2">
 <h2>逻辑模块<a class="headerlink" href="#id2" title="此标题的永久链接"></a></h2>
-<p>V2495/DT5495 需要复杂实验触发逻辑的用户需要采购该配套模块。我们建议每个机箱配一个该模块。</p>
-<p>对于每个 V2495/DT5495，我们建议添加三个 A395D 子板。</p>
+<p>V2495 需要复杂实验触发逻辑的用户需要采购该配套模块。我们建议每个机箱配一个该模块。</p>
+<p>对于每个 V2495，我们建议添加三个 A395D 子板。</p>
 </section>
 </section>
 
