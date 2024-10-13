@@ -54,6 +54,7 @@ Welcome to GDDAQ's guides.
    Example/README.rst
    Example/HPGe.rst
    Example/Si.rst
+   Example/UserDPP.rst
 
 #################################
 

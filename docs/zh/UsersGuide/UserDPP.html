@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>UserDPP 固件 &mdash; GDDAQ V20241002 文档</title>
+  <title>UserDPP 固件 &mdash; GDDAQ V20241013 文档</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=eafc0fe6" />
@@ -16,7 +16,7 @@
   
         <script src="../_static/jquery.js?v=5d32c60e"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=ed66ccbe"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=02d0cfe2"></script>
         <script src="../_static/doctools.js?v=888ff710"></script>
         <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
         <script src="../_static/translations.js?v=beaddf03"></script>
@@ -66,8 +66,36 @@
 <li class="toctree-l1"><a class="reference internal" href="ZLE.html">ZLE 固件</a></li>
 <li class="toctree-l1"><a class="reference internal" href="OPEN.html">开放 FPGA</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">UserDPP 固件</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id1">基本参数配置</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id2">逻辑参数配置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id1">基本参数配置</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">输入信号</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#chenable">参数 ChEnable</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dcoffset">参数 DCOffset</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">UserDPP</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#polarity">参数 Polarity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#fl">参数 FL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#fl-fg">参数 FL+FG</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#threshold">参数 Threshold</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pre-trigger">参数 Pre-trigger</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#wave-length">参数 Wave Length</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dataformat">参数 DataFormat</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#qoffset">参数 Qoffset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#qshort">参数 Qshort</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#qlong">参数 Qlong</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#qgainshift">参数 QGainShift</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#n-bl">参数 2^n BL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bl-hold">参数 BL Hold</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rt-offset">参数 RT offset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rt-gate">参数 RT gate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#xiaoffset">参数 XIAoffset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sl">参数 SL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sg">参数  SG</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">逻辑参数配置</a></li>
 </ul>
 </li>
 </ul>
@@ -76,6 +104,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../Example/README.html">应用案例</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Example/HPGe.html">HPGe</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Example/Si.html">Si</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Example/UserDPP.html">UserDPP 应用</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">数据分析</span></p>
 <ul>
@@ -116,11 +145,110 @@
   <section id="userdpp">
 <h1>UserDPP 固件<a class="headerlink" href="#userdpp" title="此标题的永久链接"></a></h1>
 <p>吴鸿毅开发固件，本部分说明书即将更新。</p>
+<p>2730 的固件，FPGA 运行时钟为 125 MHz。每个时钟的四个采样点相加作为一个采样点处理。</p>
 <section id="id1">
 <h2>基本参数配置<a class="headerlink" href="#id1" title="此标题的永久链接"></a></h2>
-</section>
 <section id="id2">
-<h2>逻辑参数配置<a class="headerlink" href="#id2" title="此标题的永久链接"></a></h2>
+<h3>输入信号<a class="headerlink" href="#id2" title="此标题的永久链接"></a></h3>
+<img alt="../_images/userdpp_basic_input.png" src="../_images/userdpp_basic_input.png" />
+<section id="chenable">
+<h4>参数 ChEnable<a class="headerlink" href="#chenable" title="此标题的永久链接"></a></h4>
+<p>独立设定每个通道是否开启使用。如果通道不启用，它不提供任何数据，同时它的自触发也关闭。</p>
+</section>
+<section id="dcoffset">
+<h4>参数 DCOffset<a class="headerlink" href="#dcoffset" title="此标题的永久链接"></a></h4>
+<p>当输入信号为正极性时，DCOffset 0% 为道址 0；当输入信号为负极性时， DCOffset 100% 时为道址 0。</p>
+</section>
+</section>
+<section id="id3">
+<h3>UserDPP<a class="headerlink" href="#id3" title="此标题的永久链接"></a></h3>
+<img alt="../_images/userdpp_basic_userdpp.png" src="../_images/userdpp_basic_userdpp.png" />
+<section id="polarity">
+<h4>参数 Polarity<a class="headerlink" href="#polarity" title="此标题的永久链接"></a></h4>
+<p>当输入信号为正极性时设置为 1，负极性时设置为 0。</p>
+</section>
+<section id="fl">
+<h4>参数 FL<a class="headerlink" href="#fl" title="此标题的永久链接"></a></h4>
+<p>XIA fast filter 的参数，快梯形滤波参数</p>
+<p>FL 单位为 8 ns。可设置参数为 1-127</p>
+</section>
+<section id="fl-fg">
+<h4>参数 FL+FG<a class="headerlink" href="#fl-fg" title="此标题的永久链接"></a></h4>
+<p>快梯形滤波参数</p>
+<p>FL+FG 单位为 8 ns，参数需大于等于 FL。可设置参数为 1-127</p>
+</section>
+<section id="threshold">
+<h4>参数 Threshold<a class="headerlink" href="#threshold" title="此标题的永久链接"></a></h4>
+<p>快梯形滤波的触发阈值</p>
+</section>
+<section id="pre-trigger">
+<h4>参数 Pre-trigger<a class="headerlink" href="#pre-trigger" title="此标题的永久链接"></a></h4>
+<p>当记录波形时候，触发前的长度</p>
+</section>
+<section id="wave-length">
+<h4>参数 Wave Length<a class="headerlink" href="#wave-length" title="此标题的永久链接"></a></h4>
+<p>当参数值大于 0 时，则记录波形</p>
+<p>单位为 4 个采样点。</p>
+</section>
+<section id="dataformat">
+<h4>参数 DataFormat<a class="headerlink" href="#dataformat" title="此标题的永久链接"></a></h4>
+<p>当参数为 0 时，只输出时间，QDC 等信息。</p>
+<p>当参数为 1 时，额外输出 RT 参数，梯形三段积分等信息。</p>
+</section>
+<section id="qoffset">
+<h4>参数 Qoffset<a class="headerlink" href="#qoffset" title="此标题的永久链接"></a></h4>
+<p>QDC 积分的触发延迟。 单位为 8 ns</p>
+</section>
+<section id="qshort">
+<h4>参数 Qshort<a class="headerlink" href="#qshort" title="此标题的永久链接"></a></h4>
+<p>QDC 积分短门。 单位为 8 ns</p>
+</section>
+<section id="qlong">
+<h4>参数 Qlong<a class="headerlink" href="#qlong" title="此标题的永久链接"></a></h4>
+<p>QDC 积分长门。 单位为 8 ns</p>
+</section>
+<section id="qgainshift">
+<h4>参数 QGainShift<a class="headerlink" href="#qgainshift" title="此标题的永久链接"></a></h4>
+<p>QDC 积分短门、长门积分数值，输出前向右移位。用来调节能谱增益。</p>
+<p>可设置参数为 0-7</p>
+</section>
+<section id="n-bl">
+<h4>参数 2^n BL<a class="headerlink" href="#n-bl" title="此标题的永久链接"></a></h4>
+<p>移动平均计算基线，参与平均点的个数为 2^n</p>
+<p>可设置参数 1-10</p>
+</section>
+<section id="bl-hold">
+<h4>参数 BL Hold<a class="headerlink" href="#bl-hold" title="此标题的永久链接"></a></h4>
+<p>基线计算抑制。当当前触发与上一个触发间隔大于设置参数时，更新基线数值。</p>
+<p>单位为 8 ns</p>
+</section>
+<section id="rt-offset">
+<h4>参数 RT offset<a class="headerlink" href="#rt-offset" title="此标题的永久链接"></a></h4>
+<p>RT 鉴别算法积分起点偏置。单位为 8 ns</p>
+</section>
+<section id="rt-gate">
+<h4>参数 RT gate<a class="headerlink" href="#rt-gate" title="此标题的永久链接"></a></h4>
+<p>RT 鉴别算法积分门。单位为 8 ns</p>
+</section>
+<section id="xiaoffset">
+<h4>参数 XIAoffset<a class="headerlink" href="#xiaoffset" title="此标题的永久链接"></a></h4>
+<p>此参数为 SL+SG 减去触发前保留的采样点</p>
+<p>单位为 8 ns</p>
+</section>
+<section id="sl">
+<h4>参数 SL<a class="headerlink" href="#sl" title="此标题的永久链接"></a></h4>
+<p>梯形参数的上升沿长度。</p>
+<p>单位为 8 ns</p>
+</section>
+<section id="sg">
+<h4>参数  SG<a class="headerlink" href="#sg" title="此标题的永久链接"></a></h4>
+<p>梯形参数的平台长度。</p>
+<p>单位为 8 ns</p>
+</section>
+</section>
+</section>
+<section id="id4">
+<h2>逻辑参数配置<a class="headerlink" href="#id4" title="此标题的永久链接"></a></h2>
 </section>
 </section>
 
