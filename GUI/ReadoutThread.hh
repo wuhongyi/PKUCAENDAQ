@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 三 6月 22 09:30:18 2022 (+0800)
-// Last-Updated: 六 9月  7 15:37:40 2024 (+0800)
+// Last-Updated: 日 10月 13 14:46:06 2024 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 50
+//     Update #: 51
 // URL: http://wuhongyi.cn 
 
 #ifndef _READOUTTHREAD_H_
@@ -29,6 +29,7 @@
 // #include <semaphore.h>
 
 #include <iostream>
+#include <fstream>
 #include <cstring>
 #include <string>
 #ifdef RECODESHA256

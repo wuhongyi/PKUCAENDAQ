@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 五 12月 17 15:18:35 2021 (+0800)
-// Last-Updated: 二 7月  9 11:22:33 2024 (+0800)
+// Last-Updated: 日 10月 13 00:19:52 2024 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 70
+//     Update #: 71
 // URL: http://wuhongyi.cn 
 
 #ifndef _MAINWINDOW_H_
@@ -173,14 +173,3 @@ private:
 
 // 
 // MainWindow.hh ends here
-
-
-
-
-
-
-
-
-
-
-

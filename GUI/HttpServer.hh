@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 六 5月 25 14:13:31 2024 (+0800)
-// Last-Updated: 日 9月  8 12:18:47 2024 (+0800)
+// Last-Updated: 日 10月 13 14:19:59 2024 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 20
+//     Update #: 21
 // URL: http://wuhongyi.cn 
 
 #ifndef _HTTPSERVER_H_
@@ -39,6 +39,7 @@ public:
   void DrawWave(unsigned short mod, unsigned short ch, unsigned int len, unsigned int *wave);
 
   void ClearADC(unsigned short mod);
+  void ClearPSD(unsigned short mod);
   void ClearRATE(unsigned short mod);
   void ClearCFD(unsigned short mod);
   
