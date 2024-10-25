@@ -4,9 +4,9 @@
 .. Author: Hongyi Wu(吴鸿毅)
 .. Email: wuhongyi@qq.com 
 .. Created: 六 2月  3 20:59:00 2024 (+0800)
-.. Last-Updated: 一 9月 30 16:49:51 2024 (+0800)
+.. Last-Updated: 五 10月 25 11:35:55 2024 (+0800)
 ..           By: Hongyi Wu(吴鸿毅)
-..     Update #: 8
+..     Update #: 9
 .. URL: http://wuhongyi.cn 
 
 =================================
@@ -19,21 +19,21 @@
 
 
 - 2745
-    - V2745-scope-1G-2024051505.cup
-    - V2745-dpp-pha-1G-2024091704.cup
-    - V2745-dpp-psd-1G-2023091901.cup  
-    - V2745-dpp-zle-1G-2023091902.cup
-    - V2745-OpenDPP-2024091700.cup  
+    - V2745-scope-1G-2024100301.cup
+    - V2745-dpp-pha-1G-2024102101.cup
+    - V2745-dpp-psd-1G-2024101603.cup  
+    - V2745-dpp-zle-1G-2024102200.cup
+    - V2745-OpenDPP-2024101303.cup  
 - 2740
     - V2740-scope-1G-2024051505.cup
-    - V2740-dpp-pha-1G-2023112703.cup  
-    - V2740-dpp-psd-1G-2023091901.cup
-    - V2740-dpp-zle-1G-2023091902.cup
-    - V2740-OpenDPP-2024091701.cup  
+    - V2740-dpp-pha-1G-2024102101.cup
+    - V2740-dpp-psd-1G-2024101603.cup
+    - V2740-dpp-zle-1G-2024102200.cup
+    - V2740-OpenDPP-2024101302.cup  
 - 2730
-    - V2730-scope-1G-2024062500.cup
+    - V2730-scope-1G-2024100300.cup
     - V2730-dpp-psd-1G-2024092000.cup
-    - V2730-OpenDPP-2024091804.cup
+    - V2730-OpenDPP-2024101301.cup
 
       
 
