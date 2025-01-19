@@ -4,9 +4,9 @@
 .. Author: Hongyi Wu(吴鸿毅)
 .. Email: wuhongyi@qq.com 
 .. Created: 日 9月  8 22:50:05 2024 (+0800)
-.. Last-Updated: 一 9月  9 21:20:07 2024 (+0800)
+.. Last-Updated: 五 1月 17 20:06:51 2025 (+0800)
 ..           By: Hongyi Wu(吴鸿毅)
-..     Update #: 2
+..     Update #: 3
 .. URL: http://wuhongyi.cn 
 
 =================================   
@@ -74,8 +74,8 @@ Software installation steps
 .. code-block:: bash
 
   cd driver
-  tar -zxvf CAENDGTZ-USB-Drv-1.2.tgz
-  cd CAENDGTZ-USB-Drv-1.2/
+  tar -zxvf CAENDGTZ-USB-Drv-1.3.tgz
+  cd 27xx-digitizer-usb-driver/
   sudo ./install.sh
 
   cd ..
