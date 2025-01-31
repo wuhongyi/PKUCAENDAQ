@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 五 12月 17 15:18:35 2021 (+0800)
-// Last-Updated: 日 10月 13 00:19:52 2024 (+0800)
+// Last-Updated: 一 1月 27 22:23:04 2025 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 71
+//     Update #: 72
 // URL: http://wuhongyi.cn 
 
 #ifndef _MAINWINDOW_H_
@@ -76,6 +76,7 @@ public:
 
   
   void UpdateOutputDataSize(unsigned short mod, unsigned long value);
+  void UpdateOutputDataFlowSize(unsigned short mod, unsigned long value);
   
 private:
 

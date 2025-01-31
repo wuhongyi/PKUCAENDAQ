@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 二 10月 25 14:31:51 2022 (+0800)
-// Last-Updated: 日 1月 19 14:37:47 2025 (+0800)
+// Last-Updated: 五 1月 31 21:53:31 2025 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 72
+//     Update #: 86
 // URL: http://wuhongyi.cn 
 
 #ifndef _GLOBAL_H_
@@ -27,10 +27,9 @@
 #include "QMutex"
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-#define VERSIONDATE "GUI-Qt - 20250119"
+#define VERSIONDATE "GUI-Qt - 20250131"
+#define EXPIRATIONDATE 20250831
 
-
-#define EXPIRATIONDATE 20250819
 
 #define ONLINEMODE
 
@@ -56,13 +55,14 @@ typedef struct RAWDATABUFFER
 {
   int runno;
   int buffid;
+  //unsigned char sha256[32];
   //unsigned int buff[BUFFLENGTHSCOPE];//TODO length
   unsigned int *buff;
 } RAWDATABUFFER;
 
 extern QMutex datavectordecoder_mutex[];
 extern QVector<RAWDATABUFFER> datavectordecoder[];
-extern RAWDATABUFFER rawdatabuffer;
+//extern RAWDATABUFFER rawdatabuffer;
 
 #ifdef WIN32
 	#define ENDL  "\r\n"

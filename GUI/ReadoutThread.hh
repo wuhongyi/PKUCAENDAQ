@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 三 6月 22 09:30:18 2022 (+0800)
-// Last-Updated: 日 10月 13 14:46:06 2024 (+0800)
+// Last-Updated: 一 1月 27 22:22:18 2025 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 51
+//     Update #: 52
 // URL: http://wuhongyi.cn 
 
 #ifndef _READOUTTHREAD_H_
@@ -100,7 +100,9 @@ private:
   unsigned int buff[MAXMODULENUM][BUFFLENGTHSCOPE];//TODO length
   int buffid[MAXMODULENUM];
   unsigned long filesize[MAXMODULENUM];
+  unsigned long dataflowsize[MAXMODULENUM];
 
+  
   unsigned int buffevent[BUFFLENGTHSCOPE];//TODO length
   int buffeventid;
   
