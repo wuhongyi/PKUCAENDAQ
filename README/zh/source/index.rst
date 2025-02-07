@@ -44,7 +44,9 @@ Welcome to GDDAQ's guides.
    UsersGuide/ZLE.rst
    UsersGuide/OPEN.rst
    UsersGuide/UserDPP.rst
+   UsersGuide/UserScope.rst
 
+   
 #################################
 
 .. toctree::

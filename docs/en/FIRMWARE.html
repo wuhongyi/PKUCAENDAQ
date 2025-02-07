@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Firmware &mdash; GDDAQ V20241112 文档</title>
+  <title>Firmware &mdash; GDDAQ V20250207 文档</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
@@ -16,7 +16,7 @@
   
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=8f546762"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=3dc5bdf8"></script>
         <script src="_static/doctools.js?v=888ff710"></script>
         <script src="_static/sphinx_highlight.js?v=4825356b"></script>
         <script src="_static/translations.js?v=beaddf03"></script>
@@ -121,6 +121,7 @@
 <li><p>V2745-dpp-psd-1G-2025012305.cup</p></li>
 <li><p>V2745-dpp-zle-1G-2025012707.cup</p></li>
 <li><p>V2745-OpenDPP-2024101303.cup</p></li>
+<li><p>V2745-OpenScope-2025020703.cup</p></li>
 </ul>
 </dd>
 </dl>
@@ -131,7 +132,8 @@
 <li><p>V2740-dpp-pha-1G-2025012205.cup</p></li>
 <li><p>V2740-dpp-psd-1G-2025012305.cup</p></li>
 <li><p>V2740-dpp-zle-1G-2025012707.cup</p></li>
-<li><p>V2740-OpenDPP-2024101302.cup</p></li>
+<li><p>V2740-OpenDPP-2025020700.cup</p></li>
+<li><p>V2740-OpenScope-2025020702.cup</p></li>
 </ul>
 </dd>
 </dl>
@@ -140,7 +142,7 @@
 <dt>2730</dt><dd><ul>
 <li><p>V2730-scope-1G-2024100300.cup</p></li>
 <li><p>V2730-dpp-psd-1G-2024092000.cup</p></li>
-<li><p>V2730-OpenDPP-2024101301.cup</p></li>
+<li><p>V2730-OpenDPP-2025020505.cup</p></li>
 </ul>
 </dd>
 </dl>
@@ -149,9 +151,9 @@
 </section>
 <section id="firmware-update">
 <h2>Firmware Update<a class="headerlink" href="#firmware-update" title="此标题的永久链接"></a></h2>
-<p>Access the module configuration page via USB （CAENDGTZ-USB-{PIDNUMBER}） or IP. There is a “Fireware” option in the left menu bar, click to enter the page, as follows:</p>
+<p>Access the module configuration page via USB (CAENDGTZ-USB-{PIDNUMBER}) or IP. There is a “Firmware” option in the left menu bar. Click to enter the page, as shown below:</p>
 <img alt="_images/firmwareupdate.png" src="_images/firmwareupdate.png" />
-<p>Check if the Scope/PHA/PSD/ZLE firmware version on this page matches the <strong>firmware</strong> folder in thepackage. If not, upload the new firmware through ‘Upload new firmware’. There is a blue bottom triangle button on the right end of each firmware in the webpage. By clicking this button, you can switch between the currently used firmware and set the default firmware to load when booting up. Additionally, promptly remove outdated firmware versions.</p>
+<p>Check whether the Scope/PHA/PSD/ZLE firmware versions on this page are consistent with those in the firmware folder of the obtained package. If they are not, upload new firmware through “Upload new firmware”. Each firmware on the webpage has a blue down triangle button on the right side. By clicking the button, you can switch to the currently used firmware, set the default firmware loaded at startup, etc. In addition, promptly delete old versions of firmware.</p>
 </section>
 </section>
 
