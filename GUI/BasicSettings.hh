@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 五 10月 21 20:26:00 2022 (+0800)
-// Last-Updated: 日 10月 13 13:14:45 2024 (+0800)
+// Last-Updated: 三 2月  5 15:47:15 2025 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 89
+//     Update #: 101
 // URL: http://wuhongyi.cn 
 
 #ifndef _BASICSETTINGS_H_
@@ -50,7 +50,7 @@
 #include <QtWidgets/QComboBox>
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-#define TABNUM_BASICSETTINGS 11
+#define TABNUM_BASICSETTINGS 12
 
 enum class TABBASIC
   {
@@ -65,6 +65,7 @@ enum class TABBASIC
     ZLE = 8,
     DEBUG = 9,
     USERDPP = 10,
+    USERSCOPE = 11,
   };
 
 
@@ -241,6 +242,16 @@ enum class TABBASICUSERDPP
   };
 
 
+#define TABUSERSCOPECOLUMNCOUNT 4
+
+enum class TABBASICUSERSCOPE
+  {
+    POLARITY = 0,
+    XIAFL = 1,
+    XIAFLFG = 2,
+    THRESHOLD = 3,
+
+  };
 
 
 
@@ -266,6 +277,7 @@ private:
   void TabZLE(int index);
   void TabDebug(int index);
   void TabUserDPP(int index);
+  void TabUserScope(int index);
 
   
   void HiddenTabADCColumn();
@@ -273,14 +285,14 @@ private:
   void HiddenTabTriggerColumn();
   void HiddenTabWaveformColumn();
   void HiddenTabRecordColumn();
-  void HiddenTaScopebGroupScope();
+  //void HiddenTaScopebGroupScope();
   void HiddenTabScopeColumn();
   void HiddenTabPHAColumn();
   void HiddenTabPSD1Column();
   void HiddenTabPSD2Column();
   void HiddenTabZLEColumn();
   void HiddenTabUserDPPColumn();
-  
+  void HiddenTabUserScopeColumn();
 
 private:
 
@@ -325,7 +337,9 @@ private:
   TABBASICPSD2 tabbasicpsd2;
   TABBASICZLE tabbasiczle;
   TABBASICUSERDPP tabbasicuserdpp;
+  TABBASICUSERSCOPE tabbasicuserscope;
 
+  
   // UserDPP
   QTableWidget *tableuserdpp;
 
@@ -625,10 +639,35 @@ private:
   QPushButton *pbdebugapplyall;
 
 
+  //UserScope
+  QTableWidget *tableuserscope;
 
+
+  QGroupBox *groupboxuserscope1;
+  QHBoxLayout *horizontalgbuserscope1;
+  QRadioButton *rbtableuserscoperow;
+  QRadioButton *rbtableuserscopecol;
+  QRadioButton *rbtableuserscopeitem;
+  QComboBox *cbuserscopecopych;
+  QPushButton *pbtableuserscopecopy;     
+  
   
 
+  QGroupBox *groupboxuserscope3;
+  QHBoxLayout *horizontalgbuserscope3;
   
+  
+  QGroupBox *groupboxuserscope;
+  QHBoxLayout *horizontalgbuserscope;
+  QPushButton *pbtableuserscopeloadselected;
+  QPushButton *pbtableuserscopeapplyselected;
+  QPushButton *pbuserscopeloadall;
+  QPushButton *pbuserscopeapplyall;
+
+  QGroupBox *groupboxopen;
+  QGridLayout *gridlayoutgbopen;
+  QComboBox *selectwave;
+
   
 private:
 
@@ -670,10 +709,11 @@ private:
   void ApplyUserDPP(unsigned short row, unsigned short column);
   void LoadUserDPP(unsigned short row, unsigned short column);
 
-
-
+  void ApplyUserScope(unsigned short row, unsigned short column);
+  void LoadUserScope(unsigned short row, unsigned short column);
 		  
-							 
+
+							     
 private slots:
   void on_toolBox_currentChanged(int index); //ToolBox当前组变化时，显示TabWidget相应的页面
   void on_tabWidget_currentChanged(int index);
@@ -832,8 +872,19 @@ private slots:
   //debug
   void on_pbdebugloadall_clicked();
   void on_pbdebugapplyall_clicked();
-  
-  
+
+
+  //userscope
+  void on_rbtableuserscoperow_clicked(); 
+  void on_rbtableuserscopeitem_clicked();
+  void on_rbtableuserscopecol_clicked();
+
+  void on_pbtableuserscopeloadselected_clicked();
+  void on_pbtableuserscopeapplyselected_clicked();
+  void on_pbuserscopeloadall_clicked();
+  void on_pbuserscopeapplyall_clicked();
+
+  void on_pbtableuserscopecopy_clicked();
 };
 
 

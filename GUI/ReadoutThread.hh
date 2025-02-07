@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 三 6月 22 09:30:18 2022 (+0800)
-// Last-Updated: 一 1月 27 22:22:18 2025 (+0800)
+// Last-Updated: 二 2月  4 13:45:12 2025 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 52
+//     Update #: 53
 // URL: http://wuhongyi.cn 
 
 #ifndef _READOUTTHREAD_H_
@@ -69,7 +69,7 @@ signals:
   void OnlineDebugPSD(event_psd *evt_psd);
   void OnlineDebugZLE(event_zle *evt_zle);
   void OnlineDebugScope(event_scope *evt_scope);
-  void OnlineDebugOPEN(event_open *evt_open);
+  void OnlineDebugOPENDPP(event_opendpp *evt_opendpp);
 
 					       
 public slots:
@@ -150,7 +150,7 @@ private:
   struct event_psd *evt_psd, *evt_psd_tmp;
   struct event_zle *evt_zle, *evt_zle_tmp;
   struct event_scope *evt_scope, *evt_scope_tmp;
-  struct event_open *evt_open, *evt_open_tmp;
+  struct event_opendpp *evt_opendpp, *evt_opendpp_tmp;
 
  
 };

@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 二 10月 25 14:31:51 2022 (+0800)
-// Last-Updated: 五 1月 31 21:53:31 2025 (+0800)
+// Last-Updated: 五 2月  7 16:00:32 2025 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 86
+//     Update #: 89
 // URL: http://wuhongyi.cn 
 
 #ifndef _GLOBAL_H_
@@ -27,8 +27,8 @@
 #include "QMutex"
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-#define VERSIONDATE "GUI-Qt - 20250131"
-#define EXPIRATIONDATE 20250831
+#define VERSIONDATE "GUI-Qt - 20250207"
+#define EXPIRATIONDATE 20250907
 
 
 #define ONLINEMODE
@@ -223,7 +223,7 @@ struct event_scope {
 };
 
 
-#define DATA_FORMAT_OPEN " \
+#define DATA_FORMAT_OPENDPP " \
 	[ \
 		{ \"name\" : \"CHANNEL\", \"type\" : \"U8\" }, \
 		{ \"name\" : \"TIMESTAMP\", \"type\" : \"U64\" }, \
@@ -238,7 +238,7 @@ struct event_scope {
 	] \
 "
 
-struct event_open {
+struct event_opendpp {
   uint8_t channel;
   uint64_t timestamp;
   uint16_t fine_timestamp;
@@ -423,9 +423,9 @@ static void free_event_scope(struct event_scope* evt)
   free(evt);
 }
 
-static struct event_open* allocate_event_open(size_t n_samples)
+static struct event_opendpp* allocate_event_opendpp(size_t n_samples)
 {
-  struct event_open* evt = (event_open*)malloc(sizeof(*evt));
+  struct event_opendpp* evt = (event_opendpp*)malloc(sizeof(*evt));
   if (evt == NULL)
     {
       std::cout << "malloc failed" << std::endl;
@@ -440,7 +440,7 @@ static struct event_open* allocate_event_open(size_t n_samples)
   return evt;
 }
 
-static void free_event_open(struct event_open* evt)
+static void free_event_opendpp(struct event_opendpp* evt)
 {
   free(evt->waveform);
   free(evt);

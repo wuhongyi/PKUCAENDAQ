@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 三 6月 22 09:55:01 2022 (+0800)
-// Last-Updated: 六 1月 13 13:05:11 2024 (+0800)
+// Last-Updated: 二 2月  4 14:02:53 2025 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 13
+//     Update #: 14
 // URL: http://wuhongyi.cn 
 
 
@@ -104,7 +104,7 @@ private:
     unsigned short ADCBits;
     unsigned short ADCMSPS;
     unsigned short Channels;
-    char FwType[256];//DPP_PHA   DPP_ZLE   DPP_PSD   DPP_DAW   DPP_OPEN   Scope
+    char FwType[256];//DPP_PHA   DPP_ZLE   DPP_PSD   DPP_DAW   DPP_OPEN   Scope  SCOPE_OPEN
     char LicenseStatus[256];
   };
 

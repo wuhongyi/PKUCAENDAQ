@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 五 12月 17 15:18:35 2021 (+0800)
-// Last-Updated: 一 1月 27 22:23:04 2025 (+0800)
+// Last-Updated: 五 2月  7 15:08:50 2025 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 72
+//     Update #: 73
 // URL: http://wuhongyi.cn 
 
 #ifndef _MAINWINDOW_H_
@@ -59,7 +59,8 @@ public:
   
   // scope ZLE PHA PSD
   void UpdateOnlineRateSelfTrgRate(unsigned short mod,unsigned short ch, QString value);
-
+  void UpdateOnlineRateSelfTrgRateOpen(unsigned short mod,unsigned short ch, QString value);
+  
   // PHA PSD
   void UpdateOnlineRateChRealtimeMonitor(unsigned short mod, unsigned short ch, QString value);
   void UpdateOnlineRateChDeadtimeMonitor(unsigned short mod, unsigned short ch, QString value);

@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 四 2月 16 15:49:18 2023 (+0800)
-// Last-Updated: 四 4月 11 18:51:21 2024 (+0800)
+// Last-Updated: 二 2月  4 15:10:30 2025 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 22
+//     Update #: 23
 // URL: http://wuhongyi.cn 
 
 #ifndef _DEBUG_H_
@@ -150,7 +150,7 @@ public slots:
   void UpdateOnlineDebugPSD(event_psd *evt_psd);
   void UpdateOnlineDebugZLE(event_zle *evt_zle);
   void UpdateOnlineDebugScope(event_scope *evt_scope);
-  void UpdateOnlineDebugOPEN(event_open *evt_open);
+  void UpdateOnlineDebugOPENDPP(event_opendpp *evt_opendpp);
 
 
 						     

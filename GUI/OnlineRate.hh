@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 六 3月 11 16:34:28 2023 (+0800)
-// Last-Updated: 一 1月 27 22:23:36 2025 (+0800)
+// Last-Updated: 五 2月  7 15:07:32 2025 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 18
+//     Update #: 19
 // URL: http://wuhongyi.cn 
 
 #ifndef _ONLINERATE_H_
@@ -63,7 +63,8 @@ public:
 
   // scope ZLE PHA PSD
   void UpdateOnlineRateSelfTrgRate(unsigned short mod,unsigned short ch, QString value);
-
+  void UpdateOnlineRateSelfTrgRateOpen(unsigned short mod,unsigned short ch, QString value);
+  
   // PHA PSD
   void UpdateOnlineRateChRealtimeMonitor(unsigned short mod, unsigned short ch, QString value);
   void UpdateOnlineRateChDeadtimeMonitor(unsigned short mod, unsigned short ch, QString value);
@@ -105,7 +106,7 @@ private slots:
 };
 
 
-#define ONLINERATECOLUMN 6
+#define ONLINERATECOLUMN 7
 #define ONLINERATEPERSECTIONCH 16
 
 class ModuleRate : public QWidget
@@ -118,6 +119,7 @@ public:
 
 
   void UpdateSelfTrgRate(unsigned short ch, QString value);
+  void UpdateSelfTrgRateOpen(unsigned short ch, QString value);
   void UpdateChRealtimeMonitor(unsigned short ch, QString value);
   void UpdateChDeadtimeMonitor(unsigned short ch, QString value);
   void UpdateChTriggerCnt(unsigned short ch, QString value);
