@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 五 12月 17 15:18:35 2021 (+0800)
-// Last-Updated: 五 2月  7 15:08:50 2025 (+0800)
+// Last-Updated: 日 2月 23 19:31:18 2025 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 73
+//     Update #: 74
 // URL: http://wuhongyi.cn 
 
 #ifndef _MAINWINDOW_H_
@@ -94,7 +94,8 @@ public slots:
   void AboutSoftware();
   void ConnectModule();
   void OpenOutputSettings();
-
+  void SendTriggerForAllModule();
+  
   void ShowBasicSettings();
   void ShowLogicSettings();
   void ShowOnlineRate();
@@ -144,7 +145,7 @@ private:
   QAction *mSaveasMenuAct;
   QAction *mOpenSettingsMenuAct;
   QAction *mOutputConfigMenuAct;
-
+  QAction *mSWTriggerMenuAct;
   
   DeviceHandle *mDevice = nullptr;
   ReadoutThread *mReadoutThread = nullptr;

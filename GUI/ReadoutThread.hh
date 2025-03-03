@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 三 6月 22 09:30:18 2022 (+0800)
-// Last-Updated: 二 2月  4 13:45:12 2025 (+0800)
+// Last-Updated: 日 2月 23 00:41:55 2025 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 53
+//     Update #: 55
 // URL: http://wuhongyi.cn 
 
 #ifndef _READOUTTHREAD_H_
@@ -102,6 +102,10 @@ private:
   unsigned long filesize[MAXMODULENUM];
   unsigned long dataflowsize[MAXMODULENUM];
 
+#ifdef LONGWAVEFORMMODE
+  unsigned int *longwaveformbuff;
+  int longwaveformbuffid;
+#endif
   
   unsigned int buffevent[BUFFLENGTHSCOPE];//TODO length
   int buffeventid;
@@ -115,7 +119,6 @@ private:
 
   
 #ifdef DECODERONLINE
-  
   int    shmfd_dec;  // shared memory id
   unsigned char *shmptr_dec;// pointer to shm
 

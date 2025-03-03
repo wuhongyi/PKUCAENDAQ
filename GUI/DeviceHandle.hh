@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 三 6月 22 09:55:01 2022 (+0800)
-// Last-Updated: 二 2月  4 14:02:53 2025 (+0800)
+// Last-Updated: 日 2月 23 19:29:06 2025 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 14
+//     Update #: 16
 // URL: http://wuhongyi.cn 
 
 
@@ -38,7 +38,7 @@ public:
   
   // void ClearDevice();
   // void AddDevice(unsigned short slot);
-
+  void SendSWTrigger(unsigned short mod);
 
 
   int Open(const char* url, unsigned short mod);
