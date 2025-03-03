@@ -57,7 +57,8 @@ Welcome to GDDAQ's guides.
    Example/HPGe.rst
    Example/Si.rst
    Example/UserDPP.rst
-
+   Example/LongWaveform.rst
+   
    
 #################################
 
@@ -78,7 +79,7 @@ Welcome to GDDAQ's guides.
       
    ProcurementProposal.rst
    ExperimentalDebugging.rst
-   
+   Recovery.rst
 
 .. Indices and tables
 .. ==================
