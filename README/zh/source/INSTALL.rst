@@ -4,9 +4,9 @@
 .. Author: Hongyi Wu(吴鸿毅)
 .. Email: wuhongyi@qq.com 
 .. Created: 六 2月  3 20:52:33 2024 (+0800)
-.. Last-Updated: 五 1月 17 20:06:54 2025 (+0800)
+.. Last-Updated: 二 3月 25 19:35:23 2025 (+0800)
 ..           By: Hongyi Wu(吴鸿毅)
-..     Update #: 30
+..     Update #: 33
 .. URL: http://wuhongyi.cn 
 
 =================================   
@@ -48,11 +48,11 @@
 .. code-block:: bash
 
   # Ubuntu20.04 依赖安装
-  sudo apt -y install libboost-dev libboost-all-dev libssl-dev openssl qt5-default qtcreator libqt5charts5-dev
+  sudo apt -y install libboost-dev libboost-all-dev libssl-dev openssl qt5-default qtcreator libqt5charts5-dev 
   # Ubuntu22.04 依赖安装
-  sudo apt -y install libboost-dev libboost-all-dev libssl-dev openssl libqt5charts5-dev
+  sudo apt -y install libboost-dev libboost-all-dev libssl-dev openssl libqt5charts5-dev 
   # Ubuntu24.04 依赖安装
-  sudo apt -y install libboost-dev libboost-all-dev libssl-dev openssl libqt5charts5-dev
+  sudo apt -y install libboost-dev libboost-all-dev libssl-dev openssl libqt5charts5-dev 
   # Fedora 40  依赖安装
   sudo dnf -y install redhat-lsb-core boost boost-devel openssl openssl-devel qt5-qtcharts qt5-qtcharts-devel qt5-qtbase qt5-qtbase-devel
   # Rocky 9  依赖安装
@@ -84,8 +84,8 @@
   sudo ldconfig
 
   cd ..
-  tar -zxvf caen_dig2-v1.6.1.tar.gz   
-  cd caen_dig2-v1.6.1/
+  tar -zxvf caen_dig2-v1.7.0.tar.gz   
+  cd caen_dig2-v1.7.0/
   ./configure --disable-assert
   make
   sudo make install

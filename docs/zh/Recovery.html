@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>恢复出厂设置 &mdash; GDDAQ V20250207 文档</title>
+  <title>恢复出厂设置 &mdash; GDDAQ V20250413 文档</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
@@ -16,7 +16,7 @@
   
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=3dc5bdf8"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=7ec00508"></script>
         <script src="_static/doctools.js?v=888ff710"></script>
         <script src="_static/sphinx_highlight.js?v=4825356b"></script>
         <script src="_static/translations.js?v=beaddf03"></script>
@@ -66,6 +66,7 @@
 <li class="toctree-l1"><a class="reference internal" href="UsersGuide/OPEN.html">开放 FPGA</a></li>
 <li class="toctree-l1"><a class="reference internal" href="UsersGuide/UserDPP.html">UserDPP 固件</a></li>
 <li class="toctree-l1"><a class="reference internal" href="UsersGuide/UserScope.html">UserScope 固件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UsersGuide/UDP.html">UDP</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">应用案例</span></p>
 <ul>
@@ -119,9 +120,11 @@
 <img alt="_images/UART_RX_TX.png" src="_images/UART_RX_TX.png" />
 <p>通过跳针短接 RX 和 TX，如上图所示。</p>
 <p>将模块插入机箱，开启电源，直到前面板上只有 TTL 和 NIM 两个 LED 常亮。</p>
-<p>通过 USB 或者网络访问重置页面。
-- USB 方式：<a class="reference external" href="http://caendgtz-usb-recovery">http://caendgtz-usb-recovery</a> （经测试这个方式无法访问！！！）
-- 网络方式：<a class="reference external" href="http://192.168.0.254">http://192.168.0.254</a> （采集模块和电脑通过网线直连, 其中 192.168.0.254 是模块的默认 IP）</p>
+<p>通过 USB 或者网络访问重置页面。</p>
+<ul class="simple">
+<li><p>USB 方式：<a class="reference external" href="http://caendgtz-usb-recovery">http://caendgtz-usb-recovery</a> （经测试这个方式无法访问！！！）</p></li>
+<li><p>网络方式：<a class="reference external" href="http://192.168.0.254">http://192.168.0.254</a> （采集模块和电脑通过网线直连, 其中 192.168.0.254 是模块的默认 IP）</p></li>
+</ul>
 <img alt="_images/recoverymode.png" src="_images/recoverymode.png" />
 <p>如上图所示，点击网页上的重置按钮。等待前面板上的只有 TTL 和 NIM 两个 LED 常亮。</p>
 <p>关闭机箱，去除短接跳针。重启机箱电源。等待初始化成功，前面板只有 NIM 和 PLL-LOCK 两个 LED 常亮。</p>

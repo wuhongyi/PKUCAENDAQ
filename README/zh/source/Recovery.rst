@@ -4,9 +4,9 @@
 .. Author: Hongyi Wu(吴鸿毅)
 .. Email: wuhongyi@qq.com 
 .. Created: 一 3月  3 18:54:50 2025 (+0800)
-.. Last-Updated: 一 3月  3 19:15:42 2025 (+0800)
+.. Last-Updated: 日 4月 13 19:22:12 2025 (+0800)
 ..           By: Hongyi Wu(吴鸿毅)
-..     Update #: 1
+..     Update #: 2
 .. URL: http://wuhongyi.cn 
 
 ##################################################
@@ -25,6 +25,7 @@
 将模块插入机箱，开启电源，直到前面板上只有 TTL 和 NIM 两个 LED 常亮。
 
 通过 USB 或者网络访问重置页面。
+
 - USB 方式：http://caendgtz-usb-recovery （经测试这个方式无法访问！！！）
 - 网络方式：http://192.168.0.254 （采集模块和电脑通过网线直连, 其中 192.168.0.254 是模块的默认 IP）
 	   

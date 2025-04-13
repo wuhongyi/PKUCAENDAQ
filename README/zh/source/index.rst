@@ -45,7 +45,7 @@ Welcome to GDDAQ's guides.
    UsersGuide/OPEN.rst
    UsersGuide/UserDPP.rst
    UsersGuide/UserScope.rst
-
+   UsersGuide/UDP.rst
    
 #################################
 

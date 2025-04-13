@@ -4,9 +4,9 @@
 .. Author: Hongyi Wu(吴鸿毅)
 .. Email: wuhongyi@qq.com 
 .. Created: 日 2月 23 16:17:13 2025 (+0800)
-.. Last-Updated: 一 3月  3 19:26:23 2025 (+0800)
+.. Last-Updated: 日 4月 13 19:23:38 2025 (+0800)
 ..           By: Hongyi Wu(吴鸿毅)
-..     Update #: 3
+..     Update #: 4
 .. URL: http://wuhongyi.cn 
 
 ##################################################
@@ -44,14 +44,17 @@
 
 如果你确实需要清理buff/cache，可以通过执行sync命令来确保所有数据已经从缓冲区和缓存中写入磁盘，然后可以通过echo命令写入/proc/sys/vm/drop_caches来清理缓冲区和缓存。
 
-#同步磁盘数据
-sudo sync
-# 清除页缓存
-sudo bash -c "echo 1 > /proc/sys/vm/drop_caches"
-# 清除dentries和inodes
-sudo bash -c "echo 2 > /proc/sys/vm/drop_caches"
-# 清除页缓存，dentries和inodes
-sudo bash -c "echo 3 > /proc/sys/vm/drop_caches"
+
+.. code-block:: bash
+  
+  #同步磁盘数据
+  sudo sync
+  # 清除页缓存
+  sudo bash -c "echo 1 > /proc/sys/vm/drop_caches"
+  # 清除dentries和inodes
+  sudo bash -c "echo 2 > /proc/sys/vm/drop_caches"
+  # 清除页缓存，dentries和inodes
+  sudo bash -c "echo 3 > /proc/sys/vm/drop_caches"
 
    
 .. 
