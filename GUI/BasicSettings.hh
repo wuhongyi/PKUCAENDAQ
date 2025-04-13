@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 五 10月 21 20:26:00 2022 (+0800)
-// Last-Updated: 三 2月  5 15:47:15 2025 (+0800)
+// Last-Updated: 日 4月 13 16:43:16 2025 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 101
+//     Update #: 105
 // URL: http://wuhongyi.cn 
 
 #ifndef _BASICSETTINGS_H_
@@ -48,6 +48,9 @@
 #include <QtWidgets/QRadioButton>
 #include <QtWidgets/QCheckBox>
 #include <QtWidgets/QComboBox>
+
+#include <iostream>
+#include <fstream>
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 #define TABNUM_BASICSETTINGS 12
@@ -265,6 +268,9 @@ public:
   BasicSettings(MainWindow *parent, DeviceHandle *device);
   virtual ~BasicSettings();
 
+  void WriteParameters(std::ofstream &file, unsigned short mod);
+  void Refresh();
+  
 private:
   void TabADC(int index);
   void TabTrigger(int index);

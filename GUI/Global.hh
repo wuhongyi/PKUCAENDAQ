@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 二 10月 25 14:31:51 2022 (+0800)
-// Last-Updated: 一 3月  3 19:30:11 2025 (+0800)
+// Last-Updated: 日 4月 13 16:51:07 2025 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 100
+//     Update #: 112
 // URL: http://wuhongyi.cn 
 
 #ifndef _GLOBAL_H_
@@ -27,8 +27,8 @@
 #include "QMutex"
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-#define VERSIONDATE "GUI-Qt - 20250303"
-#define EXPIRATIONDATE 20251003
+#define VERSIONDATE "GUI-Qt - 20250413"
+#define EXPIRATIONDATE 20251113
 
 
 #define ONLINEMODE
@@ -49,16 +49,18 @@
 
 //MiB x 1024 x 1024 / 4
 #define BUFFLENGTH 1310720
-#define BUFFLENGTHSCOPE 6000000   // N x 2 = sample(long wave 21000000)
+#define BUFFLENGTHSCOPE 6000000   // N x 2 = sample(max wave samples 41943040)
+	       //default 6000000
 
-//6GiB 1610612736   SHA256 ISSUE
+
+//6GiB 1610612736   SHA256 ISSUE, write issue
 //5GiB 1342177280   SHA256 ISSUE   
 //4GiB 1073741824   SHA256 ISSUE
 //3GiB  805306368
 //2GiB  536870912
 //1GiB  268435456
 //#define LONGWAVEFORMMODE
-#define LONGWAVEFORMMODEBUFFLENGTH 805306368
+#define LONGWAVEFORMMODEBUFFLENGTH 268435456
 
 
 typedef struct RAWDATABUFFER
@@ -84,6 +86,8 @@ extern QVector<RAWDATABUFFER> datavectordecoder[];
 
 #define CONFIG_DIR ".GDDAQ"
 #define DEFAUL_RUN_CONFIG_FILENAME "GDDAQ_CAEN.conf"
+
+#define DEFAULT_PARAMETERS "../pars/setting.par"
 
 
 

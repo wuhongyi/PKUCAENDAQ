@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 三 6月 22 09:55:01 2022 (+0800)
-// Last-Updated: 日 2月 23 19:29:06 2025 (+0800)
+// Last-Updated: 五 3月  7 13:07:41 2025 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 16
+//     Update #: 17
 // URL: http://wuhongyi.cn 
 
 
@@ -78,7 +78,7 @@ public:
   char * GetLicenseStatus(unsigned short mod);
   // unsigned short GetSlot(unsigned short num);
 
-
+  void ConfigUDP(unsigned short mod);
 
 private:
   

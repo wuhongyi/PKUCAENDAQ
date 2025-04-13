@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 三 1月 25 18:44:14 2023 (+0800)
-// Last-Updated: 三 4月 24 21:05:19 2024 (+0800)
+// Last-Updated: 日 4月 13 16:46:25 2025 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 33
+//     Update #: 36
 // URL: http://wuhongyi.cn 
 
 #ifndef _LOGICSETTINGS_H_
@@ -48,6 +48,9 @@
 #include <QtWidgets/QRadioButton>
 #include <QtWidgets/QCheckBox>
 #include <QtWidgets/QComboBox>
+
+#include <iostream>
+#include <fstream>
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 #define TABNUM_LOGICSETTINGS 6
@@ -100,7 +103,9 @@ public:
   LogicSettings(MainWindow *parent, DeviceHandle *device);
   virtual ~LogicSettings();
 
-
+  void WriteParameters(std::ofstream &file, unsigned short mod);
+  void Refresh();
+  
 private:
   void TabRun(int index);
   void TabFrontPanel(int index);

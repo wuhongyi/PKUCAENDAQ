@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 五 12月 17 15:18:35 2021 (+0800)
-// Last-Updated: 日 2月 23 19:31:18 2025 (+0800)
+// Last-Updated: 六 4月 12 11:49:25 2025 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 74
+//     Update #: 76
 // URL: http://wuhongyi.cn 
 
 #ifndef _MAINWINDOW_H_
@@ -85,7 +85,7 @@ private:
   void PopulateMenu();
     
   void LoadConfigureFile(QString filename);
-
+  void SaveParameters(QString filename);			  
 			     
 private slots:
 
@@ -104,6 +104,10 @@ public slots:
   void StartAcquisition();
   void StopAcquisition();
 
+
+  void SaveDefaultParameters();
+  void SaveAsParameters();  
+  void LoadParameters();
   
 private:
 
