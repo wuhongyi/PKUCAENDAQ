@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 六 5月 25 14:13:31 2024 (+0800)
-// Last-Updated: 日 10月 13 14:19:59 2024 (+0800)
+// Last-Updated: 二 4月 22 11:04:25 2025 (+0900)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 21
+//     Update #: 22
 // URL: http://wuhongyi.cn 
 
 #ifndef _HTTPSERVER_H_
@@ -52,6 +52,7 @@ protected:
 
 private:
   TH1I *adc[MAXMODULENUM][MAXCHANNELNUM];
+  TH2I *adc_ch[MAXMODULENUM];
   TH1I *rate[MAXMODULENUM][MAXCHANNELNUM];
   TH1I *cfd[MAXMODULENUM][MAXCHANNELNUM];
   TH2I *psd[MAXMODULENUM][MAXCHANNELNUM];
