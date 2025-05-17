@@ -4,9 +4,9 @@
 .. Author: Hongyi Wu(吴鸿毅)
 .. Email: wuhongyi@qq.com 
 .. Created: 六 2月  3 20:52:33 2024 (+0800)
-.. Last-Updated: 二 3月 25 19:35:23 2025 (+0800)
+.. Last-Updated: 六 5月 17 17:16:56 2025 (+0800)
 ..           By: Hongyi Wu(吴鸿毅)
-..     Update #: 33
+..     Update #: 34
 .. URL: http://wuhongyi.cn 
 
 =================================   
@@ -76,16 +76,16 @@
   sudo ./install.sh
 
   cd ..
-  tar -zxvf caen_felib-v1.3.1.tar.gz 
-  cd caen_felib-v1.3.1/
+  tar -zxvf caen_felib-v1.3.2.tar.gz 
+  cd caen_felib-v1.3.2/
   ./configure --disable-assert
   make
   sudo make install
   sudo ldconfig
 
   cd ..
-  tar -zxvf caen_dig2-v1.7.0.tar.gz   
-  cd caen_dig2-v1.7.0/
+  tar -zxvf caen_dig2-v1.7.1.tar.gz   
+  cd caen_dig2-v1.7.1/
   ./configure --disable-assert
   make
   sudo make install
