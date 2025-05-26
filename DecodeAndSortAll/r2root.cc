@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 日 2月 18 01:23:28 2024 (+0800)
-// Last-Updated: 日 9月  8 12:04:23 2024 (+0800)
+// Last-Updated: 日 5月 25 16:00:14 2025 (+0900)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 16
+//     Update #: 27
 // URL: http://wuhongyi.cn 
 
 #include "r2root.hh"
@@ -25,7 +25,66 @@ r2root::r2root(int run)
   benchmark = new TBenchmark;
   
   rawdec = new decoder[MAXMODULENUMBER];
+
+  for (int i = 0; i < MAXMODULENUMBER; ++i)
+    for (int j = 0; j < MAXCHANNELNUMBER; ++j)
+      {
+	timeoffset[i][j] = 0;
+	chlow[i][j] = 0;
+	chhigh[i][j] = 65535;
+
+	sl[i][j] = 375;
+	sg[i][j] = 30;
+	tau[i][j] = 100000;
+      }
+
+  std::ifstream readtxt;
+  std::string str_tmp;
+  Short_t mod_tmp;
+  Short_t ch_tmp;
+  Short_t offset_tmp;
+  UShort_t chlow_tmp;
+  UShort_t chhigh_tmp;
+  unsigned int sl_tmp;
+  unsigned int sg_tmp;
+  unsigned int tau_tmp;
+  readtxt.open("par.dat");
+  if(!readtxt.is_open()) { std::cout << "can't open file par.dat." << std::endl; }
+  getline(readtxt, str_tmp);
+  while(!readtxt.eof())
+    {
+      readtxt >> mod_tmp >> ch_tmp >> offset_tmp >> chlow_tmp >> chhigh_tmp;
+      if(readtxt.eof()) break;
+      timeoffset[mod_tmp][ch_tmp] = offset_tmp;
+      chlow[mod_tmp][ch_tmp] = chlow_tmp;
+      chhigh[mod_tmp][ch_tmp] = chhigh_tmp;
+    }
+  readtxt.close();
+
+
+  readtxt.open("parfdk.dat");
+  if(!readtxt.is_open()) { std::cout << "can't open file parfdk.dat." << std::endl; }
+  getline(readtxt, str_tmp);
+  while(!readtxt.eof())
+    {
+      readtxt >> mod_tmp >> ch_tmp >> sl_tmp >> sg_tmp >> tau_tmp;
+      if(readtxt.eof()) break;
+      sl[mod_tmp][ch_tmp] = sl_tmp;
+      sg[mod_tmp][ch_tmp] = sg_tmp;
+      tau[mod_tmp][ch_tmp] = tau_tmp;
+    }
+  readtxt.close();
+
+
+  for (int i = 0; i < MAXMODULENUMBER; ++i)
+    for (int j = 0; j < MAXCHANNELNUMBER; ++j)
+      {
+	rawdec[i].SetFDKSL(j, sl[i][j]);
+	rawdec[i].SetFDKSG(j, sg[i][j]);
+	rawdec[i].SetFDKTAU(j, tau[i][j]);
+      }
   
+
   //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
   char tempfilename[1024];
@@ -88,7 +147,7 @@ r2root::r2root(int run)
   t->Branch("waveform", &waveform, "waveform[nsamples]/s");
 
 
-  
+  t->Branch("energyxia", &energyxia, "energyxia/s");
 }
 
 r2root::~r2root()
@@ -122,7 +181,7 @@ void r2root::Process()
 	{
 	  while(havedata[i])
 	    {
-	      if(rawdec[i].getfirmware() == 5)
+	      if(rawdec[i].getfirmware() == 5 || rawdec[i].getfirmware() == 4)//open-fdk
 		{
 		  timestamp = 8*rawdec[i].getts();
 		}
@@ -152,7 +211,12 @@ void r2root::Process()
 		  mapvalue.sr = rawdec[mark].getsamplerate();
 		  mapvalue.ch = rawdec[mark].getch();
 		  mapvalue.mod = rawdec[mark].getmod();
-		  mapvalue.ts = timestamp;//rawdec[mark].getts();
+		  mapvalue.ts = timestamp+timeoffset[mapvalue.mod][mapvalue.ch];
+
+		  
+		  mapvalue.energy = 0;
+		  mapvalue.energyshort = 0;
+		  mapvalue.energyxia = 0;
 		  
 		  switch(mapvalue.fw)
 		    {
@@ -165,6 +229,8 @@ void r2root::Process()
 			mapvalue.energy = rawdec[mark].getenergy();
 			mapvalue.energyshort = rawdec[mark].getenergyshort();
 
+			
+			
 			rawdec[mark].getanalogtype(analogtype);
 			memcpy(mapvalue.analogtype, analogtype, sizeof(uint8_t)*2);
 			rawdec[mark].getdigitaltype(digitaltype);
@@ -205,8 +271,14 @@ void r2root::Process()
 		    case 3://daw
 		      printf("DAW not impl...\n");
 		      break;
-		    case 4://open0
-		      printf("OPEN not impl...\n");
+		    case 4://open
+		      mapvalue.energyxia = rawdec[mark].getenergyxia();
+		      mapvalue.nsamples = rawdec[mark].getnsamples();
+		      if(mapvalue.nsamples > 0)
+			{
+			  mapvalue.waveform = new UShort_t [mapvalue.nsamples];
+			  rawdec[mark].getwaveform(mapvalue.waveform);
+			}
 		      break;
 		    default:
 		      printf("firmware type error...\n");
@@ -231,6 +303,34 @@ void r2root::Process()
 
 		  flagkey = ((((mapvalue.tsflag)<<6)+mapvalue.mod)<<6)+mapvalue.ch;
 
+		  if(mapvalue.fw == 0 || mapvalue.fw == 2)
+		    {
+		      if(mapvalue.energy < chlow[mapvalue.mod][mapvalue.ch] || mapvalue.energy > chhigh[mapvalue.mod][mapvalue.ch])
+			{
+			  if(mapvalue.samples > 0)
+			    {
+			      delete[] mapvalue.analog0;
+			      delete[] mapvalue.analog1;
+			      delete[] mapvalue.digital0;
+			      delete[] mapvalue.digital1;
+			      delete[] mapvalue.digital2;
+			      delete[] mapvalue.digital3;
+			    }			  
+			  continue;
+			}
+		    }
+		  if(mapvalue.fw == 4)
+		    {
+		      if(mapvalue.energyxia < chlow[mapvalue.mod][mapvalue.ch] || mapvalue.energy > chhigh[mapvalue.mod][mapvalue.ch])
+			{
+			  if(mapvalue.nsamples > 0)
+			    {
+			      delete[] mapvalue.waveform;
+			    }
+			  continue;
+			}
+		    }
+		    
 		  sortdata.insert(std::make_pair(flagkey, mapvalue));
 		}
 	      else
@@ -306,8 +406,14 @@ void r2root::Process()
 	    case 3://daw
 	      printf("DAW not impl...\n");
 	      break;
-	    case 4://open0
-	      printf("OPEN not impl...\n");
+	    case 4://open
+	      energyxia = itkey->second.energyxia;
+	      nsamples = itkey->second.nsamples;
+	      if(nsamples > 0)
+		{
+		  memcpy(waveform, itkey->second.waveform, sizeof(UShort_t)*nsamples);
+		  delete itkey->second.waveform;
+		}
 	      break;
 	    default:
 	      printf("firmware type error...\n");
@@ -395,8 +501,14 @@ void r2root::Process()
 		case 3://daw
 		  printf("DAW not impl...\n");
 		  break;
-		case 4://open0
-		  printf("OPEN not impl...\n");
+		case 4://open
+		  energyxia = itkey->second.energyxia;
+		  nsamples = itkey->second.nsamples;
+		  if(nsamples > 0)
+		    {
+		      memcpy(waveform, itkey->second.waveform, sizeof(UShort_t)*nsamples);
+		      delete itkey->second.waveform;
+		    }
 		  break;
 		default:
 		  printf("firmware type error...\n");

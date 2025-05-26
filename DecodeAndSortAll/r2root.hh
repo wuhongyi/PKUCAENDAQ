@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 日 2月 18 01:22:59 2024 (+0800)
-// Last-Updated: 日 9月  8 12:03:06 2024 (+0800)
+// Last-Updated: 日 5月 25 15:47:11 2025 (+0900)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 9
+//     Update #: 14
 // URL: http://wuhongyi.cn 
 
 #ifndef _R2ROOT_H_
@@ -32,6 +32,7 @@
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 #define MAXMODULENUMBER 100
+#define MAXCHANNELNUMBER 64
 
 struct eventdata
 {
@@ -64,6 +65,8 @@ struct eventdata
   unsigned int triggerid;
   unsigned int nsamples;
   UShort_t *waveform;
+
+  UShort_t energyxia;
 };
 
 
@@ -100,6 +103,14 @@ private:
   Long64_t flagkey;
   eventdata mapvalue;
 
+  Short_t timeoffset[MAXMODULENUMBER][MAXCHANNELNUMBER];
+  UShort_t chlow[MAXMODULENUMBER][MAXCHANNELNUMBER];
+  UShort_t chhigh[MAXMODULENUMBER][MAXCHANNELNUMBER];
+
+  unsigned int sl[MAXMODULENUMBER][MAXCHANNELNUMBER];
+  unsigned int sg[MAXMODULENUMBER][MAXCHANNELNUMBER];
+  unsigned int tau[MAXMODULENUMBER][MAXCHANNELNUMBER];
+  
 private:
   Long64_t tsflag;
   
@@ -118,12 +129,12 @@ private:
   UShort_t energyshort;//
   
   UShort_t samples;
-  int analog0[10000];
-  int analog1[10000];
-  bool digital0[10000];
-  bool digital1[10000];
-  bool digital2[10000];
-  bool digital3[10000];
+  int analog0[16384];
+  int analog1[16384];
+  bool digital0[16384];
+  bool digital1[16384];
+  bool digital2[16384];
+  bool digital3[16384];
   uint8_t analogtype[2];
   uint8_t digitaltype[4];
 
@@ -133,6 +144,8 @@ private:
   unsigned int triggerid;
   unsigned int nsamples;
   UShort_t waveform[10485760];
+
+  UShort_t energyxia;
 };
 
 #endif /* _R2ROOT_H_ */

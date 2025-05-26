@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 日 3月 12 21:04:39 2023 (+0800)
-// Last-Updated: 日 9月  8 10:33:39 2024 (+0800)
+// Last-Updated: 五 5月 23 00:20:44 2025 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 21
+//     Update #: 22
 // URL: http://wuhongyi.cn 
 
 #ifndef _REALDECODERTHREAD_H_
@@ -52,7 +52,7 @@ private:
   int runno[MAXMODULENUM], runno_d[MAXMODULENUM];
 
   
-  unsigned int tmpbuff[6];
+  unsigned int tmpbuff[14];
   int tmpid;
   unsigned int tmpwave[BUFFLENGTHSCOPE];//TODO length
   
@@ -65,12 +65,26 @@ private:
   uint16_t energy_short;// PSD
 
 
+  uint16_t baseline;
+  uint64_t rt_accx2;
+  unsigned int xia_sl1;
+  unsigned int rt_accx;
+  unsigned int xia_sl2;
+  unsigned int xia_sg;
+  uint64_t lasttrigger;
+  
+
+
+  
   bool firstbuffhit[MAXMODULENUM][MAXCHANNELNUM];
 };
 
 #endif /* _REALDECODERTHREAD_H_ */
 // 
 // RealDecoderThread.hh ends here
+
+
+
 
 
 

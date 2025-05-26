@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 三 1月 25 18:44:14 2023 (+0800)
-// Last-Updated: 日 4月 13 16:46:25 2025 (+0800)
+// Last-Updated: 六 5月 24 17:11:10 2025 (+0900)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 36
+//     Update #: 41
 // URL: http://wuhongyi.cn 
 
 #ifndef _LOGICSETTINGS_H_
@@ -53,17 +53,28 @@
 #include <fstream>
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-#define TABNUM_LOGICSETTINGS 6
+#define TABNUM_LOGICSETTINGS 7
 
 enum class TABLOGIC
   {
     RUN = 0,
     FRONTPANEL = 1,
-    VETO = 2,
-    ITL = 3,
-    MASK = 4,
-    USERDPP = 5,
+    FRONTPANELCH = 2,
+    VETO = 3,
+    ITL = 4,
+    MASK = 5,
+    USERDPP = 6,
   };
+
+
+#define TABFRONTPANELCHCOLUMNCOUNT 2
+
+enum class TABLOGICFRONTPANELCH
+  {
+   SINFUNCTION = 0,
+   GPIFUNCTION = 1,
+  };
+
 
 #define TABMASKCOLUMNCOUNT 5
 
@@ -75,7 +86,6 @@ enum class TABLOGICMASK
     ANTICOINCIDENCEMASK = 3,
     COINCIDENCELENGTH = 4,
   };
-
 
 #define TABVETOCOLUMNCOUNT 2
 
@@ -108,6 +118,7 @@ public:
   
 private:
   void TabRun(int index);
+  void TabFrontPanelCh(int index);
   void TabFrontPanel(int index);
   void TabVeto(int index);
   void TabITL(int index);
@@ -116,6 +127,7 @@ private:
   
 
   void HiddenTabMaskColumn();
+  void HiddenTabFrontPanelChColumn();
   void HiddenTabVetoColumn();
   void HiddenTabRunGroupScopeZLE();
   void HiddenTabUserDPPColumn();
@@ -148,6 +160,7 @@ private:
   QString stringvalue;
 
   TABLOGIC tablogic;
+  TABLOGICFRONTPANELCH tablogicfrontpanelch;
   TABLOGICMASK tablogicmask;
   TABLOGICVETO tablogicveto;
   TABLOGICUSERDPP tablogicuserdpp;
@@ -177,7 +190,29 @@ private:
   QComboBox *cbuserdppcopych;
   QPushButton *pbtableuserdppcopy; 
   
+  // FRONTPANELCH
+  QTableWidget *tablefrontpanelch;
   
+  QGroupBox *groupboxfrontpanelch0;
+  QHBoxLayout *horizontalgbfrontpanelch0;
+
+  QGroupBox *groupboxfrontpanelch1;
+  QHBoxLayout *horizontalgbfrontpanelch1;
+  QRadioButton *rbtablefrontpanelchrow;
+  QRadioButton *rbtablefrontpanelchcol;
+  QRadioButton *rbtablefrontpanelchitem;
+  
+  QGroupBox *groupboxfrontpanelch2;
+  QHBoxLayout *horizontalgbfrontpanelch2;
+  QPushButton *pbtablefrontpanelchloadselected;
+  QPushButton *pbtablefrontpanelchloadall;
+  QPushButton *pbtablefrontpanelchapplyselected;
+  QPushButton *pbtablefrontpanelchapplyall;
+
+  QGroupBox *groupboxfrontpanelch3;
+  QHBoxLayout *horizontalgbfrontpanelch3;
+  QComboBox *cbfrontpanelchcopych;
+  QPushButton *pbtablefrontpanelchcopy;  
   
 
   // MASK
@@ -319,6 +354,10 @@ private:
 
 private:
 
+  void LoadFrontPanelCh(unsigned short row, unsigned short column);
+  void ApplyFrontPanelCh(unsigned short row, unsigned short column);
+
+  
   void ApplyMask(unsigned short row, unsigned short column);
   void LoadMask(unsigned short row, unsigned short column);
 
@@ -349,6 +388,17 @@ private slots:
 
   void on_pbtableuserdppcopy_clicked();
   
+  //frontpanelch
+  void on_rbtablefrontpanelchrow_clicked();
+  void on_rbtablefrontpanelchitem_clicked();
+  void on_rbtablefrontpanelchcol_clicked();
+
+  void on_pbtablefrontpanelchloadselected_clicked();
+  void on_pbtablefrontpanelchloadall_clicked();
+  void on_pbtablefrontpanelchapplyselected_clicked();
+  void on_pbtablefrontpanelchapplyall_clicked();
+
+  void on_pbtablefrontpanelchcopy_clicked();
   
   // mask
   void on_rbtablemaskrow_clicked(); 

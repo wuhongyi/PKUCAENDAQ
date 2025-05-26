@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 六 2月 17 23:04:10 2024 (+0800)
-// Last-Updated: 日 9月  8 18:47:03 2024 (+0800)
+// Last-Updated: 日 5月 25 16:07:12 2025 (+0900)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 15
+//     Update #: 24
 // URL: http://wuhongyi.cn 
 
 #ifndef _DECODER_H_
@@ -25,6 +25,8 @@
 #include <cstdint>
 #include <string>
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
+
+#define MAXCHANNELNUMBER 64
 
 class decoder
 {
@@ -76,6 +78,12 @@ public:
   inline unsigned int getnsamples() {return nsamples;}
   inline void getwaveform(uint16_t *da) {memcpy(da, waveform, sizeof(uint16_t)*nsamples);}
 
+
+  inline uint16_t getenergyxia() {return energyxia;}//DPP-FDK
+
+  void SetFDKSL(unsigned ch, unsigned int value);
+  void SetFDKSG(unsigned ch, unsigned int value);
+  void SetFDKTAU(unsigned ch, unsigned int value);
   
 private:
   bool readword();
@@ -84,10 +92,18 @@ private:
   void decodephapsd();
   void decodezle();
   void decodescope();
+  void decodedppfdk();
   
   int fd; // File descripter
-  unsigned int buff[6000000]; // buffer to read 4 buytes from file(32bit)
+  unsigned int buff[6000000]; // buffer to read 4 bytes from file(32bit)
   size_t n;
+
+
+  unsigned int sl[MAXCHANNELNUMBER];
+  unsigned int sg[MAXCHANNELNUMBER];
+  unsigned int tau[MAXCHANNELNUMBER];
+
+  
 
   
   unsigned short samplerate;
@@ -96,7 +112,8 @@ private:
   // PSD 6
   // ZLE 3 + SAMPLES/2
   // SCOPE 4 + SAMPLE/2
-
+  // DPP-FDK 5+[8]+NSAMPLES/2
+  
   unsigned short ch;
   unsigned short mod;
   uint64_t timestamp;
@@ -108,12 +125,12 @@ private:
   uint16_t flags_high_priority;//PHA PSD
 
   unsigned short samples;//PHA PSD
-  int32_t analog_probes0[10000];
-  int32_t analog_probes1[10000];
-  bool digital_probes0[10000];
-  bool digital_probes1[10000];
-  bool digital_probes2[10000];
-  bool digital_probes3[10000];
+  int32_t analog_probes0[16384];
+  int32_t analog_probes1[16384];
+  bool digital_probes0[16384];
+  bool digital_probes1[16384];
+  bool digital_probes2[16384];
+  bool digital_probes3[16384];
   uint8_t analog_probes_type[2];
   uint8_t digital_probes_type[4];
 
@@ -121,6 +138,18 @@ private:
   uint32_t trigger_id;//SCOPE
   unsigned int nsamples;//ZLE SCOPE
   uint16_t waveform[10485760];//ZLE SCOPE
+
+
+  uint16_t energyxia;//DPP-FDK
+  uint16_t baseline;
+  uint64_t rt_accx2;
+  unsigned int rt_accx;
+  unsigned int xia_sl1;
+  unsigned int xia_sg;
+  unsigned int xia_sl2;
+  uint64_t lasttrigger;
+
+
   
 };
 

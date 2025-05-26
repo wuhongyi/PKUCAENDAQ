@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 六 3月 11 16:34:28 2023 (+0800)
-// Last-Updated: 五 2月  7 15:07:32 2025 (+0800)
+// Last-Updated: 六 5月 24 21:18:01 2025 (+0900)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 19
+//     Update #: 21
 // URL: http://wuhongyi.cn 
 
 #ifndef _ONLINERATE_H_
@@ -62,8 +62,10 @@ public:
   virtual ~OnlineRate();
 
   // scope ZLE PHA PSD
-  void UpdateOnlineRateSelfTrgRate(unsigned short mod,unsigned short ch, QString value);
-  void UpdateOnlineRateSelfTrgRateOpen(unsigned short mod,unsigned short ch, QString value);
+  void UpdateOnlineRateSelfTrgRate(unsigned short mod, unsigned short ch, QString value);
+  void UpdateOnlineRateSelfTrgRateOpen(unsigned short mod, unsigned short ch, QString value);
+  void UpdateOnlineRateOutputRateOpen(unsigned short mod, unsigned short ch, QString value);
+
   
   // PHA PSD
   void UpdateOnlineRateChRealtimeMonitor(unsigned short mod, unsigned short ch, QString value);
@@ -106,7 +108,7 @@ private slots:
 };
 
 
-#define ONLINERATECOLUMN 7
+#define ONLINERATECOLUMN 8
 #define ONLINERATEPERSECTIONCH 16
 
 class ModuleRate : public QWidget
@@ -120,6 +122,7 @@ public:
 
   void UpdateSelfTrgRate(unsigned short ch, QString value);
   void UpdateSelfTrgRateOpen(unsigned short ch, QString value);
+  void UpdateOutputRateOpen(unsigned short ch, QString value);
   void UpdateChRealtimeMonitor(unsigned short ch, QString value);
   void UpdateChDeadtimeMonitor(unsigned short ch, QString value);
   void UpdateChTriggerCnt(unsigned short ch, QString value);

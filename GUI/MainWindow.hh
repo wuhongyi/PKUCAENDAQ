@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 五 12月 17 15:18:35 2021 (+0800)
-// Last-Updated: 六 4月 12 11:49:25 2025 (+0800)
+// Last-Updated: 六 5月 24 21:06:15 2025 (+0900)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 76
+//     Update #: 78
 // URL: http://wuhongyi.cn 
 
 #ifndef _MAINWINDOW_H_
@@ -35,6 +35,14 @@
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
+typedef struct OPENDPP_PARS
+{
+  unsigned int SL[MAXMODULENUM][MAXCHANNELNUM];
+  unsigned int SG[MAXMODULENUM][MAXCHANNELNUM];
+  unsigned int TAU[MAXMODULENUM][MAXCHANNELNUM];
+} OPENDPP_PARS;
+
+
 
 class MainWindow : public QMainWindow
 {
@@ -60,6 +68,7 @@ public:
   // scope ZLE PHA PSD
   void UpdateOnlineRateSelfTrgRate(unsigned short mod,unsigned short ch, QString value);
   void UpdateOnlineRateSelfTrgRateOpen(unsigned short mod,unsigned short ch, QString value);
+  void UpdateOnlineRateOutputRateOpen(unsigned short mod,unsigned short ch, QString value);
   
   // PHA PSD
   void UpdateOnlineRateChRealtimeMonitor(unsigned short mod, unsigned short ch, QString value);
@@ -78,6 +87,17 @@ public:
   
   void UpdateOutputDataSize(unsigned short mod, unsigned long value);
   void UpdateOutputDataFlowSize(unsigned short mod, unsigned long value);
+
+
+  void UpdateDecoderOPENDPPSL(unsigned short mod, unsigned short ch, unsigned int sl);
+  void UpdateDecoderOPENDPPSG(unsigned short mod, unsigned short ch, unsigned int sg);
+  void UpdateDecoderOPENDPPTAU(unsigned short mod, unsigned short ch, unsigned int tau);
+
+
+  unsigned int ReadDecoderOPENDPPSL(unsigned short mod, unsigned short ch);
+  unsigned int ReadDecoderOPENDPPSG(unsigned short mod, unsigned short ch);
+  unsigned int ReadDecoderOPENDPPTAU(unsigned short mod, unsigned short ch);
+
   
 private:
 
@@ -174,6 +194,10 @@ private:
   QLineEdit *lePrefix;
   QLineEdit *leRun;
   QCheckBox *leSaved;
+
+
+  OPENDPP_PARS opendpppars;
+  
 }; 
 
 #endif /* _MAINWINDOW_H_ */

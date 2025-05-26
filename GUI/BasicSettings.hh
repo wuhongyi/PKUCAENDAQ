@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 五 10月 21 20:26:00 2022 (+0800)
-// Last-Updated: 日 4月 13 16:43:16 2025 (+0800)
+// Last-Updated: 六 5月 24 14:54:45 2025 (+0900)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 105
+//     Update #: 106
 // URL: http://wuhongyi.cn 
 
 #ifndef _BASICSETTINGS_H_
@@ -220,7 +220,7 @@ enum class TABBASICZLE
   };
 
 
-#define TABUSERDPPCOLUMNCOUNT 18
+#define TABUSERDPPCOLUMNCOUNT 19
 
 enum class TABBASICUSERDPP
   {
@@ -242,6 +242,8 @@ enum class TABBASICUSERDPP
     XIAOFFSET = 15,
     XIASL = 16,
     XIASG = 17,
+    TAU = 18,
+    
   };
 
 

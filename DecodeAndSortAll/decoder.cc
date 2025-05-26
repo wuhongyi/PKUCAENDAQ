@@ -4,14 +4,14 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 六 2月 17 23:04:21 2024 (+0800)
-// Last-Updated: 日 9月  8 12:00:31 2024 (+0800)
+// Last-Updated: 日 5月 25 21:46:37 2025 (+0900)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 44
+//     Update #: 55
 // URL: http://wuhongyi.cn 
 
 #include "decoder.hh"
 
-
+#include "TMath.h"
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 decoder::decoder()
@@ -108,7 +108,10 @@ bool decoder::decode()
       printf("DAW not impl...\n");
       break;
     case 4://open
-      printf("OPEN not impl...\n");
+      n = read(fd, &buff, 20);
+      if(n <= 0) return false;
+      decodedppfdk();
+      if(n <= 0) return false;
       break;
     case 5://scope
       n = read(fd, &buff, 16);
@@ -216,6 +219,73 @@ void decoder::decodescope()
   // std::cout << "read" << std::endl;
 }
 
+void decoder::decodedppfdk()
+{
+  unsigned int userinfo = (buff[0] & 0xC0000000) >> 30;
+
+  ch = buff[0] & 0xFF;
+  mod = (buff[0] & 0xFF00) >> 8;
+  nsamples = (buff[0] & 0x3FFF0000) >> 16;
+  
+  timestamp = ((uint64_t)(buff[2] & 0xFFFF) << 32)+buff[1];
+  energy = buff[3] & 0xFFFF;
+  energy_short = (buff[3] & 0xFFFF0000) >> 16;
+
+  energyxia = 0;
+  if(userinfo > 0)
+    {
+      n = read(fd, &buff, 32);
+
+      baseline = (buff[1] & 0x3FFFC00) >> 10;
+      rt_accx2 = ((uint64_t)(buff[1] & 0x3FF) << 32)+buff[0];
+      rt_accx = buff[2] & 0x3FFFFFF;
+      xia_sl1 = buff[3] & 0x3FFFFFF;
+      xia_sg = buff[4] & 0x3FFFFFF;
+      xia_sl2 = buff[5] & 0x3FFFFFF;
+      lasttrigger = ((uint64_t)(buff[7] & 0xFFFF) << 32)+buff[6];
+
+      double xiasl = sl[ch];
+      double xiasg = sg[ch];
+      double xiatau = tau[ch];
+      double b1 = TMath::Exp(-8.0/xiatau);
+      double a0 = -(1-b1)*(TMath::Power(b1, xiasl))/(1-TMath::Power(b1, xiasl));
+      double ag = (1-b1);
+      double a1 = (1-b1)/(1-TMath::Power(b1, xiasl));
+
+      double en = (a0*xia_sl1+ag*xia_sg+a1*xia_sl2)-(a0*baseline*xiasl+ag*baseline*xiasg+a1*baseline*xiasl);
+      if(en < 0) energyxia = 0;
+      else if(en >= 65536) energyxia = 65535;
+      else energyxia = uint16_t(en);
+    }
+
+
+  if(nsamples > 0)
+    {
+      n = read(fd, &buff, nsamples/2*4);
+      for (unsigned short i = 0; i < nsamples/2; ++i)
+	{
+	  waveform[2*i] = buff[i] & 0xFFFF;
+	  waveform[2*i+1] = (buff[i] & 0xFFFF0000) >> 16;
+	}
+    }
+
+}
+
+
+void decoder::SetFDKSL(unsigned ch, unsigned int value)
+{
+  sl[ch] = value;
+}
+
+void decoder::SetFDKSG(unsigned ch, unsigned int value)
+{
+  sg[ch] = value;
+}
+
+void decoder::SetFDKTAU(unsigned ch, unsigned int value)
+{
+  tau[ch] = value;
+}
 
 
 

@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 四 6月 20 21:26:25 2024 (+0800)
-// Last-Updated: 日 9月  8 15:32:10 2024 (+0800)
+// Last-Updated: 日 5月 25 16:33:51 2025 (+0900)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 3
+//     Update #: 7
 // URL: http://wuhongyi.cn 
 
 #ifndef _EVENT_H_
@@ -29,10 +29,16 @@
 #include <climits>
 #include <cmath>
 
+//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
+
+#define MAXMODULENUMBER 100
+#define MAXCHANNELNUMBER 64
+
+
 typedef struct DATAEVENT
 {
-  Short_t      det;//探测器类型
-  Short_t      id;//探测器编号
+  Short_t det;//探测器类型
+  Short_t id;//探测器编号
 
   UShort_t fw;
   UShort_t sr;
@@ -43,6 +49,10 @@ typedef struct DATAEVENT
   UShort_t energy;//
   UShort_t energyshort;//
 
+  UShort_t energyxia;
+
+
+  //cal
   double e;
 
   
@@ -62,11 +72,11 @@ public:
   void EndEvent();
 
 private:
-  Short_t flagdet[24][64];
-  Short_t flagdetid[24][64];
-  double  calia0[24][64];
-  double  calia1[24][64];
-  double  calia2[24][64];
+  Short_t flagdet[MAXMODULENUMBER][MAXCHANNELNUMBER];
+  Short_t flagdetid[MAXMODULENUMBER][MAXCHANNELNUMBER];
+  double  calia0[MAXMODULENUMBER][MAXCHANNELNUMBER];
+  double  calia1[MAXMODULENUMBER][MAXCHANNELNUMBER];
+  double  calia2[MAXMODULENUMBER][MAXCHANNELNUMBER];
 
 
   DATAEVENT hit;
@@ -112,8 +122,9 @@ private:
   TBranch *b_triggerid;
   TBranch *b_nsamples;
   TBranch *b_waveform;
+  TBranch *b_energyxia;
 
-
+  
   //leaf
   UShort_t fw;
   UShort_t sr;
@@ -142,7 +153,8 @@ private:
   unsigned int triggerid;
   unsigned int nsamples;
   UShort_t waveform[10000000];
-  
+
+  UShort_t energyxia;//
 };
 
 

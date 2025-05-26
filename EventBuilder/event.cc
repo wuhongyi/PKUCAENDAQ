@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 四 6月 20 21:26:32 2024 (+0800)
-// Last-Updated: 五 6月 21 18:28:50 2024 (+0800)
+// Last-Updated: 日 5月 25 21:42:24 2025 (+0900)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 3
+//     Update #: 7
 // URL: http://wuhongyi.cn 
 
 #include "event.hh"
@@ -19,8 +19,8 @@ event::event(int run)
   nevt = 0;
 
   
-  for (int i = 0; i < 24; ++i)
-    for (int j = 0; j < 64; ++j)
+  for (int i = 0; i < MAXMODULENUMBER; ++i)
+    for (int j = 0; j < MAXCHANNELNUMBER; ++j)
       {
 	flagdet[i][j] = -1;
 	flagdetid[i][j] = -1;
@@ -90,7 +90,8 @@ event::event(int run)
   t_in->SetBranchAddress("triggerid", &triggerid, &b_triggerid);
   t_in->SetBranchAddress("nsamples", &nsamples, &b_nsamples);
   t_in->SetBranchAddress("waveform", &waveform, &b_waveform);
-
+  t_in->SetBranchAddress("energyxia", &energyxia, &b_energyxia);
+  
   TotalEntry = t_in->GetEntries();
   
 #ifdef WAVEFORM
@@ -173,8 +174,14 @@ void event::InitEvent()
 
 void event::ProcessEntry()
 {
-  double rawch = gRandom->Rndm()+energy;
+  double rawch;
+ 
+  if(fw == 4)
+    rawch = gRandom->Rndm()+energyxia;
+  else
+    rawch = gRandom->Rndm()+energy;
 
+  
   hit.det = flagdet[mod][ch];
   hit.id = flagdetid[mod][ch];
   hit.sr = sr;
@@ -185,6 +192,8 @@ void event::ProcessEntry()
   hit.energy = energy;
   hit.energyshort = energyshort;
 
+  hit.energyxia = energyxia;
+  
   hit.e = calia0[mod][ch]+calia1[mod][ch]*rawch+calia2[mod][ch]*rawch*rawch;
   
   // TODO
