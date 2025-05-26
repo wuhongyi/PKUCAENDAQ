@@ -4,9 +4,9 @@
 .. Author: Hongyi Wu(吴鸿毅)
 .. Email: wuhongyi@qq.com 
 .. Created: 日 9月  8 23:09:41 2024 (+0800)
-.. Last-Updated: 二 10月  1 23:53:17 2024 (+0800)
+.. Last-Updated: 一 5月 26 22:56:41 2025 (+0800)
 ..           By: Hongyi Wu(吴鸿毅)
-..     Update #: 4
+..     Update #: 5
 .. URL: http://wuhongyi.cn 
 
 =================================
@@ -84,6 +84,27 @@ Connect the TRGOUT of the master module to the SIN of the first slave module, an
 The master module needs to set StartSource to SWcmd and TrgOutMode to Run. Set StartSource to SINlevel and TrgOutMode to Run for all slave modules.
    
 
-   
+
+---------------------------------
+External clock of the system
+---------------------------------
+
+The default clock frequency of the x27xx module is 62.5 MHz. When the DAQ needs to synchronize with other acquisition systems and the clock input from the external system is not 62.5 MHz, it is necessary to configure the PLL. CAEN provides configuration files for some clock frequencies. If the clock frequency you are using is not available on the CAEN website, please contact CAEN to obtain the corresponding file.
+
+As shown in the figure below, click "Upload new PLL" to upload the required PLL-related files.
+
+
+.. image:: /_static/img/external_clk_upload.png
+
+
+As shown in the figure below, select the desired configuration file, click the "apply" button, and then select external input for the clock option. After that, reboot the module to make the PLL effective.
+
+	   
+.. image:: /_static/img/external_clk_pll.png
+
+
+
+
+
 .. 
 .. Synchronization.rst ends here

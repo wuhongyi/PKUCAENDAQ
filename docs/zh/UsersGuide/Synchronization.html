@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>时间同步和采集 &mdash; GDDAQ V20250413 文档</title>
+  <title>时间同步和采集 &mdash; GDDAQ V20250526 文档</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=eafc0fe6" />
@@ -16,7 +16,7 @@
   
         <script src="../_static/jquery.js?v=5d32c60e"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=7ec00508"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=64bd1a6b"></script>
         <script src="../_static/doctools.js?v=888ff710"></script>
         <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
         <script src="../_static/translations.js?v=beaddf03"></script>
@@ -64,6 +64,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#sync-clkin">SYNC-CLKIN</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#sin-gpio">SIN-GPIO</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#sin-trgout">SIN-TRGOUT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">系统外部时钟</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="GUI.html">图形交互界面</a></li>
@@ -154,6 +155,14 @@
 <h2>SIN-TRGOUT<a class="headerlink" href="#sin-trgout" title="此标题的永久链接"></a></h2>
 <p>将主模块的 TRGOUT 连接到第一个从模块的 SIN，依次类推。</p>
 <p>主模块需要将 StartSource 设置为 SWcmd，将 TrgOutMode 设置为 Run。所有从模块将 StartSource 设置为 SINlevel，将 TrgOutMode 设置为 Run。</p>
+</section>
+<section id="id4">
+<h2>系统外部时钟<a class="headerlink" href="#id4" title="此标题的永久链接"></a></h2>
+<p>x27xx 模块的默认时钟频率是 62.5 MHz。当 DAQ 与其它获取系统要同步时，输入外部系统的时钟不是 62.5 MHz 时，需要进行 PLL 的配置。CAEN 提供部分时钟频率的配置文件，如果所使用时钟频率 CAEN 网页上没有提供，联系CAEN 获取相应文件。</p>
+<p>如下图， 点击 “Upload new PLL”, 上传所需要的 PLL 相关文件。</p>
+<img alt="../_images/external_clk_upload.png" src="../_images/external_clk_upload.png" />
+<p>如下图，选择所需要的配置文件，点击 “apply” 按钮，然后时钟选项需要选择外部输入。之后重启模块使 PLL 生效。</p>
+<img alt="../_images/external_clk_pll.png" src="../_images/external_clk_pll.png" />
 </section>
 </section>
 

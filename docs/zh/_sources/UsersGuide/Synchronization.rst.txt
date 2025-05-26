@@ -4,9 +4,9 @@
 .. Author: Hongyi Wu(吴鸿毅)
 .. Email: wuhongyi@qq.com 
 .. Created: 三 2月  7 20:07:01 2024 (+0800)
-.. Last-Updated: 二 10月  1 23:53:14 2024 (+0800)
+.. Last-Updated: 一 5月 26 22:56:44 2025 (+0800)
 ..           By: Hongyi Wu(吴鸿毅)
-..     Update #: 2
+..     Update #: 4
 .. URL: http://wuhongyi.cn 
 
 =================================
@@ -65,10 +65,6 @@ SYNC-CLKIN
 
 
 
-
-
-
-
 ----------------------------------------------
 SIN-GPIO
 ----------------------------------------------
@@ -85,6 +81,31 @@ SIN-TRGOUT
 将主模块的 TRGOUT 连接到第一个从模块的 SIN，依次类推。
 
 主模块需要将 StartSource 设置为 SWcmd，将 TrgOutMode 设置为 Run。所有从模块将 StartSource 设置为 SINlevel，将 TrgOutMode 设置为 Run。
-   
+
+
+
+
+
+---------------------------------
+系统外部时钟
+---------------------------------
+
+x27xx 模块的默认时钟频率是 62.5 MHz。当 DAQ 与其它获取系统要同步时，输入外部系统的时钟不是 62.5 MHz 时，需要进行 PLL 的配置。CAEN 提供部分时钟频率的配置文件，如果所使用时钟频率 CAEN 网页上没有提供，联系CAEN 获取相应文件。 
+
+
+如下图， 点击 "Upload new PLL", 上传所需要的 PLL 相关文件。
+
+.. image:: /_static/img/external_clk_upload.png
+
+如下图，选择所需要的配置文件，点击 "apply" 按钮，然后时钟选项需要选择外部输入。之后重启模块使 PLL 生效。
+
+	   
+.. image:: /_static/img/external_clk_pll.png
+
+
+
+
+
+	   
 .. 
 .. Synchronization.rst ends here
