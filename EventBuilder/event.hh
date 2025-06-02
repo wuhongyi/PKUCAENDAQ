@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 四 6月 20 21:26:25 2024 (+0800)
-// Last-Updated: 日 5月 25 16:33:51 2025 (+0900)
+// Last-Updated: 一 6月  2 14:38:49 2025 (+0900)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 7
+//     Update #: 10
 // URL: http://wuhongyi.cn 
 
 #ifndef _EVENT_H_
@@ -55,7 +55,15 @@ typedef struct DATAEVENT
   //cal
   double e;
 
-  
+
+#ifdef WAVEFORM
+  UShort_t samples;
+  std::vector<int> analog0;
+
+  unsigned int nsamples;
+  std::vector<UShort_t> waveform;
+#endif
+
 } DATAEVENT;
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

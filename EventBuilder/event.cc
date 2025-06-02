@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 四 6月 20 21:26:32 2024 (+0800)
-// Last-Updated: 日 5月 25 21:42:24 2025 (+0900)
+// Last-Updated: 一 6月  2 15:03:49 2025 (+0900)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 7
+//     Update #: 11
 // URL: http://wuhongyi.cn 
 
 #include "event.hh"
@@ -65,7 +65,7 @@ event::event(int run)
   t_in->Add(TString::Format("%s%s_%04d*_wave.root",RAWFILEPATH,RAWFILENAME,run).Data());
   t_in->Add(TString::Format("%s%s_%04d*_wave_*.root",RAWFILEPATH,RAWFILENAME,run).Data());
 #else
-  t_in->Add(TString::Format("%s%s_%04d*.root",RAWFILEPATH,RAWFILENAME,run).Data());
+  t_in->Add(TString::Format("%s%s_%04d*_notwave.root",RAWFILEPATH,RAWFILENAME,run).Data());
 #endif
 
   t_in->SetBranchAddress("sr", &sr, &b_sr);
@@ -79,17 +79,21 @@ event::event(int run)
   t_in->SetBranchAddress("energy", &energy, &b_energy);
   t_in->SetBranchAddress("energyshort", &energyshort, &b_energyshort);
   t_in->SetBranchAddress("samples", &samples, &b_samples);
+#ifdef WAVEFORM
   t_in->SetBranchAddress("analog0", &analog0, &b_analog0);
-  t_in->SetBranchAddress("analog1", &analog1, &b_analog1);
-  t_in->SetBranchAddress("digital0", &digital0, &b_digital0);
-  t_in->SetBranchAddress("digital1", &digital1, &b_digital1);
-  t_in->SetBranchAddress("digital2", &digital2, &b_digital2);
-  t_in->SetBranchAddress("digital3", &digital3, &b_digital3);
-  t_in->SetBranchAddress("analogtypes", &analogtypes, &b_analogtypes);
-  t_in->SetBranchAddress("digitaltypes", &digitaltypes, &b_digitaltypes);
+  //t_in->SetBranchAddress("analog1", &analog1, &b_analog1);
+  //t_in->SetBranchAddress("digital0", &digital0, &b_digital0);
+  //t_in->SetBranchAddress("digital1", &digital1, &b_digital1);
+  //t_in->SetBranchAddress("digital2", &digital2, &b_digital2);
+  //t_in->SetBranchAddress("digital3", &digital3, &b_digital3);
+  //t_in->SetBranchAddress("analogtypes", &analogtypes, &b_analogtypes);
+  //t_in->SetBranchAddress("digitaltypes", &digitaltypes, &b_digitaltypes);
+#endif
   t_in->SetBranchAddress("triggerid", &triggerid, &b_triggerid);
   t_in->SetBranchAddress("nsamples", &nsamples, &b_nsamples);
+#ifdef WAVEFORM
   t_in->SetBranchAddress("waveform", &waveform, &b_waveform);
+#endif
   t_in->SetBranchAddress("energyxia", &energyxia, &b_energyxia);
   
   TotalEntry = t_in->GetEntries();
@@ -122,7 +126,7 @@ void event::Process()
     {
       if(entry % 10000 == 0)
 	{
-	  std::cout<<"\r"<<"Entry: "<<entry<<"  |  Event: "<<nevt+1;
+	  std::cout << "\r" << "Total: " << TotalEntry << "  |  Entry: " << entry << "  |  Event: " << nevt+1;
 	  std::cout << std::flush;
 	}
       
@@ -196,9 +200,22 @@ void event::ProcessEntry()
   
   hit.e = calia0[mod][ch]+calia1[mod][ch]*rawch+calia2[mod][ch]*rawch*rawch;
   
-  // TODO
 
-  
+#ifdef WAVEFORM
+  hit.samples = samples;
+  hit.analog0.clear();
+  if(hit.samples > 0)
+    {
+      hit.analog0.insert(hit.analog0.begin(), analog0, analog0+hit.samples);
+    }
+
+  hit.nsamples = nsamples;
+  hit.waveform.clear();
+  if(hit.nsamples > 0)
+    {
+      hit.waveform.insert(hit.waveform.begin(), waveform, waveform+hit.nsamples);
+    }
+#endif
   
   event_vec.push_back(hit);
 }

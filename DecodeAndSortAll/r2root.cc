@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 日 2月 18 01:23:28 2024 (+0800)
-// Last-Updated: 日 5月 25 16:00:14 2025 (+0900)
+// Last-Updated: 一 6月  2 21:41:02 2025 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 27
+//     Update #: 43
 // URL: http://wuhongyi.cn 
 
 #include "r2root.hh"
@@ -55,6 +55,7 @@ r2root::r2root(int run)
     {
       readtxt >> mod_tmp >> ch_tmp >> offset_tmp >> chlow_tmp >> chhigh_tmp;
       if(readtxt.eof()) break;
+      std::cout << "par: " << mod_tmp << "  " << ch_tmp << "  " << offset_tmp << "  " << chlow_tmp << "  " << chhigh_tmp << std::endl;
       timeoffset[mod_tmp][ch_tmp] = offset_tmp;
       chlow[mod_tmp][ch_tmp] = chlow_tmp;
       chhigh[mod_tmp][ch_tmp] = chhigh_tmp;
@@ -69,6 +70,7 @@ r2root::r2root(int run)
     {
       readtxt >> mod_tmp >> ch_tmp >> sl_tmp >> sg_tmp >> tau_tmp;
       if(readtxt.eof()) break;
+      std::cout << "fdk: " << mod_tmp << "  " << ch_tmp << "  " << sl_tmp << "  " << sg_tmp << "  " << tau_tmp << std::endl;
       sl[mod_tmp][ch_tmp] = sl_tmp;
       sg[mod_tmp][ch_tmp] = sg_tmp;
       tau[mod_tmp][ch_tmp] = tau_tmp;
@@ -111,8 +113,11 @@ r2root::r2root(int run)
       havedata[i] = false;
     }
 
-
-  sprintf(tempfilename, "%s%s_%04d.root", ROOTFILEPATH, ROOTFILENAME, Run);
+#ifdef WAVEFORM
+  sprintf(tempfilename, "%s%s_%04d_wave.root", ROOTFILEPATH, ROOTFILENAME, Run);
+#else
+  sprintf(tempfilename, "%s%s_%04d_notwave.root", ROOTFILEPATH, ROOTFILENAME, Run);
+#endif
   
   file = new TFile(tempfilename, "RECREATE");
   t = new TTree("tree","GDDAQ - CAEN sort Data");
@@ -130,7 +135,9 @@ r2root::r2root(int run)
   t->Branch("energy", &energy, "energy/s");
   t->Branch("energyshort", &energyshort, "energyshort/s");
   
+
   t->Branch("samples", &samples, "samples/s");
+#ifdef WAVEFORM
   t->Branch("analog0", &analog0, "analog0[samples]/I");
   t->Branch("analog1", &analog1, "analog1[samples]/I");
   t->Branch("digital0", &digital0, "digital0[samples]/O");
@@ -140,12 +147,14 @@ r2root::r2root(int run)
 
   t->Branch("analogtypes", &analogtypes, "analogtypes[2]/s");
   t->Branch("digitaltypes", &digitaltypes, "digitaltypes[4]/s");
+#endif
   
   t->Branch("triggerid", &triggerid, "triggerid/i");
 
   t->Branch("nsamples", &nsamples, "nsamples/i");
+#ifdef WAVEFORM
   t->Branch("waveform", &waveform, "waveform[nsamples]/s");
-
+#endif
 
   t->Branch("energyxia", &energyxia, "energyxia/s");
 }
@@ -237,6 +246,7 @@ void r2root::Process()
 			memcpy(mapvalue.digitaltype, digitaltype, sizeof(uint8_t)*4);
 			
 			mapvalue.samples = rawdec[mark].getsamples();
+#ifdef WAVEFORM
 			if(mapvalue.samples > 0)
 			  {
 			    mapvalue.analog0 = new int [mapvalue.samples];
@@ -253,7 +263,7 @@ void r2root::Process()
 			    mapvalue.digital3 = new bool [mapvalue.samples];
 			    rawdec[mark].getdigital3(mapvalue.digital3);
 			  }
-
+#endif
 		      }
 		      break;
 		    case 1://zle
@@ -261,11 +271,13 @@ void r2root::Process()
 		      {
 			mapvalue.triggerid = rawdec[mark].gettriggerid();
 			mapvalue.nsamples = rawdec[mark].getnsamples();
+#ifdef WAVEFORM
 			if(mapvalue.nsamples > 0)
 			  {
 			    mapvalue.waveform = new UShort_t [mapvalue.nsamples];
 			    rawdec[mark].getwaveform(mapvalue.waveform);
 			  }
+#endif
 		      }
 		      break;
 		    case 3://daw
@@ -274,11 +286,13 @@ void r2root::Process()
 		    case 4://open
 		      mapvalue.energyxia = rawdec[mark].getenergyxia();
 		      mapvalue.nsamples = rawdec[mark].getnsamples();
+#ifdef WAVEFORM
 		      if(mapvalue.nsamples > 0)
 			{
 			  mapvalue.waveform = new UShort_t [mapvalue.nsamples];
 			  rawdec[mark].getwaveform(mapvalue.waveform);
 			}
+#endif
 		      break;
 		    default:
 		      printf("firmware type error...\n");
@@ -307,6 +321,7 @@ void r2root::Process()
 		    {
 		      if(mapvalue.energy < chlow[mapvalue.mod][mapvalue.ch] || mapvalue.energy > chhigh[mapvalue.mod][mapvalue.ch])
 			{
+#ifdef WAVEFORM
 			  if(mapvalue.samples > 0)
 			    {
 			      delete[] mapvalue.analog0;
@@ -315,7 +330,8 @@ void r2root::Process()
 			      delete[] mapvalue.digital1;
 			      delete[] mapvalue.digital2;
 			      delete[] mapvalue.digital3;
-			    }			  
+			    }
+#endif
 			  continue;
 			}
 		    }
@@ -323,10 +339,12 @@ void r2root::Process()
 		    {
 		      if(mapvalue.energyxia < chlow[mapvalue.mod][mapvalue.ch] || mapvalue.energy > chhigh[mapvalue.mod][mapvalue.ch])
 			{
+#ifdef WAVEFORM
 			  if(mapvalue.nsamples > 0)
 			    {
 			      delete[] mapvalue.waveform;
 			    }
+#endif
 			  continue;
 			}
 		    }
@@ -373,6 +391,7 @@ void r2root::Process()
 		digitaltypes[2] = itkey->second.digitaltype[2];
 		digitaltypes[3] = itkey->second.digitaltype[3];
 		samples = itkey->second.samples;
+#ifdef WAVEFORM
 		if(samples > 0)
 		  {
 		    memcpy(analog0, itkey->second.analog0, sizeof(int)*samples);
@@ -389,6 +408,7 @@ void r2root::Process()
 		    memcpy(digital3, itkey->second.digital3, sizeof(bool)*samples);
 		    delete itkey->second.digital3;		    
 		  }
+#endif
 	      }
 	      break;
 	    case 1://zle
@@ -396,11 +416,13 @@ void r2root::Process()
 	      {
 		triggerid = itkey->second.triggerid;
 		nsamples = itkey->second.nsamples;
+#ifdef WAVEFORM
 		if(nsamples > 0)
 		  {
 		    memcpy(waveform, itkey->second.waveform, sizeof(UShort_t)*nsamples);
 		    delete itkey->second.waveform;
-		  }	    
+		  }
+#endif
 	      }
 	      break;
 	    case 3://daw
@@ -409,11 +431,13 @@ void r2root::Process()
 	    case 4://open
 	      energyxia = itkey->second.energyxia;
 	      nsamples = itkey->second.nsamples;
+#ifdef WAVEFORM
 	      if(nsamples > 0)
 		{
 		  memcpy(waveform, itkey->second.waveform, sizeof(UShort_t)*nsamples);
 		  delete itkey->second.waveform;
 		}
+#endif
 	      break;
 	    default:
 	      printf("firmware type error...\n");
@@ -468,6 +492,7 @@ void r2root::Process()
 		    digitaltypes[2] = itkey->second.digitaltype[2];
 		    digitaltypes[3] = itkey->second.digitaltype[3];
 		    samples = itkey->second.samples;
+#ifdef WAVEFORM
 		    if(samples > 0)
 		      {
 			memcpy(analog0, itkey->second.analog0, sizeof(int)*samples);
@@ -484,6 +509,7 @@ void r2root::Process()
 			memcpy(digital3, itkey->second.digital3, sizeof(bool)*samples);
 			delete itkey->second.digital3;		    
 		      }
+#endif
 		  }
 		  break;
 		case 1://zle
@@ -491,11 +517,13 @@ void r2root::Process()
 		  {
 		    triggerid = itkey->second.triggerid;
 		    nsamples = itkey->second.nsamples;
+#ifdef WAVEFORM
 		    if(nsamples > 0)
 		      {
 			memcpy(waveform, itkey->second.waveform, sizeof(UShort_t)*nsamples);
 			delete itkey->second.waveform;
-		      }	    
+		      }
+#endif
 		  }
 		  break;
 		case 3://daw
@@ -504,11 +532,13 @@ void r2root::Process()
 		case 4://open
 		  energyxia = itkey->second.energyxia;
 		  nsamples = itkey->second.nsamples;
+#ifdef WAVEFORM
 		  if(nsamples > 0)
 		    {
 		      memcpy(waveform, itkey->second.waveform, sizeof(UShort_t)*nsamples);
 		      delete itkey->second.waveform;
 		    }
+#endif
 		  break;
 		default:
 		  printf("firmware type error...\n");
