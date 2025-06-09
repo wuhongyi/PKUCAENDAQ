@@ -4,9 +4,9 @@
 .. Author: Hongyi Wu(吴鸿毅)
 .. Email: wuhongyi@qq.com 
 .. Created: 六 8月 22 09:21:44 2020 (+0800)
-.. Last-Updated: 六 8月 22 10:22:09 2020 (+0800)
+.. Last-Updated: 一 6月  9 19:08:04 2025 (+0800)
 ..           By: Hongyi Wu(吴鸿毅)
-..     Update #: 6
+..     Update #: 7
 .. URL: http://wuhongyi.cn 
 
 ##################################################
@@ -36,5 +36,18 @@
 - 探测器之间的可能的采集逻辑：符合、反符合、多重性，等。
 
 
+
+============================================================
+软件异常诊断
+============================================================
+
+.. code-block:: bash
+
+  export SPDLOG_LEVEL=info
+  ./gddaq
+
+  
+log 文件保存在 ~/.CAEN/caendig2.log
+  
 .. 
 .. ExperimentalDebugging.rst ends here

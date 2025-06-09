@@ -86,6 +86,7 @@
 <li class="toctree-l1"><a class="reference internal" href="Data/README.html">数据分析</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Data/DecodeAndSort.html">数据解码</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Data/EventBuilder.html">事件组装</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Data/DataAnalysis.html">数据分析框架</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">采购建议与实验调试</span></p>
 <ul>
@@ -149,7 +150,7 @@
 </li>
 <li><dl class="simple">
 <dt>2730</dt><dd><ul>
-<li><p>V2730-scope-1G-2024100300.cup</p></li>
+<li><p>V2730-scope-1G-2024112501.cup</p></li>
 <li><p>V2730-dpp-psd-1G-2025052203.cup</p></li>
 <li><p>V2730-OpenDPP-2025052401.cup</p></li>
 </ul>
@@ -163,6 +164,13 @@
 </dd>
 </dl>
 </li>
+</ul>
+<p>为了方便实验的诊断和调试，我们建议 CAEN 在 DPP 固件中添加/修改了以下功能:</p>
+<ul class="simple">
+<li><p>外部信号重置时间戳，可通过 SIN/GPIO 输入信号来重置时间戳（已完成）</p></li>
+<li><p>获取 start 时可选是否重置时间戳（未完成）</p></li>
+<li><p>添加类似 SelfTriggerRate 的监视参数，监视符合/反符合的计数率，监视实际的输出计数率（未完成）</p></li>
+<li><p>WaveDigitalProbe 中添加符合、反符合信号（未完成）</p></li>
 </ul>
 </section>
 <section id="id3">

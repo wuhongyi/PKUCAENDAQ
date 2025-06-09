@@ -69,6 +69,8 @@ Welcome to GDDAQ's guides.
    Data/README.rst
    Data/DecodeAndSort.rst
    Data/EventBuilder.rst
+   Data/DataAnalysis.rst
+
    
 
 #################################

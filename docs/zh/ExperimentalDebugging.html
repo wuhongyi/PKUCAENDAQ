@@ -82,12 +82,14 @@
 <li class="toctree-l1"><a class="reference internal" href="Data/README.html">数据分析</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Data/DecodeAndSort.html">数据解码</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Data/EventBuilder.html">事件组装</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Data/DataAnalysis.html">数据分析框架</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">采购建议与实验调试</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="ProcurementProposal.html">采购推荐</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">实验调试</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#id2">获取方案设计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">软件异常诊断</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Recovery.html">恢复出厂设置</a></li>
@@ -134,6 +136,14 @@
 <li><p>探测器是否需要记录波形；是否需要使用 QDC 进行粒子鉴别、或者其它方式的粒子鉴别；采用前沿甄别或者恒比定时甄别；等。</p></li>
 <li><p>探测器之间的可能的采集逻辑：符合、反符合、多重性，等。</p></li>
 </ul>
+</section>
+<section id="id3">
+<h2>软件异常诊断<a class="headerlink" href="#id3" title="此标题的永久链接"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">SPDLOG_LEVEL</span><span class="o">=</span>info
+./gddaq
+</pre></div>
+</div>
+<p>log 文件保存在 ~/.CAEN/caendig2.log</p>
 </section>
 </section>
 
