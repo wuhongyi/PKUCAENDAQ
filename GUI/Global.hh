@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 二 10月 25 14:31:51 2022 (+0800)
-// Last-Updated: 二 5月 27 10:07:04 2025 (+0800)
+// Last-Updated: 五 6月 13 15:55:41 2025 (+0900)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 118
+//     Update #: 124
 // URL: http://wuhongyi.cn 
 
 #ifndef _GLOBAL_H_
@@ -27,8 +27,8 @@
 #include "QMutex"
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-#define VERSIONDATE "GUI-Qt - 20250527"
-#define EXPIRATIONDATE 20251225
+#define VERSIONDATE "GUI-Qt - 20250613"
+#define EXPIRATIONDATE 20260113
 
 
 #define ONLINEMODE
@@ -46,6 +46,8 @@
 
 #define MAXHISTOGRAMLENGTH 65536
 #define MAXSTATISTICS 4096
+
+#define MAXDPPWAVELENGTH 16384
 
 //MiB x 1024 x 1024 / 4
 #define BUFFLENGTH 1310720

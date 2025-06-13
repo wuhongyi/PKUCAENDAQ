@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 四 2月 16 15:49:18 2023 (+0800)
-// Last-Updated: 二 2月  4 15:10:30 2025 (+0800)
+// Last-Updated: 三 6月 11 00:38:32 2025 (+0900)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 23
+//     Update #: 38
 // URL: http://wuhongyi.cn 
 
 #ifndef _DEBUG_H_
@@ -56,7 +56,7 @@
 #include <QtCharts/QLineSeries>
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-#define TABNUM_DEBUG 7
+#define TABNUM_DEBUG 8
 
 enum class TABDEBUG
   {
@@ -67,6 +67,7 @@ enum class TABDEBUG
     SCOPEZLE3247 = 4,
     SCOPEZLE4863 = 5,
     OPEN = 6,
+    TIMEDIFF = 7,
   };
 
 
@@ -88,6 +89,8 @@ private:
 
 private:
 
+  int ret = 0;
+  
   MainWindow * const mMainWindow;
   DeviceHandle *mDevice = nullptr;
 
@@ -118,10 +121,16 @@ private:
   TABDEBUG tabdebug;
 
   
-  
   QChartView *chartphapsdView[3];
   QChart *chartphapsd[3];
+  QGroupBox *gropuboxphapsd1;
+  QHBoxLayout *horizontalgbphapsd1;
+  QLabel *phapsdlabel;
+  QScatterSeries *phapsdseries0;
+  QScatterSeries *phapsdseries1;
+  QLineSeries *phapsdseries[4];
 
+  
   QChartView *chartscopezleview[MAXCHANNELNUM];
   QChart *chartscopezle[MAXCHANNELNUM];
   QChartView *chartscopezleviewsingle;
@@ -129,7 +138,20 @@ private:
 
   QChartView *chartopenview;
   QChart *chartopen;
-  
+
+  QChartView *charttimediffview;
+  QChart *charttimediff;
+  QScatterSeries *timediffseries0;
+  QGroupBox *groupboxtimediff1;
+  QHBoxLayout *horizontalgbtimediff1;
+  QGroupBox *groupboxtimediff0;
+  QHBoxLayout *horizontalgbtimediff0;
+  QComboBox *comboboxtda, *comboboxtdb;
+  QPushButton *pbtdread;
+  QPushButton *pbtdwrite;
+  QPushButton *pbtdclear;
+  QPushButton *pbtdupdate;
+  QLabel *dtpointlabel;
   
 private:
   void TabPHAPSD(int index);
@@ -139,6 +161,11 @@ private:
   void TabScopeZLECh32_47(int index);
   void TabScopeZLECh48_63(int index);
   void TabOPEN(int index);
+  void TabTimeDiff(int index);
+
+
+  void TimeDiffPointHoverd(const QPointF &point, bool state);
+  void PHAPSDPointHoverd(const QPointF &point, bool state);			
 
   
 signals:
@@ -152,11 +179,19 @@ public slots:
   void UpdateOnlineDebugScope(event_scope *evt_scope);
   void UpdateOnlineDebugOPENDPP(event_opendpp *evt_opendpp);
 
-
+							   
 						     
 private slots:
   
   void on_btngetonlinedebug_clicked();
+
+  void on_pbtdread_clicked();
+  void on_pbtdwrite_clicked();
+  void on_pbtdclear_clicked();
+  void on_pbtdupdate_clicked();
+				
+
+
   
 };
 
