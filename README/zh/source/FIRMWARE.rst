@@ -4,9 +4,9 @@
 .. Author: Hongyi Wu(吴鸿毅)
 .. Email: wuhongyi@qq.com 
 .. Created: 六 2月  3 20:59:00 2024 (+0800)
-.. Last-Updated: 一 6月  9 18:59:49 2025 (+0800)
+.. Last-Updated: 五 6月 13 15:36:20 2025 (+0800)
 ..           By: Hongyi Wu(吴鸿毅)
-..     Update #: 20
+..     Update #: 23
 .. URL: http://wuhongyi.cn 
 
 =================================
@@ -23,19 +23,19 @@
     - V2745-dpp-pha-1G-2025052201.cup
     - V2745-dpp-psd-1G-2025052200.cup
     - V2745-dpp-zle-1G-2025012707.cup
-    - V2745-OpenDPP-2025053001.cup
+    - V2745-OpenDPP-2025060604.cup
     - V2745-OpenScope-2025051100.cup
 - 2740
     - V2740-scope-1G-2024112500.cup
     - V2740-dpp-pha-1G-2025052201.cup
     - V2740-dpp-psd-1G-2025052200.cup
     - V2740-dpp-zle-1G-2025012707.cup
-    - V2740-OpenDPP-2025053000.cup
+    - V2740-OpenDPP-2025060603.cup
     - V2740-OpenScope-2025051102.cup
 - 2730
-    - V2730-scope-1G-2024112501.cup
+    - V2730-scope-1G-2025060602.cup
     - V2730-dpp-psd-1G-2025052203.cup
-    - V2730-OpenDPP-2025052401.cup
+    - V2730-OpenDPP-2025060601.cup
 - 2751
     - V2751-scope-1G-2025040700.cup
       
@@ -46,7 +46,7 @@
 - 获取 start 时可选是否重置时间戳（未完成）
 - 添加类似 SelfTriggerRate 的监视参数，监视符合/反符合的计数率，监视实际的输出计数率（未完成）
 - WaveDigitalProbe 中添加符合、反符合信号（未完成）
-
+- 2730 添加输入信号延迟（未完成）
 
 
       
