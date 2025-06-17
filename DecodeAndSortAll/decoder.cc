@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 六 2月 17 23:04:21 2024 (+0800)
-// Last-Updated: 日 5月 25 21:46:37 2025 (+0900)
+// Last-Updated: 二 6月 17 20:26:16 2025 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 55
+//     Update #: 57
 // URL: http://wuhongyi.cn 
 
 #include "decoder.hh"
@@ -87,7 +87,7 @@ bool decoder::decode()
   switch(firmware)
     {
     case 0://pha
-      n = read(fd, &buff, 24);
+      n = read(fd, &buff, 20);
       if(n <= 0) return false;
       decodephapsd();
       if(n <= 0) return false;
@@ -99,7 +99,7 @@ bool decoder::decode()
       if(n <= 0) return false;
       break;
     case 2://psd
-      n = read(fd, &buff, 24);
+      n = read(fd, &buff, 20);
       if(n <= 0) return false;
       decodephapsd();
       if(n <= 0) return false;
@@ -144,36 +144,57 @@ void decoder::decodephapsd()
   flags_low_priority = buff[4] & 0xFFFF;
   flags_high_priority = (buff[4] & 0xFFFF0000) >> 16;
 
-  analog_probes_type[0] = (buff[5] &0x1F);
-  analog_probes_type[1] = (buff[5] &0x3E0) >> 5;
-  digital_probes_type[0] = (buff[5] &0x7C00) >> 10;
-  digital_probes_type[1] = (buff[5] &0xF8000) >> 15;
-  digital_probes_type[2] = (buff[5] &0x1F00000) >> 20;
-  digital_probes_type[3] = (buff[5] &0x3E000000) >> 25;
+  nsamples = 0;
 
-  // std::cout << mod << "  " << ch << "  " << samples << std::endl;
   if(samples > 0)
     {
-      unsigned int len = 0;
-      if(samples%8 == 0)
-	len = samples/8;
+      n = read(fd, &buff, 4);
+
+      analog_probes_type[0] = (buff[0] &0x1F);
+      analog_probes_type[1] = (buff[0] &0x3E0) >> 5;
+      digital_probes_type[0] = (buff[0] &0x7C00) >> 10;
+      digital_probes_type[1] = (buff[0] &0xF8000) >> 15;
+      digital_probes_type[2] = (buff[0] &0x1F00000) >> 20;
+      digital_probes_type[3] = (buff[0] &0x3E000000) >> 25;
+
+      if(analog_probes_type[0] != 5)
+	{
+	  // std::cout << mod << "  " << ch << "  " << samples << std::endl;
+	  unsigned int len = 0;
+	  if(samples%8 == 0)
+	    len = samples/8;
+	  else
+	    len = samples/8+1;
+	  // std::cout << "len: " << len << std::endl;
+	  n = read(fd, &buff, (2*samples+len)*4);
+	  memcpy(analog_probes0, buff, sizeof(int32_t)*samples);
+	  memcpy(analog_probes1, buff+samples, sizeof(int32_t)*samples);
+	  // std::cout << "len: " << len << std::endl;
+	  for (unsigned int i = 0; i < len; ++i)
+	    for (int j = 0; j < 8; ++j)
+	      {
+		//std::cout << i << "  " << j << "  " << ((buff[2*samples+i] & (0x1 << (4*j))) >> (4*j)) << "  " << ((buff[2*samples+i] & (0x1 << (4*j+1))) >> (4*j+1)) << "  " << ((buff[2*samples+i] & (0x1 << (4*j+2))) >> (4*j+2)) << "  " << ((buff[2*samples+i] & (0x1 << (4*j+3))) >> (4*j+3)) << std::endl;
+		digital_probes0[8*i+j] = (buff[2*samples+i] & (0x1 << (4*j))) >> (4*j);
+		digital_probes1[8*i+j] = (buff[2*samples+i] & (0x1 << (4*j+1))) >> (4*j+1);
+		digital_probes2[8*i+j] = (buff[2*samples+i] & (0x1 << (4*j+2))) >> (4*j+2);
+		digital_probes3[8*i+j] = (buff[2*samples+i] & (0x1 << (4*j+3))) >> (4*j+3);
+	      }
+
+	  nsamples = 0;
+	}
       else
-	len = samples/8+1;
-      // std::cout << "len: " << len << std::endl;
-      n = read(fd, &buff, (2*samples+len)*4);
-      memcpy(analog_probes0, buff, sizeof(int32_t)*samples);
-      memcpy(analog_probes1, buff+samples, sizeof(int32_t)*samples);
-      // std::cout << "len: " << len << std::endl;
-      for (unsigned int i = 0; i < len; ++i)
-        for (int j = 0; j < 8; ++j)
-	  {
-	    //std::cout << i << "  " << j << "  " << ((buff[2*samples+i] & (0x1 << (4*j))) >> (4*j)) << "  " << ((buff[2*samples+i] & (0x1 << (4*j+1))) >> (4*j+1)) << "  " << ((buff[2*samples+i] & (0x1 << (4*j+2))) >> (4*j+2)) << "  " << ((buff[2*samples+i] & (0x1 << (4*j+3))) >> (4*j+3)) << std::endl;
-	    digital_probes0[8*i+j] = (buff[2*samples+i] & (0x1 << (4*j))) >> (4*j);
-	    digital_probes1[8*i+j] = (buff[2*samples+i] & (0x1 << (4*j+1))) >> (4*j+1);
-	    digital_probes2[8*i+j] = (buff[2*samples+i] & (0x1 << (4*j+2))) >> (4*j+2);
-	    digital_probes3[8*i+j] = (buff[2*samples+i] & (0x1 << (4*j+3))) >> (4*j+3);
-	  }
-    }//if
+	{
+	  nsamples = samples;
+	  samples = 0;
+	  n = read(fd, &buff, nsamples/2*4);
+	  for (unsigned short i = 0; i < nsamples/2; ++i)
+	    {
+	      waveform[2*i] = buff[i] & 0xFFFF;
+	      waveform[2*i+1] = (buff[i] & 0xFFFF0000) >> 16;
+	    }
+	}
+    }
+  
 }
 
 

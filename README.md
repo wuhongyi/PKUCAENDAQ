@@ -4,9 +4,9 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 五 12月 17 20:14:52 2021 (+0800)
-;; Last-Updated: 五 6月 13 15:03:48 2025 (+0800)
+;; Last-Updated: 二 6月 17 21:11:26 2025 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 44
+;;     Update #: 45
 ;; URL: http://wuhongyi.cn -->
 
 # A general-purpose digital data acquisition system(GDDAQ-CAEN)
@@ -24,8 +24,8 @@ This program supports the CAEN digital 2.0 data acquisition modules (x27xx), cur
 
 ## Version
 
-- **GUI Qt: version 2025.06.13**
-- **DecodeAndSortAll: version 2025.06.02**
+- **GUI Qt: version 2025.06.17**
+- **DecodeAndSortAll: version 2025.06.17**
 - **EventBuilder: version 2025.06.02**
 - **DataAnalysis: version 2025.06.02**
 

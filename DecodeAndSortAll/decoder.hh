@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 六 2月 17 23:04:10 2024 (+0800)
-// Last-Updated: 日 5月 25 16:07:12 2025 (+0900)
+// Last-Updated: 二 6月 17 20:26:13 2025 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 24
+//     Update #: 26
 // URL: http://wuhongyi.cn 
 
 #ifndef _DECODER_H_
@@ -108,8 +108,8 @@ private:
   
   unsigned short samplerate;
   unsigned short firmware;//DPP_PHA DPP_ZLE DPP_PSD DPP_DAW OPEN Scope
-  // PHA 6 + 2*SAMPLES+SAMPLE/8
-  // PSD 6
+  // PHA 5 +  1+2*SAMPLES+SAMPLE/8   +1+SAMPLES/2
+  // PSD 5
   // ZLE 3 + SAMPLES/2
   // SCOPE 4 + SAMPLE/2
   // DPP-FDK 5+[8]+NSAMPLES/2
@@ -125,12 +125,12 @@ private:
   uint16_t flags_high_priority;//PHA PSD
 
   unsigned short samples;//PHA PSD
-  int32_t analog_probes0[16384];
-  int32_t analog_probes1[16384];
-  bool digital_probes0[16384];
-  bool digital_probes1[16384];
-  bool digital_probes2[16384];
-  bool digital_probes3[16384];
+  int32_t analog_probes0[65536];
+  int32_t analog_probes1[65536];
+  bool digital_probes0[65536];
+  bool digital_probes1[65536];
+  bool digital_probes2[65536];
+  bool digital_probes3[65536];
   uint8_t analog_probes_type[2];
   uint8_t digital_probes_type[4];
 

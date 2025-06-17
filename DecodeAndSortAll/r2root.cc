@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 日 2月 18 01:23:28 2024 (+0800)
-// Last-Updated: 一 6月  2 21:41:02 2025 (+0800)
+// Last-Updated: 二 6月 17 20:54:00 2025 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 43
+//     Update #: 44
 // URL: http://wuhongyi.cn 
 
 #include "r2root.hh"
@@ -246,6 +246,7 @@ void r2root::Process()
 			memcpy(mapvalue.digitaltype, digitaltype, sizeof(uint8_t)*4);
 			
 			mapvalue.samples = rawdec[mark].getsamples();
+			mapvalue.nsamples = rawdec[mark].getnsamples();
 #ifdef WAVEFORM
 			if(mapvalue.samples > 0)
 			  {
@@ -263,6 +264,12 @@ void r2root::Process()
 			    mapvalue.digital3 = new bool [mapvalue.samples];
 			    rawdec[mark].getdigital3(mapvalue.digital3);
 			  }
+
+			if(mapvalue.nsamples > 0)
+			  {
+			    mapvalue.waveform = new UShort_t [mapvalue.nsamples];
+			    rawdec[mark].getwaveform(mapvalue.waveform);
+			  }		
 #endif
 		      }
 		      break;
@@ -331,6 +338,11 @@ void r2root::Process()
 			      delete[] mapvalue.digital2;
 			      delete[] mapvalue.digital3;
 			    }
+
+			  if(mapvalue.nsamples > 0)
+			    {
+			      delete[] mapvalue.waveform;
+			    }			  
 #endif
 			  continue;
 			}
@@ -391,6 +403,7 @@ void r2root::Process()
 		digitaltypes[2] = itkey->second.digitaltype[2];
 		digitaltypes[3] = itkey->second.digitaltype[3];
 		samples = itkey->second.samples;
+		nsamples = itkey->second.nsamples;
 #ifdef WAVEFORM
 		if(samples > 0)
 		  {
@@ -408,6 +421,12 @@ void r2root::Process()
 		    memcpy(digital3, itkey->second.digital3, sizeof(bool)*samples);
 		    delete itkey->second.digital3;		    
 		  }
+		
+		if(nsamples > 0)
+		  {
+		    memcpy(waveform, itkey->second.waveform, sizeof(UShort_t)*nsamples);
+		    delete itkey->second.waveform;
+		  }		
 #endif
 	      }
 	      break;
@@ -492,6 +511,7 @@ void r2root::Process()
 		    digitaltypes[2] = itkey->second.digitaltype[2];
 		    digitaltypes[3] = itkey->second.digitaltype[3];
 		    samples = itkey->second.samples;
+		    nsamples = itkey->second.nsamples;
 #ifdef WAVEFORM
 		    if(samples > 0)
 		      {
@@ -508,6 +528,11 @@ void r2root::Process()
 			delete itkey->second.digital2;
 			memcpy(digital3, itkey->second.digital3, sizeof(bool)*samples);
 			delete itkey->second.digital3;		    
+		      }
+		    if(nsamples > 0)
+		      {
+			memcpy(waveform, itkey->second.waveform, sizeof(UShort_t)*nsamples);
+			delete itkey->second.waveform;
 		      }
 #endif
 		  }
