@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 二 10月 25 14:31:51 2022 (+0800)
-// Last-Updated: 三 6月 25 16:14:24 2025 (+0900)
+// Last-Updated: 六 6月 28 17:35:25 2025 (+0900)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 126
+//     Update #: 127
 // URL: http://wuhongyi.cn 
 
 #ifndef _GLOBAL_H_
@@ -27,8 +27,8 @@
 #include "QMutex"
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-#define VERSIONDATE "GUI-Qt - 20250625"
-#define EXPIRATIONDATE 20260125
+#define VERSIONDATE "GUI-Qt - 20250628"
+#define EXPIRATIONDATE 20260128
 
 
 #define ONLINEMODE

@@ -4,9 +4,9 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 五 12月 17 20:14:52 2021 (+0800)
-;; Last-Updated: 三 6月 25 19:13:16 2025 (+0800)
+;; Last-Updated: 六 6月 28 17:38:57 2025 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 41
+;;     Update #: 42
 ;; URL: http://wuhongyi.cn -->
 
 # A general-purpose digital data acquisition system(GDDAQ-CAEN)
@@ -17,11 +17,11 @@
 
 本程序支持 CAEN 第二代数字化采集卡(x27xx)，目前包括 2745/2740/2730。支持不同模块 PHA/PSD/ZLE/DAW/SCOPE/OPEN 固件混合使用。通用外部逻辑的实现需要 V2495/DT5495 模块。 
 
-**目前版本快速迭代中, GUI Qt 版本有效期截止 2026 年 01 月 25 日前。建议大家及时下载最新版本。**
+**目前版本快速迭代中, GUI Qt 版本有效期截止 2026 年 01 月 28 日前。建议大家及时下载最新版本。**
 
 ## 版本
 
-- **GUI Qt: version 2025.06.25**
+- **GUI Qt: version 2025.06.28**
 - **DecodeAndSortAll: version 2025.06.17**
 - **EventBuilder: version 2025.06.02**
 - **DataAnalysis: version 2025.06.02**
