@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 日 2月 18 01:22:59 2024 (+0800)
-// Last-Updated: 日 5月 25 15:47:11 2025 (+0900)
+// Last-Updated: 一 9月  8 20:41:54 2025 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 14
+//     Update #: 16
 // URL: http://wuhongyi.cn 
 
 #ifndef _R2ROOT_H_
@@ -110,6 +110,12 @@ private:
   unsigned int sl[MAXMODULENUMBER][MAXCHANNELNUMBER];
   unsigned int sg[MAXMODULENUMBER][MAXCHANNELNUMBER];
   unsigned int tau[MAXMODULENUMBER][MAXCHANNELNUMBER];
+  unsigned int qs[MAXMODULENUMBER][MAXCHANNELNUMBER];
+  unsigned int ql[MAXMODULENUMBER][MAXCHANNELNUMBER];
+  unsigned int cosl[MAXMODULENUMBER][MAXCHANNELNUMBER];
+  unsigned int bl[MAXMODULENUMBER][MAXCHANNELNUMBER];
+
+
   
 private:
   Long64_t tsflag;

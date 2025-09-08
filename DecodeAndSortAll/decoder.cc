@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 六 2月 17 23:04:21 2024 (+0800)
-// Last-Updated: 二 6月 17 20:26:16 2025 (+0800)
+// Last-Updated: 一 9月  8 20:36:35 2025 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 57
+//     Update #: 63
 // URL: http://wuhongyi.cn 
 
 #include "decoder.hh"
@@ -249,34 +249,68 @@ void decoder::decodedppfdk()
   nsamples = (buff[0] & 0x3FFF0000) >> 16;
   
   timestamp = ((uint64_t)(buff[2] & 0xFFFF) << 32)+buff[1];
+  fine_timestamp = (buff[2] & 0x3FF0000) >> 16;
   energy = buff[3] & 0xFFFF;
   energy_short = (buff[3] & 0xFFFF0000) >> 16;
+  lasttrigger = ((uint64_t)(energy_short) << 26) + ((uint64_t)(fine_timestamp) << 16) + energy;
 
+  
   energyxia = 0;
   if(userinfo > 0)
     {
-      n = read(fd, &buff, 32);
+      n = read(fd, &buff, 40);
 
-      baseline = (buff[1] & 0x3FFFC00) >> 10;
-      rt_accx2 = ((uint64_t)(buff[1] & 0x3FF) << 32)+buff[0];
-      rt_accx = buff[2] & 0x3FFFFFF;
-      xia_sl1 = buff[3] & 0x3FFFFFF;
-      xia_sg = buff[4] & 0x3FFFFFF;
-      xia_sl2 = buff[5] & 0x3FFFFFF;
-      lasttrigger = ((uint64_t)(buff[7] & 0xFFFF) << 32)+buff[6];
+      sumqs = buff[1];
+      sumql = buff[0];
+      //baseline = (buff[1] & 0x3FFFC00) >> 10;
+      rt_accx2 = ((uint64_t)(buff[3] & 0x3FF) << 32)+buff[2];
+      rt_accx = buff[4] & 0x3FFFFFF;
+      xia_sl1 = buff[5] & 0x3FFFFFF;
+      xia_sg = buff[6] & 0x3FFFFFF;
+      xia_sl2 = buff[7] & 0x3FFFFFF;
+      sumbl1 = buff[9];
+      sumbl2 = buff[8];
 
+      
+      //lasttrigger = ((uint64_t)(buff[7] & 0xFFFF) << 32)+buff[6];
+      double xiabl = bl[ch];
+      
       double xiasl = sl[ch];
       double xiasg = sg[ch];
       double xiatau = tau[ch];
+
+      double vdc;
+      double vdc0;
+      
       double b1 = TMath::Exp(-8.0/xiatau);
       double a0 = -(1-b1)*(TMath::Power(b1, xiasl))/(1-TMath::Power(b1, xiasl));
       double ag = (1-b1);
       double a1 = (1-b1)/(1-TMath::Power(b1, xiasl));
 
-      double en = (a0*xia_sl1+ag*xia_sg+a1*xia_sl2)-(a0*baseline*xiasl+ag*baseline*xiasg+a1*baseline*xiasl);
+      double a_bl = (1-TMath::Power(b1, xiabl))/(TMath::Power(b1, xiabl)-TMath::Power(b1, xiabl+xiasl));
+      double a_bl2 = (1-TMath::Power(b1, xiabl))/(TMath::Power(b1, xiabl)-TMath::Power(b1, xiabl+xiabl));
+
+      double dt = timestamp - lasttrigger;
+      if(dt > (xiabl+xiabl+xiasl+xiasg))
+	vdc0 = (sumbl1-a_bl2*sumbl2)/(xiabl-a_bl2*xiabl);
+      else if(dt > (xiabl+xiasl+xiasg))
+	vdc0 = (sumbl2-a_bl*xia_sl1)/(xiabl-a_bl*xiasl);
+      else
+	vdc0 = vdctmp[ch];
+
+      vdc = vdc0;
+      vdctmp[ch] = vdc0;
+
+
+  
+      
+      double en = (a0*xia_sl1+ag*xia_sg+a1*xia_sl2)-(a0*vdc*xiasl+ag*vdc*xiasg+a1*vdc*xiasl);
       if(en < 0) energyxia = 0;
       else if(en >= 65536) energyxia = 65535;
       else energyxia = uint16_t(en);
+
+      double cc = (sumqs-vdc*qs[ch])/(sumql-vdc*ql[ch]);
+      double costheta = (rt_accx-vdc*cosl[ch])/(TMath::Sqrt(cosl[ch]*(rt_accx2-2*vdc*rt_accx+cosl[ch]*vdc*vdc)));
     }
 
 
@@ -293,20 +327,43 @@ void decoder::decodedppfdk()
 }
 
 
-void decoder::SetFDKSL(unsigned ch, unsigned int value)
+void decoder::SetFDKBL(int ch, unsigned int value)
+{
+  bl[ch] = value;
+}
+
+
+void decoder::SetFDKSL(int ch, unsigned int value)
 {
   sl[ch] = value;
 }
 
-void decoder::SetFDKSG(unsigned ch, unsigned int value)
+void decoder::SetFDKSG(int ch, unsigned int value)
 {
   sg[ch] = value;
 }
 
-void decoder::SetFDKTAU(unsigned ch, unsigned int value)
+void decoder::SetFDKTAU(int ch, unsigned int value)
 {
   tau[ch] = value;
 }
+
+void decoder::SetFDKQS(int ch, unsigned int value)
+{
+  qs[ch] = value;
+}
+
+void decoder::SetFDKQL(int ch, unsigned int value)
+{
+  ql[ch] = value;
+}
+
+void decoder::SetFDKCOSL(int ch, unsigned int value)
+{
+  cosl[ch] = value;
+}
+
+
 
 
 

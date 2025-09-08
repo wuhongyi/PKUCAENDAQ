@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 日 2月 18 01:23:28 2024 (+0800)
-// Last-Updated: 二 6月 17 20:54:00 2025 (+0800)
+// Last-Updated: 一 9月  8 20:42:11 2025 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 44
+//     Update #: 50
 // URL: http://wuhongyi.cn 
 
 #include "r2root.hh"
@@ -45,9 +45,13 @@ r2root::r2root(int run)
   Short_t offset_tmp;
   UShort_t chlow_tmp;
   UShort_t chhigh_tmp;
+  unsigned int bl_tmp;
   unsigned int sl_tmp;
   unsigned int sg_tmp;
   unsigned int tau_tmp;
+  unsigned int qs_tmp;
+  unsigned int ql_tmp;
+  unsigned int cosl_tmp;
   readtxt.open("par.dat");
   if(!readtxt.is_open()) { std::cout << "can't open file par.dat." << std::endl; }
   getline(readtxt, str_tmp);
@@ -68,12 +72,16 @@ r2root::r2root(int run)
   getline(readtxt, str_tmp);
   while(!readtxt.eof())
     {
-      readtxt >> mod_tmp >> ch_tmp >> sl_tmp >> sg_tmp >> tau_tmp;
+      readtxt >> mod_tmp >> ch_tmp >> bl_tmp >> sl_tmp >> sg_tmp >> tau_tmp >> qs_tmp >> ql_tmp >> cosl_tmp;
       if(readtxt.eof()) break;
-      std::cout << "fdk: " << mod_tmp << "  " << ch_tmp << "  " << sl_tmp << "  " << sg_tmp << "  " << tau_tmp << std::endl;
+      std::cout << "fdk: " << mod_tmp << "  " << ch_tmp << "  " << bl_tmp << "  " << sl_tmp << "  " << sg_tmp << "  " << tau_tmp << "  " << qs_tmp << "  " << ql_tmp << "  " << cosl_tmp << std::endl;
+      bl[mod_tmp][ch_tmp] = bl_tmp;
       sl[mod_tmp][ch_tmp] = sl_tmp;
       sg[mod_tmp][ch_tmp] = sg_tmp;
       tau[mod_tmp][ch_tmp] = tau_tmp;
+      qs[mod_tmp][ch_tmp] = qs_tmp;
+      ql[mod_tmp][ch_tmp] = ql_tmp;
+      cosl[mod_tmp][ch_tmp] = cosl_tmp;
     }
   readtxt.close();
 
@@ -81,9 +89,14 @@ r2root::r2root(int run)
   for (int i = 0; i < MAXMODULENUMBER; ++i)
     for (int j = 0; j < MAXCHANNELNUMBER; ++j)
       {
+	//std::cout << i << " " << j << std::endl;
+	rawdec[i].SetFDKBL(j, bl[i][j]);
 	rawdec[i].SetFDKSL(j, sl[i][j]);
 	rawdec[i].SetFDKSG(j, sg[i][j]);
 	rawdec[i].SetFDKTAU(j, tau[i][j]);
+	rawdec[i].SetFDKQS(j, qs[i][j]);
+	rawdec[i].SetFDKQL(j, ql[i][j]);
+	rawdec[i].SetFDKCOSL(j, cosl[i][j]);
       }
   
 

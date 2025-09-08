@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 五 12月 17 15:18:35 2021 (+0800)
-// Last-Updated: 六 5月 24 21:06:15 2025 (+0900)
+// Last-Updated: 六 9月  6 19:56:10 2025 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 78
+//     Update #: 83
 // URL: http://wuhongyi.cn 
 
 #ifndef _MAINWINDOW_H_
@@ -37,9 +37,20 @@
 
 typedef struct OPENDPP_PARS
 {
+  unsigned int BL[MAXMODULENUM][MAXCHANNELNUM];
+
   unsigned int SL[MAXMODULENUM][MAXCHANNELNUM];
   unsigned int SG[MAXMODULENUM][MAXCHANNELNUM];
   unsigned int TAU[MAXMODULENUM][MAXCHANNELNUM];
+
+  unsigned int QS[MAXMODULENUM][MAXCHANNELNUM];
+  unsigned int QL[MAXMODULENUM][MAXCHANNELNUM];
+  unsigned int COSL[MAXMODULENUM][MAXCHANNELNUM];
+
+  
+  // last event dc
+  double vdc[MAXMODULENUM][MAXCHANNELNUM];
+  
 } OPENDPP_PARS;
 
 
@@ -89,15 +100,29 @@ public:
   void UpdateOutputDataFlowSize(unsigned short mod, unsigned long value);
 
 
+
+  void UpdateDecoderOPENDPPBL(unsigned short mod, unsigned short ch, unsigned int bl);
   void UpdateDecoderOPENDPPSL(unsigned short mod, unsigned short ch, unsigned int sl);
   void UpdateDecoderOPENDPPSG(unsigned short mod, unsigned short ch, unsigned int sg);
   void UpdateDecoderOPENDPPTAU(unsigned short mod, unsigned short ch, unsigned int tau);
+  void UpdateDecoderOPENDPPQS(unsigned short mod, unsigned short ch, unsigned int qs);
+  void UpdateDecoderOPENDPPQL(unsigned short mod, unsigned short ch, unsigned int ql);
+  void UpdateDecoderOPENDPPCOSL(unsigned short mod, unsigned short ch, unsigned int cosl);
 
+  void UpdateDecoderOPENDPPVDC(unsigned short mod, unsigned short ch, double vdc);
 
+  
+  
+  unsigned int ReadDecoderOPENDPPBL(unsigned short mod, unsigned short ch);
   unsigned int ReadDecoderOPENDPPSL(unsigned short mod, unsigned short ch);
   unsigned int ReadDecoderOPENDPPSG(unsigned short mod, unsigned short ch);
   unsigned int ReadDecoderOPENDPPTAU(unsigned short mod, unsigned short ch);
+  unsigned int ReadDecoderOPENDPPQS(unsigned short mod, unsigned short ch);
+  unsigned int ReadDecoderOPENDPPQL(unsigned short mod, unsigned short ch);
+  unsigned int ReadDecoderOPENDPPCOSL(unsigned short mod, unsigned short ch);
 
+  double ReadDecoderOPENDPPVDC(unsigned short mod, unsigned short ch);
+  
   
 private:
 

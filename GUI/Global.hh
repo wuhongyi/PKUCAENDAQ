@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 二 10月 25 14:31:51 2022 (+0800)
-// Last-Updated: 六 6月 28 17:35:25 2025 (+0900)
+// Last-Updated: 一 9月  8 22:58:07 2025 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 127
+//     Update #: 131
 // URL: http://wuhongyi.cn 
 
 #ifndef _GLOBAL_H_
@@ -27,8 +27,8 @@
 #include "QMutex"
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-#define VERSIONDATE "GUI-Qt - 20250628"
-#define EXPIRATIONDATE 20260128
+#define VERSIONDATE "GUI-Qt - 20250908"
+#define EXPIRATIONDATE 20260408
 
 
 #define ONLINEMODE
@@ -260,7 +260,7 @@ struct event_opendpp {
   uint16_t fine_timestamp;
   uint16_t energy;
   uint16_t psd;
-  uint64_t user_info[4];
+  uint64_t user_info[8];
   size_t user_info_size;
   size_t event_size;
   uint16_t* waveform;

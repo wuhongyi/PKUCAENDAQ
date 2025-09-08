@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 六 2月 17 23:04:10 2024 (+0800)
-// Last-Updated: 二 6月 17 20:26:13 2025 (+0800)
+// Last-Updated: 一 9月  8 20:36:38 2025 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 26
+//     Update #: 31
 // URL: http://wuhongyi.cn 
 
 #ifndef _DECODER_H_
@@ -81,9 +81,15 @@ public:
 
   inline uint16_t getenergyxia() {return energyxia;}//DPP-FDK
 
-  void SetFDKSL(unsigned ch, unsigned int value);
-  void SetFDKSG(unsigned ch, unsigned int value);
-  void SetFDKTAU(unsigned ch, unsigned int value);
+  void SetFDKBL(int ch, unsigned int value);
+  void SetFDKSL(int ch, unsigned int value);
+  void SetFDKSG(int ch, unsigned int value);
+  void SetFDKTAU(int ch, unsigned int value);
+  void SetFDKQS(int ch, unsigned int value);
+  void SetFDKQL(int ch, unsigned int value);
+  void SetFDKCOSL(int ch, unsigned int value);
+
+
   
 private:
   bool readword();
@@ -102,9 +108,12 @@ private:
   unsigned int sl[MAXCHANNELNUMBER];
   unsigned int sg[MAXCHANNELNUMBER];
   unsigned int tau[MAXCHANNELNUMBER];
-
+  unsigned int qs[MAXCHANNELNUMBER];
+  unsigned int ql[MAXCHANNELNUMBER];
+  unsigned int cosl[MAXCHANNELNUMBER];
+  unsigned int bl[MAXCHANNELNUMBER];
   
-
+  double vdctmp[MAXCHANNELNUMBER];
   
   unsigned short samplerate;
   unsigned short firmware;//DPP_PHA DPP_ZLE DPP_PSD DPP_DAW OPEN Scope
@@ -148,7 +157,10 @@ private:
   unsigned int xia_sg;
   unsigned int xia_sl2;
   uint64_t lasttrigger;
-
+  unsigned int sumqs;
+  unsigned int sumql;
+  unsigned int sumbl1;
+  unsigned int sumbl2;
 
   
 };

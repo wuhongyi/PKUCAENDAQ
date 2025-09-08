@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 六 5月 25 14:13:31 2024 (+0800)
-// Last-Updated: 二 4月 22 11:04:25 2025 (+0900)
+// Last-Updated: 六 9月  6 20:24:02 2025 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 22
+//     Update #: 23
 // URL: http://wuhongyi.cn 
 
 #ifndef _HTTPSERVER_H_
@@ -28,8 +28,9 @@ class HttpServer
 public:
   static HttpServer* Instance(DeviceHandle *dev);
   
-  void FillADC(unsigned short mod, unsigned short ch, unsigned short raw);
-  void FillPSD(unsigned short mod, unsigned short ch, unsigned short raw, double p);
+  void FillADC(unsigned short mod, unsigned short ch, double raw);
+  void FillPSD(unsigned short mod, unsigned short ch, double raw, double p);
+  void FillPSDCOS(unsigned short mod, unsigned short ch, double raw, double p);
   void FillRate(unsigned short mod, unsigned short ch, double ts);
   void FillCFD(unsigned short mod, unsigned short ch, unsigned short raw);
 
@@ -40,6 +41,7 @@ public:
 
   void ClearADC(unsigned short mod);
   void ClearPSD(unsigned short mod);
+  void ClearPSDCOS(unsigned short mod);
   void ClearRATE(unsigned short mod);
   void ClearCFD(unsigned short mod);
   
@@ -56,6 +58,7 @@ private:
   TH1I *rate[MAXMODULENUM][MAXCHANNELNUM];
   TH1I *cfd[MAXMODULENUM][MAXCHANNELNUM];
   TH2I *psd[MAXMODULENUM][MAXCHANNELNUM];
+  TH2I *psdcos[MAXMODULENUM][MAXCHANNELNUM];
   TGraph *wave0[MAXMODULENUM][MAXCHANNELNUM];
   TGraph *wave1[MAXMODULENUM][MAXCHANNELNUM];
   
