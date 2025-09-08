@@ -4,9 +4,9 @@
 .. Author: Hongyi Wu(吴鸿毅)
 .. Email: wuhongyi@qq.com 
 .. Created: 日 9月  8 21:34:07 2024 (+0800)
-.. Last-Updated: 三 10月  2 16:33:19 2024 (+0800)
+.. Last-Updated: 一 9月  8 22:52:20 2025 (+0800)
 ..           By: Hongyi Wu(吴鸿毅)
-..     Update #: 4
+..     Update #: 5
 .. URL: http://wuhongyi.cn 
 
 =================================   
@@ -34,7 +34,7 @@ If you have any comments or suggestions for this project(function addition or im
 About
 ---------------------------------
 
-This program supports CAEN digital 2.0 data acquisition modules, including 2745/2740/2730. Support mixed use of PHA/PSD/ZLE/DAW/SCOPE/OPEN firmware for different modules. The implementation of general external logic requires the V2495 module.
+This program supports CAEN digital 2.0 data acquisition modules, including 2745/2740/2730/2751. Support mixed use of PHA/PSD/ZLE/DAW/SCOPE/OPEN firmware for different modules. The implementation of general external logic requires the V2495 module.
 
 
 
@@ -49,5 +49,8 @@ Software Developer:
 	- `Hongyi Wu 吴鸿毅  <https://github.com/wuhongyi>`_ (wuhongyi@qq.com / wuhongyi@pku.edu.cn) 
 
 
+
+
+	  
 .. 
 .. README.rst ends here

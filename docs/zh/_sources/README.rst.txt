@@ -4,9 +4,9 @@
 .. Author: Hongyi Wu(吴鸿毅)
 .. Email: wuhongyi@qq.com 
 .. Created: 六 2月  3 20:48:10 2024 (+0800)
-.. Last-Updated: 三 10月  2 16:33:21 2024 (+0800)
+.. Last-Updated: 一 9月  8 22:52:18 2025 (+0800)
 ..           By: Hongyi Wu(吴鸿毅)
-..     Update #: 10
+..     Update #: 11
 .. URL: http://wuhongyi.cn 
 
 =================================   
@@ -34,7 +34,7 @@
 关于
 ---------------------------------
 
-**本说明书仅适用于 CAEN 的第二代数字化采集卡 2745/2740/2730 系列采集卡。支持不同模块 PHA/PSD/ZLE/DAW/SCOPE/OPEN 固件混合使用。通用逻辑的实现需要 2495 可编程逻辑模块。**
+**本说明书仅适用于 CAEN 的第二代数字化采集卡 2745/2740/2730/2751 系列采集卡。支持不同模块 PHA/PSD/ZLE/DAW/SCOPE/OPEN 固件混合使用。通用逻辑的实现需要 V2495 可编程逻辑模块。**
 
 **第二代数字化采集卡型号为 x27xx**
 
@@ -49,6 +49,9 @@
 - 2021 - now
 	- `Hongyi Wu 吴鸿毅 <https://github.com/wuhongyi>`_ (wuhongyi@qq.com / wuhongyi@pku.edu.cn) 
 
+
+
+	  
   
 .. 
 .. README.rst ends here
