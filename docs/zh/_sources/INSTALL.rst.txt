@@ -4,9 +4,9 @@
 .. Author: Hongyi Wu(吴鸿毅)
 .. Email: wuhongyi@qq.com 
 .. Created: 六 2月  3 20:52:33 2024 (+0800)
-.. Last-Updated: 二 6月 17 21:00:08 2025 (+0800)
+.. Last-Updated: 日 10月 26 20:12:05 2025 (+0800)
 ..           By: Hongyi Wu(吴鸿毅)
-..     Update #: 35
+..     Update #: 36
 .. URL: http://wuhongyi.cn 
 
 =================================   
@@ -84,8 +84,8 @@
   sudo ldconfig
 
   cd ..
-  tar -zxvf caen_dig2-v1.8.1.tar.gz   
-  cd caen_dig2-v1.8.1/
+  tar -zxvf caen_dig2-v1.8.2.tar.gz   
+  cd caen_dig2-v1.8.2/
   ./configure --disable-assert
   make
   sudo make install

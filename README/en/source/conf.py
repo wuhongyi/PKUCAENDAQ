@@ -22,7 +22,7 @@ copyright = '2021, Hongyi Wu(吴鸿毅)'
 author = 'Hongyi Wu(吴鸿毅)'
 
 # The full version, including alpha/beta/rc tags
-release = 'V20250908'
+release = 'V20251210'
 
 
 # -- General configuration ---------------------------------------------------

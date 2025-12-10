@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Decoder &mdash; GDDAQ V20250908 文档</title>
+  <title>Decoder &mdash; GDDAQ V20251210 文档</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=eafc0fe6" />
@@ -16,7 +16,7 @@
   
         <script src="../_static/jquery.js?v=5d32c60e"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=8c22e3d7"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=aca20e36"></script>
         <script src="../_static/doctools.js?v=888ff710"></script>
         <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
         <script src="../_static/translations.js?v=beaddf03"></script>
@@ -139,6 +139,133 @@ make
 </pre></div>
 </div>
 <p>Among them, <em>[RunNnumber]</em> is the running number of the file you want to convert.</p>
+<hr class="docutils" />
+<p>PHA/PSD data structure</p>
+<p><strong>flahshigh</strong></p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>bit 0 Pile-Up</dt><dd><ul>
+<li><p>Identifies pile-up events, ie two events in which the second one occurred before the Peaking Time of the first one. Both are then tagged as pile-up because it’s not possible to evaluate their energy. See EnergyFilterPeakingPosition</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>bit 1 Pile-up rejector guard event</dt><dd><ul>
+<li><p>Identifies an event occurred during the pile-up rejector guard window. See EnergyFilterPileUpGuardT, EnergyFilterPileUpGuardS. There are cases in which both such bits can be ‘1’: if an event ccurs in the pile-up rejector guard of the previous one and does not reach the peaking time because another event has occurred, then such event will have both bits at 1. This allows, with the same data and without doing two separate acquisitions, to have two spectra: one corrected for the PUR guard and one not corrected</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>bit 2 Event Saturation</dt><dd><ul>
+<li><p>Identifies an event in which a saturation of the input dynamics occurred</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>bit 3 Post saturation event</dt><dd><ul>
+<li><p>Identifies an event occurred during the ADCVetoWidth time</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>bit 4 Trapezoid saturation event</dt><dd><ul>
+<li><p>Identifies an event in which a saturation of the trapezoid occurred.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>bit 5 SCA selected event</dt><dd><ul>
+<li><p>Identifies an event falling within the SCA windows (if enabled).</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p><strong>flahslow</strong></p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>bit 0 Event waveform occurred during external inhibit</dt><dd><ul>
+<li><p>Identifies a saved waveform because occurred when the external inhibit is active (useful in case of Transistor Reset Preamplifier detector use to see what happens during the reset).</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>bit 1 Event waveform under-saturation</dt><dd><ul>
+<li><p>Identifies a saved waveform because under-saturating</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>bit 2 Event waveform oversaturation</dt><dd><ul>
+<li><p>Identifies a saved waveform because over-saturating</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>bit 3 External trigger</dt><dd><ul>
+<li><p>Identifies an event triggered by the external trigger from the TRG-IN connector</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>bit 4 Global trigger</dt><dd><ul>
+<li><p>Identifies an event triggered by a global trigger condition</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>bit 5 Software trigger</dt><dd><ul>
+<li><p>Identifies an event triggered by a software trigger</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>bit 6 Self trigger</dt><dd><ul>
+<li><p>Identifies an event triggered by the single channel self trigger</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>bit 7 LVDS trigger</dt><dd><ul>
+<li><p>Identifies an event triggered by the external trigger from the LVDS connector</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>bit 8 64 channel trigger</dt><dd><ul>
+<li><p>Identifies an event triggered by another (or a combination of other) channels trigger</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>bit 9 ITLA trigger</dt><dd><ul>
+<li><p>Identifies an event triggered by the ITLA logic</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>bit 10 ITLB trigger</dt><dd><ul>
+<li><p>Identifies an event triggered by the ITLB logic</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
 </section>
 
 

@@ -4,9 +4,9 @@
 .. Author: Hongyi Wu(吴鸿毅)
 .. Email: wuhongyi@qq.com 
 .. Created: 六 2月  3 20:59:00 2024 (+0800)
-.. Last-Updated: 一 9月  8 22:49:21 2025 (+0800)
+.. Last-Updated: 三 12月 10 15:44:06 2025 (+0800)
 ..           By: Hongyi Wu(吴鸿毅)
-..     Update #: 24
+..     Update #: 26
 .. URL: http://wuhongyi.cn 
 
 =================================
@@ -19,28 +19,31 @@
 
 
 - 2745
-    - V2745-scope-1G-2025022600.cup
-    - V2745-dpp-pha-1G-2025052201.cup
+    - V2745-scope-1G-2025102000.cup
+    - V2745-dpp-pha-1G-2025102402.cup
     - V2745-dpp-psd-1G-2025052200.cup
-    - V2745-dpp-zle-1G-2025012707.cup
+    - V2745-dpp-zle-1G-2025093000.cup
     - V2745-OpenDPP-2025090802.cup
     - V2745-OpenScope-2025051100.cup
 - 2740
-    - V2740-scope-1G-2025022600.cup
-    - V2740-dpp-pha-1G-2025052201.cup
+    - V2740-scope-1G-2025102000.cup
+    - V2740-dpp-pha-1G-2025102402.cup
     - V2740-dpp-psd-1G-2025052200.cup
-    - V2740-dpp-zle-1G-2025012707.cup
+    - V2740-dpp-zle-1G-2025093000.cup
     - V2740-OpenDPP-2025090801.cup
     - V2740-OpenScope-2025051102.cup
 - 2730
-    - V2730-scope-1G-2025060602.cup
-    - V2730-dpp-pha-1G-2025070302.cup
+    - V2730-scope-1G-2025102002.cup
+    - V2730-dpp-pha-1G-2025102401.cup
     - V2730-dpp-psd-1G-2025052203.cup
-    - V2730-OpenDPP-2025090800.cup
+    - V2730-OpenDPP-2025091801.cup
 - 2751
-    - V2751-scope-1G-2025040700.cup
-      
+    - V2751-scope-1G-2025102001.cup
+    - V2751-dpp-psd-1G-2025102404.cup
+    - V2751-OpenDPP-2025120400.cup
 
+
+      
 为了方便实验的诊断和调试，我们建议 CAEN 在 DPP 固件中添加/修改了以下功能:
 
 - 外部信号重置时间戳，可通过 SIN/GPIO 输入信号来重置时间戳（已完成）

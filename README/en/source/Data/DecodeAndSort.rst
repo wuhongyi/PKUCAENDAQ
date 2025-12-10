@@ -4,9 +4,9 @@
 .. Author: Hongyi Wu(吴鸿毅)
 .. Email: wuhongyi@qq.com 
 .. Created: 日 9月  8 23:12:47 2024 (+0800)
-.. Last-Updated: 三 10月  2 16:16:10 2024 (+0800)
+.. Last-Updated: 三 12月 10 15:35:34 2025 (+0800)
 ..           By: Hongyi Wu(吴鸿毅)
-..     Update #: 2
+..     Update #: 3
 .. URL: http://wuhongyi.cn 
 
 ##################################################
@@ -64,6 +64,61 @@ After successful compilation, an executable file **decodeandsort** will be gener
   ./decodeandsort [RunNnumber] 
 
 Among them, *[RunNnumber]* is the running number of the file you want to convert.
+
+
+--------------------------
+
+
+PHA/PSD data structure
+
+**flahshigh**
+
+- bit 0 Pile-Up
+   - Identifies pile-up events, ie two events in which the second one occurred before the Peaking Time of the first one. Both are then tagged as pile-up because it's not possible to evaluate their energy. See EnergyFilterPeakingPosition
+- bit 1 Pile-up rejector guard event
+   - Identifies an event occurred during the pile-up rejector guard window. See EnergyFilterPileUpGuardT, EnergyFilterPileUpGuardS. There are cases in which both such bits can be '1': if an event ccurs in the pile-up rejector guard of the previous one and does not reach the peaking time because another event has occurred, then such event will have both bits at 1. This allows, with the same data and without doing two separate acquisitions, to have two spectra: one corrected for the PUR guard and one not corrected
+- bit 2 Event Saturation
+   - Identifies an event in which a saturation of the input dynamics occurred
+- bit 3 Post saturation event
+   - Identifies an event occurred during the ADCVetoWidth time
+- bit 4 Trapezoid saturation event
+   - Identifies an event in which a saturation of the trapezoid occurred.
+- bit 5 SCA selected event
+   - Identifies an event falling within the SCA windows (if enabled).
+
+
+**flahslow**
+
+- bit 0 Event waveform occurred during external inhibit
+   - Identifies a saved waveform because occurred when the external inhibit is active (useful in case of Transistor Reset Preamplifier detector use to see what happens during the reset).
+- bit 1 Event waveform under-saturation
+   - Identifies a saved waveform because under-saturating
+- bit 2 Event waveform oversaturation
+   - Identifies a saved waveform because over-saturating
+- bit 3 External trigger
+   - Identifies an event triggered by the external trigger from the TRG-IN connector
+- bit 4 Global trigger
+   - Identifies an event triggered by a global trigger condition
+- bit 5 Software trigger
+   - Identifies an event triggered by a software trigger
+- bit 6 Self trigger
+   - Identifies an event triggered by the single channel self trigger
+- bit 7 LVDS trigger
+   - Identifies an event triggered by the external trigger from the LVDS connector
+- bit 8 64 channel trigger
+   - Identifies an event triggered by another (or a combination of other) channels trigger
+- bit 9 ITLA trigger
+   - Identifies an event triggered by the ITLA logic
+- bit 10 ITLB trigger
+   - Identifies an event triggered by the ITLB logic
+
+
+
+
+
+
+
+
 
 
 .. 

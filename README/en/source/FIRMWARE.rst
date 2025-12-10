@@ -4,9 +4,9 @@
 .. Author: Hongyi Wu(吴鸿毅)
 .. Email: wuhongyi@qq.com 
 .. Created: 日 9月  8 21:25:48 2024 (+0800)
-.. Last-Updated: 一 9月  8 22:50:07 2025 (+0800)
+.. Last-Updated: 三 12月 10 15:44:43 2025 (+0800)
 ..           By: Hongyi Wu(吴鸿毅)
-..     Update #: 18
+..     Update #: 20
 .. URL: http://wuhongyi.cn 
 
 =================================
@@ -18,27 +18,31 @@ Latest Firmware
 ---------------------------------
 
 - 2745
-    - V2745-scope-1G-2025022600.cup
-    - V2745-dpp-pha-1G-2025052201.cup
+    - V2745-scope-1G-2025102000.cup
+    - V2745-dpp-pha-1G-2025102402.cup
     - V2745-dpp-psd-1G-2025052200.cup
-    - V2745-dpp-zle-1G-2025012707.cup
+    - V2745-dpp-zle-1G-2025093000.cup
     - V2745-OpenDPP-2025090802.cup
     - V2745-OpenScope-2025051100.cup
 - 2740
-    - V2740-scope-1G-2025022600.cup
-    - V2740-dpp-pha-1G-2025052201.cup
+    - V2740-scope-1G-2025102000.cup
+    - V2740-dpp-pha-1G-2025102402.cup
     - V2740-dpp-psd-1G-2025052200.cup
-    - V2740-dpp-zle-1G-2025012707.cup
+    - V2740-dpp-zle-1G-2025093000.cup
     - V2740-OpenDPP-2025090801.cup
     - V2740-OpenScope-2025051102.cup
 - 2730
-    - V2730-scope-1G-2025060602.cup
-    - V2730-dpp-pha-1G-2025070302.cup
+    - V2730-scope-1G-2025102002.cup
+    - V2730-dpp-pha-1G-2025102401.cup
     - V2730-dpp-psd-1G-2025052203.cup
-    - V2730-OpenDPP-2025090800.cup
+    - V2730-OpenDPP-2025091801.cup
 - 2751
-    - V2751-scope-1G-2025040700.cup
-      
+    - V2751-scope-1G-2025102001.cup
+    - V2751-dpp-psd-1G-2025102404.cup
+    - V2751-OpenDPP-2025120400.cup
+
+
+ 
 
   
 
