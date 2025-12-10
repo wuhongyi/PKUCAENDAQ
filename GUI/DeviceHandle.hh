@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 三 6月 22 09:55:01 2022 (+0800)
-// Last-Updated: 五 3月  7 13:07:41 2025 (+0800)
+// Last-Updated: 六 12月  6 17:12:04 2025 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 17
+//     Update #: 19
 // URL: http://wuhongyi.cn 
 
 
@@ -73,7 +73,7 @@ public:
   unsigned short GetNumberOfChannels(unsigned short mod);
   unsigned short GetADCBitResolution(unsigned short mod);
   unsigned short GetADCSamplingFrequency(unsigned short mod);
-  unsigned short GetSerialNumber(unsigned short mod);
+  unsigned int GetSerialNumber(unsigned short mod);
   char * GetFwType(unsigned short mod);
   char * GetLicenseStatus(unsigned short mod);
   // unsigned short GetSlot(unsigned short num);
@@ -100,7 +100,7 @@ private:
   // Module information
   struct ModuleInfo {
     unsigned short Family;
-    unsigned short SerNum;
+    unsigned int SerNum;
     unsigned short ADCBits;
     unsigned short ADCMSPS;
     unsigned short Channels;
