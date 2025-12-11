@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 三 6月 22 09:55:01 2022 (+0800)
-// Last-Updated: 六 12月  6 17:12:04 2025 (+0800)
+// Last-Updated: 四 12月 11 20:03:49 2025 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 19
+//     Update #: 20
 // URL: http://wuhongyi.cn 
 
 
@@ -63,7 +63,6 @@ public:
   int SetReadDataFormat(unsigned short mod);
 
   
-
   
 
   // after open

@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 六 5月 25 14:13:31 2024 (+0800)
-// Last-Updated: 六 9月  6 20:24:02 2025 (+0800)
+// Last-Updated: 四 12月 11 20:32:28 2025 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 23
+//     Update #: 28
 // URL: http://wuhongyi.cn 
 
 #ifndef _HTTPSERVER_H_
@@ -34,6 +34,9 @@ public:
   void FillRate(unsigned short mod, unsigned short ch, double ts);
   void FillCFD(unsigned short mod, unsigned short ch, unsigned short raw);
 
+  void FillBL(unsigned short mod, unsigned short ch, int raw);
+  void FillWAVEHIGH(unsigned short mod, unsigned short ch, int raw);
+  
   void DrawWave0(unsigned short mod, unsigned short ch, unsigned short len, unsigned int *wave);
   void DrawWave1(unsigned short mod, unsigned short ch, unsigned short len, unsigned int *wave);
 
@@ -44,6 +47,8 @@ public:
   void ClearPSDCOS(unsigned short mod);
   void ClearRATE(unsigned short mod);
   void ClearCFD(unsigned short mod);
+  void ClearBL(unsigned short mod);
+  void ClearWAVEHIGH(unsigned short mod);
   
 protected:
   HttpServer(DeviceHandle *dev);
@@ -61,6 +66,10 @@ private:
   TH2I *psdcos[MAXMODULENUM][MAXCHANNELNUM];
   TGraph *wave0[MAXMODULENUM][MAXCHANNELNUM];
   TGraph *wave1[MAXMODULENUM][MAXCHANNELNUM];
+
+  TH2I *bl_ch[MAXMODULENUM];
+  TH1I *wavehigh[MAXMODULENUM][MAXCHANNELNUM];
+
   
   THttpServer* serv;
   DeviceHandle *mDevice;
