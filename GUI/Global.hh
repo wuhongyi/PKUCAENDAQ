@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 二 10月 25 14:31:51 2022 (+0800)
-// Last-Updated: 四 12月 11 21:57:33 2025 (+0800)
+// Last-Updated: 六 12月 13 01:09:18 2025 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 134
+//     Update #: 139
 // URL: http://wuhongyi.cn 
 
 #ifndef _GLOBAL_H_
@@ -27,8 +27,8 @@
 #include "QMutex"
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-#define VERSIONDATE "VERSION: GUI-Qt - 20251211"
-#define EXPIRATIONDATE 20260611
+#define VERSIONDATE "VERSION: GUI-Qt - 20251213"
+#define EXPIRATIONDATE 20260613
 
 
 #define ONLINEMODE
@@ -90,6 +90,32 @@ extern QVector<RAWDATABUFFER> datavectordecoder[];
 #define DEFAUL_RUN_CONFIG_FILENAME "GDDAQ_CAEN.conf"
 
 #define DEFAULT_PARAMETERS "../pars/setting.par"
+
+#define V2745SCOPE 2025102000
+#define V2745DPPPHA 2025102400
+#define V2745DPPPSD 2025052200
+#define V2745DPPZLE 2025093000
+#define V2745OPENDPP 2025090800
+#define V2745OPENSCOPE 2025051100
+
+#define V2740SCOPE 2025102000
+#define V2740DPPPHA 2025102400
+#define V2740DPPPSD 2025052200
+#define V2740DPPZLE 2025093000
+#define V2740OPENDPP 2025090800
+#define V2740OPENSCOPE 2025051100
+
+#define V2730SCOPE 2025102000
+#define V2730DPPPHA 2025102400
+#define V2730DPPPSD 2025052200
+#define V2730OPENDPP 2025091800
+
+#define V2751SCOPE 2025102000
+#define V2751DPPPSD 2025102400
+#define V2751OPENDPP 2025120400
+
+
+
 
 
 

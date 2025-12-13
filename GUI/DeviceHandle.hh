@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 三 6月 22 09:55:01 2022 (+0800)
-// Last-Updated: 四 12月 11 20:03:49 2025 (+0800)
+// Last-Updated: 五 12月 12 23:30:31 2025 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 20
+//     Update #: 22
 // URL: http://wuhongyi.cn 
 
 
@@ -69,6 +69,7 @@ public:
   void GetModuleInfo(unsigned short mod);
   bool ReadModuleInfoAll();
   unsigned short GetFamily(unsigned short mod);
+  unsigned int GetCUPVer(unsigned short mod);
   unsigned short GetNumberOfChannels(unsigned short mod);
   unsigned short GetADCBitResolution(unsigned short mod);
   unsigned short GetADCSamplingFrequency(unsigned short mod);
@@ -99,11 +100,12 @@ private:
   // Module information
   struct ModuleInfo {
     unsigned short Family;
+    unsigned int CUPVer;
     unsigned int SerNum;
     unsigned short ADCBits;
     unsigned short ADCMSPS;
     unsigned short Channels;
-    char FwType[256];//DPP_PHA   DPP_ZLE   DPP_PSD   DPP_DAW   DPP_OPEN   Scope  SCOPE_OPEN
+    char FwType[256];//DPP_PHA   DPP_ZLE   DPP_PSD   DPP_DAW   DPP_OPEN   Scope  SCOPE_OPEN Scope_UDP
     char LicenseStatus[256];
   };
 
@@ -114,3 +116,8 @@ private:
 #endif /* _DEVICEHANDLE_H_ */
 // 
 // DeviceHandle.hh ends here
+
+
+
+
+
