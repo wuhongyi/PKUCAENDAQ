@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 六 2月 17 23:04:10 2024 (+0800)
-// Last-Updated: 一 9月  8 20:36:38 2025 (+0800)
+// Last-Updated: 二 12月 16 11:55:50 2025 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 31
+//     Update #: 32
 // URL: http://wuhongyi.cn 
 
 #ifndef _DECODER_H_
@@ -148,7 +148,9 @@ private:
   unsigned int nsamples;//ZLE SCOPE
   uint16_t waveform[10485760];//ZLE SCOPE
 
-
+  uint8_t  info;
+  uint8_t flags_a;
+  uint16_t flags_b;
   uint16_t energyxia;//DPP-FDK
   uint16_t baseline;
   uint64_t rt_accx2;

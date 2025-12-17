@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 日 3月 12 21:04:39 2023 (+0800)
-// Last-Updated: 日 9月  7 00:52:56 2025 (+0800)
+// Last-Updated: 一 12月 15 23:15:05 2025 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 25
+//     Update #: 26
 // URL: http://wuhongyi.cn 
 
 #ifndef _REALDECODERTHREAD_H_
@@ -64,6 +64,9 @@ private:
   uint16_t energy;//PHA PSD
   uint16_t energy_short;// PSD
 
+  unsigned short info;
+  unsigned short flags_a;
+  unsigned short flags_b;
 
   uint64_t prets;
   uint16_t baseline;

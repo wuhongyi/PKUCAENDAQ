@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 二 10月 25 14:31:51 2022 (+0800)
-// Last-Updated: 六 12月 13 01:09:18 2025 (+0800)
+// Last-Updated: 三 12月 17 20:54:02 2025 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 139
+//     Update #: 141
 // URL: http://wuhongyi.cn 
 
 #ifndef _GLOBAL_H_
@@ -27,8 +27,8 @@
 #include "QMutex"
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-#define VERSIONDATE "VERSION: GUI-Qt - 20251213"
-#define EXPIRATIONDATE 20260613
+#define VERSIONDATE "VERSION: GUI-Qt - 20251217"
+#define EXPIRATIONDATE 20260617
 
 
 #define ONLINEMODE
@@ -272,6 +272,9 @@ struct event_scope {
 		{ \"name\" : \"FINE_TIMESTAMP\", \"type\" : \"U16\" }, \
 		{ \"name\" : \"ENERGY\", \"type\" : \"U16\" }, \
                 { \"name\" : \"PSD\", \"type\" : \"U16\" }, \
+                { \"name\" : \"INFO\", \"type\" : \"U8\" }, \
+                { \"name\" : \"FLAGS_A\", \"type\" : \"U8\" }, \
+                { \"name\" : \"FLAGS_B\", \"type\" : \"U16\" }, \
                 { \"name\" : \"USER_INFO\", \"type\" : \"U64\", \"dim\" : 1 }, \
                 { \"name\" : \"USER_INFO_SIZE\", \"type\" : \"SIZE_T\" }, \
 		{ \"name\" : \"WAVEFORM\", \"type\" : \"U16\", \"dim\" : 1 }, \
@@ -286,6 +289,9 @@ struct event_opendpp {
   uint16_t fine_timestamp;
   uint16_t energy;
   uint16_t psd;
+  uint8_t  info;
+  uint8_t flags_a;
+  uint16_t flags_b;
   uint64_t user_info[8];
   size_t user_info_size;
   size_t event_size;
@@ -293,6 +299,7 @@ struct event_opendpp {
   size_t n_allocated_samples;
   size_t n_samples;
 };
+
 
 
 

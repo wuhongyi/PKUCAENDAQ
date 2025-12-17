@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 六 2月 17 23:04:21 2024 (+0800)
-// Last-Updated: 一 9月  8 20:36:35 2025 (+0800)
+// Last-Updated: 二 12月 16 11:55:45 2025 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 63
+//     Update #: 64
 // URL: http://wuhongyi.cn 
 
 #include "decoder.hh"
@@ -242,7 +242,7 @@ void decoder::decodescope()
 
 void decoder::decodedppfdk()
 {
-  unsigned int userinfo = (buff[0] & 0xC0000000) >> 30;
+  unsigned int userinfo = (buff[0] & 0xC0000000) >> 30;//waveform
 
   ch = buff[0] & 0xFF;
   mod = (buff[0] & 0xFF00) >> 8;
@@ -252,7 +252,12 @@ void decoder::decodedppfdk()
   fine_timestamp = (buff[2] & 0x3FF0000) >> 16;
   energy = buff[3] & 0xFFFF;
   energy_short = (buff[3] & 0xFFFF0000) >> 16;
-  lasttrigger = ((uint64_t)(energy_short) << 26) + ((uint64_t)(fine_timestamp) << 16) + energy;
+
+  info = buff[4] & 0xFF;
+  flags_a = (buff[4] & 0xFF00) >> 8;
+  flags_b = (buff[4] & 0xFFF0000) >> 16;
+  
+  lasttrigger = ((uint64_t)(flags_a) << 42) + ((uint64_t)(energy_short) << 26) + ((uint64_t)(fine_timestamp) << 16) + energy;
 
   
   energyxia = 0;
