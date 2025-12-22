@@ -4,9 +4,9 @@
 .. Author: Hongyi Wu(吴鸿毅)
 .. Email: wuhongyi@qq.com 
 .. Created: 日 9月  8 21:25:48 2024 (+0800)
-.. Last-Updated: 三 12月 10 15:44:43 2025 (+0800)
+.. Last-Updated: 四 12月 18 20:47:41 2025 (+0800)
 ..           By: Hongyi Wu(吴鸿毅)
-..     Update #: 20
+..     Update #: 22
 .. URL: http://wuhongyi.cn 
 
 =================================
@@ -22,27 +22,34 @@ Latest Firmware
     - V2745-dpp-pha-1G-2025102402.cup
     - V2745-dpp-psd-1G-2025052200.cup
     - V2745-dpp-zle-1G-2025093000.cup
-    - V2745-OpenDPP-2025090802.cup
+    - V2745-OpenDPP-2025121701.cup
     - V2745-OpenScope-2025051100.cup
 - 2740
     - V2740-scope-1G-2025102000.cup
     - V2740-dpp-pha-1G-2025102402.cup
     - V2740-dpp-psd-1G-2025052200.cup
     - V2740-dpp-zle-1G-2025093000.cup
-    - V2740-OpenDPP-2025090801.cup
+    - V2740-OpenDPP-2025121700.cup
     - V2740-OpenScope-2025051102.cup
 - 2730
     - V2730-scope-1G-2025102002.cup
     - V2730-dpp-pha-1G-2025102401.cup
-    - V2730-dpp-psd-1G-2025052203.cup
-    - V2730-OpenDPP-2025091801.cup
+    - V2730-dpp-psd-1G-2025121611.cup
+    - V2730-OpenDPP-2025121703.cup
 - 2751
     - V2751-scope-1G-2025102001.cup
-    - V2751-dpp-psd-1G-2025102404.cup
-    - V2751-OpenDPP-2025120400.cup
+    - V2751-dpp-psd-1G-2025121612.cup
+    - V2751-OpenDPP-2025121702.cup
 
 
- 
+
+ To facilitate experimental diagnosis and debugging, we have proposed that CAEN add/modify the following features in the DPP firmware:
+
+- External signal timestamp reset: The timestamp can be reset via SIN/GPIO input signals (Completed).
+- Option to reset the timestamp when acquiring start (Not completed).
+- Addition of monitoring parameters similar to SelfTriggerRate to monitor coincidence/anti-coincidence count rates and actual output count rates (Not completed).
+- Addition of coincidence and anti-coincidence monitoring signals in WaveDigitalProbe (Completed).
+- Addition of input signal delay for 2730 (Not completed).
 
   
 

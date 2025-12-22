@@ -4,9 +4,9 @@
 .. Author: Hongyi Wu(吴鸿毅)
 .. Email: wuhongyi@qq.com 
 .. Created: 日 10月 13 19:48:44 2024 (+0800)
-.. Last-Updated: 一 10月 14 19:48:04 2024 (+0800)
+.. Last-Updated: 一 12月 22 20:42:33 2025 (+0800)
 ..           By: Hongyi Wu(吴鸿毅)
-..     Update #: 3
+..     Update #: 4
 .. URL: http://wuhongyi.cn 
 
 ##################################################
@@ -63,8 +63,7 @@ parameter
 
 
 
-	   
-.. image:: /_static/img/OPENDPP_PSD_BaF2.png
+
 
 .. image:: /_static/img/OPENDPP_2730_BaF2_PSD_costheta.png
 	   

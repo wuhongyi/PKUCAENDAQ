@@ -4,9 +4,9 @@
 .. Author: Hongyi Wu(吴鸿毅)
 .. Email: wuhongyi@qq.com 
 .. Created: 日 10月 13 19:27:12 2024 (+0800)
-.. Last-Updated: 一 10月 14 19:48:08 2024 (+0800)
+.. Last-Updated: 五 12月 19 18:31:48 2025 (+0800)
 ..           By: Hongyi Wu(吴鸿毅)
-..     Update #: 7
+..     Update #: 8
 .. URL: http://wuhongyi.cn 
 
 ##################################################
@@ -64,8 +64,7 @@ UserDPP 应用
 
 
 	   
-.. image:: /_static/img/OPENDPP_PSD_BaF2.png
-BaF2 探测器，本底测量。alpha 和 gamma 鉴别
+
 
 
 .. image:: /_static/img/OPENDPP_2730_BaF2_PSD_costheta.png
