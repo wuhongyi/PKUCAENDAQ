@@ -4,9 +4,9 @@
 .. Author: Hongyi Wu(吴鸿毅)
 .. Email: wuhongyi@qq.com 
 .. Created: 日 9月  8 22:50:05 2024 (+0800)
-.. Last-Updated: 日 10月 26 20:12:17 2025 (+0800)
+.. Last-Updated: 一 12月 22 21:09:12 2025 (+0800)
 ..           By: Hongyi Wu(吴鸿毅)
-..     Update #: 6
+..     Update #: 7
 .. URL: http://wuhongyi.cn 
 
 =================================   
@@ -18,7 +18,8 @@ This program installation requires reliance on third-party libraries such as Boo
 * OS
     - Ubuntu 20.04/22.04/24.04
     - Fedora 40
-    - Rocky 9  
+    - Rocky 9
+    - AlmaLinux 9
 * boost >= 1.67
     - 1.71.0
     - 1.74.0
@@ -42,7 +43,7 @@ This program installation requires reliance on third-party libraries such as Boo
     - 6.30.06 some bug 
     - 6.32.04 some bug
 
-**The systems tested by this program include Ubuntu20.04/22.04/24.04 Fedora40 Rocky9. Supports compilation of various LINUX operating systems. If your operating system compilation does not pass, please contact Hongyi Wu**
+**The systems tested by this program include Ubuntu20.04/22.04/24.04, Fedora40, Rocky9 and AlmaLinux9. Supports compilation of various LINUX operating systems. If your operating system compilation does not pass, please contact Hongyi Wu**
 
 
 .. code-block:: bash
@@ -56,7 +57,9 @@ This program installation requires reliance on third-party libraries such as Boo
   # Fedora 40 Dependency installation
   sudo dnf -y install redhat-lsb-core boost boost-devel openssl openssl-devel qt5-qtcharts qt5-qtcharts-devel qt5-qtbase qt5-qtbase-devel
   # Rocky 9  Dependency installation
-  sudo dnf -y install boost boost-devel openssl openssl-devel qt5-qtcharts qt5-qtcharts-devel qt5-qtbase qt5-qtbase-devel
+  sudo dnf -y install boost boost-devel openssl openssl-devel qt5-qtcharts qt5-qtcharts-devel qt5-qtbase qt5-qtbase-devel lsb_release.noarch
+  # AlmaLinux 9 Dependency installation
+  sudo dnf -y install boost boost-devel openssl openssl-devel qt5-qtcharts qt5-qtcharts-devel qt5-qtbase qt5-qtbase-devel lsb_release.noarch
   # ROOT 6 recommend 6.26.16
 
 

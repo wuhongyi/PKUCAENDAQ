@@ -128,6 +128,7 @@
 <li><p>Ubuntu 20.04/22.04/24.04</p></li>
 <li><p>Fedora 40</p></li>
 <li><p>Rocky 9</p></li>
+<li><p>AlmaLinux 9</p></li>
 </ul>
 </dd>
 </dl>
@@ -175,7 +176,7 @@
 </dl>
 </li>
 </ul>
-<p><strong>本程序测试过的系统包含 Ubuntu20.04/22.04/24.04、Fedora40、Rocky9。 支持各种 LINUX 操作系统编译。如果您的操作系统编译不通过请联系吴鸿毅。</strong></p>
+<p><strong>本程序测试过的系统包含 Ubuntu20.04/22.04/24.04、Fedora40、Rocky9、AlmaLinux9。 支持各种 LINUX 操作系统编译。如果您的操作系统编译不通过请联系吴鸿毅。</strong></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ubuntu20.04 依赖安装</span>
 sudo<span class="w"> </span>apt<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>libboost-dev<span class="w"> </span>libboost-all-dev<span class="w"> </span>libssl-dev<span class="w"> </span>openssl<span class="w"> </span>qt5-default<span class="w"> </span>qtcreator<span class="w"> </span>libqt5charts5-dev
 <span class="c1"># Ubuntu22.04 依赖安装</span>
@@ -185,7 +186,9 @@ sudo<span class="w"> </span>apt<span class="w"> </span>-y<span class="w"> </span
 <span class="c1"># Fedora 40  依赖安装</span>
 sudo<span class="w"> </span>dnf<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>redhat-lsb-core<span class="w"> </span>boost<span class="w"> </span>boost-devel<span class="w"> </span>openssl<span class="w"> </span>openssl-devel<span class="w"> </span>qt5-qtcharts<span class="w"> </span>qt5-qtcharts-devel<span class="w"> </span>qt5-qtbase<span class="w"> </span>qt5-qtbase-devel
 <span class="c1"># Rocky 9  依赖安装</span>
-sudo<span class="w"> </span>dnf<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>boost<span class="w"> </span>boost-devel<span class="w"> </span>openssl<span class="w"> </span>openssl-devel<span class="w"> </span>qt5-qtcharts<span class="w"> </span>qt5-qtcharts-devel<span class="w"> </span>qt5-qtbase<span class="w"> </span>qt5-qtbase-devel
+sudo<span class="w"> </span>dnf<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>boost<span class="w"> </span>boost-devel<span class="w"> </span>openssl<span class="w"> </span>openssl-devel<span class="w"> </span>qt5-qtcharts<span class="w"> </span>qt5-qtcharts-devel<span class="w"> </span>qt5-qtbase<span class="w"> </span>qt5-qtbase-devel<span class="w"> </span>lsb_release.noarch
+<span class="c1"># AlmaLinux 9 依赖安装</span>
+sudo<span class="w"> </span>dnf<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>boost<span class="w"> </span>boost-devel<span class="w"> </span>openssl<span class="w"> </span>openssl-devel<span class="w"> </span>qt5-qtcharts<span class="w"> </span>qt5-qtcharts-devel<span class="w"> </span>qt5-qtbase<span class="w"> </span>qt5-qtbase-devel<span class="w"> </span>lsb_release.noarch
 <span class="c1"># ROOT 6 推荐 6.26.16</span>
 </pre></div>
 </div>

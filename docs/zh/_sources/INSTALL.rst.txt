@@ -4,9 +4,9 @@
 .. Author: Hongyi Wu(吴鸿毅)
 .. Email: wuhongyi@qq.com 
 .. Created: 六 2月  3 20:52:33 2024 (+0800)
-.. Last-Updated: 日 10月 26 20:12:05 2025 (+0800)
+.. Last-Updated: 一 12月 22 21:07:16 2025 (+0800)
 ..           By: Hongyi Wu(吴鸿毅)
-..     Update #: 36
+..     Update #: 37
 .. URL: http://wuhongyi.cn 
 
 =================================   
@@ -18,7 +18,8 @@
 * OS
     - Ubuntu 20.04/22.04/24.04
     - Fedora 40
-    - Rocky 9  
+    - Rocky 9
+    - AlmaLinux 9
 * boost >= 1.67
     - 1.71.0
     - 1.74.0
@@ -43,7 +44,7 @@
     - 6.32.04 some bug
 
   
-**本程序测试过的系统包含 Ubuntu20.04/22.04/24.04、Fedora40、Rocky9。 支持各种 LINUX 操作系统编译。如果您的操作系统编译不通过请联系吴鸿毅。**
+**本程序测试过的系统包含 Ubuntu20.04/22.04/24.04、Fedora40、Rocky9、AlmaLinux9。 支持各种 LINUX 操作系统编译。如果您的操作系统编译不通过请联系吴鸿毅。**
 
 .. code-block:: bash
 
@@ -56,7 +57,9 @@
   # Fedora 40  依赖安装
   sudo dnf -y install redhat-lsb-core boost boost-devel openssl openssl-devel qt5-qtcharts qt5-qtcharts-devel qt5-qtbase qt5-qtbase-devel
   # Rocky 9  依赖安装
-  sudo dnf -y install boost boost-devel openssl openssl-devel qt5-qtcharts qt5-qtcharts-devel qt5-qtbase qt5-qtbase-devel
+  sudo dnf -y install boost boost-devel openssl openssl-devel qt5-qtcharts qt5-qtcharts-devel qt5-qtbase qt5-qtbase-devel lsb_release.noarch
+  # AlmaLinux 9 依赖安装
+  sudo dnf -y install boost boost-devel openssl openssl-devel qt5-qtcharts qt5-qtcharts-devel qt5-qtbase qt5-qtbase-devel lsb_release.noarch
   # ROOT 6 推荐 6.26.16
 
   
