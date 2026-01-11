@@ -4,9 +4,9 @@
 .. Author: Hongyi Wu(吴鸿毅)
 .. Email: wuhongyi@qq.com 
 .. Created: 六 2月  3 20:59:00 2024 (+0800)
-.. Last-Updated: 四 12月 18 20:42:40 2025 (+0800)
+.. Last-Updated: 日 1月 11 16:39:59 2026 (+0800)
 ..           By: Hongyi Wu(吴鸿毅)
-..     Update #: 29
+..     Update #: 36
 .. URL: http://wuhongyi.cn 
 
 =================================
@@ -23,24 +23,27 @@
     - V2745-dpp-pha-1G-2025102402.cup
     - V2745-dpp-psd-1G-2025052200.cup
     - V2745-dpp-zle-1G-2025093000.cup
-    - V2745-OpenDPP-2025121701.cup
-    - V2745-OpenScope-2025051100.cup
+    - V2745-OpenDPP-2026011100.cup PHA+PSD 
+    - V2745-OpenDPP-2026011101.cup PHA+CFD
+    - V2745-OpenScope-2026011004.cup
 - 2740
     - V2740-scope-1G-2025102000.cup
     - V2740-dpp-pha-1G-2025102402.cup
     - V2740-dpp-psd-1G-2025052200.cup
     - V2740-dpp-zle-1G-2025093000.cup
-    - V2740-OpenDPP-2025121700.cup
-    - V2740-OpenScope-2025051102.cup
+    - V2740-OpenDPP-2026011008.cup PHA+PSD 
+    - V2740-OpenDPP-2026011007.cup PHA+CFD
+    - V2740-OpenScope-2026011002.cup
 - 2730
     - V2730-scope-1G-2025102002.cup
     - V2730-dpp-pha-1G-2025102401.cup
     - V2730-dpp-psd-1G-2025121611.cup
-    - V2730-OpenDPP-2025121703.cup
+    - V2730-OpenDPP-2026011006.cup PHA+PSD
+    - V2730-OpenDPP-2026011005.cup PHA+CFD
 - 2751
     - V2751-scope-1G-2025102001.cup
     - V2751-dpp-psd-1G-2025121612.cup
-    - V2751-OpenDPP-2025121702.cup
+    - V2751-OpenDPP-2026011102.cup  PHA+PSD
 
 
       

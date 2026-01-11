@@ -4,9 +4,9 @@
 .. Author: Hongyi Wu(吴鸿毅)
 .. Email: wuhongyi@qq.com 
 .. Created: 日 9月  8 22:50:05 2024 (+0800)
-.. Last-Updated: 一 12月 22 21:09:12 2025 (+0800)
+.. Last-Updated: 六 1月 10 23:02:13 2026 (+0800)
 ..           By: Hongyi Wu(吴鸿毅)
-..     Update #: 7
+..     Update #: 8
 .. URL: http://wuhongyi.cn 
 
 =================================   
@@ -117,7 +117,7 @@ Due to the inability of some Linux distributions to automatically retrieve the U
 
 Connect the Type-C end of the USB3.0 cable to the module and the other end to the computer. Then enter CAENDGTZ-USB-{PIDNUMBER} in the browser, where {PIDNUMBER} is replaced with the PID code of the module being used, for example: CAENDGTZ-USB-25480. Check if it can be accessed. If it cannot be accessed, it means that the module has not been registered as a driver yet.
 
-In the USB driver installation package, such as **CAENDGTZ-USB-Drv-1.2**, there is a driver registration script file *regPID.sh*, which can be run using the following command. After execution, you will see a prompt indicating successful registration.
+In the USB driver installation package, such as **CAENDGTZ-USB-Drv-1.3**, there is a driver registration script file *regPID.sh*, which can be run using the following command. After execution, you will see a prompt indicating successful registration.
 
 
 .. code-block:: bash

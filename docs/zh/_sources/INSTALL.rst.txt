@@ -4,9 +4,9 @@
 .. Author: Hongyi Wu(吴鸿毅)
 .. Email: wuhongyi@qq.com 
 .. Created: 六 2月  3 20:52:33 2024 (+0800)
-.. Last-Updated: 一 12月 22 21:07:16 2025 (+0800)
+.. Last-Updated: 六 1月 10 23:02:11 2026 (+0800)
 ..           By: Hongyi Wu(吴鸿毅)
-..     Update #: 37
+..     Update #: 38
 .. URL: http://wuhongyi.cn 
 
 =================================   
@@ -115,7 +115,7 @@ LINUX 系统中每个模块使用注册
 
 将 USB3.0 线缆 type-C 端连接到模块，另一端连接到电脑。然后在浏览器中输入 CAENDGTZ-USB-{PIDNUMBER}，这里 {PIDNUMBER} 替换为使用的模块的 PID 码，例如：CAENDGTZ-USB-25480 。看是否能访问，如果不能访问，说明还未对该模块进行驱动注册。
 
-在 USB 驱动安装包内，例如 CAENDGTZ-USB-Drv-1.2 里面，有驱动注册脚本文件 regPID.sh，通过以下命令运行。执行之后会看到注册成功的提示。
+在 USB 驱动安装包内，例如 CAENDGTZ-USB-Drv-1.3 里面，有驱动注册脚本文件 regPID.sh，通过以下命令运行。执行之后会看到注册成功的提示。
 
 .. code-block:: bash
 

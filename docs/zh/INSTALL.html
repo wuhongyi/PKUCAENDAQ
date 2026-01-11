@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>程序安装 &mdash; GDDAQ V20251217 文档</title>
+  <title>程序安装 &mdash; GDDAQ V20260110 文档</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
@@ -16,7 +16,7 @@
   
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=d0f0ba70"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=43047286"></script>
         <script src="_static/doctools.js?v=888ff710"></script>
         <script src="_static/sphinx_highlight.js?v=4825356b"></script>
         <script src="_static/translations.js?v=beaddf03"></script>
@@ -236,7 +236,7 @@ chmod<span class="w"> </span>+x<span class="w"> </span>makefile.sh.x
 <h2>LINUX 系统中每个模块使用注册<a class="headerlink" href="#linux" title="此标题的永久链接"></a></h2>
 <p>由于某些 Linux 发行版无法自动检索数字化仪 USB 名称，因此第一次使用该模块时，需要先进行注册操作。模块注册需要逐个模块进行。即在进行注册操作时，仅能有一个模块通过 USB 连接到 LINUX 系统。</p>
 <p>将 USB3.0 线缆 type-C 端连接到模块，另一端连接到电脑。然后在浏览器中输入 CAENDGTZ-USB-{PIDNUMBER}，这里 {PIDNUMBER} 替换为使用的模块的 PID 码，例如：CAENDGTZ-USB-25480 。看是否能访问，如果不能访问，说明还未对该模块进行驱动注册。</p>
-<p>在 USB 驱动安装包内，例如 CAENDGTZ-USB-Drv-1.2 里面，有驱动注册脚本文件 regPID.sh，通过以下命令运行。执行之后会看到注册成功的提示。</p>
+<p>在 USB 驱动安装包内，例如 CAENDGTZ-USB-Drv-1.3 里面，有驱动注册脚本文件 regPID.sh，通过以下命令运行。执行之后会看到注册成功的提示。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>./regPID.sh
 </pre></div>
 </div>

@@ -44,7 +44,9 @@ Welcome to GDDAQ's guides.
    UsersGuide/ZLE.rst
    UsersGuide/OPEN.rst
    UsersGuide/UserDPP.rst
-
+   UsersGuide/UserScope.rst
+   UsersGuide/UDP.rst
+   
 #################################
 
 .. toctree::
@@ -55,7 +57,8 @@ Welcome to GDDAQ's guides.
    Example/HPGe.rst
    Example/Si.rst
    Example/UserDPP.rst
-
+   Example/LongWaveform.rst
+   
 #################################
 
 .. toctree::
@@ -65,7 +68,7 @@ Welcome to GDDAQ's guides.
    Data/README.rst
    Data/DecodeAndSort.rst
    Data/EventBuilder.rst
-
+   Data/DataAnalysis.rst
    
 	     
 

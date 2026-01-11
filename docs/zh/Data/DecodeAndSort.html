@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>数据解码 &mdash; GDDAQ V20251217 文档</title>
+  <title>数据解码 &mdash; GDDAQ V20260110 文档</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=eafc0fe6" />
@@ -16,7 +16,7 @@
   
         <script src="../_static/jquery.js?v=5d32c60e"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=d0f0ba70"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=43047286"></script>
         <script src="../_static/doctools.js?v=888ff710"></script>
         <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
         <script src="../_static/translations.js?v=beaddf03"></script>
@@ -80,7 +80,11 @@
 <p class="caption" role="heading"><span class="caption-text">数据分析</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="README.html">数据分析</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">数据解码</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">数据解码</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">解码操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">数据格式</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="EventBuilder.html">事件组装</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DataAnalysis.html">数据分析框架</a></li>
 </ul>
@@ -117,6 +121,8 @@
              
   <section id="id1">
 <h1>数据解码<a class="headerlink" href="#id1" title="此标题的永久链接"></a></h1>
+<section id="id2">
+<h2>解码操作<a class="headerlink" href="#id2" title="此标题的永久链接"></a></h2>
 <p><strong>DecodeAndSortAll 程序用来将同一轮数据不同采集卡采集的数据转为一个 ROOT 文件。用户的物理分析以本程序产生的 ROOT 文件为基准。本程序生成的数据已经按照时间戳从小到大排列。</strong></p>
 <p>用户首先需要修改 <strong>UesrDefine.hh</strong> 文件中的定义</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// #define ONLYPHA</span>
@@ -149,7 +155,144 @@ make
 </pre></div>
 </div>
 <p>其中 <em>[RunNnumber]</em> 为想要转换的文件运行编号。</p>
+</section>
 <hr class="docutils" />
+<section id="id3">
+<h2>数据格式<a class="headerlink" href="#id3" title="此标题的永久链接"></a></h2>
+<p>解码产生的 ROOT 文件中有个 TTree，包含以下的 Branch，</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Br    0 :sr<span class="classifier">sr/s</span></dt><dd><ul>
+<li><p>采样率，125/500/1000</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Br    1 :fw<span class="classifier">fw/s</span></dt><dd><ul>
+<li><p>固件类型，DPP_PHA=0 DPP_ZLE=1 DPP_PSD=2 DPP_DAW=3 DPP_OPEN=4 Scope/SCOPE_OPEN=5</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Br    2 :mod<span class="classifier">mod/s</span></dt><dd><ul>
+<li><p>模块编号，从 0 开始</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Br    3 :ch<span class="classifier">ch/s</span></dt><dd><ul>
+<li><p>通道编号</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Br    4 :ts<span class="classifier">ts/L</span></dt><dd><ul>
+<li><p>时间戳，单位 ns</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Br    5 :finets<span class="classifier">finets/s</span></dt><dd><ul>
+<li><p>PSD 固件的精细时间，0-1023</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Br    6 :flagslow  : flagslow/s</p></li>
+<li><p>Br    7 :flagshigh : flagshigh/s</p></li>
+<li><dl class="simple">
+<dt>Br    8 :energy<span class="classifier">energy/s</span></dt><dd><ul>
+<li><p>PHA 固件的能量，PSD 固件的长门能量</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Br    9 :energyshort<span class="classifier">energyshort/s</span></dt><dd><ul>
+<li><p>PSD 固件的短门能量</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Br   10 :samples<span class="classifier">samples/s</span></dt><dd><ul>
+<li><p>PHA/PSD 固件 ADCINPUT 波形模式的采样点</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Br   11 :analog0   : analog0[samples]/I</p></li>
+<li><p>Br   12 :analog1   : analog1[samples]/I</p></li>
+<li><p>Br   13 :digital0  : digital0[samples]/O</p></li>
+<li><p>Br   14 :digital1  : digital1[samples]/O</p></li>
+<li><p>Br   15 :digital2  : digital2[samples]/O</p></li>
+<li><p>Br   16 :digital3  : digital3[samples]/O</p></li>
+<li><p>Br   17 :analogtypes : analogtypes[2]/s</p></li>
+<li><p>Br   18 :digitaltypes : digitaltypes[4]/s</p></li>
+<li><p>Br   19 :triggerid : triggerid/i</p></li>
+<li><dl class="simple">
+<dt>Br   20 :nsamples<span class="classifier">nsamples/i</span></dt><dd><ul>
+<li><p>scope / ZLE / PHA/PSD ADCINPUT16 / OPENDPP 记录的波形长度</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Br   21 :waveform  : waveform[nsamples]/s</p></li>
+<li><dl class="simple">
+<dt>Br   22 :info<span class="classifier">info/s</span></dt><dd><ul>
+<li><p>OPENFDK 固件的类型，其中 0 为 PHA+PSD， 1 为 PHA+CFD，</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Br   23 :energyxia<span class="classifier">energyxia/s</span></dt><dd><ul>
+<li><p>OPENFDK 固件的能量，计算采用 XIA 的三段积分算法</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Br   24 :flagcfd<span class="classifier">flagcfd/O</span></dt><dd><ul>
+<li><p>OPENFDK 固件的CFD是否有效</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Br   25 :cfdxia<span class="classifier">cfdxia/D</span></dt><dd><ul>
+<li><p>OPENFDK 固件的CFD，单位为 ns。ts + cfdxia 为绝对时间。</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Br   26 :flagpsd<span class="classifier">flagpsd/O</span></dt><dd><ul>
+<li><p>OPENFDK 固件的PSD是否有效</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Br   27 :psdcc<span class="classifier">psdcc/D</span></dt><dd><ul>
+<li><p>OPENFDK 固件的电荷比较法 PSD</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Br   28 :psdcostheta<span class="classifier">psdcostheta/D</span></dt><dd><ul>
+<li><p>OPENFDK 固件的余玄相似度 PSD</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
 <p>PHA/PSD 数据结构</p>
 <p><strong>flahshigh</strong></p>
 <ul class="simple">
@@ -276,6 +419,7 @@ make
 </dl>
 </li>
 </ul>
+</section>
 </section>
 
 

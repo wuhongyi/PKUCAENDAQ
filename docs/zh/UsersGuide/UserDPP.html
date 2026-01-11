@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>UserDPP 固件 &mdash; GDDAQ V20251217 文档</title>
+  <title>UserDPP 固件 &mdash; GDDAQ V20260110 文档</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=eafc0fe6" />
@@ -16,7 +16,7 @@
   
         <script src="../_static/jquery.js?v=5d32c60e"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=d0f0ba70"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=43047286"></script>
         <script src="../_static/doctools.js?v=888ff710"></script>
         <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
         <script src="../_static/translations.js?v=beaddf03"></script>
@@ -66,36 +66,48 @@
 <li class="toctree-l1"><a class="reference internal" href="ZLE.html">ZLE 固件</a></li>
 <li class="toctree-l1"><a class="reference internal" href="OPEN.html">开放 FPGA</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">UserDPP 固件</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id1">基本参数配置</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id2">输入信号</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#pha">PHA</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">输入信号</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#chenable">参数 ChEnable</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#dcoffset">参数 DCOffset</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">UserDPP</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">UserDPP</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#polarity">参数 Polarity</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#fl">参数 FL</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#fl-fg">参数 FL+FG</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#threshold">参数 Threshold</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#pre-trigger">参数 Pre-trigger</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#wave-length">参数 Wave Length</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#dataformat">参数 DataFormat</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#qoffset">参数 Qoffset</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#qshort">参数 Qshort</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#qlong">参数 Qlong</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#qgainshift">参数 QGainShift</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#n-bl">参数 2^n BL</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#bl-hold">参数 BL Hold</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#rt-offset">参数 RT offset</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#rt-gate">参数 RT gate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bl">参数 BL</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#xiaoffset">参数 XIAoffset</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#sl">参数 SL</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#sg">参数  SG</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tau">参数  TAU</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">逻辑参数</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id4">逻辑参数配置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pha-psd">PHA+PSD</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id4">UserDPP</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#qoffset">参数 Qoffset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#qshort">参数 Qshort</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#qlong">参数 Qlong</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cos-offset">参数 COS offset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cos-gate">参数 COS gate</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#pha-cfd">PHA+CFD</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id5">UserDPP</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cfd-delay">参数  CFD DELAY</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cfd-frac">参数  CFD FRAC</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="UserScope.html">UserScope 固件</a></li>
@@ -149,13 +161,13 @@
              
   <section id="userdpp">
 <h1>UserDPP 固件<a class="headerlink" href="#userdpp" title="此标题的永久链接"></a></h1>
-<p><strong>吴鸿毅开发固件，本固件侧重于特殊算法的实现。</strong></p>
+<p><strong>吴鸿毅(wuhongyi&#64;qq.com/wuhongyi&#64;pku.edu.cn)开发的固件，本固件侧重于特殊算法的实现。</strong></p>
 <p>目前支持 2740/2745/2730/2751 固件定制，欢迎有特殊固件需求的老师联系我们。</p>
-<p>2730 的固件，FPGA 运行时钟为 125 MHz。每个时钟的四个采样点相加作为一个采样点处理。</p>
+<p>2730 的固件，FPGA 运行时钟为 125 MHz。每个时钟的四个采样点相加作为一个采样点处理。2751 的固件，FPGA 运行时钟为 125 MHz，每个时钟的八个采样点相加作为一个采样点处理。</p>
+<section id="pha">
+<h2>PHA<a class="headerlink" href="#pha" title="此标题的永久链接"></a></h2>
 <section id="id1">
-<h2>基本参数配置<a class="headerlink" href="#id1" title="此标题的永久链接"></a></h2>
-<section id="id2">
-<h3>输入信号<a class="headerlink" href="#id2" title="此标题的永久链接"></a></h3>
+<h3>输入信号<a class="headerlink" href="#id1" title="此标题的永久链接"></a></h3>
 <img alt="../_images/userdpp_basic_input.png" src="../_images/userdpp_basic_input.png" />
 <section id="chenable">
 <h4>参数 ChEnable<a class="headerlink" href="#chenable" title="此标题的永久链接"></a></h4>
@@ -166,8 +178,8 @@
 <p>当输入信号为正极性时，DCOffset 0% 为道址 0；当输入信号为负极性时， DCOffset 100% 时为道址 0。</p>
 </section>
 </section>
-<section id="id3">
-<h3>UserDPP<a class="headerlink" href="#id3" title="此标题的永久链接"></a></h3>
+<section id="id2">
+<h3>UserDPP<a class="headerlink" href="#id2" title="此标题的永久链接"></a></h3>
 <img alt="../_images/userdpp_basic_userdpp.png" src="../_images/userdpp_basic_userdpp.png" />
 <section id="polarity">
 <h4>参数 Polarity<a class="headerlink" href="#polarity" title="此标题的永久链接"></a></h4>
@@ -189,72 +201,101 @@
 </section>
 <section id="pre-trigger">
 <h4>参数 Pre-trigger<a class="headerlink" href="#pre-trigger" title="此标题的永久链接"></a></h4>
-<p>当记录波形时候，触发前的长度</p>
+<p>当记录波形时候，触发前的长度。</p>
+<ul class="simple">
+<li><p>2740/2745 最大可设置 4095，单位为采样点。</p></li>
+<li><p>2730 最大可设置 4095，单位为 4 个采样点。</p></li>
+</ul>
 </section>
 <section id="wave-length">
 <h4>参数 Wave Length<a class="headerlink" href="#wave-length" title="此标题的永久链接"></a></h4>
-<p>当参数值大于 0 时，则记录波形</p>
-<p>单位为 4 个采样点。</p>
+<p>当参数值大于 0 时，则记录波形。</p>
+<ul class="simple">
+<li><p>2740/2745 最大可设置参数为 4095，单位为 4 个采样点。</p></li>
+<li><p>2730 最大可设置参数为 4095，单位为 4 个采样点。</p></li>
+</ul>
 </section>
-<section id="dataformat">
-<h4>参数 DataFormat<a class="headerlink" href="#dataformat" title="此标题的永久链接"></a></h4>
-<p>当参数为 0 时，只输出时间，QDC 等信息。</p>
-<p>当参数为 1 时，额外输出 RT 参数，梯形三段积分等信息。</p>
-</section>
-<section id="qoffset">
-<h4>参数 Qoffset<a class="headerlink" href="#qoffset" title="此标题的永久链接"></a></h4>
-<p>QDC 积分的触发延迟。 单位为 8 ns</p>
-</section>
-<section id="qshort">
-<h4>参数 Qshort<a class="headerlink" href="#qshort" title="此标题的永久链接"></a></h4>
-<p>QDC 积分短门。 单位为 8 ns</p>
-</section>
-<section id="qlong">
-<h4>参数 Qlong<a class="headerlink" href="#qlong" title="此标题的永久链接"></a></h4>
-<p>QDC 积分长门。 单位为 8 ns</p>
-</section>
-<section id="qgainshift">
-<h4>参数 QGainShift<a class="headerlink" href="#qgainshift" title="此标题的永久链接"></a></h4>
-<p>QDC 积分短门、长门积分数值，输出前向右移位。用来调节能谱增益。</p>
-<p>可设置参数为 0-7</p>
-</section>
-<section id="n-bl">
-<h4>参数 2^n BL<a class="headerlink" href="#n-bl" title="此标题的永久链接"></a></h4>
-<p>移动平均计算基线，参与平均点的个数为 2^n</p>
-<p>可设置参数 1-10</p>
-</section>
-<section id="bl-hold">
-<h4>参数 BL Hold<a class="headerlink" href="#bl-hold" title="此标题的永久链接"></a></h4>
-<p>基线计算抑制。当当前触发与上一个触发间隔大于设置参数时，更新基线数值。</p>
-<p>单位为 8 ns</p>
-</section>
-<section id="rt-offset">
-<h4>参数 RT offset<a class="headerlink" href="#rt-offset" title="此标题的永久链接"></a></h4>
-<p>RT 鉴别算法积分起点偏置。单位为 8 ns</p>
-</section>
-<section id="rt-gate">
-<h4>参数 RT gate<a class="headerlink" href="#rt-gate" title="此标题的永久链接"></a></h4>
-<p>RT 鉴别算法积分门。单位为 8 ns</p>
+<section id="bl">
+<h4>参数 BL<a class="headerlink" href="#bl" title="此标题的永久链接"></a></h4>
+<p>基线评估策略中连续两段积分的长度。</p>
+<p><strong>2740/2745 最大可设置值为 1023。 2730/2751 最大可设置值为 2047。</strong></p>
 </section>
 <section id="xiaoffset">
 <h4>参数 XIAoffset<a class="headerlink" href="#xiaoffset" title="此标题的永久链接"></a></h4>
-<p>此参数为 SL+SG 减去触发前保留的采样点</p>
-<p>单位为 8 ns</p>
+<p>此参数为触发前的采样点。用于确定梯形三段积分的准确积分区间。</p>
+<p>单位为 8 ns。</p>
+<p>2740/2745 最大可设置 255。</p>
 </section>
 <section id="sl">
 <h4>参数 SL<a class="headerlink" href="#sl" title="此标题的永久链接"></a></h4>
 <p>梯形参数的上升沿长度。</p>
-<p>单位为 8 ns</p>
+<p>单位为 8 ns。</p>
+<p>最大可设置 1023。</p>
 </section>
 <section id="sg">
 <h4>参数  SG<a class="headerlink" href="#sg" title="此标题的永久链接"></a></h4>
 <p>梯形参数的平台长度。</p>
 <p>单位为 8 ns</p>
 </section>
+<section id="tau">
+<h4>参数  TAU<a class="headerlink" href="#tau" title="此标题的永久链接"></a></h4>
+<p>信号衰减时间常数。</p>
+<p>该参数用于在线监视时计算。数据解码时需要将该参数输入到解码文件。</p>
+<p>单位 ns。</p>
+</section>
+<section id="id3">
+<h4>逻辑参数<a class="headerlink" href="#id3" title="此标题的永久链接"></a></h4>
+<p>2740/2745/2730/2751 validtriggerdelay 256。</p>
 </section>
 </section>
+</section>
+<section id="pha-psd">
+<h2>PHA+PSD<a class="headerlink" href="#pha-psd" title="此标题的永久链接"></a></h2>
 <section id="id4">
-<h2>逻辑参数配置<a class="headerlink" href="#id4" title="此标题的永久链接"></a></h2>
+<h3>UserDPP<a class="headerlink" href="#id4" title="此标题的永久链接"></a></h3>
+<img alt="../_images/userdpp_basic_userdpp.png" src="../_images/userdpp_basic_userdpp.png" />
+<section id="qoffset">
+<h4>参数 Qoffset<a class="headerlink" href="#qoffset" title="此标题的永久链接"></a></h4>
+<p>QDC 积分的触发延迟。 单位为 8 ns</p>
+<p>2740/2745 最大可设置 127。</p>
+</section>
+<section id="qshort">
+<h4>参数 Qshort<a class="headerlink" href="#qshort" title="此标题的永久链接"></a></h4>
+<p>QDC 积分短门。 单位为 8 ns</p>
+<p>2740/2745 最大可设置 8191。</p>
+</section>
+<section id="qlong">
+<h4>参数 Qlong<a class="headerlink" href="#qlong" title="此标题的永久链接"></a></h4>
+<p>QDC 积分长门。 单位为 8 ns</p>
+<p>2740/2745 最大可设置 8191。</p>
+</section>
+<section id="cos-offset">
+<h4>参数 COS offset<a class="headerlink" href="#cos-offset" title="此标题的永久链接"></a></h4>
+<p>余玄相似度鉴别算法积分起点偏置。单位为 8 ns</p>
+<p>2740/2745 最大可设置 127。</p>
+</section>
+<section id="cos-gate">
+<h4>参数 COS gate<a class="headerlink" href="#cos-gate" title="此标题的永久链接"></a></h4>
+<p>余玄相似度鉴别算法积分门。单位为 8 ns</p>
+<p>2740/2745 最大可设置 1023。</p>
+</section>
+</section>
+</section>
+<section id="pha-cfd">
+<h2>PHA+CFD<a class="headerlink" href="#pha-cfd" title="此标题的永久链接"></a></h2>
+<section id="id5">
+<h3>UserDPP<a class="headerlink" href="#id5" title="此标题的永久链接"></a></h3>
+<img alt="../_images/userdpp_basic_userdpp.png" src="../_images/userdpp_basic_userdpp.png" />
+<section id="cfd-delay">
+<h4>参数  CFD DELAY<a class="headerlink" href="#cfd-delay" title="此标题的永久链接"></a></h4>
+<p>CFD 算法的延迟参数，单位 8 ns。</p>
+<p>最大可设置 127。</p>
+</section>
+<section id="cfd-frac">
+<h4>参数  CFD FRAC<a class="headerlink" href="#cfd-frac" title="此标题的永久链接"></a></h4>
+<p>CFD fraction 参数，可设置参数为 0-7。对应 8/8，7/8，6/8，5/8，4/8，3/8，2/8，1/8 的压缩因子。</p>
+</section>
+</section>
 </section>
 </section>
 

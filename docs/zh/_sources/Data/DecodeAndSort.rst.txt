@@ -4,14 +4,19 @@
 .. Author: Hongyi Wu(吴鸿毅)
 .. Email: wuhongyi@qq.com 
 .. Created: 五 6月 14 17:55:18 2024 (+0800)
-.. Last-Updated: 三 12月 10 15:32:47 2025 (+0800)
+.. Last-Updated: 六 1月 10 21:41:37 2026 (+0800)
 ..           By: Hongyi Wu(吴鸿毅)
-..     Update #: 3
+..     Update #: 6
 .. URL: http://wuhongyi.cn 
 
 ##################################################
 数据解码
 ##################################################
+
+============================================================
+解码操作
+============================================================
+
 
 **DecodeAndSortAll 程序用来将同一轮数据不同采集卡采集的数据转为一个 ROOT 文件。用户的物理分析以本程序产生的 ROOT 文件为基准。本程序生成的数据已经按照时间戳从小到大排列。**
 
@@ -66,6 +71,61 @@
 ------------------------------------
 
 
+============================================================
+数据格式
+============================================================
+
+解码产生的 ROOT 文件中有个 TTree，包含以下的 Branch，
+
+- Br	0 :sr	     : sr/s
+   - 采样率，125/500/1000
+- Br	1 :fw	    : fw/s
+   - 固件类型，DPP_PHA=0 DPP_ZLE=1 DPP_PSD=2 DPP_DAW=3 DPP_OPEN=4 Scope/SCOPE_OPEN=5
+- Br	2 :mod	    : mod/s
+   - 模块编号，从 0 开始
+- Br	3 :ch	    : ch/s
+   - 通道编号
+- Br	4 :ts	    : ts/L
+   - 时间戳，单位 ns
+- Br	5 :finets    : finets/s
+   - PSD 固件的精细时间，0-1023
+- Br	6 :flagslow  : flagslow/s					  
+- Br	7 :flagshigh : flagshigh/s					  
+- Br	8 :energy    : energy/s
+   - PHA 固件的能量，PSD 固件的长门能量
+- Br	9 :energyshort : energyshort/s
+   - PSD 固件的短门能量
+- Br   10 :samples   : samples/s
+   - PHA/PSD 固件 ADCINPUT 波形模式的采样点
+- Br   11 :analog0   : analog0[samples]/I				  
+- Br   12 :analog1   : analog1[samples]/I				  
+- Br   13 :digital0  : digital0[samples]/O				  
+- Br   14 :digital1  : digital1[samples]/O				  
+- Br   15 :digital2  : digital2[samples]/O				  
+- Br   16 :digital3  : digital3[samples]/O				  
+- Br   17 :analogtypes : analogtypes[2]/s				  
+- Br   18 :digitaltypes : digitaltypes[4]/s				  
+- Br   19 :triggerid : triggerid/i					  
+- Br   20 :nsamples  : nsamples/i
+   - scope / ZLE / PHA/PSD ADCINPUT16 / OPENDPP 记录的波形长度
+- Br   21 :waveform  : waveform[nsamples]/s				  
+- Br   22 :info	    : info/s
+   - OPENFDK 固件的类型，其中 0 为 PHA+PSD， 1 为 PHA+CFD，
+- Br   23 :energyxia : energyxia/s
+   - OPENFDK 固件的能量，计算采用 XIA 的三段积分算法
+- Br   24 :flagcfd   : flagcfd/O
+   - OPENFDK 固件的CFD是否有效
+- Br   25 :cfdxia    : cfdxia/D
+   - OPENFDK 固件的CFD，单位为 ns。ts + cfdxia 为绝对时间。
+- Br   26 :flagpsd   : flagpsd/O
+   - OPENFDK 固件的PSD是否有效
+- Br   27 :psdcc	    : psdcc/D
+   - OPENFDK 固件的电荷比较法 PSD
+- Br   28 :psdcostheta : psdcostheta/D					  
+   - OPENFDK 固件的余玄相似度 PSD
+
+
+
 PHA/PSD 数据结构
 
 **flahshigh**
@@ -108,6 +168,7 @@ PHA/PSD 数据结构
    - Identifies an event triggered by the ITLA logic
 - bit 10 ITLB trigger
    - Identifies an event triggered by the ITLB logic
+
 
 
      

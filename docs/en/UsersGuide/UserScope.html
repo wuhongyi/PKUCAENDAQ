@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UserScope Firmware &mdash; GDDAQ V20260110 文档</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=eafc0fe6" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=43047286"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../_static/translations.js?v=beaddf03"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="UDP" href="UDP.html" />
+    <link rel="prev" title="UserDPP Firmware" href="UserDPP.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            GDDAQ
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../README.html">Introduction</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">INSTALL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../INSTALL.html">Program installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../FIRMWARE.html">Firmware</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">UserGuide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="README.html">GUI Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Synchronization.html">Time synchronization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GUI.html">Graphical interactive interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SCOPE.html">SCOPE firmware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PHA.html">PHA firmware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PSD.html">PSD firmware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ZLE.html">ZLE firmware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OPEN.html">Open FPGA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UserDPP.html">UserDPP Firmware</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">UserScope Firmware</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#basic-parameter-configuration">Basic Parameter Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#input-signal">Input Signal</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#parameter-chenable">Parameter: ChEnable</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#parameter-dcoffset">Parameter: DCOffset</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#userscope">UserScope</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#parameter-polarity">Parameter: Polarity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#parameter-fl">Parameter: FL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#parameter-fl-fg">Parameter: FL+FG</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#parameter-threshold">Parameter: Threshold</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="UDP.html">UDP</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Application</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Example/README.html">Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Example/HPGe.html">HPGe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Example/Si.html">Si</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Example/UserDPP.html">UserDPP application</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Example/LongWaveform.html">Ultra-Long Waveform Acquisition</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Analysis</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Data/README.html">Data analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Data/DecodeAndSort.html">Decoder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Data/EventBuilder.html">Event Builder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Data/DataAnalysis.html">Data analysis framework</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">GDDAQ</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">UserScope Firmware</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/UsersGuide/UserScope.rst.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="userscope-firmware">
+<h1>UserScope Firmware<a class="headerlink" href="#userscope-firmware" title="此标题的永久链接"></a></h1>
+<p><strong>Firmware developed by Hongyi Wu(wuhongyi&#64;qq.com/wuhongyi&#64;pku.edu.cn). This firmware focuses on recording ultra-long waveforms.</strong></p>
+<p>Currently supports firmware customization for models 2740/2745/2730/2751. Teachers with special firmware requirements are welcome to contact us.</p>
+<section id="basic-parameter-configuration">
+<h2>Basic Parameter Configuration<a class="headerlink" href="#basic-parameter-configuration" title="此标题的永久链接"></a></h2>
+<section id="input-signal">
+<h3>Input Signal<a class="headerlink" href="#input-signal" title="此标题的永久链接"></a></h3>
+<img alt="../_images/userscope_basic_input.png" src="../_images/userscope_basic_input.png" />
+<section id="parameter-chenable">
+<h4>Parameter: ChEnable<a class="headerlink" href="#parameter-chenable" title="此标题的永久链接"></a></h4>
+<p>Independently sets whether each channel is enabled for use. If a channel is not enabled, it does not provide any data, and its self-triggering is also disabled.</p>
+</section>
+<section id="parameter-dcoffset">
+<h4>Parameter: DCOffset<a class="headerlink" href="#parameter-dcoffset" title="此标题的永久链接"></a></h4>
+<p>When the input signal is of positive polarity, DCOffset 0% corresponds to channel address 0; when the input signal is of negative polarity, DCOffset 100% corresponds to channel address 0.</p>
+</section>
+</section>
+<section id="userscope">
+<h3>UserScope<a class="headerlink" href="#userscope" title="此标题的永久链接"></a></h3>
+<img alt="../_images/userscope_basic_userscope.png" src="../_images/userscope_basic_userscope.png" />
+<section id="parameter-polarity">
+<h4>Parameter: Polarity<a class="headerlink" href="#parameter-polarity" title="此标题的永久链接"></a></h4>
+<p>Set to 1 when the input signal is of positive polarity, and to 0 when it is of negative polarity.</p>
+</section>
+<section id="parameter-fl">
+<h4>Parameter: FL<a class="headerlink" href="#parameter-fl" title="此标题的永久链接"></a></h4>
+<p>Parameter for XIA fast filter (fast trapezoidal filter parameter).</p>
+<p>The unit for FL is 8 ns. Configurable range is 1-127.</p>
+</section>
+<section id="parameter-fl-fg">
+<h4>Parameter: FL+FG<a class="headerlink" href="#parameter-fl-fg" title="此标题的永久链接"></a></h4>
+<p>Fast trapezoidal filter parameter.</p>
+<p>The unit for FL+FG is 8 ns. This parameter must be greater than or equal to FL. Configurable range is 1-127.</p>
+</section>
+<section id="parameter-threshold">
+<h4>Parameter: Threshold<a class="headerlink" href="#parameter-threshold" title="此标题的永久链接"></a></h4>
+<p>Trigger threshold for the fast trapezoidal filter.</p>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="UserDPP.html" class="btn btn-neutral float-left" title="UserDPP Firmware" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="UDP.html" class="btn btn-neutral float-right" title="UDP" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2021, Hongyi Wu(吴鸿毅)。</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
