@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 日 2月 18 01:22:59 2024 (+0800)
-// Last-Updated: 六 1月 10 20:56:05 2026 (+0800)
+// Last-Updated: 日 1月 11 22:41:31 2026 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 20
+//     Update #: 22
 // URL: http://wuhongyi.cn 
 
 #ifndef _R2ROOT_H_
@@ -71,6 +71,7 @@ struct eventdata
   UShort_t energyxia;
   bool flagcfd;
   double cfdxia;
+  int cfdslope;
   bool flagpsd;
   double psdcc;
   double psdcostheta;
@@ -163,6 +164,7 @@ private:
   UShort_t energyxia;
   bool flagcfd;
   double cfdxia;
+  int cfdslope;
   bool flagpsd;
   double psdcc;
   double psdcostheta;

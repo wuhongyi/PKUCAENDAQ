@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 四 6月 20 21:26:32 2024 (+0800)
-// Last-Updated: 六 1月 10 21:03:29 2026 (+0800)
+// Last-Updated: 日 1月 11 22:53:16 2026 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 13
+//     Update #: 15
 // URL: http://wuhongyi.cn 
 
 #include "event.hh"
@@ -98,6 +98,7 @@ event::event(int run)
   t_in->SetBranchAddress("energyxia", &energyxia, &b_energyxia);
   t_in->SetBranchAddress("flagcfd", &flagcfd, &b_flagcfd);
   t_in->SetBranchAddress("cfdxia", &cfdxia, &b_cfdxia);
+  t_in->SetBranchAddress("cfdslope", &cfdslope, &b_cfdslope);
   t_in->SetBranchAddress("flagpsd", &flagpsd, &b_flagpsd);
   t_in->SetBranchAddress("psdcc", &psdcc, &b_psdcc);
   t_in->SetBranchAddress("psdcostheta", &psdcostheta, &b_psdcostheta);
@@ -208,6 +209,7 @@ void event::ProcessEntry()
   hit.energyxia = energyxia;
   hit.flagcfd = flagcfd;
   hit.cfdxia = cfdxia;
+  hit.cfdslope = cfdslope;
   hit.flagpsd = flagpsd;
   hit.psdcc = psdcc;
   hit.psdcostheta = psdcostheta;

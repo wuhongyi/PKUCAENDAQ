@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 日 2月 18 01:23:28 2024 (+0800)
-// Last-Updated: 六 1月 10 20:52:12 2026 (+0800)
+// Last-Updated: 日 1月 11 22:47:35 2026 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 56
+//     Update #: 59
 // URL: http://wuhongyi.cn 
 
 #include "r2root.hh"
@@ -173,6 +173,7 @@ r2root::r2root(int run)
   t->Branch("energyxia", &energyxia, "energyxia/s");
   t->Branch("flagcfd", &flagcfd, "flagcfd/O");
   t->Branch("cfdxia", &cfdxia, "cfdxia/D");
+  t->Branch("cfdslope", &cfdslope, "cfdslope/I");
   t->Branch("flagpsd", &flagpsd, "flagpsd/O");
   t->Branch("psdcc", &psdcc, "psdcc/D");
   t->Branch("psdcostheta", &psdcostheta, "psdcostheta/D");
@@ -251,6 +252,7 @@ void r2root::Process()
 		  mapvalue.energyxia = 0;
 		  mapvalue.flagcfd = 0;
 		  mapvalue.cfdxia = 0;
+		  mapvalue.cfdslope = 0;
 		  mapvalue.flagpsd = 0;
 		  mapvalue.psdcc = 0;
 		  mapvalue.psdcostheta = 0;
@@ -322,7 +324,8 @@ void r2root::Process()
 		      mapvalue.info = rawdec[mark].getinfo();
 		      mapvalue.energyxia = rawdec[mark].getenergyxia();
 		      mapvalue.flagcfd = rawdec[mark].getflagcfd();
-		      mapvalue.cfdxia = rawdec[mark].getcfd();		      
+		      mapvalue.cfdxia = rawdec[mark].getcfd();
+		      mapvalue.cfdslope = rawdec[mark].getcfdslope();
 		      mapvalue.flagpsd = rawdec[mark].getflagpsd();
 		      mapvalue.psdcc = rawdec[mark].getpsdcc();
 		      mapvalue.psdcostheta = rawdec[mark].getpsdcostheta();
@@ -426,6 +429,7 @@ void r2root::Process()
 	  energyxia = 0;
 	  flagcfd = 0;
 	  cfdxia = 0;
+	  cfdslope = 0;
 	  flagpsd = 0;
 	  psdcc = 0;
 	  psdcostheta = 0;
@@ -496,6 +500,7 @@ void r2root::Process()
 	      energyxia = itkey->second.energyxia;
 	      flagcfd = itkey->second.flagcfd;
 	      cfdxia = itkey->second.cfdxia;
+	      cfdslope = itkey->second.cfdslope;
 	      flagpsd = itkey->second.flagpsd;
 	      psdcc = itkey->second.psdcc;
 	      psdcostheta = itkey->second.psdcostheta;
@@ -548,6 +553,7 @@ void r2root::Process()
 	      energyxia = 0;
 	      flagcfd = 0;
 	      cfdxia = 0;
+	      cfdslope = 0;
 	      flagpsd = 0;
 	      psdcc = 0;
 	      psdcostheta = 0;
@@ -617,6 +623,7 @@ void r2root::Process()
 		  energyxia = itkey->second.energyxia;
 		  flagcfd = itkey->second.flagcfd;
 		  cfdxia = itkey->second.cfdxia;
+		  cfdslope = itkey->second.cfdslope;
 		  flagpsd = itkey->second.flagpsd;
 		  psdcc = itkey->second.psdcc;
 		  psdcostheta = itkey->second.psdcostheta;

@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 六 2月 17 23:04:10 2024 (+0800)
-// Last-Updated: 六 1月 10 20:42:20 2026 (+0800)
+// Last-Updated: 日 1月 11 22:43:12 2026 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 37
+//     Update #: 38
 // URL: http://wuhongyi.cn 
 
 #ifndef _DECODER_H_
@@ -82,6 +82,7 @@ public:
   inline uint16_t getenergyxia() {return energyxia;}//DPP-FDK
   inline bool getflagcfd() {return flagcfd;}
   inline double getcfd() {return cfdxia;}
+  inline int getcfdslope() {return cfdslope;}
   inline bool getflagpsd() {return flagpsd;}
   inline double getpsdcc() {return psdcc;}
   inline double getpsdcostheta() {return psdcostheta;}
@@ -160,6 +161,7 @@ private:
   uint16_t energyxia;//DPP-FDK
   bool flagcfd;
   double cfdxia;
+  int cfdslope;
   bool flagpsd;
   double psdcc;
   double psdcostheta;

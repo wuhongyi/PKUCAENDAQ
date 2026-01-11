@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 五 5月 30 13:16:46 2025 (+0900)
-// Last-Updated: 六 1月 10 21:14:27 2026 (+0800)
+// Last-Updated: 日 1月 11 22:59:53 2026 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 16
+//     Update #: 17
 // URL: http://wuhongyi.cn 
 
 #include "DataAnalysis.hh"
@@ -71,12 +71,16 @@ void DataAnalysis::Loop(TTree *opt_)
 	  det.ts = (*br_event)[i].ts;
 
 	  
-	 
+	  det.cfdslope = 0;
 	  det.subts = 0.0;
 	  if((*br_event)[i].fw == 4)//FDK
 	    {
 	      if((*br_event)[i].info == 1)
-		det.subts = (*br_event)[i].cfdxia;
+		{
+		  det.subts = (*br_event)[i].cfdxia;
+
+		  det.cfdslope = (*br_event)[i].cfdslope;
+		}
 	    }
 	  else if((*br_event)[i].fw == 2)//PSD
 	    {
@@ -96,9 +100,16 @@ void DataAnalysis::Loop(TTree *opt_)
 
 
 	  // FDK PSD
-	  // psdcc  psdcostheta
-	  
+	  det.psd = 0;
+	  if((*br_event)[i].fw == 4)
+	    {	      
+	      if((*br_event)[i].info == 1)
+		{
+		  det.psd = (*br_event)[i].psdcc;// psdcc  psdcostheta
+		}
+	    }
 
+	  
 #ifdef WAVEFORM
 	  det.analog0.clear();
 	  if((*br_event)[i].samples > 0)

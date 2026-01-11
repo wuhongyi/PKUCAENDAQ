@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 六 2月 17 23:04:21 2024 (+0800)
-// Last-Updated: 六 1月 10 20:40:32 2026 (+0800)
+// Last-Updated: 日 1月 11 22:44:46 2026 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 76
+//     Update #: 77
 // URL: http://wuhongyi.cn 
 
 #include "decoder.hh"
@@ -261,6 +261,7 @@ void decoder::decodedppfdk()
 
   flagcfd = 0;
   cfdxia = 0;
+  cfdslope = 0;
   energyxia = 0;
   flagpsd = 0;
   psdcc = 0;
@@ -334,7 +335,8 @@ void decoder::decodedppfdk()
 	  currcfd |= 0xFF000000;
 	  int prvcfd = ((buff[0] & 0xFF000000) >> 24) + ((buff[1] & 0xFFFF) << 8);
 	  int cfddelta = (buff[1] & 0xFF0000) >> 16;
-	  
+
+	  cfdslope = prvcfd-currcfd;
 	  cfdxia = cfddelta*8 + 8.0*prvcfd/(prvcfd-currcfd);
 
 
