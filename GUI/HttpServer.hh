@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 六 5月 25 14:13:31 2024 (+0800)
-// Last-Updated: 四 12月 11 20:32:28 2025 (+0800)
+// Last-Updated: 六 1月 10 15:21:54 2026 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 28
+//     Update #: 31
 // URL: http://wuhongyi.cn 
 
 #ifndef _HTTPSERVER_H_
@@ -33,6 +33,7 @@ public:
   void FillPSDCOS(unsigned short mod, unsigned short ch, double raw, double p);
   void FillRate(unsigned short mod, unsigned short ch, double ts);
   void FillCFD(unsigned short mod, unsigned short ch, unsigned short raw);
+  void FillCFDXIA(unsigned short mod, unsigned short ch, int flag, int delta, double cfdv);
 
   void FillBL(unsigned short mod, unsigned short ch, int raw);
   void FillWAVEHIGH(unsigned short mod, unsigned short ch, int raw);
@@ -47,6 +48,7 @@ public:
   void ClearPSDCOS(unsigned short mod);
   void ClearRATE(unsigned short mod);
   void ClearCFD(unsigned short mod);
+  void ClearCFDXIA(unsigned short mod);
   void ClearBL(unsigned short mod);
   void ClearWAVEHIGH(unsigned short mod);
   
@@ -62,6 +64,7 @@ private:
   TH2I *adc_ch[MAXMODULENUM];
   TH1I *rate[MAXMODULENUM][MAXCHANNELNUM];
   TH1I *cfd[MAXMODULENUM][MAXCHANNELNUM];
+  TH1I *cfdxia[MAXMODULENUM][MAXCHANNELNUM];
   TH2I *psd[MAXMODULENUM][MAXCHANNELNUM];
   TH2I *psdcos[MAXMODULENUM][MAXCHANNELNUM];
   TGraph *wave0[MAXMODULENUM][MAXCHANNELNUM];

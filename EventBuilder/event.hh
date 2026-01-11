@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 四 6月 20 21:26:25 2024 (+0800)
-// Last-Updated: 一 6月  2 14:38:49 2025 (+0900)
+// Last-Updated: 六 1月 10 21:03:38 2026 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 10
+//     Update #: 14
 // URL: http://wuhongyi.cn 
 
 #ifndef _EVENT_H_
@@ -49,9 +49,15 @@ typedef struct DATAEVENT
   UShort_t energy;//
   UShort_t energyshort;//
 
+  UShort_t info;
   UShort_t energyxia;
+  bool flagcfd;
+  double cfdxia;
+  bool flagpsd;
+  double psdcc;
+  double psdcostheta;
 
-
+  
   //cal
   double e;
 
@@ -130,8 +136,13 @@ private:
   TBranch *b_triggerid;
   TBranch *b_nsamples;
   TBranch *b_waveform;
+  TBranch *b_info;
   TBranch *b_energyxia;
-
+  TBranch *b_flagcfd;
+  TBranch *b_cfdxia;
+  TBranch *b_flagpsd;
+  TBranch *b_psdcc;
+  TBranch *b_psdcostheta;
   
   //leaf
   UShort_t fw;
@@ -162,7 +173,15 @@ private:
   unsigned int nsamples;
   UShort_t waveform[10000000];
 
+  UShort_t info;
   UShort_t energyxia;//
+  bool flagcfd;
+  double cfdxia;
+  bool flagpsd;
+  double psdcc;
+  double psdcostheta;
+
+  
 };
 
 

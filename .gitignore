@@ -1,3 +1,4 @@
 *.o
 *.root
 pages
+rootfile

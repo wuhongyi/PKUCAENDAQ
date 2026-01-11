@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 六 2月 17 23:04:10 2024 (+0800)
-// Last-Updated: 二 12月 16 11:55:50 2025 (+0800)
+// Last-Updated: 六 1月 10 20:42:20 2026 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 32
+//     Update #: 37
 // URL: http://wuhongyi.cn 
 
 #ifndef _DECODER_H_
@@ -78,9 +78,15 @@ public:
   inline unsigned int getnsamples() {return nsamples;}
   inline void getwaveform(uint16_t *da) {memcpy(da, waveform, sizeof(uint16_t)*nsamples);}
 
-
+  inline uint8_t getinfo() {return info;}
   inline uint16_t getenergyxia() {return energyxia;}//DPP-FDK
+  inline bool getflagcfd() {return flagcfd;}
+  inline double getcfd() {return cfdxia;}
+  inline bool getflagpsd() {return flagpsd;}
+  inline double getpsdcc() {return psdcc;}
+  inline double getpsdcostheta() {return psdcostheta;}
 
+  
   void SetFDKBL(int ch, unsigned int value);
   void SetFDKSL(int ch, unsigned int value);
   void SetFDKSG(int ch, unsigned int value);
@@ -152,6 +158,11 @@ private:
   uint8_t flags_a;
   uint16_t flags_b;
   uint16_t energyxia;//DPP-FDK
+  bool flagcfd;
+  double cfdxia;
+  bool flagpsd;
+  double psdcc;
+  double psdcostheta;
   uint16_t baseline;
   uint64_t rt_accx2;
   unsigned int rt_accx;
@@ -170,3 +181,4 @@ private:
 #endif /* _DECODER_H_ */
 // 
 // decoder.hh ends here
+

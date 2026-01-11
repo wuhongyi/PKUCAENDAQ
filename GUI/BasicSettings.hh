@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 五 10月 21 20:26:00 2022 (+0800)
-// Last-Updated: 五 9月  5 10:46:12 2025 (+0800)
+// Last-Updated: 六 1月 10 13:58:15 2026 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 107
+//     Update #: 108
 // URL: http://wuhongyi.cn 
 
 #ifndef _BASICSETTINGS_H_
@@ -235,10 +235,10 @@ enum class TABBASICUSERDPP
     QSHORT = 8,
     QLONG = 9,
     QGAINSHIFT = 10,
-    BL2N = 11,
-    BLHOLD = 12,
-    RTOFFSET = 13,
-    RTGATE = 14,
+    CFDFRAC = 11,
+    CFDDELAY = 12,
+    COSOFFSET = 13,
+    COSGATE = 14,
     BL = 15,
     XIAOFFSET = 16,
     XIASL = 17,

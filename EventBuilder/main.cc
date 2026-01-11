@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 四 6月 20 21:21:40 2024 (+0800)
-// Last-Updated: 一 6月  2 14:44:44 2025 (+0900)
+// Last-Updated: 六 1月 10 21:03:36 2026 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 4
+//     Update #: 6
 // URL: http://wuhongyi.cn 
 
 #include "event.hh"
@@ -16,7 +16,7 @@
 #include <cstdlib>
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-const char gVERSION[] = "Version: EventBuilder - 2025.06.02";
+const char gVERSION[] = "Version: EventBuilder - 2026.01.10";
 
 int main(int argc, char *argv[])
 {

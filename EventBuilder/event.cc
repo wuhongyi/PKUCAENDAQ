@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 四 6月 20 21:26:32 2024 (+0800)
-// Last-Updated: 一 6月  2 15:03:49 2025 (+0900)
+// Last-Updated: 六 1月 10 21:03:29 2026 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 11
+//     Update #: 13
 // URL: http://wuhongyi.cn 
 
 #include "event.hh"
@@ -94,7 +94,15 @@ event::event(int run)
 #ifdef WAVEFORM
   t_in->SetBranchAddress("waveform", &waveform, &b_waveform);
 #endif
+  t_in->SetBranchAddress("info", &info, &b_info);
   t_in->SetBranchAddress("energyxia", &energyxia, &b_energyxia);
+  t_in->SetBranchAddress("flagcfd", &flagcfd, &b_flagcfd);
+  t_in->SetBranchAddress("cfdxia", &cfdxia, &b_cfdxia);
+  t_in->SetBranchAddress("flagpsd", &flagpsd, &b_flagpsd);
+  t_in->SetBranchAddress("psdcc", &psdcc, &b_psdcc);
+  t_in->SetBranchAddress("psdcostheta", &psdcostheta, &b_psdcostheta);
+
+
   
   TotalEntry = t_in->GetEntries();
   
@@ -196,7 +204,14 @@ void event::ProcessEntry()
   hit.energy = energy;
   hit.energyshort = energyshort;
 
+  hit.info = info;
   hit.energyxia = energyxia;
+  hit.flagcfd = flagcfd;
+  hit.cfdxia = cfdxia;
+  hit.flagpsd = flagpsd;
+  hit.psdcc = psdcc;
+  hit.psdcostheta = psdcostheta;
+  
   
   hit.e = calia0[mod][ch]+calia1[mod][ch]*rawch+calia2[mod][ch]*rawch*rawch;
   

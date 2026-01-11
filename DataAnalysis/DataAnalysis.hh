@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 五 5月 30 13:13:11 2025 (+0900)
-// Last-Updated: 一 6月  2 15:30:22 2025 (+0900)
+// Last-Updated: 六 1月 10 21:11:09 2026 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 4
+//     Update #: 6
 // URL: http://wuhongyi.cn 
 
 #ifndef _DATAANALYSIS_H_
@@ -39,8 +39,14 @@ typedef struct DATAEVENT
   UShort_t energy;//
   UShort_t energyshort;//
 
+  // FDK
+  UShort_t info;
   UShort_t energyxia;
-
+  bool flagcfd;
+  double cfdxia;
+  bool flagpsd;
+  double psdcc;
+  double psdcostheta;
 
   //cal
   double e;

@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 日 2月 18 01:23:28 2024 (+0800)
-// Last-Updated: 一 9月  8 20:42:11 2025 (+0800)
+// Last-Updated: 六 1月 10 20:52:12 2026 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 50
+//     Update #: 56
 // URL: http://wuhongyi.cn 
 
 #include "r2root.hh"
@@ -169,7 +169,14 @@ r2root::r2root(int run)
   t->Branch("waveform", &waveform, "waveform[nsamples]/s");
 #endif
 
+  t->Branch("info", &info, "info/s");
   t->Branch("energyxia", &energyxia, "energyxia/s");
+  t->Branch("flagcfd", &flagcfd, "flagcfd/O");
+  t->Branch("cfdxia", &cfdxia, "cfdxia/D");
+  t->Branch("flagpsd", &flagpsd, "flagpsd/O");
+  t->Branch("psdcc", &psdcc, "psdcc/D");
+  t->Branch("psdcostheta", &psdcostheta, "psdcostheta/D");
+  
 }
 
 r2root::~r2root()
@@ -238,7 +245,15 @@ void r2root::Process()
 		  
 		  mapvalue.energy = 0;
 		  mapvalue.energyshort = 0;
+
+		  //FDK
+		  mapvalue.info = 0;
 		  mapvalue.energyxia = 0;
+		  mapvalue.flagcfd = 0;
+		  mapvalue.cfdxia = 0;
+		  mapvalue.flagpsd = 0;
+		  mapvalue.psdcc = 0;
+		  mapvalue.psdcostheta = 0;
 		  
 		  switch(mapvalue.fw)
 		    {
@@ -304,7 +319,15 @@ void r2root::Process()
 		      printf("DAW not impl...\n");
 		      break;
 		    case 4://open
+		      mapvalue.info = rawdec[mark].getinfo();
 		      mapvalue.energyxia = rawdec[mark].getenergyxia();
+		      mapvalue.flagcfd = rawdec[mark].getflagcfd();
+		      mapvalue.cfdxia = rawdec[mark].getcfd();		      
+		      mapvalue.flagpsd = rawdec[mark].getflagpsd();
+		      mapvalue.psdcc = rawdec[mark].getpsdcc();
+		      mapvalue.psdcostheta = rawdec[mark].getpsdcostheta();
+
+		      
 		      mapvalue.nsamples = rawdec[mark].getnsamples();
 #ifdef WAVEFORM
 		      if(mapvalue.nsamples > 0)
@@ -398,6 +421,14 @@ void r2root::Process()
 
 	  nsamples = 0;
 	  samples = 0;
+
+	  info =0;
+	  energyxia = 0;
+	  flagcfd = 0;
+	  cfdxia = 0;
+	  flagpsd = 0;
+	  psdcc = 0;
+	  psdcostheta = 0;
 	  
 	  switch(fw)
 	    {
@@ -461,7 +492,13 @@ void r2root::Process()
 	      printf("DAW not impl...\n");
 	      break;
 	    case 4://open
+	      info = itkey->second.info;
 	      energyxia = itkey->second.energyxia;
+	      flagcfd = itkey->second.flagcfd;
+	      cfdxia = itkey->second.cfdxia;
+	      flagpsd = itkey->second.flagpsd;
+	      psdcc = itkey->second.psdcc;
+	      psdcostheta = itkey->second.psdcostheta;
 	      nsamples = itkey->second.nsamples;
 #ifdef WAVEFORM
 	      if(nsamples > 0)
@@ -506,7 +543,15 @@ void r2root::Process()
 
 	      nsamples = 0;
 	      samples = 0;
-	      
+
+	      info =0;
+	      energyxia = 0;
+	      flagcfd = 0;
+	      cfdxia = 0;
+	      flagpsd = 0;
+	      psdcc = 0;
+	      psdcostheta = 0;
+	  
 	      switch(fw)
 		{
 		case 0://pha
@@ -568,7 +613,13 @@ void r2root::Process()
 		  printf("DAW not impl...\n");
 		  break;
 		case 4://open
+		  info = itkey->second.info;
 		  energyxia = itkey->second.energyxia;
+		  flagcfd = itkey->second.flagcfd;
+		  cfdxia = itkey->second.cfdxia;
+		  flagpsd = itkey->second.flagpsd;
+		  psdcc = itkey->second.psdcc;
+		  psdcostheta = itkey->second.psdcostheta;
 		  nsamples = itkey->second.nsamples;
 #ifdef WAVEFORM
 		  if(nsamples > 0)

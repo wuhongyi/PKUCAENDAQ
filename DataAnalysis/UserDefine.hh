@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 日 5月 25 16:39:29 2025 (+0900)
-// Last-Updated: 一 6月  2 17:05:44 2025 (+0900)
+// Last-Updated: 五 1月  9 23:23:10 2026 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 7
+//     Update #: 8
 // URL: http://wuhongyi.cn 
 
 #ifndef _USERDEFINE_H_
@@ -21,7 +21,7 @@
 
 
 
-//#define WAVEFORM
+#define WAVEFORM
 
 
 #define EVENTTIMEWINDOWSWIDTH  4000   //ns

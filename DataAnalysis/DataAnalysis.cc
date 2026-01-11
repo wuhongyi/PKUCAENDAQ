@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 五 5月 30 13:16:46 2025 (+0900)
-// Last-Updated: 一 6月  2 15:37:30 2025 (+0900)
+// Last-Updated: 六 1月 10 21:14:27 2026 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 11
+//     Update #: 16
 // URL: http://wuhongyi.cn 
 
 #include "DataAnalysis.hh"
@@ -70,8 +70,34 @@ void DataAnalysis::Loop(TTree *opt_)
 	  
 	  det.ts = (*br_event)[i].ts;
 
-
+	  
+	 
 	  det.subts = 0.0;
+	  if((*br_event)[i].fw == 4)//FDK
+	    {
+	      if((*br_event)[i].info == 1)
+		det.subts = (*br_event)[i].cfdxia;
+	    }
+	  else if((*br_event)[i].fw == 2)//PSD
+	    {
+	      if((*br_event)[i].sr == 125)
+		{
+		  det.subts = (*br_event)[i].finets/1024.0*8;
+		}
+	      else if((*br_event)[i].sr == 500)
+		{
+		  det.subts = (*br_event)[i].finets/1024.0*2;
+		}
+	      else if((*br_event)[i].sr == 1000)
+		{
+		  det.subts = (*br_event)[i].finets/1024.0;
+		}
+	    }
+
+
+	  // FDK PSD
+	  // psdcc  psdcostheta
+	  
 
 #ifdef WAVEFORM
 	  det.analog0.clear();
@@ -89,13 +115,13 @@ void DataAnalysis::Loop(TTree *opt_)
 	  //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 	  
-	  if(flag == 0) //ref for beam bursts
+	  if(flag == 0 && det.id == 0) //ref for beam bursts
 	    {
 	      //vref.clear();
 	      vsi1a.push_back(det);
 	    }
 	  
-	  if(flag == 1)  
+	  if(flag == 0 && det.id == 1)  
 	    {
 	      
 	      vsi1b.push_back(det);

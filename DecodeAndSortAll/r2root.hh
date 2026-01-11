@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 日 2月 18 01:22:59 2024 (+0800)
-// Last-Updated: 一 9月  8 20:41:54 2025 (+0800)
+// Last-Updated: 六 1月 10 20:56:05 2026 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 16
+//     Update #: 20
 // URL: http://wuhongyi.cn 
 
 #ifndef _R2ROOT_H_
@@ -66,7 +66,15 @@ struct eventdata
   unsigned int nsamples;
   UShort_t *waveform;
 
+  // FDK
+  uint8_t info;
   UShort_t energyxia;
+  bool flagcfd;
+  double cfdxia;
+  bool flagpsd;
+  double psdcc;
+  double psdcostheta;
+  
 };
 
 
@@ -151,7 +159,14 @@ private:
   unsigned int nsamples;
   UShort_t waveform[10485760];
 
+  uint8_t info;
   UShort_t energyxia;
+  bool flagcfd;
+  double cfdxia;
+  bool flagpsd;
+  double psdcc;
+  double psdcostheta;
+  
 };
 
 #endif /* _R2ROOT_H_ */

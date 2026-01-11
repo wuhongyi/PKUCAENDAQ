@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 日 2月 18 01:19:10 2024 (+0800)
-// Last-Updated: 二 12月 16 11:57:18 2025 (+0800)
+// Last-Updated: 六 1月 10 20:42:35 2026 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 12
+//     Update #: 14
 // URL: http://wuhongyi.cn 
 
 #include "UserDefine.hh"
@@ -18,7 +18,7 @@
 #include <cstdlib>
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-const char gVERSION[] = "Version: DecodeAndSortAll - 2025.12.16";
+const char gVERSION[] = "Version: DecodeAndSortAll - 2026.01.10";
 
 int main(int argc, char *argv[])
 {
