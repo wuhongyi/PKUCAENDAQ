@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 五 5月 30 13:16:46 2025 (+0900)
-// Last-Updated: 日 1月 11 22:59:53 2026 (+0800)
+// Last-Updated: 三 1月 21 19:19:42 2026 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 17
+//     Update #: 18
 // URL: http://wuhongyi.cn 
 
 #include "DataAnalysis.hh"
@@ -82,26 +82,30 @@ void DataAnalysis::Loop(TTree *opt_)
 		  det.cfdslope = (*br_event)[i].cfdslope;
 		}
 	    }
-	  else if((*br_event)[i].fw == 2)//PSD
+	  else if((*br_event)[i].fw == 0 || (*br_event)[i].fw == 2)//PHA PSD
 	    {
 	      if((*br_event)[i].sr == 125)
 		{
-		  det.subts = (*br_event)[i].finets/1024.0*8;
+		  det.subts = ((*br_event)[i].finets+gRandom->Rndm())/1024.0*8;
 		}
 	      else if((*br_event)[i].sr == 500)
 		{
-		  det.subts = (*br_event)[i].finets/1024.0*2;
+		  det.subts = ((*br_event)[i].finets+gRandom->Rndm())/1024.0*2;
 		}
 	      else if((*br_event)[i].sr == 1000)
 		{
-		  det.subts = (*br_event)[i].finets/1024.0;
+		  det.subts = ((*br_event)[i].finets+gRandom->Rndm())/1024.0;
 		}
 	    }
 
 
 	  // FDK PSD
 	  det.psd = 0;
-	  if((*br_event)[i].fw == 4)
+	  if((*br_event)[i].fw == 2)//PSD
+	    {
+	      det.psd = double(energyshort)/double(energy);
+	    }
+	  else if((*br_event)[i].fw == 4)//FDK
 	    {	      
 	      if((*br_event)[i].info == 1)
 		{
