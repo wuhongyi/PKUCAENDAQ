@@ -4,9 +4,9 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 五 12月 17 20:14:52 2021 (+0800)
-;; Last-Updated: 三 1月 21 19:20:07 2026 (+0800)
+;; Last-Updated: 二 1月 27 18:26:07 2026 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 58
+;;     Update #: 59
 ;; URL: http://wuhongyi.cn -->
 
 # A general-purpose digital data acquisition system(GDDAQ-CAEN)
@@ -18,13 +18,13 @@ English | [简体中文](https://github.com/wuhongyi/PKUCAENDAQ/blob/main/README
 
 This program supports the CAEN digital 2.0 data acquisition modules (x27xx), currently including 2745/2740/2730/2751. It supports the mixed use of firmware for different modules such as PHA/PSD/ZLE/DAW/SCOPE/OPEN. The implementation of universal external logic requires the V2495/DT5495 modules.
 
-**The current version is undergoing rapid iteration and GUI Qt will remain valid until July 10, 2026. It is recommended that everyone download the latest version in a timely manner. If you need the GUI source code, please contact Hongyi Wu(wuhongyi@qq.com / wuhongyi@pku.edu.cn).**
+**The current version is undergoing rapid iteration and GUI Qt will remain valid until July 27, 2026. It is recommended that everyone download the latest version in a timely manner. If you need the GUI source code, please contact Hongyi Wu(wuhongyi@qq.com / wuhongyi@pku.edu.cn).**
 
 
 
 ## Version
 
-- **GUI Qt: version 2026.01.10**
+- **GUI Qt: version 2026.01.27**
 - **DecodeAndSortAll: version 2026.01.11**
 - **EventBuilder: version 2026.01.11**
 - **DataAnalysis: version 2026.01.21**
@@ -57,7 +57,7 @@ Software Developer:
 
 If you use part of this project, please cite the following paper:
 
-
+- [The upgrade of the general-purpose digital data acquisition system (GDDAQ)](https://doi.org/10.1016/j.nima.2026.171315)
 
 
 

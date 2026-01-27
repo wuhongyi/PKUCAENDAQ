@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 四 10月 20 21:11:36 2022 (+0800)
-// Last-Updated: 二 2月 13 19:57:40 2024 (+0800)
+// Last-Updated: 二 1月 27 18:52:49 2026 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 12
+//     Update #: 13
 // URL: http://wuhongyi.cn 
 
 #ifndef _LOGIN_H_
@@ -76,6 +76,8 @@ private:
 
   QHBoxLayout *horizontalLayoutinfo;
   QLabel *labeled;
+  QHBoxLayout *horizontalLayoutpaper;
+  QLabel *labelpaper;
   
 protected:
   
