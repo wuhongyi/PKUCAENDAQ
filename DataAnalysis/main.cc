@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 日 5月 25 16:46:54 2025 (+0900)
-// Last-Updated: 三 1月 21 19:16:57 2026 (+0800)
+// Last-Updated: 三 1月 28 18:41:37 2026 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 5
+//     Update #: 6
 // URL: http://wuhongyi.cn 
 
 #include "DataAnalysis.hh"
@@ -23,7 +23,7 @@
 #include <string>
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-const char gVERSION[] = "Version: DataAnalysis - 2026.01.21";
+const char gVERSION[] = "Version: DataAnalysis - 2026.01.28";
 
 int main(int argc, char* argv[])
 {

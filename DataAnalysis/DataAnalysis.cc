@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 五 5月 30 13:16:46 2025 (+0900)
-// Last-Updated: 三 1月 21 19:19:42 2026 (+0800)
+// Last-Updated: 三 1月 28 18:41:28 2026 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 18
+//     Update #: 19
 // URL: http://wuhongyi.cn 
 
 #include "DataAnalysis.hh"
@@ -103,7 +103,7 @@ void DataAnalysis::Loop(TTree *opt_)
 	  det.psd = 0;
 	  if((*br_event)[i].fw == 2)//PSD
 	    {
-	      det.psd = double(energyshort)/double(energy);
+	      det.psd = double((*br_event)[i].energyshort)/double((*br_event)[i].energy);
 	    }
 	  else if((*br_event)[i].fw == 4)//FDK
 	    {	      
