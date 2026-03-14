@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 日 2月 18 01:23:28 2024 (+0800)
-// Last-Updated: 日 1月 11 22:47:35 2026 (+0800)
+// Last-Updated: 六 3月 14 18:25:46 2026 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 59
+//     Update #: 61
 // URL: http://wuhongyi.cn 
 
 #include "r2root.hh"
@@ -105,7 +105,7 @@ r2root::r2root(int run)
   char tempfilename[1024];
   for (int i = 0; i < MODNUMBER; ++i)
     {
-      if(SamplingRate[i] == 125 || SamplingRate[i] == 500)
+      if(SamplingRate[i] == 125 || SamplingRate[i] == 500 || SamplingRate[i] == 1000)
 	{
 	  sprintf(tempfilename, "%s%04d/%s_R%04d_M%02d.bin",RAWFILEPATH, Run, RAWFILENAME, Run, i);
 	  if(!IsFileExists(tempfilename))
@@ -224,6 +224,10 @@ void r2root::Process()
 		  else if(rawdec[i].getsamplerate() == 500)
 		    {
 		      timestamp = 2*rawdec[i].getts();
+		    }
+		  else if(rawdec[i].getsamplerate() == 1000)
+		    {
+		      timestamp = rawdec[i].getts();
 		    }
 		  else
 		    {// TODO
