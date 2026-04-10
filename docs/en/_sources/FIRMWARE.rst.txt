@@ -4,9 +4,9 @@
 .. Author: Hongyi Wu(吴鸿毅)
 .. Email: wuhongyi@qq.com 
 .. Created: 日 9月  8 21:25:48 2024 (+0800)
-.. Last-Updated: 日 1月 11 16:40:52 2026 (+0800)
+.. Last-Updated: 五 4月 10 20:47:31 2026 (+0800)
 ..           By: Hongyi Wu(吴鸿毅)
-..     Update #: 24
+..     Update #: 25
 .. URL: http://wuhongyi.cn 
 
 =================================
@@ -19,7 +19,7 @@ Latest Firmware
 
 - 2745
     - V2745-scope-1G-2025102000.cup
-    - V2745-dpp-pha-1G-2025102402.cup
+    - V2745-dpp-pha-1G-2026013000.cup
     - V2745-dpp-psd-1G-2025052200.cup
     - V2745-dpp-zle-1G-2025093000.cup
     - V2745-OpenDPP-2026011100.cup PHA+PSD 
@@ -27,23 +27,22 @@ Latest Firmware
     - V2745-OpenScope-2026011004.cup
 - 2740
     - V2740-scope-1G-2025102000.cup
-    - V2740-dpp-pha-1G-2025102402.cup
+    - V2740-dpp-pha-1G-2026013000.cup
     - V2740-dpp-psd-1G-2025052200.cup
     - V2740-dpp-zle-1G-2025093000.cup
     - V2740-OpenDPP-2026011008.cup PHA+PSD 
     - V2740-OpenDPP-2026011007.cup PHA+CFD
     - V2740-OpenScope-2026011002.cup
 - 2730
-    - V2730-scope-1G-2025102002.cup
-    - V2730-dpp-pha-1G-2025102401.cup
+    - V2730-scope-1G-2026020201.cup
+    - V2730-dpp-pha-1G-2026030201.cup
     - V2730-dpp-psd-1G-2025121611.cup
     - V2730-OpenDPP-2026011006.cup PHA+PSD
     - V2730-OpenDPP-2026011005.cup PHA+CFD
 - 2751
     - V2751-scope-1G-2025102001.cup
-    - V2751-dpp-psd-1G-2025121612.cup
+    - V2751-dpp-psd-1G-2026030202.cup
     - V2751-OpenDPP-2026011102.cup  PHA+PSD
-
 
 
  To facilitate experimental diagnosis and debugging, we have proposed that CAEN add/modify the following features in the DPP firmware:

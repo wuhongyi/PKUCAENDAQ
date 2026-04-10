@@ -4,14 +4,17 @@
 .. Author: Hongyi Wu(吴鸿毅)
 .. Email: wuhongyi@qq.com 
 .. Created: 日 10月 13 19:27:12 2024 (+0800)
-.. Last-Updated: 六 1月 10 22:44:36 2026 (+0800)
+.. Last-Updated: 四 1月 29 22:01:36 2026 (+0800)
 ..           By: Hongyi Wu(吴鸿毅)
-..     Update #: 9
+..     Update #: 10
 .. URL: http://wuhongyi.cn 
 
 ##################################################
 UserDPP 应用
 ##################################################
+
+
+NIM siganl, VX2730  CFD delay 6 ns, fraction 50%
 
 
 ============================================================
