@@ -4,13 +4,19 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 五 12月 17 15:18:35 2021 (+0800)
-// Last-Updated: 六 9月  6 19:56:10 2025 (+0800)
+// Last-Updated: 四 7月  9 16:44:01 2026 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 83
+//     Update #: 84
 // URL: http://wuhongyi.cn 
 
 #ifndef _MAINWINDOW_H_
 #define _MAINWINDOW_H_
+
+#include "QtWidgets/QMainWindow"
+#include "QtWidgets"
+#include "QStringList"
+#include "QString"
+#include "QtConcurrent/QtConcurrentRun"
 
 #include "ControlPanel.hh"
 
@@ -22,12 +28,6 @@
 #include "LogicSettings.hh"
 #include "OnlineRate.hh"
 #include "Debug.hh"
-
-#include "QtWidgets/QMainWindow"
-#include "QtWidgets"
-#include "QStringList"
-#include "QString"
-#include "QtConcurrent/QtConcurrentRun"
 
 #include "nlohmann/json.hpp"
 
@@ -96,8 +96,8 @@ public:
 
 
   
-  void UpdateOutputDataSize(unsigned short mod, unsigned long value);
-  void UpdateOutputDataFlowSize(unsigned short mod, unsigned long value);
+  void UpdateOutputDataSize(unsigned short mod, unsigned long long value);
+  void UpdateOutputDataFlowSize(unsigned short mod, unsigned long long value);
 
 
 

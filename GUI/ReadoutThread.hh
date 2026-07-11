@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 三 6月 22 09:30:18 2022 (+0800)
-// Last-Updated: 日 2月 23 00:41:55 2025 (+0800)
+// Last-Updated: 五 7月 10 13:16:17 2026 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 55
+//     Update #: 57
 // URL: http://wuhongyi.cn 
 
 #ifndef _READOUTTHREAD_H_
@@ -21,6 +21,9 @@
 #include <QThread>
 //#include <QMutex>
 #include <QElapsedTimer>
+#ifdef RECODESHA256
+#include <QCryptographicHash>
+#endif
 
 // #include <fcntl.h>
 // #include <unistd.h>
@@ -32,19 +35,6 @@
 #include <fstream>
 #include <cstring>
 #include <string>
-#ifdef RECODESHA256
-#include <openssl/opensslv.h>
-#if OPENSSL_VERSION_NUMBER < 0x30000000L
-#include <openssl/sha.h>
-#else
-#include <openssl/sha.h>
-#include <openssl/evp.h>
-#endif
-#endif
-
-//#if OPENSSL_VERSION_NUMBER < 0x30000000L
-//#else
-//#endif
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
@@ -70,6 +60,10 @@ signals:
   void OnlineDebugZLE(event_zle *evt_zle);
   void OnlineDebugScope(event_scope *evt_scope);
   void OnlineDebugOPENDPP(event_opendpp *evt_opendpp);
+
+  
+  void OutputDataSize(unsigned short mod, unsigned long long value);
+  void OutputDataFlowSize(unsigned short mod, unsigned long long value);
 
 					       
 public slots:
@@ -99,8 +93,8 @@ private:
 
   unsigned int buff[MAXMODULENUM][BUFFLENGTHSCOPE];//TODO length
   int buffid[MAXMODULENUM];
-  unsigned long filesize[MAXMODULENUM];
-  unsigned long dataflowsize[MAXMODULENUM];
+  unsigned long long filesize[MAXMODULENUM];
+  unsigned long long dataflowsize[MAXMODULENUM];
 
 #ifdef LONGWAVEFORMMODE
   unsigned int *longwaveformbuff;
@@ -128,13 +122,8 @@ private:
 #endif
 
 #ifdef RECODESHA256
-#if OPENSSL_VERSION_NUMBER < 0x30000000L
-  SHA256_CTX sha256_ctx[MAXMODULENUM];
+  QCryptographicHash *sha256_ctx[MAXMODULENUM];
   unsigned char SHA256result[MAXMODULENUM][32];
-#else
-  EVP_MD_CTX *sha256_ctx[MAXMODULENUM];
-  unsigned char SHA256result[MAXMODULENUM][32];
-#endif
 #endif
 
   QElapsedTimer timerrun;

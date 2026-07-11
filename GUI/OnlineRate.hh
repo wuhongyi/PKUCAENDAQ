@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 六 3月 11 16:34:28 2023 (+0800)
-// Last-Updated: 六 5月 24 21:18:01 2025 (+0900)
+// Last-Updated: 四 7月  9 16:45:23 2026 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 21
+//     Update #: 22
 // URL: http://wuhongyi.cn 
 
 #ifndef _ONLINERATE_H_
@@ -84,8 +84,8 @@ public:
   void UpdateOnlineRateInput(unsigned short mod, unsigned short ch, double value);
   void UpdateOnlineRateOutput(unsigned short mod, unsigned short ch, double value);
   */
-  void UpdateOutputDataSize(unsigned short mod, unsigned long value);
-  void UpdateOutputDataFlowSize(unsigned short mod, unsigned long value);
+  void UpdateOutputDataSize(unsigned short mod, unsigned long long value);
+  void UpdateOutputDataFlowSize(unsigned short mod, unsigned long long value);
   
 private:
 

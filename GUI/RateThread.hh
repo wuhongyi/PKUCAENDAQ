@@ -37,6 +37,22 @@ public:
   virtual ~RateThread();
 
 
+signals:
+
+  void OnlineRateSelfTrgRate(unsigned short mod, unsigned short ch, QString value);
+  void OnlineRateSelfTrgRateOpen(unsigned short mod, unsigned short ch, QString value);
+  void OnlineRateOutputRateOpen(unsigned short mod, unsigned short ch, QString value);
+
+  void OnlineRateChRealtimeMonitor(unsigned short mod, unsigned short ch, QString value);
+  void OnlineRateChDeadtimeMonitor(unsigned short mod, unsigned short ch, QString value);
+  void OnlineRateChTriggerCnt(unsigned short mod, unsigned short ch, QString value);
+  void OnlineRateChSavedEventCnt(unsigned short mod, unsigned short ch, QString value);
+  void OnlineRateChWaveCnt(unsigned short mod, unsigned short ch, QString value);
+
+  void OnlineRateModRealtime(unsigned short mod, QString value);
+  void OnlineRateModDeadtime(unsigned short mod, QString value);
+  void OnlineRateModLivetime(unsigned short mod, QString value);
+
 protected:
   
   void run();

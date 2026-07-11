@@ -4,31 +4,28 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 二 10月 25 14:31:51 2022 (+0800)
-// Last-Updated: 一 6月 29 01:17:58 2026 (+0800)
+// Last-Updated: 四 7月  9 19:01:07 2026 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 145
+//     Update #: 146
 // URL: http://wuhongyi.cn 
 
 #ifndef _GLOBAL_H_
 #define _GLOBAL_H_
 
-#ifdef _WIN32
-#include <io.h>
-#include <process.h>
-#else
-#include <unistd.h>
-#endif
-
 #include <iostream>
 #include <bitset>
 #include <limits>
+#include <cerrno>
+#include <cstdint>
+#include <cstdio>
+#include <cstdlib>
 
 #include "QVector"
 #include "QMutex"
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-#define VERSIONDATE "VERSION: GUI-Qt - 20260629"
-#define EXPIRATIONDATE 20261229
+#define VERSIONDATE "VERSION: GUI-Qt - 20260709"
+#define EXPIRATIONDATE 20270109
 
 
 #define ONLINEMODE
