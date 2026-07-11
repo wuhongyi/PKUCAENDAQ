@@ -4,9 +4,9 @@
 .. Author: Hongyi Wu(吴鸿毅)
 .. Email: wuhongyi@qq.com 
 .. Created: 日 9月  8 23:05:34 2024 (+0800)
-.. Last-Updated: 一 9月  9 21:18:36 2024 (+0800)
+.. Last-Updated: 六 7月 11 17:31:42 2026 (+0800)
 ..           By: Hongyi Wu(吴鸿毅)
-..     Update #: 2
+..     Update #: 3
 .. URL: http://wuhongyi.cn 
 
 =================================
@@ -38,7 +38,9 @@ JSON format file, mainly containing module PID or IP information.
 
 Among them, the parameter *modules* is the number of data acquisition modules used by the system, and the parameter *connecttype* is the connection method between the acquisition modules and the computer, which can be filled in with "usb" or "eth". Using USB for reading, the maximum limit for a single module is 280 MB/s, while using network for reading, the 1G network has a maximum limit of 110 MB/s. If USB is used for reading, the parameter PID will take effect, which will be the PID of each module in the system in sequence. If network reading is used, the parameter IP takes effect, which is the IPV4 IP of each module in the system.
 
-
+#################################
+Linux
+#################################
 
 Enter the GUI directory and execute the following command to pop up the main control interface
 
@@ -50,6 +52,16 @@ Enter the GUI directory and execute the following command to pop up the main con
   # export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 
 
+#################################
+Windows
+#################################
+
+Go to the *GUI_win* directory and double-click the *Run_GDDAQ.bat* script. A *cmd.exe* window will appear. When using the program for the first time, you will be prompted to enter the installation path of CERN ROOT. After that, the software login screen will pop up.
+
+If you need to specify the CERN ROOT installation directory again, you can run the *Set_ROOT_Path.bat* script.
+
+
+  
 ---------------------------------
 login interface
 ---------------------------------

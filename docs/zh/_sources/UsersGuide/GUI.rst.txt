@@ -4,9 +4,9 @@
 .. Author: Hongyi Wu(吴鸿毅)
 .. Email: wuhongyi@qq.com 
 .. Created: 六 2月  3 21:00:35 2024 (+0800)
-.. Last-Updated: 一 9月  9 21:18:46 2024 (+0800)
+.. Last-Updated: 六 7月 11 17:31:43 2026 (+0800)
 ..           By: Hongyi Wu(吴鸿毅)
-..     Update #: 22
+..     Update #: 23
 .. URL: http://wuhongyi.cn 
 
 =================================
@@ -16,6 +16,7 @@
 ---------------------------------
 配置文件
 ---------------------------------
+
 
 配置文件放置于 **pars** 文件夹内，
 
@@ -41,8 +42,9 @@ json 格式文件，主要包含模块的 PID 或者 IP 等信息。
 
 
 
-获取参数文件。
-
+#################################
+Linux
+#################################
 
 进入 GUI 目录，执行以下命令即可弹出主控制界面
 
@@ -52,6 +54,19 @@ json 格式文件，主要包含模块的 PID 或者 IP 等信息。
   # 如果出现以下错误，设置以下环境变量
   # ./gddaq: error while loading shared libraries: libCAEN_FELib.so.0: cannot open shared object file: No such file or directory
   # export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+
+
+
+#################################
+Windows
+#################################
+
+进入 GUI_win 目录，双击 Run_GDDAQ.bat 脚本，将会弹出 cmd.exe 窗口。对于首次使用，会要求输入 CERN ROOT 软件的安装路径。之后将会弹出软件登陆界面。
+
+如需重新指定 CERN ROOT 软件安装目录，可 执行 Set_ROOT_Path.bat 脚本。
+
+
+
 
 
   

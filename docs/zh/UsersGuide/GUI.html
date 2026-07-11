@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>图形交互界面 &mdash; GDDAQ V20260110 文档</title>
+  <title>图形交互界面 &mdash; GDDAQ V20260709 文档</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=eafc0fe6" />
@@ -16,7 +16,7 @@
   
         <script src="../_static/jquery.js?v=5d32c60e"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=43047286"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=cfeee6d4"></script>
         <script src="../_static/doctools.js?v=888ff710"></script>
         <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
         <script src="../_static/translations.js?v=beaddf03"></script>
@@ -60,7 +60,11 @@
 <li class="toctree-l1"><a class="reference internal" href="README.html">图形化指南</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Synchronization.html">时间同步和采集</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">图形交互界面</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id2">配置文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">配置文件</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#linux">Linux</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#windows">Windows</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#id3">登陆界面</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id4">主控制界面</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id5">网页在线监视</a></li>
@@ -141,7 +145,8 @@
 </pre></div>
 </div>
 <p>其中，参数 modules 为系统使用数据采集卡数量，参数 connecttype 为采集卡与获取电脑的连接方式，可填写 “usb” 或者 “eth”。使用 usb 读取，单个模块上限为 280 MB/s，使用网络读取，目前使用的 1G 网络，单个模块的上限为 110 MB/s。如果采用 USB 方式读取， 则参数 pid 生效，依次为系统每个模块的 PID。如果采用网络读取，则参数 ip 生效，依次为系统每个模块 IPV4 的 IP。</p>
-<p>获取参数文件。</p>
+<section id="linux">
+<h3>Linux<a class="headerlink" href="#linux" title="此标题的永久链接"></a></h3>
 <p>进入 GUI 目录，执行以下命令即可弹出主控制界面</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./gddaq
 <span class="c1"># 如果出现以下错误，设置以下环境变量</span>
@@ -149,6 +154,12 @@
 <span class="c1"># export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH</span>
 </pre></div>
 </div>
+</section>
+<section id="windows">
+<h3>Windows<a class="headerlink" href="#windows" title="此标题的永久链接"></a></h3>
+<p>进入 GUI_win 目录，双击 Run_GDDAQ.bat 脚本，将会弹出 cmd.exe 窗口。对于首次使用，会要求输入 CERN ROOT 软件的安装路径。之后将会弹出软件登陆界面。</p>
+<p>如需重新指定 CERN ROOT 软件安装目录，可 执行 Set_ROOT_Path.bat 脚本。</p>
+</section>
 </section>
 <section id="id3">
 <h2>登陆界面<a class="headerlink" href="#id3" title="此标题的永久链接"></a></h2>

@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Graphical interactive interface &mdash; GDDAQ V20260110 文档</title>
+  <title>Graphical interactive interface &mdash; GDDAQ V20260709 文档</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=eafc0fe6" />
@@ -16,7 +16,7 @@
   
         <script src="../_static/jquery.js?v=5d32c60e"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=43047286"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=cfeee6d4"></script>
         <script src="../_static/doctools.js?v=888ff710"></script>
         <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
         <script src="../_static/translations.js?v=beaddf03"></script>
@@ -60,7 +60,11 @@
 <li class="toctree-l1"><a class="reference internal" href="README.html">GUI Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Synchronization.html">Time synchronization</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Graphical interactive interface</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#configuration-file">Configuration file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configuration-file">Configuration file</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#linux">Linux</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#windows">Windows</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#login-interface">login interface</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#main-control-interface">Main control interface</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#online-monitoring-of-web-pages">Online monitoring of web pages</a></li>
@@ -135,6 +139,8 @@ JSON format file, mainly containing module PID or IP information.</p>
 </pre></div>
 </div>
 <p>Among them, the parameter <em>modules</em> is the number of data acquisition modules used by the system, and the parameter <em>connecttype</em> is the connection method between the acquisition modules and the computer, which can be filled in with “usb” or “eth”. Using USB for reading, the maximum limit for a single module is 280 MB/s, while using network for reading, the 1G network has a maximum limit of 110 MB/s. If USB is used for reading, the parameter PID will take effect, which will be the PID of each module in the system in sequence. If network reading is used, the parameter IP takes effect, which is the IPV4 IP of each module in the system.</p>
+<section id="linux">
+<h3>Linux<a class="headerlink" href="#linux" title="此标题的永久链接"></a></h3>
 <p>Enter the GUI directory and execute the following command to pop up the main control interface</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./gddaq
 <span class="c1"># If the following error occurs, set the following environment variables</span>
@@ -142,6 +148,12 @@ JSON format file, mainly containing module PID or IP information.</p>
 <span class="c1"># export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH</span>
 </pre></div>
 </div>
+</section>
+<section id="windows">
+<h3>Windows<a class="headerlink" href="#windows" title="此标题的永久链接"></a></h3>
+<p>Go to the <em>GUI_win</em> directory and double-click the <em>Run_GDDAQ.bat</em> script. A <em>cmd.exe</em> window will appear. When using the program for the first time, you will be prompted to enter the installation path of CERN ROOT. After that, the software login screen will pop up.</p>
+<p>If you need to specify the CERN ROOT installation directory again, you can run the <em>Set_ROOT_Path.bat</em> script.</p>
+</section>
 </section>
 <section id="login-interface">
 <h2>login interface<a class="headerlink" href="#login-interface" title="此标题的永久链接"></a></h2>

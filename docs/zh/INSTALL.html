@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>程序安装 &mdash; GDDAQ V20260110 文档</title>
+  <title>程序安装 &mdash; GDDAQ V20260709 文档</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
@@ -16,7 +16,7 @@
   
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=43047286"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=cfeee6d4"></script>
         <script src="_static/doctools.js?v=888ff710"></script>
         <script src="_static/sphinx_highlight.js?v=4825356b"></script>
         <script src="_static/translations.js?v=beaddf03"></script>
@@ -53,8 +53,15 @@
 <p class="caption" role="heading"><span class="caption-text">程序安装</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">程序安装</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id2">软件安装步骤</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#linux">LINUX 系统中每个模块使用注册</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#linux">Linux</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">软件安装步骤</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">LINUX 系统中每个模块使用注册</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#windows">Windows</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id4">软件安装步骤</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="FIRMWARE.html">固件</a></li>
@@ -121,6 +128,8 @@
              
   <section id="id1">
 <h1>程序安装<a class="headerlink" href="#id1" title="此标题的永久链接"></a></h1>
+<section id="linux">
+<h2>Linux<a class="headerlink" href="#linux" title="此标题的永久链接"></a></h2>
 <p>本程序安装要求依赖 boost、OpenSSL、Qt5、ROOT6 等第三方库。以下版本经过测试。</p>
 <ul class="simple">
 <li><dl class="simple">
@@ -193,7 +202,7 @@ sudo<span class="w"> </span>dnf<span class="w"> </span>-y<span class="w"> </span
 </pre></div>
 </div>
 <section id="id2">
-<h2>软件安装步骤<a class="headerlink" href="#id2" title="此标题的永久链接"></a></h2>
+<h3>软件安装步骤<a class="headerlink" href="#id2" title="此标题的永久链接"></a></h3>
 <ul class="simple">
 <li><p>删除个人目录下的老版本PKUCAENDAQ文件夹</p></li>
 <li><p>将本程序包解压缩到个人目录中($HOME)</p></li>
@@ -213,8 +222,8 @@ sudo<span class="w"> </span>make<span class="w"> </span>install
 sudo<span class="w"> </span>ldconfig
 
 <span class="nb">cd</span><span class="w"> </span>..
-tar<span class="w"> </span>-zxvf<span class="w"> </span>caen_dig2-v1.8.2.tar.gz
-<span class="nb">cd</span><span class="w"> </span>caen_dig2-v1.8.2/
+tar<span class="w"> </span>-xvf<span class="w"> </span>caen_dig2-v1.8.3.tar.gz
+<span class="nb">cd</span><span class="w"> </span>caen_dig2-v1.8.3/
 ./configure<span class="w"> </span>--disable-assert
 make
 sudo<span class="w"> </span>make<span class="w"> </span>install
@@ -232,8 +241,8 @@ chmod<span class="w"> </span>+x<span class="w"> </span>makefile.sh.x
 </pre></div>
 </div>
 </section>
-<section id="linux">
-<h2>LINUX 系统中每个模块使用注册<a class="headerlink" href="#linux" title="此标题的永久链接"></a></h2>
+<section id="id3">
+<h3>LINUX 系统中每个模块使用注册<a class="headerlink" href="#id3" title="此标题的永久链接"></a></h3>
 <p>由于某些 Linux 发行版无法自动检索数字化仪 USB 名称，因此第一次使用该模块时，需要先进行注册操作。模块注册需要逐个模块进行。即在进行注册操作时，仅能有一个模块通过 USB 连接到 LINUX 系统。</p>
 <p>将 USB3.0 线缆 type-C 端连接到模块，另一端连接到电脑。然后在浏览器中输入 CAENDGTZ-USB-{PIDNUMBER}，这里 {PIDNUMBER} 替换为使用的模块的 PID 码，例如：CAENDGTZ-USB-25480 。看是否能访问，如果不能访问，说明还未对该模块进行驱动注册。</p>
 <p>在 USB 驱动安装包内，例如 CAENDGTZ-USB-Drv-1.3 里面，有驱动注册脚本文件 regPID.sh，通过以下命令运行。执行之后会看到注册成功的提示。</p>
@@ -244,6 +253,33 @@ chmod<span class="w"> </span>+x<span class="w"> </span>makefile.sh.x
 <img alt="_images/usblogin.png" src="_images/usblogin.png" />
 <p>登陆之后界面如下所示，左侧菜单栏中，可以进行网络设置。如果想通过网线进行数据获取，则通过该页面进行 IP 设置。根据实验室网络情况，选择 DHCP 自动分配 IP 或者 Manual 手动配置 IP。进行 IP 设置之后，在浏览器中输入模块的 IP，则也可以访问该设置页面。</p>
 <img alt="_images/caendgtz-usb-home.png" src="_images/caendgtz-usb-home.png" />
+</section>
+</section>
+<section id="windows">
+<h2>Windows<a class="headerlink" href="#windows" title="此标题的永久链接"></a></h2>
+<p>本程序安装要求依赖 ROOT6 等第三方库。以下版本经过测试。</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>OS</dt><dd><ul>
+<li><p>windows 10</p></li>
+<li><p>windows 11</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>ROOT 6</dt><dd><ul>
+<li><p>6.26.14 <a class="reference external" href="https://root.cern.ch/releases/release-62614/">https://root.cern.ch/releases/release-62614/</a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p><strong>由于 CERN ROOT 软件库比较大，本程序要求用户自行安装 CERN ROOT 软件。如需不安装 ROOT 版本，请联系吴鸿毅</strong></p>
+<section id="id4">
+<h3>软件安装步骤<a class="headerlink" href="#id4" title="此标题的永久链接"></a></h3>
+<p>将整个获取程序包解压到合适位置。解压文件夹内 <em>GUI_win.zip</em> 文件。该文件夹内包含 windows 系统下图形界面运行所需要的驱动、Qt 库等文件。</p>
+</section>
 </section>
 </section>
 

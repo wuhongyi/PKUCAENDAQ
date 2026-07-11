@@ -4,14 +4,18 @@
 .. Author: Hongyi Wu(吴鸿毅)
 .. Email: wuhongyi@qq.com 
 .. Created: 日 9月  8 22:50:05 2024 (+0800)
-.. Last-Updated: 日 6月 28 17:10:22 2026 (+0800)
+.. Last-Updated: 六 7月 11 16:42:45 2026 (+0800)
 ..           By: Hongyi Wu(吴鸿毅)
-..     Update #: 9
+..     Update #: 10
 .. URL: http://wuhongyi.cn 
 
-=================================   
+################################################## 
 Program installation
-=================================
+##################################################
+
+============================================================
+Linux
+============================================================
 
 This program installation requires reliance on third-party libraries such as Boost, OpenSSL, Qt5, ROOT 6, etc. The following versions have been tested.
 
@@ -65,9 +69,9 @@ This program installation requires reliance on third-party libraries such as Boo
 
 
 
---------------------------------------------------
+----------------------------------------------------------------------
 Software installation steps
---------------------------------------------------
+----------------------------------------------------------------------
 
 
 * Delete the old version PKUCAENDAQ folder from the personal directory
@@ -109,9 +113,9 @@ Software installation steps
   # Check if the executable file gddaq has been generated, and if so, compile successfully. If not, please contact Hongyi Wu.
 
 
---------------------------------------------------
+----------------------------------------------------------------------
 Registration of each module in LINUX OS
---------------------------------------------------
+----------------------------------------------------------------------
 
 Due to the inability of some Linux distributions to automatically retrieve the USB name of the digitizer, registration is required when using this module for the first time. Module registration needs to be done module by module. During the registration process, only one module can be connected to the LINUX OS via USB.
 
@@ -137,6 +141,32 @@ After logging in, the interface is shown below. In the left menu bar, network se
 .. image:: /_static/img/caendgtz-usb-home.png
   
   
-   
+
+
+============================================================
+Windows
+============================================================
+
+This program requires ROOT6 and other third-party libraries for installation. The following versions have been tested.
+
+* OS
+    - Windows 10
+    - Windows 11
+* ROOT 6
+    - 6.26.14 https://root.cern.ch/releases/release-62614/
+
+**Since the CERN ROOT software library is relatively large, this program requires users to install CERN ROOT themselves. If you need a version that does not require ROOT, please contact Hongyi Wu.**
+
+
+
+----------------------------------------------------------------------
+Software installation steps
+----------------------------------------------------------------------
+
+Extract the entire acquisition package to a suitable location. Unzip the *GUI_win.zip* file inside the extracted folder. The resulting folder contains the drivers, Qt libraries, and other files required to run the graphical interface on Windows.
+
+
+
+	   
 .. 
 .. INSTALL.rst ends here
