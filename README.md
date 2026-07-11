@@ -4,9 +4,9 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 五 12月 17 20:14:52 2021 (+0800)
-;; Last-Updated: 六 7月 11 16:45:00 2026 (+0800)
+;; Last-Updated: 六 7月 11 17:46:56 2026 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 64
+;;     Update #: 65
 ;; URL: http://wuhongyi.cn -->
 
 # A general-purpose digital data acquisition system(GDDAQ-CAEN)
@@ -52,7 +52,7 @@ Technical adviser:
 
 Software Developer:
 - 2021 - now
-	- [Hongyi Wu 吴鸿毅](https://github.com/wuhongyi)(wuhongyi@qq.com / wuhongyi@pku.edu.cn) 
+	- [Hongyi Wu 吴鸿毅](https://github.com/wuhongyi)(wuhongyi@qq.com / wuhongyi@pku.edu.cn / wuhy@ciae.ac.cn) 
 
 
 ## License
