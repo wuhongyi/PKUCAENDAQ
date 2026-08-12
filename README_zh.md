@@ -4,9 +4,9 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 五 12月 17 20:14:52 2021 (+0800)
-;; Last-Updated: 六 7月 11 17:46:46 2026 (+0800)
+;; Last-Updated: 三 8月 12 19:22:09 2026 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 61
+;;     Update #: 62
 ;; URL: http://wuhongyi.cn -->
 
 # A general-purpose digital data acquisition system(GDDAQ-CAEN)
@@ -19,11 +19,11 @@
 
 **支持 LINUX 和 Windows 系统。**
 
-**目前版本快速迭代中, GUI Qt 版本有效期截止 2027 年 01 月 09 日前。建议大家及时下载最新版本。**
+**目前版本快速迭代中, GUI Qt 版本有效期截止 2027 年 02 月 12 日前。建议大家及时下载最新版本。**
 
 ## 版本
 
-- **GUI Qt: version 2026.07.09**
+- **GUI Qt: version 2026.08.12**
 - **DecodeAndSortAll: version 2026.03.14**
 - **EventBuilder: version 2026.01.11**
 - **DataAnalysis: version 2026.01.28**

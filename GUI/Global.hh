@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 二 10月 25 14:31:51 2022 (+0800)
-// Last-Updated: 四 7月  9 19:01:07 2026 (+0800)
+// Last-Updated: 三 8月 12 19:03:09 2026 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 146
+//     Update #: 148
 // URL: http://wuhongyi.cn 
 
 #ifndef _GLOBAL_H_
@@ -24,8 +24,8 @@
 #include "QMutex"
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-#define VERSIONDATE "VERSION: GUI-Qt - 20260709"
-#define EXPIRATIONDATE 20270109
+#define VERSIONDATE "VERSION: GUI-Qt - 20260812"
+#define EXPIRATIONDATE 20270212
 
 
 #define ONLINEMODE
@@ -59,7 +59,7 @@
 //2GiB  536870912
 //1GiB  268435456
 //#define LONGWAVEFORMMODE
-#define LONGWAVEFORMMODEBUFFLENGTH 268435456
+#define LONGWAVEFORMMODEBUFFLENGTH 1073741824
 
 
 typedef struct RAWDATABUFFER
