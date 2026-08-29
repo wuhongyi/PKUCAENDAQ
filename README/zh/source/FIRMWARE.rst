@@ -4,9 +4,9 @@
 .. Author: Hongyi Wu(吴鸿毅)
 .. Email: wuhongyi@qq.com 
 .. Created: 六 2月  3 20:59:00 2024 (+0800)
-.. Last-Updated: 五 4月 10 20:47:18 2026 (+0800)
+.. Last-Updated: 六 8月 29 16:12:14 2026 (+0800)
 ..           By: Hongyi Wu(吴鸿毅)
-..     Update #: 37
+..     Update #: 38
 .. URL: http://wuhongyi.cn 
 
 =================================
@@ -41,7 +41,7 @@
     - V2730-OpenDPP-2026011006.cup PHA+PSD
     - V2730-OpenDPP-2026011005.cup PHA+CFD
 - 2751
-    - V2751-scope-1G-2025102001.cup
+    - V2751-scope-1G-2026072212.cup
     - V2751-dpp-psd-1G-2026030202.cup
     - V2751-OpenDPP-2026011102.cup  PHA+PSD
 
