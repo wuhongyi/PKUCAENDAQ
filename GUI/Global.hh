@@ -4,9 +4,9 @@
 // Author: Hongyi Wu(吴鸿毅)
 // Email: wuhongyi@qq.com 
 // Created: 二 10月 25 14:31:51 2022 (+0800)
-// Last-Updated: 三 8月 12 19:03:09 2026 (+0800)
+// Last-Updated: 六 8月 29 16:27:45 2026 (+0800)
 //           By: Hongyi Wu(吴鸿毅)
-//     Update #: 148
+//     Update #: 149
 // URL: http://wuhongyi.cn 
 
 #ifndef _GLOBAL_H_
@@ -24,8 +24,8 @@
 #include "QMutex"
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-#define VERSIONDATE "VERSION: GUI-Qt - 20260812"
-#define EXPIRATIONDATE 20270212
+#define VERSIONDATE "VERSION: GUI-Qt - 20260829"
+#define EXPIRATIONDATE 20270229
 
 
 #define ONLINEMODE
@@ -107,9 +107,9 @@ extern QVector<RAWDATABUFFER> datavectordecoder[];
 #define V2730DPPPSD 2025121600
 #define V2730OPENDPP 2026011000
 
-#define V2751SCOPE 2025102000
+#define V2751SCOPE 2026072200
 #define V2751DPPPSD 2026030200
-#define V2751OPENDPP 2026011000
+#define V2751OPENDPP 2026011100
 
 
 

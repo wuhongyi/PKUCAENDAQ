@@ -4,9 +4,9 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 五 12月 17 20:14:52 2021 (+0800)
-;; Last-Updated: 三 8月 12 19:22:09 2026 (+0800)
+;; Last-Updated: 六 8月 29 16:43:08 2026 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 62
+;;     Update #: 63
 ;; URL: http://wuhongyi.cn -->
 
 # A general-purpose digital data acquisition system(GDDAQ-CAEN)
@@ -19,11 +19,11 @@
 
 **支持 LINUX 和 Windows 系统。**
 
-**目前版本快速迭代中, GUI Qt 版本有效期截止 2027 年 02 月 12 日前。建议大家及时下载最新版本。**
+**目前版本快速迭代中, GUI Qt 版本有效期截止 2027 年 02 月 29 日前。建议大家及时下载最新版本。**
 
 ## 版本
 
-- **GUI Qt: version 2026.08.12**
+- **GUI Qt: version 2026.08.29**
 - **DecodeAndSortAll: version 2026.03.14**
 - **EventBuilder: version 2026.01.11**
 - **DataAnalysis: version 2026.01.28**
@@ -56,7 +56,7 @@
 如果您使用本项目的任何软件、固件等，请引用以下文献：
 
 - [The upgrade of the general-purpose digital data acquisition system (GDDAQ)](https://doi.org/10.1016/j.nima.2026.171315)
-
+- [A Trigger-Guided FPGA Digital CFD Without an Additional CFD Validation Threshold for High-Efficiency HPGe Detector Timing](https://doi.org/10.1109/TNS.2026.3711002)
 
 
 
