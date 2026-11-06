@@ -4,9 +4,9 @@
 .. Author: Hongyi Wu(吴鸿毅)
 .. Email: wuhongyi@qq.com 
 .. Created: 日 9月  8 21:25:48 2024 (+0800)
-.. Last-Updated: 六 8月 29 16:12:11 2026 (+0800)
+.. Last-Updated: 五 11月  6 14:51:56 2026 (+0800)
 ..           By: Hongyi Wu(吴鸿毅)
-..     Update #: 26
+..     Update #: 27
 .. URL: http://wuhongyi.cn 
 
 =================================
@@ -36,7 +36,7 @@ Latest Firmware
 - 2730
     - V2730-scope-1G-2026020201.cup
     - V2730-dpp-pha-1G-2026030201.cup
-    - V2730-dpp-psd-1G-2025121611.cup
+    - V2730-dpp-psd-1G-2026030200.cup
     - V2730-OpenDPP-2026011006.cup PHA+PSD
     - V2730-OpenDPP-2026011005.cup PHA+CFD
 - 2751
